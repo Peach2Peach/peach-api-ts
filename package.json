@@ -1,0 +1,23 @@
+{
+  "name": "peach-api-ts",
+  "version": "0.2.11",
+  "description": "Peach API wrapper for TypeScript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Peach2Peach/peach-api-ts.git"
+  },
+  "keywords": [
+    "api",
+    "peach"
+  ],
+  "author": "Peach Sàrl",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Peach2Peach/peach-api-ts/issues"
+  },
+  "homepage": "https://github.com/Peach2Peach/peach-api-ts#readme"
+}
