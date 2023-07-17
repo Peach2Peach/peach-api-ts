@@ -2,10 +2,10 @@
   "name": "peach-api-ts",
   "version": "0.2.11",
   "description": "Peach API wrapper for TypeScript",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
-    "build": "tsc --project ./",
-    "watch": "tsc --watch --project ./",
+    "build": "tsc",
+    "watch": "tsc --watch",
     "test": "jest ./",
     "lint": "eslint . --ext .ts"
   },

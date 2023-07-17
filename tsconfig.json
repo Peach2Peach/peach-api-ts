@@ -13,8 +13,11 @@
     "allowJs": true,
     "moduleResolution": "node",
     "isolatedModules": true,
-    "noEmit": true
+    "declaration": true,
+    "sourceMap": true,
+    "outDir": "dist",
+    "rootDir": "src"
   },
-  "files": ["peachAPI/peachAPI.ts"],
-  "exclude": ["node_modules"]
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules", "dist"]
 }
