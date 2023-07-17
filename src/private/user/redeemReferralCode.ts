@@ -14,17 +14,17 @@ type Props = RequestProps &
   RedeemReferralCodeRequestQuery &
   RedeemReferralCodeRequestBody
 
-export const redeemReferralCode =
-  ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
-  async ({ code, timeout }: Props) => {
-    const response = await fetch(`${url}/v1/user/referral/redeem/referralCode`, {
-      headers: helpers.getPrivateHeaders(url),
-      method: 'PATCH',
-      body: JSON.stringify({
-        code,
-      }),
-      signal: timeout ? getAbortWithTimeout(timeout).signal : undefined,
-    })
+export const redeemReferralCode
+  = ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
+    async ({ code, timeout }: Props) => {
+      const response = await fetch(`${url}/v1/user/referral/redeem/referralCode`, {
+        headers: helpers.getPrivateHeaders(url),
+        method: 'PATCH',
+        body: JSON.stringify({
+          code,
+        }),
+        signal: timeout ? getAbortWithTimeout(timeout).signal : undefined,
+      })
 
-    return parseResponse<RedeemReferralCodeResponseBody, RedeemReferralCodeErrorResponseBody>(response)
-  }
+      return parseResponse<RedeemReferralCodeResponseBody, RedeemReferralCodeErrorResponseBody>(response)
+    }

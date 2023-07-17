@@ -11,17 +11,17 @@ import { PeachAPIHelpers, PeachAPIOptions, RequestProps } from '../../types'
 
 type Props = RequestProps & ConfirmPaymentRequestParams & ConfirmPaymentRequestQuery & ConfirmPaymentRequestBody
 
-export const confirmPayment =
-  ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
-  async ({ contractId, releaseTransaction, timeout }: Props) => {
-    const response = await fetch(`${url}/v1/contract/${contractId}/payment/confirm`, {
-      headers: helpers.getPrivateHeaders(url),
-      method: 'POST',
-      body: JSON.stringify({
-        releaseTransaction,
-      }),
-      signal: timeout ? getAbortWithTimeout(timeout).signal : undefined,
-    })
+export const confirmPayment
+  = ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
+    async ({ contractId, releaseTransaction, timeout }: Props) => {
+      const response = await fetch(`${url}/v1/contract/${contractId}/payment/confirm`, {
+        headers: helpers.getPrivateHeaders(url),
+        method: 'POST',
+        body: JSON.stringify({
+          releaseTransaction,
+        }),
+        signal: timeout ? getAbortWithTimeout(timeout).signal : undefined,
+      })
 
-    return parseResponse<ConfirmPaymentResponseBody, ConfirmPaymentErrorResponseBody>(response)
-  }
+      return parseResponse<ConfirmPaymentResponseBody, ConfirmPaymentErrorResponseBody>(response)
+    }

@@ -14,14 +14,14 @@ type Props = RequestProps &
   ExtendPaymentTimerRequestQuery &
   ExtendPaymentTimerRequestBody
 
-export const extendPaymentTimer =
-  ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
-  async ({ contractId, timeout }: Props) => {
-    const response = await fetch(`${url}/v1/contract/${contractId}/extendTime`, {
-      headers: helpers.getPrivateHeaders(url),
-      method: 'PATCH',
-      signal: timeout ? getAbortWithTimeout(timeout).signal : undefined,
-    })
+export const extendPaymentTimer
+  = ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
+    async ({ contractId, timeout }: Props) => {
+      const response = await fetch(`${url}/v1/contract/${contractId}/extendTime`, {
+        headers: helpers.getPrivateHeaders(url),
+        method: 'PATCH',
+        signal: timeout ? getAbortWithTimeout(timeout).signal : undefined,
+      })
 
-    return parseResponse<ExtendPaymentTimerResponseBody, ExtendPaymentTimerErrorResponseBody>(response)
-  }
+      return parseResponse<ExtendPaymentTimerResponseBody, ExtendPaymentTimerErrorResponseBody>(response)
+    }

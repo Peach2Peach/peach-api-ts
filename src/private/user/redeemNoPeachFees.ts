@@ -11,14 +11,14 @@ import { PeachAPIHelpers, PeachAPIOptions, RequestProps } from '../../types'
 
 type Props = RequestProps & RedeemFiveTradesRequestParams & RedeemFiveTradesRequestQuery & RedeemFiveTradesRequestBody
 
-export const redeemNoPeachFees =
-  ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
-  async ({ timeout }: Props) => {
-    const response = await fetch(`${url}/v1/user/referral/redeem/fiveFreeTrades`, {
-      headers: helpers.getPrivateHeaders(url),
-      method: 'PATCH',
-      signal: timeout ? getAbortWithTimeout(timeout).signal : undefined,
-    })
+export const redeemNoPeachFees
+  = ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
+    async ({ timeout }: Props) => {
+      const response = await fetch(`${url}/v1/user/referral/redeem/fiveFreeTrades`, {
+        headers: helpers.getPrivateHeaders(url),
+        method: 'PATCH',
+        signal: timeout ? getAbortWithTimeout(timeout).signal : undefined,
+      })
 
-    return parseResponse<RedeemFiveTradesResponseBody, RedeemFiveTradesErrorResponseBody>(response)
-  }
+      return parseResponse<RedeemFiveTradesResponseBody, RedeemFiveTradesErrorResponseBody>(response)
+    }

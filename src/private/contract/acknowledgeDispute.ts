@@ -14,17 +14,17 @@ type Props = RequestProps &
   AcknowledgeDisputeRequestQuery &
   AcknowledgeDisputeRequestBody
 
-export const acknowledgeDispute =
-  ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
-  async ({ contractId, email, timeout }: Props) => {
-    const response = await fetch(`${url}/v1/contract/${contractId}/dispute/acknowledge`, {
-      headers: helpers.getPrivateHeaders(url),
-      method: 'POST',
-      body: JSON.stringify({
-        email,
-      }),
-      signal: timeout ? getAbortWithTimeout(timeout).signal : undefined,
-    })
+export const acknowledgeDispute
+  = ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
+    async ({ contractId, email, timeout }: Props) => {
+      const response = await fetch(`${url}/v1/contract/${contractId}/dispute/acknowledge`, {
+        headers: helpers.getPrivateHeaders(url),
+        method: 'POST',
+        body: JSON.stringify({
+          email,
+        }),
+        signal: timeout ? getAbortWithTimeout(timeout).signal : undefined,
+      })
 
-    return parseResponse<AcknowledgeDisputeResponseBody, AcknowledgeDisputeErrorResponseBody>(response)
-  }
+      return parseResponse<AcknowledgeDisputeResponseBody, AcknowledgeDisputeErrorResponseBody>(response)
+    }

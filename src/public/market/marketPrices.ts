@@ -11,12 +11,12 @@ import { PeachAPIHelpers, PeachAPIOptions, RequestProps } from '../../types'
 
 type Props = RequestProps & GetPricesRequestParams & GetPricesRequestQuery & GetPricesRequestBody
 
-export const marketPrices =
-  ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
-  async ({ timeout }: Props) => {
-    const response = await fetch(`${url}/v1/market/prices`, {
-      headers: helpers.getPublicHeaders(url),
-      signal: timeout ? getAbortWithTimeout(timeout).signal : undefined,
-    })
-    return parseResponse<GetPricesResponseBody, GetPricesErrorResponseBody>(response)
-  }
+export const marketPrices
+  = ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
+    async ({ timeout }: Props) => {
+      const response = await fetch(`${url}/v1/market/prices`, {
+        headers: helpers.getPublicHeaders(url),
+        signal: timeout ? getAbortWithTimeout(timeout).signal : undefined,
+      })
+      return parseResponse<GetPricesResponseBody, GetPricesErrorResponseBody>(response)
+    }

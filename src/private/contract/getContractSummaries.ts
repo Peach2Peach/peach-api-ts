@@ -14,14 +14,14 @@ type Props = RequestProps &
   GetContractSummariesRequestQuery &
   GetContractSummariesRequestBody
 
-export const getContractSummaries =
-  ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
-  async ({ timeout, abortSignal }: Props) => {
-    const response = await fetch(`${url}/v1/contracts/summary`, {
-      headers: helpers.getPrivateHeaders(url),
-      method: 'GET',
-      signal: abortSignal ?? (timeout ? getAbortWithTimeout(timeout).signal : undefined),
-    })
+export const getContractSummaries
+  = ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
+    async ({ timeout, abortSignal }: Props) => {
+      const response = await fetch(`${url}/v1/contracts/summary`, {
+        headers: helpers.getPrivateHeaders(url),
+        method: 'GET',
+        signal: abortSignal ?? (timeout ? getAbortWithTimeout(timeout).signal : undefined),
+      })
 
-    return parseResponse<GetContractSummariesResponseBody, GetContractSummariesErrorResponseBody>(response)
-  }
+      return parseResponse<GetContractSummariesResponseBody, GetContractSummariesErrorResponseBody>(response)
+    }

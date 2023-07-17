@@ -14,14 +14,14 @@ type Props = RequestProps &
   GetOfferSummariesRequestQuery &
   GetOfferSummariesRequestBody
 
-export const getOfferSummaries =
-  ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
-  async ({ timeout, abortSignal }: Props) => {
-    const response = await fetch(`${url}/v1/offers/summary`, {
-      headers: helpers.getPrivateHeaders(url),
-      method: 'GET',
-      signal: abortSignal ?? (timeout ? getAbortWithTimeout(timeout).signal : undefined),
-    })
+export const getOfferSummaries
+  = ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
+    async ({ timeout, abortSignal }: Props) => {
+      const response = await fetch(`${url}/v1/offers/summary`, {
+        headers: helpers.getPrivateHeaders(url),
+        method: 'GET',
+        signal: abortSignal ?? (timeout ? getAbortWithTimeout(timeout).signal : undefined),
+      })
 
-    return parseResponse<GetOfferSummariesResponseBody, GetOfferSummariesErrorResponseBody>(response)
-  }
+      return parseResponse<GetOfferSummariesResponseBody, GetOfferSummariesErrorResponseBody>(response)
+    }
