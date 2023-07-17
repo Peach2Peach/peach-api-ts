@@ -7,8 +7,7 @@ import {
 } from '../../../@types/contractAPI'
 import { getAbortWithTimeout } from '../../../utils/fetch/getAbortWithTimeout'
 import { parseResponse } from '../../parseResponse'
-import { PeachAPIOptions, RequestProps } from '../../types'
-import { getPrivateHeaders } from '../getPrivateHeaders'
+import { PeachAPIHelpers, PeachAPIOptions, RequestProps } from '../../types'
 
 type Props = RequestProps &
   ExtendPaymentTimerRequestParams &
@@ -16,10 +15,10 @@ type Props = RequestProps &
   ExtendPaymentTimerRequestBody
 
 export const extendPaymentTimer
-  = ({ url }: PeachAPIOptions) =>
+  = ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
     async ({ contractId, timeout }: Props) => {
       const response = await fetch(`${url}/v1/contract/${contractId}/extendTime`, {
-        headers: await getPrivateHeaders(url),
+        headers: helpers.getPrivateHeaders(url),
         method: 'PATCH',
         signal: timeout ? getAbortWithTimeout(timeout).signal : undefined,
       })

@@ -7,8 +7,7 @@ import {
 } from '../../../@types/userAPI'
 import { getAbortWithTimeout } from '../../../utils/fetch/getAbortWithTimeout'
 import { parseResponse } from '../../parseResponse'
-import { PeachAPIOptions, RequestProps } from '../../types'
-import { getPrivateHeaders } from '../getPrivateHeaders'
+import { PeachAPIHelpers, PeachAPIOptions, RequestProps } from '../../types'
 
 type Props = RequestProps &
   RedeemReferralCodeRequestParams &
@@ -16,10 +15,10 @@ type Props = RequestProps &
   RedeemReferralCodeRequestBody
 
 export const redeemReferralCode
-  = ({ url }: PeachAPIOptions) =>
+  = ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
     async ({ code, timeout }: Props) => {
       const response = await fetch(`${url}/v1/user/referral/redeem/referralCode`, {
-        headers: await getPrivateHeaders(url),
+        headers: helpers.getPrivateHeaders(url),
         method: 'PATCH',
         body: JSON.stringify({
           code,

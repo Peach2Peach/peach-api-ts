@@ -1,4 +1,4 @@
-import { PeachAPIOptions, RequestProps } from '../../types'
+import { PeachAPIHelpers, PeachAPIOptions, RequestProps } from '../../types'
 
 import {
   GetChatErrorResponseBody,
@@ -9,15 +9,14 @@ import {
 } from '../../../@types/contractAPI'
 import { getAbortWithTimeout } from '../../../utils/fetch/getAbortWithTimeout'
 import { parseResponse } from '../../parseResponse'
-import { getPrivateHeaders } from '../getPrivateHeaders'
 
 type Props = RequestProps & GetChatRequestParams & GetChatRequestQuery & GetChatRequestBody
 
 export const getChat
-  = ({ url }: PeachAPIOptions) =>
+  = ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
     async ({ contractId, page = '0', timeout }: Props) => {
       const response = await fetch(`${url}/v1/contract/${contractId}/chat?page=${page}`, {
-        headers: await getPrivateHeaders(url),
+        headers: helpers.getPrivateHeaders(url),
         method: 'GET',
         signal: timeout ? getAbortWithTimeout(timeout).signal : undefined,
       })

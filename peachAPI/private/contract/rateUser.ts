@@ -7,16 +7,15 @@ import {
 } from '../../../@types/contractAPI'
 import { getAbortWithTimeout } from '../../../utils/fetch/getAbortWithTimeout'
 import { parseResponse } from '../../parseResponse'
-import { PeachAPIOptions, RequestProps } from '../../types'
-import { getPrivateHeaders } from '../getPrivateHeaders'
+import { PeachAPIHelpers, PeachAPIOptions, RequestProps } from '../../types'
 
 type Props = RequestProps & RateUserRequestParams & RateUserRequestQuery & RateUserRequestBody
 
 export const rateUser
-  = ({ url }: PeachAPIOptions) =>
+  = ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
     async ({ contractId, rating, signature, timeout }: Props) => {
       const response = await fetch(`${url}/v1/contract/${contractId}/user/rate`, {
-        headers: await getPrivateHeaders(url),
+        headers: helpers.getPrivateHeaders(url),
         method: 'POST',
         body: JSON.stringify({
           rating,

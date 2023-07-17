@@ -1,0 +1,8 @@
+import { PublicHeaders } from '../types'
+
+export const getPublicHeaders = (url: string): PublicHeaders => ({
+  Origin: url,
+  Referer: url,
+  Accept: 'application/json',
+  'Content-Type': 'application/json',
+})

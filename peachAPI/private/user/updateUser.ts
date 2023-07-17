@@ -7,16 +7,15 @@ import {
 } from '../../../@types/userAPI'
 import { getAbortWithTimeout } from '../../../utils/fetch/getAbortWithTimeout'
 import { parseResponse } from '../../parseResponse'
-import { PeachAPIOptions, RequestProps } from '../../types'
-import { getPrivateHeaders } from '../getPrivateHeaders'
+import { PeachAPIHelpers, PeachAPIOptions, RequestProps } from '../../types'
 
 type Props = RequestProps & UpdateUserRequestParams & UpdateUserRequestQuery & UpdateUserRequestBody
 
 export const updateUser
-  = ({ url }: PeachAPIOptions) =>
+  = ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
     async ({ pgpPublicKey, signature, message, pgpSignature, fcmToken, referralCode, feeRate, timeout }: Props) => {
       const response = await fetch(`${url}/v1/user`, {
-        headers: await getPrivateHeaders(url),
+        headers: helpers.getPrivateHeaders(url),
         method: 'PATCH',
         body: JSON.stringify({
           pgpPublicKey,

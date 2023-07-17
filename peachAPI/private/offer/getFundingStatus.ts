@@ -7,16 +7,15 @@ import {
 } from '../../../@types/offerAPI'
 import { getAbortWithTimeout } from '../../../utils/fetch/getAbortWithTimeout'
 import { parseResponse } from '../../parseResponse'
-import { PeachAPIOptions, RequestProps } from '../../types'
-import { getPrivateHeaders } from '../getPrivateHeaders'
+import { PeachAPIHelpers, PeachAPIOptions, RequestProps } from '../../types'
 
 type Props = RequestProps & GetFundingStatusRequestParams & GetFundingStatusRequestQuery & GetFundingStatusRequestBody
 
 export const getFundingStatus
-  = ({ url }: PeachAPIOptions) =>
+  = ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
     async ({ offerId, timeout, abortSignal }: Props) => {
       const response = await fetch(`${url}/v1/offer/${offerId}/escrow`, {
-        headers: await getPrivateHeaders(url),
+        headers: helpers.getPrivateHeaders(url),
         method: 'GET',
         signal: abortSignal ?? (timeout ? getAbortWithTimeout(timeout).signal : undefined),
       })

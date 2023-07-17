@@ -1,4 +1,4 @@
-import { PeachAPIOptions } from '../../types'
+import { PeachAPIHelpers, PeachAPIOptions } from '../../types'
 import { acknowledgeDispute } from './acknowledgeDispute'
 import { cancelContract } from './cancelContract'
 import { confirmContractCancelation } from './confirmContractCancelation'
@@ -13,18 +13,18 @@ import { raiseDispute } from './raiseDispute'
 import { rateUser } from './rateUser'
 import { rejectContractCancelation } from './rejectContractCancelation'
 
-export const privateContractAPI = (options: PeachAPIOptions) => ({
-  acknowledgeDispute: acknowledgeDispute(options),
-  cancelContract: cancelContract(options),
-  confirmContractCancelation: confirmContractCancelation(options),
-  confirmPayment: confirmPayment(options),
-  extendPaymentTimer: extendPaymentTimer(options),
-  getChat: getChat(options),
-  getContract: getContract(options),
-  getContractSummaries: getContractSummaries(options),
-  getContracts: getContracts(options),
-  postChat: postChat(options),
-  raiseDispute: raiseDispute(options),
-  rateUser: rateUser(options),
-  rejectContractCancelation: rejectContractCancelation(options),
+export const privateContractAPI = (options: PeachAPIOptions, helpers: PeachAPIHelpers) => ({
+  acknowledgeDispute: acknowledgeDispute(options, helpers),
+  cancelContract: cancelContract(options, helpers),
+  confirmContractCancelation: confirmContractCancelation(options, helpers),
+  confirmPayment: confirmPayment(options, helpers),
+  extendPaymentTimer: extendPaymentTimer(options, helpers),
+  getChat: getChat(options, helpers),
+  getContract: getContract(options, helpers),
+  getContractSummaries: getContractSummaries(options, helpers),
+  getContracts: getContracts(options, helpers),
+  postChat: postChat(options, helpers),
+  raiseDispute: raiseDispute(options, helpers),
+  rateUser: rateUser(options, helpers),
+  rejectContractCancelation: rejectContractCancelation(options, helpers),
 })

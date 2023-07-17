@@ -1,4 +1,4 @@
-import { PeachAPIOptions } from '../../types'
+import { PeachAPIHelpers, PeachAPIOptions } from '../../types'
 import { cancelOffer } from './cancelOffer'
 import { confirmEscrow } from './confirmEscrow'
 import { createEscrow } from './createEscrow'
@@ -16,21 +16,21 @@ import { refundSellOffer } from './refundSellOffer'
 import { republishSellOffer } from './republishSellOffer'
 import { unmatchOffer } from './unmatchOffer'
 
-export const privateOfferAPI = (options: PeachAPIOptions) => ({
-  cancelOffer: cancelOffer(options),
-  confirmEscrow: confirmEscrow(options),
-  createEscrow: createEscrow(options),
-  getFundingStatus: getFundingStatus(options),
-  getMatches: getMatches(options),
-  getOfferDetails: getOfferDetails(options),
-  getOfferSummaries: getOfferSummaries(options),
-  getOffers: getOffers(options),
-  getRefundPSBT: getRefundPSBT(options),
-  matchOffer: matchOffer(options),
-  patchOffer: patchOffer(options),
-  postBuyOffer: postBuyOffer(options),
-  postSellOffer: postSellOffer(options),
-  refundSellOffer: refundSellOffer(options),
-  republishSellOffer: republishSellOffer(options),
-  unmatchOffer: unmatchOffer(options),
+export const privateOfferAPI = (options: PeachAPIOptions, helpers: PeachAPIHelpers) => ({
+  cancelOffer: cancelOffer(options, helpers),
+  confirmEscrow: confirmEscrow(options, helpers),
+  createEscrow: createEscrow(options, helpers),
+  getFundingStatus: getFundingStatus(options, helpers),
+  getMatches: getMatches(options, helpers),
+  getOfferDetails: getOfferDetails(options, helpers),
+  getOfferSummaries: getOfferSummaries(options, helpers),
+  getOffers: getOffers(options, helpers),
+  getRefundPSBT: getRefundPSBT(options, helpers),
+  matchOffer: matchOffer(options, helpers),
+  patchOffer: patchOffer(options, helpers),
+  postBuyOffer: postBuyOffer(options, helpers),
+  postSellOffer: postSellOffer(options, helpers),
+  refundSellOffer: refundSellOffer(options, helpers),
+  republishSellOffer: republishSellOffer(options, helpers),
+  unmatchOffer: unmatchOffer(options, helpers),
 })

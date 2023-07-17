@@ -1,6 +1,6 @@
-import { PeachAPIOptions } from '../../types'
+import { PeachAPIHelpers, PeachAPIOptions } from '../../types'
 import { sendReport } from './sendReport'
 
-export const publicContactAPI = (options: PeachAPIOptions) => ({
-  sendReport: sendReport(options),
+export const publicContactAPI = (options: PeachAPIOptions, helpers: PeachAPIHelpers) => ({
+  sendReport: sendReport(options, helpers),
 })

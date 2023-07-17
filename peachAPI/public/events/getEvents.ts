@@ -7,19 +7,15 @@ import {
 } from '../../../@types/eventAPI'
 import { getAbortWithTimeout } from '../../../utils/fetch/getAbortWithTimeout'
 import { parseResponse } from '../../parseResponse'
-import { PeachAPIOptions, RequestProps } from '../../types'
-import { getPublicHeaders } from '../getPublicHeaders'
+import { PeachAPIHelpers, PeachAPIOptions, RequestProps } from '../../types'
 
 type Props = RequestProps & GetEventsRequestParams & GetEventsRequestQuery & GetEventsRequestBody
 
 export const getEvents
-  = ({ url }: PeachAPIOptions) =>
+  = ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
     async ({ timeout }: Props) => {
       const response = await fetch(`${url}/v1/events`, {
-        headers: {
-          ...getPublicHeaders(url),
-          'Cache-Control': 'no-cache',
-        },
+        headers: helpers.getPublicHeaders(url),
         method: 'GET',
         signal: timeout ? getAbortWithTimeout(timeout).signal : undefined,
       })

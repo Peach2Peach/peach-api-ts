@@ -9,19 +9,18 @@ import { getAbortWithTimeout } from '../../../utils/fetch/getAbortWithTimeout'
 import { getResult } from '../../../utils/result'
 import { parseResponse } from '../../parseResponse'
 import { getPeachAccount } from '../../peachAccount'
-import { PeachAPIOptions, RequestProps } from '../../types'
-import { getPrivateHeaders } from '../getPrivateHeaders'
+import { PeachAPIHelpers, PeachAPIOptions, RequestProps } from '../../types'
 
 type Props = RequestProps & GetTradingLimitRequestParams & GetTradingLimitRequestQuery & GetTradingLimitRequestBody
 
 export const getTradingLimit
-  = ({ url }: PeachAPIOptions) =>
+  = ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
     async ({ timeout }: Props) => {
       const peachAccount = getPeachAccount()
       if (!peachAccount) return [null, { error: 'UNAUTHORIZED' }]
 
       const response = await fetch(`${url}/v1/user/tradingLimit`, {
-        headers: await getPrivateHeaders(url),
+        headers: helpers.getPrivateHeaders(url),
         method: 'GET',
         signal: timeout ? getAbortWithTimeout(timeout).signal : undefined,
       })

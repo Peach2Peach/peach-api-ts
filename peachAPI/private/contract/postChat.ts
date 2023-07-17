@@ -1,7 +1,3 @@
-import { PeachAPIOptions, RequestProps } from '../../types'
-import { getAbortWithTimeout } from '../../../utils/fetch/getAbortWithTimeout'
-import { parseResponse } from '../../parseResponse'
-import { getPrivateHeaders } from '../getPrivateHeaders'
 import {
   PostChatErrorResponseBody,
   PostChatRequestBody,
@@ -9,14 +5,17 @@ import {
   PostChatRequestQuery,
   PostChatResponseBody,
 } from '../../../@types/contractAPI'
+import { getAbortWithTimeout } from '../../../utils/fetch/getAbortWithTimeout'
+import { parseResponse } from '../../parseResponse'
+import { PeachAPIHelpers, PeachAPIOptions, RequestProps } from '../../types'
 
 type Props = RequestProps & PostChatRequestParams & PostChatRequestQuery & PostChatRequestBody
 
 export const postChat
-  = ({ url }: PeachAPIOptions) =>
+  = ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
     async ({ contractId, message, signature, timeout }: Props) => {
       const response = await fetch(`${url}/v1/contract/${contractId}/chat`, {
-        headers: await getPrivateHeaders(url),
+        headers: helpers.getPrivateHeaders(url),
         method: 'POST',
         body: JSON.stringify({
           message,

@@ -7,16 +7,15 @@ import {
 } from '../../../@types/marketAPI'
 import { getAbortWithTimeout } from '../../../utils/fetch/getAbortWithTimeout'
 import { parseResponse } from '../../parseResponse'
-import { PeachAPIOptions, RequestProps } from '../../types'
-import { getPublicHeaders } from '../getPublicHeaders'
+import { PeachAPIHelpers, PeachAPIOptions, RequestProps } from '../../types'
 
 type Props = RequestProps & GetPricesRequestParams & GetPricesRequestQuery & GetPricesRequestBody
 
 export const marketPrices
-  = ({ url }: PeachAPIOptions) =>
+  = ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
     async ({ timeout }: Props) => {
       const response = await fetch(`${url}/v1/market/prices`, {
-        headers: getPublicHeaders(url),
+        headers: helpers.getPublicHeaders(url),
         signal: timeout ? getAbortWithTimeout(timeout).signal : undefined,
       })
       return parseResponse<GetPricesResponseBody, GetPricesErrorResponseBody>(response)

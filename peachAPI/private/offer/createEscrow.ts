@@ -1,7 +1,3 @@
-import { PeachAPIOptions, RequestProps } from '../../types'
-import { getAbortWithTimeout } from '../../../utils/fetch/getAbortWithTimeout'
-import { parseResponse } from '../../parseResponse'
-import { getPrivateHeaders } from '../getPrivateHeaders'
 import {
   CreateEscrowErrorResponseBody,
   CreateEscrowRequestBody,
@@ -9,14 +5,17 @@ import {
   CreateEscrowRequestQuery,
   CreateEscrowResponseBody,
 } from '../../../@types/offerAPI'
+import { getAbortWithTimeout } from '../../../utils/fetch/getAbortWithTimeout'
+import { parseResponse } from '../../parseResponse'
+import { PeachAPIHelpers, PeachAPIOptions, RequestProps } from '../../types'
 
 type Props = RequestProps & CreateEscrowRequestParams & CreateEscrowRequestQuery & CreateEscrowRequestBody
 
 export const createEscrow
-  = ({ url }: PeachAPIOptions) =>
+  = ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
     async ({ offerId, publicKey, timeout }: Props) => {
       const response = await fetch(`${url}/v1/offer/${offerId}/escrow`, {
-        headers: await getPrivateHeaders(url),
+        headers: helpers.getPrivateHeaders(url),
         method: 'POST',
         body: JSON.stringify({
           publicKey,

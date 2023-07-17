@@ -1,8 +1,8 @@
-import { PeachAPIOptions } from '../../types'
+import { PeachAPIHelpers, PeachAPIOptions } from '../../types'
 import { checkReferralCode } from './checkReferralCode'
 import { getUser } from './getUser'
 
-export const publicUserAPI = (options: PeachAPIOptions) => ({
-  checkReferralCode: checkReferralCode(options),
-  getUser: getUser(options),
+export const publicUserAPI = (options: PeachAPIOptions, helpers: PeachAPIHelpers) => ({
+  checkReferralCode: checkReferralCode(options, helpers),
+  getUser: getUser(options, helpers),
 })

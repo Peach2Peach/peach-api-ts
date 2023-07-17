@@ -7,16 +7,15 @@ import {
 } from '../../../@types/electrsAPI'
 import { getAbortWithTimeout } from '../../../utils/fetch/getAbortWithTimeout'
 import { parseResponse } from '../../parseResponse'
-import { PeachAPIOptions, RequestProps } from '../../types'
-import { getPublicHeaders } from '../getPublicHeaders'
+import { PeachAPIHelpers, PeachAPIOptions, RequestProps } from '../../types'
 
 type Props = RequestProps & EstimateFeesRequestParams & EstimateFeesRequestQuery & EstimateFeesRequestBody
 
 export const getFeeEstimate
-  = ({ url }: PeachAPIOptions) =>
+  = ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
     async ({ timeout, abortSignal }: Props) => {
       const response = await fetch(`${url}/v1/estimateFees`, {
-        headers: getPublicHeaders(url),
+        headers: helpers.getPublicHeaders(url),
         method: 'GET',
         signal: abortSignal ?? (timeout ? getAbortWithTimeout(timeout).signal : undefined),
       })

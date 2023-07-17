@@ -7,8 +7,7 @@ import {
 } from '../../../@types/userAPI'
 import { getAbortWithTimeout } from '../../../utils/fetch/getAbortWithTimeout'
 import { parseResponse } from '../../parseResponse'
-import { PeachAPIOptions, RequestProps } from '../../types'
-import { getPublicHeaders } from '../getPublicHeaders'
+import { PeachAPIHelpers, PeachAPIOptions, RequestProps } from '../../types'
 
 type Props = RequestProps &
   CheckReferralCodeRequestParams &
@@ -16,10 +15,10 @@ type Props = RequestProps &
   CheckReferralCodeRequestBody
 
 export const checkReferralCode
-  = ({ url }: PeachAPIOptions) =>
+  = ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
     async ({ code, timeout }: Props) => {
       const response = await fetch(`${url}/v1/user/referral?code=${code}`, {
-        headers: getPublicHeaders(url),
+        headers: helpers.getPublicHeaders(url),
         method: 'GET',
         signal: timeout ? getAbortWithTimeout(timeout).signal : undefined,
       })
