@@ -1,8 +1,7 @@
 import { BIP32Interface } from 'bip32'
 
 export type RequestProps = {
-  timeout?: number
-  abortSignal?: AbortSignal
+  signal?: AbortSignal
 }
 
 export type PublicHeaders = {

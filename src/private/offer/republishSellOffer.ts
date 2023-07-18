@@ -5,7 +5,6 @@ import {
   RepublishSellOfferRequestQuery,
   RepublishSellOfferResponseBody,
 } from '../../@types/offerAPI'
-import { getAbortWithTimeout } from '../../utils/fetch'
 import { parseResponse } from '../../helpers/parseResponse'
 import { PeachAPIHelpers, PeachAPIOptions, RequestProps } from '../../types'
 
@@ -14,14 +13,14 @@ type Props = RequestProps &
   RepublishSellOfferRequestQuery &
   RepublishSellOfferRequestBody
 
-export const republishSellOffer =
-  ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
-  async ({ offerId, timeout }: Props) => {
-    const response = await fetch(`${url}/v1/offer/${offerId}/revive`, {
-      headers: helpers.getPrivateHeaders(url),
-      method: 'POST',
-      signal: timeout ? getAbortWithTimeout(timeout).signal : undefined,
-    })
+export const republishSellOffer
+  = ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
+    async ({ offerId, signal }: Props) => {
+      const response = await fetch(`${url}/v1/offer/${offerId}/revive`, {
+        headers: helpers.getPrivateHeaders(url),
+        method: 'POST',
+        signal,
+      })
 
-    return parseResponse<RepublishSellOfferResponseBody, RepublishSellOfferErrorResponseBody>(response)
-  }
+      return parseResponse<RepublishSellOfferResponseBody, RepublishSellOfferErrorResponseBody>(response)
+    }

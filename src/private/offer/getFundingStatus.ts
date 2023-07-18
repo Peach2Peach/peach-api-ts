@@ -5,20 +5,19 @@ import {
   GetFundingStatusRequestQuery,
   GetFundingStatusResponseBody,
 } from '../../@types/offerAPI'
-import { getAbortWithTimeout } from '../../utils/fetch'
 import { parseResponse } from '../../helpers/parseResponse'
 import { PeachAPIHelpers, PeachAPIOptions, RequestProps } from '../../types'
 
 type Props = RequestProps & GetFundingStatusRequestParams & GetFundingStatusRequestQuery & GetFundingStatusRequestBody
 
-export const getFundingStatus =
-  ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
-  async ({ offerId, timeout, abortSignal }: Props) => {
-    const response = await fetch(`${url}/v1/offer/${offerId}/escrow`, {
-      headers: helpers.getPrivateHeaders(url),
-      method: 'GET',
-      signal: abortSignal ?? (timeout ? getAbortWithTimeout(timeout).signal : undefined),
-    })
+export const getFundingStatus
+  = ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
+    async ({ offerId, signal }: Props) => {
+      const response = await fetch(`${url}/v1/offer/${offerId}/escrow`, {
+        headers: helpers.getPrivateHeaders(url),
+        method: 'GET',
+        signal,
+      })
 
-    return parseResponse<GetFundingStatusResponseBody, GetFundingStatusErrorResponseBody>(response)
-  }
+      return parseResponse<GetFundingStatusResponseBody, GetFundingStatusErrorResponseBody>(response)
+    }

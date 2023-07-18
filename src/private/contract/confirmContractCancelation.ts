@@ -5,7 +5,6 @@ import {
   ConfirmCancelationRequestRequestQuery,
   ConfirmCancelationRequestResponseBody,
 } from '../../@types/contractAPI'
-import { getAbortWithTimeout } from '../../utils/fetch'
 import { parseResponse } from '../../helpers/parseResponse'
 import { PeachAPIHelpers, PeachAPIOptions, RequestProps } from '../../types'
 
@@ -14,14 +13,14 @@ type Props = RequestProps &
   ConfirmCancelationRequestRequestQuery &
   ConfirmCancelationRequestRequestBody
 
-export const confirmContractCancelation =
-  ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
-  async ({ contractId, timeout }: Props) => {
-    const response = await fetch(`${url}/v1/contract/${contractId}/cancel/confirm`, {
-      headers: helpers.getPrivateHeaders(url),
-      method: 'POST',
-      signal: timeout ? getAbortWithTimeout(timeout).signal : undefined,
-    })
+export const confirmContractCancelation
+  = ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
+    async ({ contractId, signal }: Props) => {
+      const response = await fetch(`${url}/v1/contract/${contractId}/cancel/confirm`, {
+        headers: helpers.getPrivateHeaders(url),
+        method: 'POST',
+        signal,
+      })
 
-    return parseResponse<ConfirmCancelationRequestResponseBody, ConfirmCancelationRequestErrorResponseBody>(response)
-  }
+      return parseResponse<ConfirmCancelationRequestResponseBody, ConfirmCancelationRequestErrorResponseBody>(response)
+    }

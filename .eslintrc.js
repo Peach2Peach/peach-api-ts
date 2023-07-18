@@ -12,14 +12,7 @@ module.exports = {
     caches: true,
     Buffer: true,
   },
-  ignorePatterns: [
-    '.eslintrc.js',
-    'index.js',
-    'babel.config.js',
-    '__mocks__/**/*.js',
-    'coverage/**/*.js',
-    'dist/**/*.js',
-  ],
+  ignorePatterns: ['.eslintrc.js', 'index.js', 'babel.config.js', '__mocks__/**/*.js', 'coverage/**/*.js', 'dist/**/*'],
   rules: {
     'accessor-pairs': 'error',
     'array-bracket-newline': 'error',

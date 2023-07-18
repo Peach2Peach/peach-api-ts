@@ -1,5 +1,4 @@
 import { SendReportErrorResponseBody, SendReportResponseBody } from '../../@types/contactAPI'
-import { getAbortWithTimeout } from '../../utils/fetch'
 import { parseResponse } from '../../helpers/parseResponse'
 import { PeachAPIHelpers, PeachAPIOptions, RequestProps } from '../../types'
 
@@ -10,20 +9,20 @@ type Props = RequestProps & {
   message: string
 }
 
-export const sendReport =
-  ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
-  async ({ email, reason, topic, message, timeout }: Props) => {
-    const response = await fetch(`${url}/v1/contact/report`, {
-      headers: helpers.getPublicHeaders(url),
-      method: 'POST',
-      body: JSON.stringify({
-        email,
-        reason,
-        topic,
-        message,
-      }),
-      signal: timeout ? getAbortWithTimeout(timeout).signal : undefined,
-    })
+export const sendReport
+  = ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
+    async ({ email, reason, topic, message, signal }: Props) => {
+      const response = await fetch(`${url}/v1/contact/report`, {
+        headers: helpers.getPublicHeaders(url),
+        method: 'POST',
+        body: JSON.stringify({
+          email,
+          reason,
+          topic,
+          message,
+        }),
+        signal,
+      })
 
-    return parseResponse<SendReportResponseBody, SendReportErrorResponseBody>(response)
-  }
+      return parseResponse<SendReportResponseBody, SendReportErrorResponseBody>(response)
+    }

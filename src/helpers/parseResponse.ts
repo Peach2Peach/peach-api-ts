@@ -6,7 +6,7 @@ import { getResponseError } from './getResponseError'
 
 export const parseResponse = async <R, E extends APIError<string | null>>(
   response: Response,
-  string = false
+  string = false,
 ): Promise<Result<R, E>> => {
   try {
     const responseError = getResponseError(response)

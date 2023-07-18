@@ -5,23 +5,22 @@ import {
   RefundSellOfferRequestQuery,
   RefundSellOfferResponseBody,
 } from '../../@types/offerAPI'
-import { getAbortWithTimeout } from '../../utils/fetch'
 import { parseResponse } from '../../helpers/parseResponse'
 import { PeachAPIHelpers, PeachAPIOptions, RequestProps } from '../../types'
 
 type Props = RequestProps & RefundSellOfferRequestParams & RefundSellOfferRequestQuery & RefundSellOfferRequestBody
 
-export const refundSellOffer =
-  ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
-  async ({ offerId, tx, timeout }: Props) => {
-    const response = await fetch(`${url}/v1/offer/${offerId}/refund`, {
-      headers: helpers.getPrivateHeaders(url),
-      method: 'POST',
-      body: JSON.stringify({
-        tx,
-      }),
-      signal: timeout ? getAbortWithTimeout(timeout).signal : undefined,
-    })
+export const refundSellOffer
+  = ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
+    async ({ offerId, tx, signal }: Props) => {
+      const response = await fetch(`${url}/v1/offer/${offerId}/refund`, {
+        headers: helpers.getPrivateHeaders(url),
+        method: 'POST',
+        body: JSON.stringify({
+          tx,
+        }),
+        signal,
+      })
 
-    return parseResponse<RefundSellOfferResponseBody, RefundSellOfferErrorResponseBody>(response)
-  }
+      return parseResponse<RefundSellOfferResponseBody, RefundSellOfferErrorResponseBody>(response)
+    }

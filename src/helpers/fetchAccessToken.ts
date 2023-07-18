@@ -12,7 +12,6 @@ export const fetchAccessToken
       message,
       signature: options.peachAccount.sign(crypto.sha256(Buffer.from(message))).toString('hex'),
       uniqueId: options.uniqueId,
-      timeout: 3000,
     })
 
     if (!authResult.isOk()) return undefined

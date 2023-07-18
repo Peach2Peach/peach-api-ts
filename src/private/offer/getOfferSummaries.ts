@@ -5,7 +5,6 @@ import {
   GetOfferSummariesRequestQuery,
   GetOfferSummariesResponseBody,
 } from '../../@types/offerAPI'
-import { getAbortWithTimeout } from '../../utils/fetch'
 import { parseResponse } from '../../helpers/parseResponse'
 import { PeachAPIHelpers, PeachAPIOptions, RequestProps } from '../../types'
 
@@ -14,14 +13,14 @@ type Props = RequestProps &
   GetOfferSummariesRequestQuery &
   GetOfferSummariesRequestBody
 
-export const getOfferSummaries =
-  ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
-  async ({ timeout, abortSignal }: Props) => {
-    const response = await fetch(`${url}/v1/offers/summary`, {
-      headers: helpers.getPrivateHeaders(url),
-      method: 'GET',
-      signal: abortSignal ?? (timeout ? getAbortWithTimeout(timeout).signal : undefined),
-    })
+export const getOfferSummaries
+  = ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
+    async ({ signal }: Props = {}) => {
+      const response = await fetch(`${url}/v1/offers/summary`, {
+        headers: helpers.getPrivateHeaders(url),
+        method: 'GET',
+        signal,
+      })
 
-    return parseResponse<GetOfferSummariesResponseBody, GetOfferSummariesErrorResponseBody>(response)
-  }
+      return parseResponse<GetOfferSummariesResponseBody, GetOfferSummariesErrorResponseBody>(response)
+    }
