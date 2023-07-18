@@ -16,5 +16,6 @@
   "transform": {
     "^.+\\.[t|j]s$": "ts-jest"
   },
-  "collectCoverageFrom": ["src/**/*.ts"]
+  "collectCoverageFrom": ["src/**/*.ts"],
+  "testPathIgnorePatterns": ["/node_modules/", "dist/"]
 }
