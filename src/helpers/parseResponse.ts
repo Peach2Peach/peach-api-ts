@@ -1,12 +1,12 @@
-import { APIError } from './@types/global'
-import { dateTimeReviver } from './utils/json'
-import { getError, getResult, parseError } from './utils/result'
-import { Result } from './utils/result/types'
+import { APIError } from '../@types/global'
+import { dateTimeReviver } from '../utils/json'
+import { getError, getResult, parseError } from '../utils/result'
+import { Result } from '../utils/result/types'
 import { getResponseError } from './getResponseError'
 
 export const parseResponse = async <R, E extends APIError<string | null>>(
   response: Response,
-  string = false,
+  string = false
 ): Promise<Result<R, E>> => {
   try {
     const responseError = getResponseError(response)

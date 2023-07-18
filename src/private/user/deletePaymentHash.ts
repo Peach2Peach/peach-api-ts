@@ -5,8 +5,8 @@ import {
   UnlinkPaymentHashRequestQuery,
   UnlinkPaymentHashResponseBody,
 } from '../../@types/userAPI'
-import { getAbortWithTimeout } from '../../utils/fetch/getAbortWithTimeout'
-import { parseResponse } from '../../parseResponse'
+import { getAbortWithTimeout } from '../../utils/fetch'
+import { parseResponse } from '../../helpers/parseResponse'
 import { PeachAPIHelpers, PeachAPIOptions, RequestProps } from '../../types'
 
 type Props = RequestProps &
@@ -14,17 +14,17 @@ type Props = RequestProps &
   UnlinkPaymentHashRequestQuery &
   UnlinkPaymentHashRequestBody
 
-export const deletePaymentHash
-  = ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
-    async ({ hashes, timeout }: Props) => {
-      const response = await fetch(`${url}/v1/user/paymentHash`, {
-        headers: helpers.getPrivateHeaders(url),
-        method: 'DELETE',
-        body: JSON.stringify({
-          hashes,
-        }),
-        signal: timeout ? getAbortWithTimeout(timeout).signal : undefined,
-      })
+export const deletePaymentHash =
+  ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
+  async ({ hashes, timeout }: Props) => {
+    const response = await fetch(`${url}/v1/user/paymentHash`, {
+      headers: helpers.getPrivateHeaders(url),
+      method: 'DELETE',
+      body: JSON.stringify({
+        hashes,
+      }),
+      signal: timeout ? getAbortWithTimeout(timeout).signal : undefined,
+    })
 
-      return parseResponse<UnlinkPaymentHashResponseBody, UnlinkPaymentHashErrorResponseBody>(response)
-    }
+    return parseResponse<UnlinkPaymentHashResponseBody, UnlinkPaymentHashErrorResponseBody>(response)
+  }

@@ -27,12 +27,14 @@ export const peachAPI = (options: PeachAPIOptions) => {
     setTimeout(authenticate, authToken?.expiry - Date.now() - PREFETCH_ACCESS_TOKEN)
     return authToken
   }
+
   const isAuthenticated = () => !!authToken?.accessToken
 
   const helpers = {
     ...publicHelpers,
     getPrivateHeaders: (url: string) => getPrivateHeaders(url, authToken?.accessToken || ''),
   }
+
   return {
     public: peachAPIPublic(options, helpers),
     private: peachAPIPrivate(options, helpers),

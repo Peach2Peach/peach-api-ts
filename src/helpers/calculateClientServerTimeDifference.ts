@@ -1,4 +1,4 @@
-import { getStatus } from '../public/system'
+import { getStatus } from '../public/system/getStatus'
 import { PublicPeachAPIHelpers, PeachAPIOptions } from '../types'
 
 /**
@@ -8,7 +8,7 @@ import { PublicPeachAPIHelpers, PeachAPIOptions } from '../types'
  */
 export const calculateClientServerTimeDifference = async (
   options: PeachAPIOptions,
-  helpers: PublicPeachAPIHelpers,
+  helpers: PublicPeachAPIHelpers
 ): Promise<number> => {
   const start = Date.now()
   const result = await getStatus(options, helpers)({ timeout: 2000 })
