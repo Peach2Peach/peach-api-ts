@@ -1,3 +1,4 @@
+import { SortBy } from '../../@types/match'
 import {
   GetMatchesErrorResponseBody,
   GetMatchesRequestBody,
@@ -8,12 +9,20 @@ import {
 import { parseResponse } from '../../helpers/parseResponse'
 import { PeachAPIHelpers, PeachAPIOptions, RequestProps } from '../../types'
 
-type Props = RequestProps & GetMatchesRequestParams & GetMatchesRequestQuery & GetMatchesRequestBody
+type Props = RequestProps &
+  GetMatchesRequestParams &
+  Omit<GetMatchesRequestQuery, 'sortBy'> & { sortBy?: SortBy } & GetMatchesRequestBody
 
 export const getMatches
   = ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
-    async ({ offerId, page = '0', size = '21', signal }: Props) => {
-      const response = await fetch(`${url}/v1/offer/${offerId}/matches?page=${page}&size=${size}`, {
+    async ({ offerId, page, size, sortBy, signal }: Props) => {
+      const requestUrl = new URL(`${url}/v1/offer/${offerId}/matches`)
+
+      if (page) requestUrl.searchParams.append('page', page)
+      if (size) requestUrl.searchParams.append('size', size)
+      if (sortBy) requestUrl.searchParams.append('sortBy', sortBy)
+
+      const response = await fetch(requestUrl.toString(), {
         headers: helpers.getPrivateHeaders(url),
         method: 'GET',
         signal,

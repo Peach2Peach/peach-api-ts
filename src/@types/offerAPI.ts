@@ -59,7 +59,7 @@ export type GetFundingStatusResponseBody = {
 export type GetFundingStatusErrorResponseBody = APIError<'NOT_FOUND' | 'BAD_REQUEST'>
 
 export type GetMatchesRequestParams = { offerId: string }
-export type GetMatchesRequestQuery = { page?: string; size?: string }
+export type GetMatchesRequestQuery = { page?: string; size?: string; sortBy?: string }
 export type GetMatchesRequestBody = {}
 export type GetMatchesResponseBody = {
   offerId: string
@@ -159,6 +159,7 @@ export type PatchOfferRequestBody = {
   refundAddress?: string
   refundTx?: string
   premium?: number
+  maxPremium?: number
 }
 export type PatchOfferResponseBody = APISuccess
 export type PatchOfferErrorResponseBody = APIError<'NOT_FOUND' | 'UNAUTHORIZED' | 'INVALID_SIGNATURE'>
@@ -186,6 +187,7 @@ export type PostBuyOfferRequestBody = PostOfferRequestBody & {
   type: 'bid'
   amount: [number, number]
   releaseAddress: string
+  maxPremium?: number
   messageSignature: string
 }
 export type PostOfferResponseBody = BuyOffer | SellOffer

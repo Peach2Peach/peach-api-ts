@@ -12,11 +12,28 @@ type Props = RequestProps & PostOfferRequestParams & PostOfferRequestQuery & Pos
 
 export const postBuyOffer
   = ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
-    async ({ type, amount, meansOfPayment, paymentData, releaseAddress, messageSignature, signal }: Props) => {
+    async ({
+      type,
+      amount,
+      meansOfPayment,
+      paymentData,
+      releaseAddress,
+      maxPremium,
+      messageSignature,
+      signal,
+    }: Props) => {
       const response = await fetch(`${url}/v1/offer`, {
         headers: helpers.getPrivateHeaders(url),
         method: 'POST',
-        body: JSON.stringify({ type, amount, meansOfPayment, paymentData, releaseAddress, messageSignature }),
+        body: JSON.stringify({
+          type,
+          amount,
+          meansOfPayment,
+          paymentData,
+          releaseAddress,
+          maxPremium,
+          messageSignature,
+        }),
         signal,
       })
 
