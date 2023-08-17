@@ -4,7 +4,7 @@ import {
   CheckReferralCodeRequestParams,
   CheckReferralCodeRequestQuery,
   CheckReferralCodeResponseBody,
-} from '../../@types/userAPI'
+} from '../../@types/api/userAPI'
 import { parseResponse } from '../../helpers/parseResponse'
 import { PeachAPIHelpers, PeachAPIOptions, RequestProps } from '../../types'
 
@@ -13,14 +13,14 @@ type Props = RequestProps &
   CheckReferralCodeRequestQuery &
   CheckReferralCodeRequestBody
 
-export const checkReferralCode
-  = ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
-    async ({ code, signal }: Props) => {
-      const response = await fetch(`${url}/v1/user/referral?code=${code}`, {
-        headers: helpers.getPublicHeaders(url),
-        method: 'GET',
-        signal,
-      })
+export const checkReferralCode =
+  ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
+  async ({ code, signal }: Props) => {
+    const response = await fetch(`${url}/v1/user/referral?code=${code}`, {
+      headers: helpers.getPublicHeaders(url),
+      method: 'GET',
+      signal,
+    })
 
-      return parseResponse<CheckReferralCodeResponseBody, CheckReferralCodeErrorResponseBody>(response)
-    }
+    return parseResponse<CheckReferralCodeResponseBody, CheckReferralCodeErrorResponseBody>(response)
+  }

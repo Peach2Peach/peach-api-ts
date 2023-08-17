@@ -46,7 +46,7 @@ export type User = {
 }
 
 export type NewUser = User & {
-  newUser: true // flag to indicate whether user does not exist and faux data is used do not expose to outside
+  newUser: true
 }
 
 export type PublicUser = Omit<
@@ -62,49 +62,11 @@ export type PublicUser = Omit<
   | 'feeRate'
 >
 
-export type PartialUser = Partial<User> & {
-  id: string
-}
-
 export type Rating = {
   creationDate: Date
   rating: -1 | 1
   ratedBy: string
   signature: string
-}
-export type BehaviourType =
-  | 'sellerCancelTradeBeforeMatch'
-  | 'sellerCancelTradeAfterMatch'
-  | 'buyerCancelTradeBeforeMatch'
-  | 'buyerCancelTradeAfterMatch'
-  | 'buyerCancelMatch'
-  | 'openDispute'
-  | 'winningOpenedDispute'
-  | 'losingOpenedDispute'
-  | 'resolvedFirstOpenedDispute'
-  | 'resolvedOpenedDispute'
-  | 'winningNonOpenedDispute'
-  | 'losingNonOpenedDispute'
-  | 'resolvedNonOpenedDispute'
-  | 'buyerCancelTrade'
-  | 'sellerCancelTrade'
-  | 'timeUntilMatch'
-  | 'timeUntilDoubleMatch'
-  | 'timePaymentMade'
-  | 'timePaymentConfirmed'
-  | 'fundTransactionDoubleSpent'
-
-export type BehaviourEvent = {
-  timestamp: number
-  id: BehaviourType
-  data: string[]
-}
-
-export type AuthenticationEvent = {
-  date: Date
-  success: boolean
-  ipAddressHash?: string
-  error?: string
 }
 
 export type TradingLimit = {

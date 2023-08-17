@@ -1,5 +1,5 @@
-import { APIError } from './global'
-import { PaymentMethodInfo } from './payment'
+import { APIError } from '../global'
+import { PaymentMethodInfo } from '../payment'
 
 export type GetInfoRequestParams = {}
 export type GetInfoRequestQuery = {}

@@ -1,5 +1,5 @@
-import { BitcoinEvent } from './events'
-import { APIError } from './global'
+import { BitcoinEvent } from '../events'
+import { APIError } from '../global'
 
 export type GetEventsRequestParams = {}
 export type GetEventsRequestQuery = {}

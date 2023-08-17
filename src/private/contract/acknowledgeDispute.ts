@@ -4,7 +4,7 @@ import {
   AcknowledgeDisputeRequestParams,
   AcknowledgeDisputeRequestQuery,
   AcknowledgeDisputeResponseBody,
-} from '../../@types/contractAPI'
+} from '../../@types/api/contractAPI'
 import { parseResponse } from '../../helpers/parseResponse'
 import { PeachAPIHelpers, PeachAPIOptions, RequestProps } from '../../types'
 
@@ -13,17 +13,17 @@ type Props = RequestProps &
   AcknowledgeDisputeRequestQuery &
   AcknowledgeDisputeRequestBody
 
-export const acknowledgeDispute
-  = ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
-    async ({ contractId, email, signal }: Props) => {
-      const response = await fetch(`${url}/v1/contract/${contractId}/dispute/acknowledge`, {
-        headers: helpers.getPrivateHeaders(url),
-        method: 'POST',
-        body: JSON.stringify({
-          email,
-        }),
-        signal,
-      })
+export const acknowledgeDispute =
+  ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
+  async ({ contractId, email, signal }: Props) => {
+    const response = await fetch(`${url}/v1/contract/${contractId}/dispute/acknowledge`, {
+      headers: helpers.getPrivateHeaders(url),
+      method: 'POST',
+      body: JSON.stringify({
+        email,
+      }),
+      signal,
+    })
 
-      return parseResponse<AcknowledgeDisputeResponseBody, AcknowledgeDisputeErrorResponseBody>(response)
-    }
+    return parseResponse<AcknowledgeDisputeResponseBody, AcknowledgeDisputeErrorResponseBody>(response)
+  }

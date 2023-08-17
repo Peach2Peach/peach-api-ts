@@ -1,4 +1,4 @@
-import { APIError, APISuccess } from './global'
+import { APIError, APISuccess } from '../global'
 
 export type SendReportRequestParams = {}
 export type SendReportRequestQuery = {}

@@ -28,9 +28,4 @@ export type Match = {
 }
 export type PublicMatch = Omit<Match, 'user'> & { user: PublicUser }
 
-export type DeserializedMatch = Omit<Match, 'user' | 'matched' | 'premium' | 'unavailable' | 'amount' | 'escrow'> & {
-  user: string
-}
-
 export type SortBy = 'bestReputation' | 'highestAmount' | 'highestPrice' | 'lowestPremium'
-export type Matching = Omit<Match, 'premium' | 'amount' | 'escrow'>

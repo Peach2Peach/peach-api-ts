@@ -15,7 +15,7 @@ export type Contract = {
   buyer: PublicUser
 
   symmetricKeyEncrypted: string
-  symmetricKey?: string // it is stored encrypted still but with public peach gpg key
+  symmetricKey?: string
   symmetricKeySignature: string
 
   amount: number
@@ -64,8 +64,4 @@ export type Contract = {
 
   buyerFee: number
   sellerFee: number
-}
-
-export type PartialContract = Partial<Contract> & {
-  id: string
 }

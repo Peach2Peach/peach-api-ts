@@ -74,18 +74,10 @@ export type SellOffer = Offer & {
   oldOfferId?: string
 }
 
-export type PartialSellOffer = Partial<SellOffer> & {
-  id: string
-}
-
 export type BuyOffer = Offer & {
   type: 'bid'
   releaseAddress: string
   amount: [number, number]
   message: string
   messageSignature?: string
-}
-
-export type PartialBuyOffer = Partial<BuyOffer> & {
-  id: string
 }

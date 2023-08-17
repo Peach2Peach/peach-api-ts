@@ -1,5 +1,5 @@
-import { FeeRecommendation, Transaction } from './electrs'
-import { APIError } from './global'
+import { FeeRecommendation, Transaction } from '../electrs'
+import { APIError } from '../global'
 
 export type GetTxRequestParams = { txId: string }
 export type GetTxRequestQuery = {}

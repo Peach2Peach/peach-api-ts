@@ -16,7 +16,6 @@ export type APIError<E> = {
   details?: any
 }
 
-export type Buckets = number[]
 export type Currency =
   | 'USD'
   | 'USDT'
@@ -38,9 +37,3 @@ export type Pricebook = {
 }
 
 export type Country = 'DE' | 'FR' | 'IT' | 'ES' | 'NL' | 'UK' | 'SE'
-
-export type Expiry = {
-  date: Date
-  ttl: number
-  isExpired: boolean
-}

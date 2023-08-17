@@ -1,5 +1,5 @@
-import { APIError, APISuccess, AccessToken } from './global'
-import { FeeRate, PublicUser, Rating, TradingLimit, User } from './user'
+import { APIError, APISuccess, AccessToken } from '../global'
+import { FeeRate, PublicUser, Rating, TradingLimit, User } from '../user'
 
 export type AuthWSProps = {
   publicKey: string

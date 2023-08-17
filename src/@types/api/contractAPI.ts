@@ -1,8 +1,8 @@
-import { Contract } from './contract'
-import { DisputeReason } from './dispute'
-import { APIError, APISuccess, Currency } from './global'
-import { TradeStatus } from './offer'
-import { PublicUser } from './user'
+import { Contract } from '../contract'
+import { DisputeReason } from '../dispute'
+import { APIError, APISuccess, Currency } from '../global'
+import { TradeStatus } from '../offer'
+import { PublicUser } from '../user'
 
 export type Message = {
   roomid: string

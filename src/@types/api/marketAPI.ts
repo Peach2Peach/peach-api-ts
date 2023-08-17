@@ -1,5 +1,5 @@
-import { APIError, Pricebook } from './global'
-import { PriceData, TradingPair } from './market'
+import { APIError, Pricebook } from '../global'
+import { PriceData, TradingPair } from '../market'
 
 export type GetPriceRequestParams = { pair: TradingPair }
 export type GetPriceRequestQuery = {}

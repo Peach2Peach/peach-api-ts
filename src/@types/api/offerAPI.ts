@@ -1,8 +1,8 @@
-import { APIError, APISuccess, Currency, Pricebook } from './global'
-import { PublicMatch } from './match'
-import { BuyOffer, FundingStatus, OfferPaymentData, SellOffer, TradeStatus } from './offer'
-import { MeansOfPayment, PaymentMethod } from './payment'
-import { PublicUser } from './user'
+import { APIError, APISuccess, Currency, Pricebook } from '../global'
+import { PublicMatch } from '../match'
+import { BuyOffer, FundingStatus, OfferPaymentData, SellOffer, TradeStatus } from '../offer'
+import { MeansOfPayment, PaymentMethod } from '../payment'
+import { PublicUser } from '../user'
 
 export type CancelOfferRequestParams = { offerId: string }
 export type CancelOfferRequestQuery = {}
