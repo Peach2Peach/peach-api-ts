@@ -25,7 +25,7 @@ export type RegisterErrorResponseBody = APIError<
   'INVALID_SIGNATURE' | 'AUTHENTICATION_FAILURE' | 'USER_EXISTS' | 'ACCOUNT_BANNED'
 >
 
-export type GetTradingLimitRequestParams = { userId: string }
+export type GetTradingLimitRequestParams = {}
 export type GetTradingLimitRequestQuery = {}
 export type GetTradingLimitRequestBody = {}
 export type GetTradingLimitResponseBody = TradingLimit
