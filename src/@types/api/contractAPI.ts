@@ -1,6 +1,7 @@
 import { Contract } from '../contract'
 import { DisputeReason } from '../dispute'
 import { APIError, APISuccess, Currency } from '../global'
+import { GetBatchStatusResponseBody } from '../groupHugAPI/batch'
 import { TradeStatus } from '../offer'
 import { PublicUser } from '../user'
 
@@ -51,8 +52,8 @@ export type ConfirmCancelationRequestErrorResponseBody = APIError<
 
 export type ConfirmPaymentRequestParams = { contractId: string }
 export type ConfirmPaymentRequestQuery = {}
-export type ConfirmPaymentRequestBody = { releaseTransaction: string }
-export type ConfirmPaymentResponseBody = APISuccess & { txId?: string }
+export type ConfirmPaymentRequestBody = { releaseTransaction: string; batchReleasePsbt?: string }
+export type ConfirmPaymentResponseBody = APISuccess & { txId?: string; batchId?: string }
 export type ConfirmPaymentErrorResponseBody = APIError<
   'NOT_FOUND' | 'UNAUTHORIZED' | 'CANCELED' | 'FORM_INVALID' | 'INTERNAL_SERVER_ERROR'
 >
@@ -72,6 +73,9 @@ export type GetContractResponseBody =
       buyer: PublicUser
       unreadMessages: number
       releasePsbt: string
+      batchReleasePsbt?: string
+      batchId?: string
+      batchInfo?: GetBatchStatusResponseBody
       symmetricKey: undefined
       tradeStatus: TradeStatus
       isChatActive: boolean

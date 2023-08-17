@@ -182,15 +182,16 @@ export type PostSellOfferRequestBody = PostOfferRequestBody & {
   amount: number
   premium?: number
   returnAddress?: string
+  multi?: number
 }
 export type PostBuyOfferRequestBody = PostOfferRequestBody & {
   type: 'bid'
   amount: [number, number]
-  releaseAddress: string
   maxPremium?: number
+  releaseAddress: string
   messageSignature: string
 }
-export type PostOfferResponseBody = BuyOffer | SellOffer
+export type PostOfferResponseBody = BuyOffer | SellOffer | (BuyOffer | SellOffer)[]
 export type PostOfferErrorResponseBody = APIError<
   'TRADING_LIMIT_REACHED' | 'INVALID_SIGNATURE' | 'PAYMENT_HASH_INVALID'
 >

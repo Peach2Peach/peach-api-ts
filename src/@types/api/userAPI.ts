@@ -1,12 +1,6 @@
 import { APIError, APISuccess, AccessToken } from '../global'
 import { FeeRate, PublicUser, Rating, TradingLimit, User } from '../user'
 
-export type AuthWSProps = {
-  publicKey: string
-  message: string
-  signature: string
-}
-
 export type AuthenticateRequestParams = {}
 export type AuthenticateRequestQuery = {}
 export type AuthenticateRequestBody = {
@@ -31,7 +25,7 @@ export type RegisterErrorResponseBody = APIError<
   'INVALID_SIGNATURE' | 'AUTHENTICATION_FAILURE' | 'USER_EXISTS' | 'ACCOUNT_BANNED'
 >
 
-export type GetTradingLimitRequestParams = {}
+export type GetTradingLimitRequestParams = { userId: string }
 export type GetTradingLimitRequestQuery = {}
 export type GetTradingLimitRequestBody = {}
 export type GetTradingLimitResponseBody = TradingLimit
@@ -84,6 +78,12 @@ export type UpdateUserResponseBody = APISuccess
 export type UpdateUserErrorResponseBody = APIError<
   'INVALID_SIGNATURE' | 'AUTHENTICATION_FAILURE' | 'INVALID_PGP_SIGNATURE'
 >
+
+export type EnableBatchingRequestParams = {}
+export type EnableBatchingRequestQuery = {}
+export type EnableBatchingRequestBody = { enableBatching: boolean }
+export type EnableBatchingResponseBody = APISuccess
+export type EnableBatchingErrorResponseBody = APIError<null>
 
 export type LogoutUserRequestParams = {}
 export type LogoutUserRequestQuery = {}
