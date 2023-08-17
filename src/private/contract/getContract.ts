@@ -10,14 +10,14 @@ import { PeachAPIHelpers, PeachAPIOptions, RequestProps } from '../../types'
 
 type Props = RequestProps & GetContractRequestParams & GetContractRequestQuery & GetContractRequestBody
 
-export const getContract =
-  ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
-  async ({ contractId, signal }: Props) => {
-    const response = await fetch(`${url}/v1/contract/${contractId}`, {
-      headers: helpers.getPrivateHeaders(url),
-      method: 'GET',
-      signal,
-    })
+export const getContract
+  = ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
+    async ({ contractId, signal }: Props) => {
+      const response = await fetch(`${url}/v1/contract/${contractId}`, {
+        headers: helpers.getPrivateHeaders(url),
+        method: 'GET',
+        signal,
+      })
 
-    return parseResponse<GetContractResponseBody, GetContractErrorResponseBody>(response)
-  }
+      return parseResponse<GetContractResponseBody, GetContractErrorResponseBody>(response)
+    }

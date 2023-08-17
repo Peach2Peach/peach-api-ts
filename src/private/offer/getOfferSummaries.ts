@@ -13,14 +13,14 @@ type Props = RequestProps &
   GetOfferSummariesRequestQuery &
   GetOfferSummariesRequestBody
 
-export const getOfferSummaries =
-  ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
-  async ({ signal }: Props = {}) => {
-    const response = await fetch(`${url}/v1/offers/summary`, {
-      headers: helpers.getPrivateHeaders(url),
-      method: 'GET',
-      signal,
-    })
+export const getOfferSummaries
+  = ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
+    async ({ signal }: Props = {}) => {
+      const response = await fetch(`${url}/v1/offers/summary`, {
+        headers: helpers.getPrivateHeaders(url),
+        method: 'GET',
+        signal,
+      })
 
-    return parseResponse<GetOfferSummariesResponseBody, GetOfferSummariesErrorResponseBody>(response)
-  }
+      return parseResponse<GetOfferSummariesResponseBody, GetOfferSummariesErrorResponseBody>(response)
+    }

@@ -13,17 +13,17 @@ type Props = RequestProps &
   UnlinkPaymentHashRequestQuery &
   UnlinkPaymentHashRequestBody
 
-export const deletePaymentHash =
-  ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
-  async ({ hashes, signal }: Props) => {
-    const response = await fetch(`${url}/v1/user/paymentHash`, {
-      headers: helpers.getPrivateHeaders(url),
-      method: 'DELETE',
-      body: JSON.stringify({
-        hashes,
-      }),
-      signal,
-    })
+export const deletePaymentHash
+  = ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
+    async ({ hashes, signal }: Props) => {
+      const response = await fetch(`${url}/v1/user/paymentHash`, {
+        headers: helpers.getPrivateHeaders(url),
+        method: 'DELETE',
+        body: JSON.stringify({
+          hashes,
+        }),
+        signal,
+      })
 
-    return parseResponse<UnlinkPaymentHashResponseBody, UnlinkPaymentHashErrorResponseBody>(response)
-  }
+      return parseResponse<UnlinkPaymentHashResponseBody, UnlinkPaymentHashErrorResponseBody>(response)
+    }
