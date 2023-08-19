@@ -36,7 +36,7 @@ export type AcknowledgeDisputeOutcomeErrorResponseBody = APIError<'NOT_FOUND' | 
 
 export type CancelContractRequestParams = { contractId: string }
 export type CancelContractRequestQuery = {}
-export type CancelContractRequestBody = { satsPerByte: number }
+export type CancelContractRequestBody = {}
 export type CancelContractResponseBody = APISuccess & { psbt?: string }
 export type CancelContractErrorResponseBody = APIError<
   'TRANSACTION_INVALID' | 'NOT_FOUND' | 'UNAUTHORIZED' | 'INTERNAL_SERVER_ERROR'

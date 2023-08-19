@@ -12,13 +12,10 @@ type Props = RequestProps & CancelContractRequestParams & CancelContractRequestQ
 
 export const cancelContract
   = ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
-    async ({ contractId, satsPerByte, signal }: Props) => {
+    async ({ contractId, signal }: Props) => {
       const response = await fetch(`${url}/v1/contract/${contractId}/cancel`, {
         headers: helpers.getPrivateHeaders(url),
         method: 'POST',
-        body: JSON.stringify({
-          satsPerByte,
-        }),
         signal,
       })
 
