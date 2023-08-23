@@ -6,7 +6,7 @@ import { PublicUser } from '../user'
 
 export type CancelOfferRequestParams = { offerId: string }
 export type CancelOfferRequestQuery = {}
-export type CancelOfferRequestBody = { satsPerByte?: number }
+export type CancelOfferRequestBody = {}
 export type CancelOfferResponseBody =
   | {
       psbt: string
@@ -156,19 +156,12 @@ export type MatchOfferErrorResponseBody = APIError<
 export type PatchOfferRequestParams = { offerId: string }
 export type PatchOfferRequestQuery = {}
 export type PatchOfferRequestBody = {
-  refundAddress?: string
   refundTx?: string
   premium?: number
   maxPremium?: number
 }
 export type PatchOfferResponseBody = APISuccess
 export type PatchOfferErrorResponseBody = APIError<'NOT_FOUND' | 'UNAUTHORIZED' | 'INVALID_SIGNATURE'>
-
-export type SignMessageToPublishRequestParams = { offerId: string }
-export type SignMessageToPublishRequestQuery = {}
-export type SignMessageToPublishRequestBody = { signature: string }
-export type SignMessageToPublishResponseBody = APISuccess
-export type SignMessageToPublishErrorResponseBody = APIError<'NOT_FOUND' | 'UNAUTHORIZED' | 'INVALID_SIGNATURE'>
 
 export type PostOfferRequestParams = {}
 export type PostOfferRequestQuery = {}

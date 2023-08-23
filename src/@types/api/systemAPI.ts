@@ -22,9 +22,3 @@ export type GetStatusResponseBody = {
   serverTime: number
 }
 export type GetStatusErrorResponseBody = APIError<null>
-
-export type StartRequestParams = {}
-export type StartRequestQuery = {}
-export type StartRequestBody = { password: string }
-export type StartResponseBody = { success: boolean }
-export type StartErrorResponseBody = APIError<null>
