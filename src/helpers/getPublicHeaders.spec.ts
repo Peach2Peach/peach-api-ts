@@ -1,7 +1,7 @@
 import { getPublicHeaders } from './getPublicHeaders'
 
 describe('getPublicHeaders', () => {
-  it('should return an object with the correct keys', () => {
+  it('should return public headers', () => {
     const url = 'url'
     const result = getPublicHeaders(url)
     expect(result).toStrictEqual({
