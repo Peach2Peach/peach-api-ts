@@ -1,14 +1,17 @@
+import { BIP32Interface } from 'bip32'
+import { PREFETCH_ACCESS_TOKEN } from './constants'
+import { calculateClientServerTimeDifference } from './helpers/calculateClientServerTimeDifference'
 import { fetchAccessToken } from './helpers/fetchAccessToken'
 import { getAuthenticationChallenge } from './helpers/getAuthenticationChallenge'
 import { getPrivateHeaders } from './helpers/getPrivateHeaders'
 import { getPublicHeaders } from './helpers/getPublicHeaders'
+import { peachAccountSet } from './helpers/peachAccountSet'
 import { peachAPIPrivate } from './private/peachAPIPrivate'
 import { peachAPIPublic } from './public/peachAPIPublic'
 import { PeachAPIOptions, PublicPeachAPIHelpers } from './types'
-import { PREFETCH_ACCESS_TOKEN } from './constants'
-import { calculateClientServerTimeDifference } from './helpers/calculateClientServerTimeDifference'
 
 export const peachAPI = (options: PeachAPIOptions) => {
+  const apiOptions = options
   const publicHelpers: PublicPeachAPIHelpers = {
     getPublicHeaders: (url: string) => getPublicHeaders(url),
   }
@@ -16,16 +19,22 @@ export const peachAPI = (options: PeachAPIOptions) => {
   let clientServerTimeDifference = 0
 
   const adjustClientServerTimeDifference = async () => {
-    clientServerTimeDifference = await calculateClientServerTimeDifference(options, publicHelpers)
+    clientServerTimeDifference = await calculateClientServerTimeDifference(apiOptions, publicHelpers)
   }
+
+  const setPeachAccount = (peachAccount: BIP32Interface) => (apiOptions.peachAccount = peachAccount)
 
   const authenticate = async () => {
     const message = getAuthenticationChallenge(clientServerTimeDifference)
-    authToken = await fetchAccessToken(options, publicHelpers)(message)
-    if (!authToken) return undefined
 
-    setTimeout(authenticate, authToken?.expiry - Date.now() - PREFETCH_ACCESS_TOKEN)
-    return authToken
+    if (peachAccountSet(apiOptions)) {
+      authToken = await fetchAccessToken(apiOptions, publicHelpers)(message)
+      if (!authToken) return undefined
+
+      setTimeout(authenticate, authToken?.expiry - Date.now() - PREFETCH_ACCESS_TOKEN)
+      return authToken
+    }
+    throw Error('Missing peach account')
   }
 
   const isAuthenticated = () => !!authToken?.accessToken
@@ -36,11 +45,12 @@ export const peachAPI = (options: PeachAPIOptions) => {
   }
 
   return {
-    public: peachAPIPublic(options, helpers),
-    private: peachAPIPrivate(options, helpers),
+    public: peachAPIPublic(apiOptions, helpers),
+    private: peachAPIPrivate(apiOptions, helpers),
     authenticate,
+    setPeachAccount,
     isAuthenticated,
-    peachAccount: options.peachAccount,
+    apiOptions,
     adjustClientServerTimeDifference,
   }
 }

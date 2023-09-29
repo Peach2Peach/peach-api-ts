@@ -14,7 +14,7 @@ export type PrivateHeaders = PublicHeaders & { Authorization: string }
 
 export type PeachAPIOptions = {
   url: string
-  peachAccount: BIP32Interface
+  peachAccount?: BIP32Interface
   uniqueId: string
 }
 export type PublicPeachAPIHelpers = {
