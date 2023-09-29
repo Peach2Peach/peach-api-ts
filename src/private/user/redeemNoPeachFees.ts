@@ -1,23 +1,23 @@
 import {
-  RedeemFiveTradesErrorResponseBody,
-  RedeemFiveTradesRequestBody,
-  RedeemFiveTradesRequestParams,
-  RedeemFiveTradesRequestQuery,
-  RedeemFiveTradesResponseBody,
+  RedeemTradesErrorResponseBody,
+  RedeemTradesRequestBody,
+  RedeemTradesRequestParams,
+  RedeemTradesRequestQuery,
+  RedeemTradesResponseBody,
 } from '../../@types/api/userAPI'
 import { parseResponse } from '../../helpers/parseResponse'
 import { PeachAPIHelpers, PeachAPIOptions, RequestProps } from '../../types'
 
-type Props = RequestProps & RedeemFiveTradesRequestParams & RedeemFiveTradesRequestQuery & RedeemFiveTradesRequestBody
+type Props = RequestProps & RedeemTradesRequestParams & RedeemTradesRequestQuery & RedeemTradesRequestBody
 
 export const redeemNoPeachFees
   = ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
     async ({ signal }: Props = {}) => {
-      const response = await fetch(`${url}/v1/user/referral/redeem/fiveFreeTrades`, {
+      const response = await fetch(`${url}/v1/user/referral/redeem/freeTrades`, {
         headers: helpers.getPrivateHeaders(url),
         method: 'PATCH',
         signal,
       })
 
-      return parseResponse<RedeemFiveTradesResponseBody, RedeemFiveTradesErrorResponseBody>(response)
+      return parseResponse<RedeemTradesResponseBody, RedeemTradesErrorResponseBody>(response)
     }

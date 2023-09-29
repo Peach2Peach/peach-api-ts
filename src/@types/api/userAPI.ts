@@ -1,4 +1,5 @@
 import { APIError, APISuccess, AccessToken } from '../global'
+import { PaymentMethod } from '../payment'
 import { FeeRate, PublicUser, Rating, TradingLimit, User } from '../user'
 
 export type AuthenticateRequestParams = {}
@@ -44,6 +45,17 @@ export type GetSelfUserRequestQuery = {}
 export type GetSelfUserRequestBody = {}
 export type GetSelfUserResponseBody = User
 export type GetSelfUserErrorResponseBody = APIError<null>
+
+export type GetUserPaymentMethodInfoRequestParams = {}
+export type GetUserPaymentMethodInfoRequestQuery = {}
+export type GetUserPaymentMethodInfoRequestBody = {}
+export type GetUserPaymentMethodInfoResponseBody = {
+  forbidden: {
+    buy: PaymentMethod[]
+    sell: PaymentMethod[]
+  }
+}
+export type GetUserPaymentMethodInfoErrorResponseBody = APIError<null>
 
 export type UnlinkPaymentHashRequestParams = {}
 export type UnlinkPaymentHashRequestQuery = {}
@@ -97,8 +109,8 @@ export type RedeemReferralCodeRequestBody = { code: string }
 export type RedeemReferralCodeResponseBody = APISuccess & { bonusPoints: User['bonusPoints'] }
 export type RedeemReferralCodeErrorResponseBody = APIError<'ALREADY_TAKEN' | 'NOT_ENOUGH_POINTS'>
 
-export type RedeemFiveTradesRequestParams = {}
-export type RedeemFiveTradesRequestQuery = {}
-export type RedeemFiveTradesRequestBody = {}
-export type RedeemFiveTradesResponseBody = APISuccess & { bonusPoints: User['bonusPoints'] }
-export type RedeemFiveTradesErrorResponseBody = APIError<'NOT_ENOUGH_POINTS'>
+export type RedeemTradesRequestParams = {}
+export type RedeemTradesRequestQuery = {}
+export type RedeemTradesRequestBody = {}
+export type RedeemTradesResponseBody = APISuccess & { bonusPoints: User['bonusPoints'] }
+export type RedeemTradesErrorResponseBody = APIError<'NOT_ENOUGH_POINTS'>

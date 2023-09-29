@@ -9,6 +9,7 @@ import { redeemNoPeachFees } from './redeemNoPeachFees'
 import { redeemReferralCode } from './redeemReferralCode'
 import { register } from './register'
 import { updateUser } from './updateUser'
+import { getUserPaymentMethodInfo } from './userPaymentMethodInfo'
 
 export const privateUserAPI = (options: PeachAPIOptions, helpers: PeachAPIHelpers) => ({
   auth: auth(options, helpers),
@@ -16,6 +17,7 @@ export const privateUserAPI = (options: PeachAPIOptions, helpers: PeachAPIHelper
   enableTransactionBatching: enableTransactionBatching(options, helpers),
   getSelfUser: getSelfUser(options, helpers),
   getTradingLimit: getTradingLimit(options, helpers),
+  getUserPaymentMethodInfo: getUserPaymentMethodInfo(options, helpers),
   logoutUser: logoutUser(options, helpers),
   redeemNoPeachFees: redeemNoPeachFees(options, helpers),
   redeemReferralCode: redeemReferralCode(options, helpers),
