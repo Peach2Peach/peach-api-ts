@@ -17,6 +17,8 @@ export type APIError<E> = {
 }
 
 export type Currency =
+  | 'BTC'
+  | 'SAT'
   | 'USD'
   | 'USDT'
   | 'EUR'
@@ -30,7 +32,22 @@ export type Currency =
   | 'HUF'
   | 'RON'
   | 'ISK'
+  | 'TRY'
   | 'BGN'
+  | 'ARS'
+  | 'COP'
+  | 'PEN'
+  | 'GTQ'
+  | 'MXN'
+  | 'BRL'
+  | 'CLP'
+  | 'CDF'
+  | 'XOF'
+  | 'NGN'
+  | 'CRC'
+  | 'ZAR'
+  | 'KES'
+  | 'GHS'
 
 export type Pricebook = {
   [key in Currency]?: number
