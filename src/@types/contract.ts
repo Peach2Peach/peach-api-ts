@@ -15,7 +15,7 @@ export type Contract = {
   buyer: PublicUser
 
   symmetricKeyEncrypted: string
-  symmetricKey?: string
+  symmetricKey?: string // it is stored encrypted still but with public peach gpg key
   symmetricKeySignature: string
 
   amount: number
@@ -25,9 +25,13 @@ export type Contract = {
   premium: number
   paymentMethod: PaymentMethod
   paymentDataEncrypted: string
-  paymentData?: PaymentData
   paymentDataSignature: string
+  paymentData?: PaymentData
+  buyerPaymentDataEncrypted: string
+  buyerPaymentDataSignature: string
+  buyerPaymentData?: PaymentData
   hashedPaymentData: string[]
+  buyerHashedPaymentData: string[]
   country?: Country
 
   paymentMade: Date | null
@@ -39,6 +43,9 @@ export type Contract = {
   releaseAddress: string
   releaseTransaction?: string
   releaseTxId?: string
+
+  releasePSBT?: string
+  batchId?: string
 
   disputeActive: boolean
   disputeDate: Date | null

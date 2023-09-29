@@ -6,7 +6,7 @@ import { PublicUser } from '../user'
 
 export type CancelOfferRequestParams = { offerId: string }
 export type CancelOfferRequestQuery = {}
-export type CancelOfferRequestBody = {}
+export type CancelOfferRequestBody = { satsPerByte?: number }
 export type CancelOfferResponseBody =
   | {
       psbt: string
@@ -156,6 +156,7 @@ export type MatchOfferErrorResponseBody = APIError<
 export type PatchOfferRequestParams = { offerId: string }
 export type PatchOfferRequestQuery = {}
 export type PatchOfferRequestBody = {
+  refundAddress?: string
   refundTx?: string
   premium?: number
   maxPremium?: number
