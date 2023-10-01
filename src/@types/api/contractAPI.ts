@@ -59,7 +59,7 @@ export type ConfirmPaymentErrorResponseBody = APIError<
 >
 
 export type GetChatRequestParams = { contractId: string }
-export type GetChatRequestQuery = { page?: string }
+export type GetChatRequestQuery = { page?: number }
 export type GetChatRequestBody = {}
 export type GetChatResponseBody = Message[]
 export type GetChatErrorResponseBody = APIError<'NOT_FOUND'>
