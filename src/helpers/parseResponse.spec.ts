@@ -1,3 +1,4 @@
+import 'isomorphic-fetch'
 import { parseResponse } from './parseResponse'
 
 describe('parseResponse', () => {
