@@ -122,9 +122,9 @@ export type PostChatErrorResponseBody = APIError<'NOT_FOUND'>
 export type RaiseDisputeRequestParams = { contractId: string }
 export type RaiseDisputeRequestQuery = {}
 export type RaiseDisputeRequestBody = {
-  email: string
+  email?: string
   reason: DisputeReason
-  message: string
+  message?: string
   symmetricKeyEncrypted: string
 }
 export type RaiseDisputeResponseBody = APISuccess
