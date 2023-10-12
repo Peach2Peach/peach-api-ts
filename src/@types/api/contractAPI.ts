@@ -52,8 +52,10 @@ export type ConfirmCancelationRequestErrorResponseBody = APIError<
 
 export type ConfirmPaymentRequestParams = { contractId: string }
 export type ConfirmPaymentRequestQuery = {}
-export type ConfirmPaymentRequestBody = { releaseTransaction: string; batchReleasePsbt?: string }
-export type ConfirmPaymentResponseBody = APISuccess & { txId?: string; batchId?: string }
+export type ConfirmPaymentBuyerRequestBody = {}
+export type ConfirmPaymentBuyerResponseBody = APISuccess
+export type ConfirmPaymentSellerRequestBody = { releaseTransaction: string; batchReleasePsbt?: string }
+export type ConfirmPaymentSellerResponseBody = APISuccess & { txId?: string; batchId?: string }
 export type ConfirmPaymentErrorResponseBody = APIError<
   'NOT_FOUND' | 'UNAUTHORIZED' | 'CANCELED' | 'FORM_INVALID' | 'INTERNAL_SERVER_ERROR'
 >

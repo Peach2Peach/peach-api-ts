@@ -1,27 +1,23 @@
 import {
+  ConfirmPaymentBuyerRequestBody,
+  ConfirmPaymentBuyerResponseBody,
   ConfirmPaymentErrorResponseBody,
-  ConfirmPaymentRequestBody,
   ConfirmPaymentRequestParams,
   ConfirmPaymentRequestQuery,
-  ConfirmPaymentResponseBody,
 } from '../../@types/api/contractAPI'
 import { parseResponse } from '../../helpers/parseResponse'
 import { PeachAPIHelpers, PeachAPIOptions, RequestProps } from '../../types'
 
-type Props = RequestProps & ConfirmPaymentRequestParams & ConfirmPaymentRequestQuery & ConfirmPaymentRequestBody
+type Props = RequestProps & ConfirmPaymentRequestParams & ConfirmPaymentRequestQuery & ConfirmPaymentBuyerRequestBody
 
-export const confirmPayment =
+export const confirmPaymentBuyer =
   ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
-  async ({ contractId, releaseTransaction, batchReleasePsbt, signal }: Props) => {
+  async ({ contractId, signal }: Props) => {
     const response = await fetch(`${url}/v1/contract/${contractId}/payment/confirm`, {
       headers: helpers.getPrivateHeaders(url),
       method: 'POST',
-      body: JSON.stringify({
-        releaseTransaction,
-        batchReleasePsbt,
-      }),
       signal,
     })
 
-    return parseResponse<ConfirmPaymentResponseBody, ConfirmPaymentErrorResponseBody>(response)
+    return parseResponse<ConfirmPaymentBuyerResponseBody, ConfirmPaymentErrorResponseBody>(response)
   }
