@@ -13,6 +13,12 @@ export type GetInfoResponseBody = {
 }
 export type GetInfoErrorResponseBody = APIError<null>
 
+export type GetPaymentMethodInfoRequestParams = {}
+export type GetPaymentMethodInfoRequestQuery = {}
+export type GetPaymentMethodInfoRequestBody = {}
+export type GetPaymentMethodInfoResponseBody = PaymentMethodInfo[]
+export type GetPaymentMethodInfoErrorResponseBody = APIError<null>
+
 export type GetStatusRequestParams = {}
 export type GetStatusRequestQuery = {}
 export type GetStatusRequestBody = {}

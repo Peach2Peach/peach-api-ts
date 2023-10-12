@@ -40,6 +40,24 @@ export type GetUserRequestBody = {}
 export type GetUserResponseBody = PublicUser
 export type GetUserErrorResponseBody = APIError<null>
 
+export type GetUserStatusRequestParams = { userId: string }
+export type GetUserStatusRequestQuery = {}
+export type GetUserStatusRequestBody = {}
+export type GetUserStatusResponseBody = { isBlocked: boolean }
+export type GetUserStatusErrorResponseBody = APIError<null>
+
+export type BlockUserRequestParams = { userId: string }
+export type BlockUserRequestQuery = {}
+export type BlockUserRequestBody = {}
+export type BlockUserResponseBody = APISuccess
+export type BlockUserErrorResponseBody = APIError<null>
+
+export type UnblockUserRequestParams = { userId: string }
+export type UnblockUserRequestQuery = {}
+export type UnblockUserRequestBody = {}
+export type UnblockUserResponseBody = APISuccess
+export type UnblockUserErrorResponseBody = APIError<null>
+
 export type GetSelfUserRequestParams = {}
 export type GetSelfUserRequestQuery = {}
 export type GetSelfUserRequestBody = {}
