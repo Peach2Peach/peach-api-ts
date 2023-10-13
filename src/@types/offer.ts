@@ -23,6 +23,7 @@ export type TradeStatus =
   | 'refundAddressRequired'
   | 'refundTxSignatureRequired'
   | 'paymentRequired'
+  | 'paymentTooLate'
   | 'confirmPaymentRequired'
   | 'dispute'
   | 'releaseEscrow'
