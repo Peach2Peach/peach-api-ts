@@ -2,11 +2,12 @@ import { crypto } from 'bitcoinjs-lib'
 import { auth } from '../private/user/auth'
 import { PeachAPIOptions, PublicPeachAPIHelpers } from '../types'
 
-export const fetchAccessToken
-  = (options: Required<PeachAPIOptions>, helpers: PublicPeachAPIHelpers) => async (message: string) => {
+export const fetchAccessToken =
+  (options: Required<PeachAPIOptions>, helpers: PublicPeachAPIHelpers) => async (message: string) => {
+    if (!options.peachAccount) return undefined
     const authResult = await auth(
       options,
-      helpers,
+      helpers
     )({
       publicKey: options.peachAccount.publicKey.toString('hex'),
       message,
