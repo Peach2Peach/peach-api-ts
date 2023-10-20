@@ -1,5 +1,5 @@
 import { createTestWallet } from '../test/unit/helpers/createTestWallet'
-import { peachAPI } from './index'
+import { peachAPI } from './peachAPI'
 import { PeachAPIOptions } from './types'
 
 describe('peachAPI', () => {
@@ -7,6 +7,7 @@ describe('peachAPI', () => {
   global.fetch = fetchMock
 
   const options: PeachAPIOptions = {
+    peachAccount: null,
     url: 'api.peachbitcoin.com',
     uniqueId: 'test',
   }
@@ -35,7 +36,7 @@ describe('peachAPI', () => {
       signal: undefined,
     })
     expect(
-      fetchMock.mock.calls[0][1].body.includes(`"publicKey":"${peachAccount.publicKey.toString('hex')}`),
+      fetchMock.mock.calls[0][1].body.includes(`"publicKey":"${peachAccount.publicKey.toString('hex')}`)
     ).toBeTruthy()
   })
 })
