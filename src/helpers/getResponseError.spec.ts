@@ -1,8 +1,9 @@
+import fetch from 'node-fetch'
 import { getResponseError } from './getResponseError'
 
 describe('getResponseError', () => {
   it('returns corresponding error codes for status codes', () => {
-    const headers = new Headers()
+    const headers = new fetch.Headers()
     headers.set('cf-mitigated', 'challenge')
     expect(getResponseError({ statusText: 'Aborted' })).toBe('ABORTED')
     expect(getResponseError({ status: 0 })).toBe('EMPTY_RESPONSE')
