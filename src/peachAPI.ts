@@ -13,7 +13,7 @@ import { PeachAPIOptions, PublicPeachAPIHelpers } from './types'
 export const peachAPI = (options: PeachAPIOptions) => {
   const apiOptions = options
   const publicHelpers: PublicPeachAPIHelpers = {
-    getPublicHeaders: (url: string) => getPublicHeaders(url),
+    getPublicHeaders: (url: string) => getPublicHeaders(url, options.userAgent),
   }
   let authToken: Awaited<ReturnType<ReturnType<typeof fetchAccessToken>>>
   let clientServerTimeDifference = 0
@@ -41,7 +41,7 @@ export const peachAPI = (options: PeachAPIOptions) => {
 
   const helpers = {
     ...publicHelpers,
-    getPrivateHeaders: (url: string) => getPrivateHeaders(url, authToken?.accessToken || ''),
+    getPrivateHeaders: (url: string) => getPrivateHeaders(url, authToken?.accessToken || '', options.userAgent),
   }
 
   return {

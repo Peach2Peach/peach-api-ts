@@ -8,10 +8,10 @@ describe('peachAccountSet', () => {
         peachAccount: createTestWallet(),
         url: 'api.peachbitcoin.com',
         uniqueId: 'test',
-      }),
+      })
     ).toBeTruthy()
   })
   it('returns true if peach account is not set on options', () => {
-    expect(peachAccountSet({ url: 'api.peachbitcoin.com', uniqueId: 'test' })).toBeFalsy()
+    expect(peachAccountSet({ url: 'api.peachbitcoin.com', uniqueId: 'test', peachAccount: null })).toBeFalsy()
   })
 })
