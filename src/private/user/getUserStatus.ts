@@ -10,14 +10,14 @@ import { PeachAPIHelpers, PeachAPIOptions, RequestProps } from '../../types'
 
 type Props = RequestProps & GetUserStatusRequestParams & GetUserStatusRequestQuery & GetUserStatusRequestBody
 
-export const getUserStatus
-  = ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
-    async ({ userId, signal }: Props) => {
-      const response = await fetch(`${url}/v1/user/${userId}/status`, {
-        headers: helpers.getPrivateHeaders(url),
-        method: 'GET',
-        signal,
-      })
+export const getUserStatus =
+  ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
+  async ({ userId, signal }: Props) => {
+    const response = await fetch(`${url}/v1/user/${userId}/status`, {
+      headers: helpers.getPrivateHeaders(url),
+      method: 'GET',
+      signal,
+    })
 
-      return  await parseResponse<GetUserStatusResponseBody, GetUserStatusErrorResponseBody>(response)
-    }
+    return parseResponse<GetUserStatusResponseBody, GetUserStatusErrorResponseBody>(response)
+  }

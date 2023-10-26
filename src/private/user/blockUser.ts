@@ -10,14 +10,14 @@ import { PeachAPIHelpers, PeachAPIOptions, RequestProps } from '../../types'
 
 type Props = RequestProps & BlockUserRequestParams & BlockUserRequestQuery & BlockUserRequestBody
 
-export const blockUser
-  = ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
-    async ({ userId, signal }: Props) => {
-      const response = await fetch(`${url}/v1/user/${userId}/block`, {
-        headers: helpers.getPrivateHeaders(url),
-        method: 'PUT',
-        signal,
-      })
+export const blockUser =
+  ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
+  async ({ userId, signal }: Props) => {
+    const response = await fetch(`${url}/v1/user/${userId}/block`, {
+      headers: helpers.getPrivateHeaders(url),
+      method: 'PUT',
+      signal,
+    })
 
-      return  await parseResponse<BlockUserResponseBody, BlockUserErrorResponseBody>(response)
-    }
+    return parseResponse<BlockUserResponseBody, BlockUserErrorResponseBody>(response)
+  }

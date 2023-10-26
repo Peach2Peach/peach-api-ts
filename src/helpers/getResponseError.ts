@@ -13,7 +13,9 @@ export const isErrorStatus = (status?: number | string | null): status is keyof 
   typeof status !== 'undefined' && status !== null && status in RESPONSE_ERRORS
 
 
-export const getResponseError = ({ statusText, status, headers }: Partial<Pick<Response, 'statusText'|'status'|'headers'>>) => {
+type Props = Partial<Pick<Response, 'statusText'|'status'|'headers'>>
+
+export const getResponseError = ({ statusText, status, headers }: Props) => {
   if (statusText === 'Aborted') return RESPONSE_ERRORS.ABORTED
 
   if (headers && isCloudflareChallenge(headers)) return 'HUMAN_VERIFICATION_REQUIRED'

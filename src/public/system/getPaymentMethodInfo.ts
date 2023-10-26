@@ -8,19 +8,22 @@ import {
 import { parseResponse } from '../../helpers/parseResponse'
 import { PeachAPIHelpers, PeachAPIOptions, RequestProps } from '../../types'
 
-type Props = RequestProps & GetPaymentMethodInfoRequestParams & GetPaymentMethodInfoRequestQuery & GetPaymentMethodInfoRequestBody
+type Props = RequestProps &
+  GetPaymentMethodInfoRequestParams &
+  GetPaymentMethodInfoRequestQuery &
+  GetPaymentMethodInfoRequestBody
 
-export const getPaymentMethodInfo
-  = ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
-    async ({ signal }: Props = {}) => {
-      const response = await fetch(`${url}/v1/info/paymentMethods`, {
-        headers: {
-          ...helpers.getPublicHeaders(url),
-          'Cache-Control': 'no-cache',
-        },
-        method: 'GET',
-        signal,
-      })
+export const getPaymentMethodInfo =
+  ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
+  async ({ signal }: Props = {}) => {
+    const response = await fetch(`${url}/v1/info/paymentMethods`, {
+      headers: {
+        ...helpers.getPublicHeaders(url),
+        'Cache-Control': 'no-cache',
+      },
+      method: 'GET',
+      signal,
+    })
 
-      return parseResponse<GetPaymentMethodInfoResponseBody, GetPaymentMethodInfoErrorResponseBody>(response)
-    }
+    return parseResponse<GetPaymentMethodInfoResponseBody, GetPaymentMethodInfoErrorResponseBody>(response)
+  }
