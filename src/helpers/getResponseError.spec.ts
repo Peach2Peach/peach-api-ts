@@ -1,5 +1,5 @@
-import fetch from 'node-fetch'
 import { getResponseError } from './getResponseError'
+const fetch = require('node-fetch')
 
 describe('getResponseError', () => {
   it('returns corresponding error codes for status codes', () => {
