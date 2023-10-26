@@ -41,7 +41,7 @@ export const peachAPI = (options: PeachAPIOptions) => {
 
   const helpers = {
     ...publicHelpers,
-    getPrivateHeaders: (url: string) => getPrivateHeaders(url, authToken?.accessToken || ''),
+    getPrivateHeaders: (url: string) => getPrivateHeaders(url, authToken?.accessToken || '', options.userAgent),
   }
 
   return {
