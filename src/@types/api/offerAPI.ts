@@ -187,7 +187,7 @@ export type PostBuyOfferRequestBody = PostOfferRequestBody & {
 }
 export type PostOfferResponseBody = BuyOffer | SellOffer | (BuyOffer | SellOffer)[]
 export type PostOfferErrorResponseBody = APIError<
-  'TRADING_LIMIT_REACHED' | 'INVALID_SIGNATURE' | 'PAYMENT_HASH_INVALID'
+  'TRADING_LIMIT_REACHED' | 'INVALID_SIGNATURE' | 'PAYMENT_HASH_INVALID' | 'PGP_MISSING'
 >
 
 export type UnmatchOfferRequestParams = { offerId: string }
