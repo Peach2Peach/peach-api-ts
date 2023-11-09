@@ -1,0 +1,56 @@
+import { SellOffer } from '../../@types/offer'
+import { validSEPADataHashes } from './paymentData'
+
+export const sellOffer: SellOffer = {
+  creationDate: new Date('2022-03-08T11:41:07.245Z'),
+  publishingDate: new Date('2022-03-08T11:41:07.245Z'),
+  lastModified: new Date('2022-03-08T11:41:07.245Z'),
+  id: '38',
+  online: true,
+  type: 'ask',
+  meansOfPayment: {
+    EUR: ['sepa'],
+  },
+  paymentData: {
+    sepa: { hashes: validSEPADataHashes },
+  },
+  funding: {
+    status: 'NULL',
+    txIds: [],
+    vouts: [],
+    amounts: [],
+    expiry: 537,
+  },
+  amount: 250000,
+  premium: 1.5,
+  matches: [],
+  doubleMatched: false,
+  returnAddress: 'bcrt1q70z7vw93cxs6jx7nav9cmcn5qvlv362qfudnqmz9fnk2hjvz5nus4c0fuh',
+  refunded: false,
+  released: false,
+  tradeStatus: 'searchingForPeer',
+  freeTrade: false,
+  escrowFee: 0,
+  user: {
+    id: '1',
+    creationDate: new Date('2022-03-08T11:41:07.245Z'),
+    trades: 0,
+    rating: 0,
+    userRating: 0,
+    historyRating: 0,
+    recentRating: 0,
+    ratingCount: 0,
+    peachRating: 0,
+    medals: [],
+    disputes: {
+      opened: 0,
+      won: 0,
+      lost: 0,
+      resolved: 0,
+    },
+    pgpPublicKey: 'TODO add pgp public key',
+    pgpPublicKeyProof: 'TODO add pgp',
+  },
+  fundingAmountDifferent: false,
+  publicKey: 'TODO add public key',
+}
