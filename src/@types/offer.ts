@@ -13,27 +13,28 @@ export type FundingStatus = {
 }
 
 export type TradeStatus =
-  | 'fundEscrow'
-  | 'searchingForPeer'
-  | 'escrowWaitingForConfirmation'
-  | 'fundingAmountDifferent'
-  | 'messageSigningRequired'
-  | 'hasMatchesAvailable'
-  | 'offerCanceled'
-  | 'refundAddressRequired'
-  | 'refundTxSignatureRequired'
-  | 'paymentRequired'
-  | 'paymentTooLate'
+  | 'confirmCancelation'
   | 'confirmPaymentRequired'
   | 'dispute'
-  | 'releaseEscrow'
-  | 'rateUser'
-  | 'confirmCancelation'
-  | 'tradeCompleted'
-  | 'tradeCanceled'
-  | 'refundOrReviveRequired'
+  | 'escrowWaitingForConfirmation'
+  | 'fundEscrow'
+  | 'fundingAmountDifferent'
+  | 'hasMatchesAvailable'
+  | 'messageSigningRequired'
+  | 'offerCanceled'
   | 'offerHidden'
   | 'offerHiddenWithMatchesAvailable'
+  | 'paymentRequired'
+  | 'paymentTooLate'
+  | 'payoutPending'
+  | 'rateUser'
+  | 'refundAddressRequired'
+  | 'refundOrReviveRequired'
+  | 'refundTxSignatureRequired'
+  | 'releaseEscrow'
+  | 'searchingForPeer'
+  | 'tradeCanceled'
+  | 'tradeCompleted'
 
 type PaymentMethodCountry =
   | 'BG'
@@ -91,10 +92,10 @@ export type Offer = {
 
 export type SellOffer = Offer & {
   type: 'ask'
-  amount?: number
+  amount: number
   premium: number
   returnAddress: string
-  funding?: FundingStatus
+  funding: FundingStatus
   multi?: number
 
   escrow?: string

@@ -6,6 +6,7 @@ export type Disputes = {
   opened: number
   won: number
   lost: number
+  resolved: number
 }
 export type User = {
   id: string
@@ -31,8 +32,8 @@ export type User = {
   recentRating: number
   ratingCount: number
   medals: Medal[]
-  pgpPublicKey?: string
-  pgpPublicKeyProof?: string
+  pgpPublicKey: string
+  pgpPublicKeyProof: string
   fcmToken?: string
   uniqueId: string
   referralCode?: string
