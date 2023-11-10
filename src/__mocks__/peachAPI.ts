@@ -16,3 +16,25 @@ export const peachAPI = () => ({
   },
   setPeachAccount: (peachAccount: BIP32Interface) => peachAccount,
 })
+
+export class PeachAPI {
+  private = {
+    contract: {
+      acknowledgeDispute: () => Promise.resolve({ result: { success: true }, error: null }),
+    },
+    offer: {
+      postSellOffer: () =>
+        Promise.resolve({
+          result: sellOffer,
+          error: null,
+        }),
+    },
+  }
+
+  peachAccount: BIP32Interface | null = null
+
+  setPeachAccount(peachAccount: BIP32Interface) {
+    this.peachAccount = peachAccount
+    return peachAccount
+  }
+}
