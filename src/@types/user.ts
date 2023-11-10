@@ -44,6 +44,8 @@ export type User = {
   feeRate: FeeRate
   freeTrades?: number
   maxFreeTrades?: number
+
+  isBatchingEnabled: boolean
 }
 
 export type NewUser = User & {
@@ -61,6 +63,9 @@ export type PublicUser = Omit<
   | 'referredTradingAmount'
   | 'bonusPoints'
   | 'feeRate'
+  | 'freeTrades'
+  | 'maxFreeTrades'
+  | 'isBatchingEnabled'
 >
 
 export type Rating = {
