@@ -1,7 +1,8 @@
 import { BIP32Interface } from 'bip32'
 import { sellOffer } from './data/sellOffer'
+import { defaultUser } from './data/user'
 
-export const peachAPI = () => ({
+const peachAPIMethods = {
   private: {
     contract: {
       acknowledgeDispute: () => Promise.resolve({ result: { success: true }, error: null }),
@@ -13,23 +14,19 @@ export const peachAPI = () => ({
           error: null,
         }),
     },
+    user: {
+      getSelfUser: () => Promise.resolve({ result: defaultUser, error: null }),
+    },
   },
+}
+
+export const peachAPI = () => ({
+  ...peachAPIMethods,
   setPeachAccount: (peachAccount: BIP32Interface) => peachAccount,
 })
 
 export class PeachAPI {
-  private = {
-    contract: {
-      acknowledgeDispute: () => Promise.resolve({ result: { success: true }, error: null }),
-    },
-    offer: {
-      postSellOffer: () =>
-        Promise.resolve({
-          result: sellOffer,
-          error: null,
-        }),
-    },
-  }
+  private = peachAPIMethods.private
 
   peachAccount: BIP32Interface | null = null
 

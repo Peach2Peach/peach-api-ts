@@ -9,43 +9,34 @@ export type Disputes = {
   resolved: number
 }
 export type User = {
-  id: string
-  linkedIds: string[]
-  disabled: boolean
   banned: boolean
-  creationDate: Date
-  lastModified: Date
-  trades: number
-  kyc: boolean
-  rating: number
-  peachRating: number
-  userRating: number
-
-  /**
-   * average of historical scores user received
-   */
-  historyRating: number
-
-  /**
-   * average of most recent scores user received
-   */
-  recentRating: number
-  ratingCount: number
-  medals: Medal[]
-  pgpPublicKey: string
-  pgpPublicKeyProof: string
-  fcmToken?: string
-  uniqueId: string
-  referralCode?: string
-  usedReferralCode?: string
-  referredTradingAmount: number
   bonusPoints: number
+  creationDate: Date
+  disabled: boolean
   disputes: Disputes
+  fcmToken?: string
   feeRate: FeeRate
   freeTrades?: number
-  maxFreeTrades?: number
-
+  historyRating: number
+  id: string
   isBatchingEnabled: boolean
+  kyc: boolean
+  lastModified: Date
+  linkedIds: string[]
+  maxFreeTrades?: number
+  medals: Medal[]
+  peachRating: number
+  pgpPublicKey: string
+  pgpPublicKeyProof: string
+  rating: number
+  ratingCount: number
+  recentRating: number
+  referralCode?: string
+  referredTradingAmount: number
+  trades: number
+  uniqueId: string
+  usedReferralCode?: string
+  userRating: number
 }
 
 export type NewUser = User & {
