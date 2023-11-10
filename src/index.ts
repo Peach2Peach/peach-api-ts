@@ -1,4 +1,4 @@
-import { peachAPI } from './peachAPI'
+import { peachAPI, PeachAPI } from './peachAPI'
 
-export { peachAPI }
+export { peachAPI, PeachAPI }
 export default peachAPI
