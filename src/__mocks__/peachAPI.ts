@@ -18,6 +18,11 @@ const peachAPIMethods = {
       getSelfUser: () => Promise.resolve({ result: defaultUser, error: null }),
     },
   },
+  public: {
+    user: {
+      checkReferralCode: () => Promise.resolve({ result: { valid: true }, error: null }),
+    },
+  },
 }
 
 export const peachAPI = () => ({
