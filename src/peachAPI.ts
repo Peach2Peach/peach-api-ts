@@ -87,6 +87,7 @@ export class PeachAPI {
     this.options.peachAccount = peachAccount
     this.private = peachAPIPrivate(this.options, this.helpers)
     this.public = peachAPIPublic(this.options, this.helpers)
+    this.authenticate()
   }
 
   async authenticate() {
