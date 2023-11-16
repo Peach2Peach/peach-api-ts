@@ -35,8 +35,16 @@ export class PeachAPI {
 
   peachAccount: BIP32Interface | null = null
 
+  authToken: { accessToken: string; expiry: number } | undefined
+
   setPeachAccount(peachAccount: BIP32Interface) {
     this.peachAccount = peachAccount
     return peachAccount
+  }
+
+  async authenticate() {
+    const newToken = await Promise.resolve({ accessToken: 'accessToken', expiry: new Date('2021-01-01').getTime() })
+    this.authToken = newToken
+    return this.authToken
   }
 }
