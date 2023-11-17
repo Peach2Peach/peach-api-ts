@@ -1,6 +1,6 @@
 export type Medal = 'fastTrader' | 'superTrader' | 'ambassador'
 
-export type FeeRate = 'fastestFee' | 'halfHourFee' | 'hourFee' | 'economyFee' | 'minimumFee' | number
+export type FeeRate = 'fastestFee' | 'halfHourFee' | 'hourFee' | 'economyFee' | number
 
 export type Disputes = {
   opened: number

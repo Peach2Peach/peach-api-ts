@@ -1,5 +1,6 @@
 import { BitcoinEvent } from './events'
 import { Country, Currency } from './global'
+import { PaymentMethodCountry } from './offer'
 
 export type EuPaymentMethods =
   | 'advcash'
@@ -73,7 +74,7 @@ export type AfricaPaymentMethods =
   | 'mobileAirtime'
 
 export type BitcoinPaymentMethods = 'liquid' | 'lnurl'
-export type InternationalPaymentMethds = 'giftCard.amazon' | `giftCard.amazon.${Country}`
+export type InternationalPaymentMethds = 'giftCard.amazon' | `giftCard.amazon.${PaymentMethodCountry}`
 export type CashPaymentMethds = `cash.${BitcoinEvent['id']}`
 
 export type PaymentMethod =

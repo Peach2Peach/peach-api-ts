@@ -35,7 +35,7 @@ export type TradeStatus =
   | 'tradeCanceled'
   | 'tradeCompleted'
 
-type PaymentMethodCountry =
+export type PaymentMethodCountry =
   | 'BG'
   | 'CZ'
   | 'DK'
@@ -63,6 +63,7 @@ type PaymentMethodCountry =
   | 'SI'
   | 'LV'
   | 'US'
+  | 'FI'
 
 export type OfferPaymentData = Partial<
   Record<PaymentMethod, { hashes: string[]; hash?: string; country?: PaymentMethodCountry }>
