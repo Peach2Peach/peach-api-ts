@@ -20,7 +20,6 @@ export type TradeStatus =
   | 'fundEscrow'
   | 'fundingAmountDifferent'
   | 'hasMatchesAvailable'
-  | 'messageSigningRequired'
   | 'offerCanceled'
   | 'offerHidden'
   | 'offerHiddenWithMatchesAvailable'
