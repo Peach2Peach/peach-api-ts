@@ -10,6 +10,7 @@ import { logoutUser } from './logoutUser'
 import { redeemNoPeachFees } from './redeemNoPeachFees'
 import { redeemReferralCode } from './redeemReferralCode'
 import { register } from './register'
+import { sumbitUserSource } from './submitUserSource'
 import { unblockUser } from './unblockUser'
 import { updateUser } from './updateUser'
 import { getUserPaymentMethodInfo } from './userPaymentMethodInfo'
@@ -27,6 +28,7 @@ export const privateUserAPI = (options: PeachAPIOptions, helpers: PeachAPIHelper
   redeemNoPeachFees: redeemNoPeachFees(options, helpers),
   redeemReferralCode: redeemReferralCode(options, helpers),
   register: register(options, helpers),
+  submitUserSource: sumbitUserSource(options, helpers),
   unblockUser: unblockUser(options, helpers),
   updateUser: updateUser(options, helpers),
 })
