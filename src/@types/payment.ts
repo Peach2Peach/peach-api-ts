@@ -2,6 +2,26 @@ import { BitcoinEvent } from './events'
 import { Country, Currency } from './global'
 import { PaymentMethodCountry } from './offer'
 
+export type PaymentMethodField =
+  | 'userName'
+  | 'email'
+  | 'phone'
+  | 'reference'
+  | 'beneficiary'
+  | 'iban'
+  | 'bic'
+  | 'wallet'
+  | 'accountNumber'
+  | 'ukBankAccount'
+  | 'ukSortCode'
+  | 'receiveAddress'
+  | 'lnurlAddress'
+  | 'cbu'
+  | 'cvu'
+  | 'cvuAlias'
+  | 'pixAlias'
+  | 'postePayNumber'
+
 export type EuPaymentMethods =
   | 'advcash'
   | 'applePay'
@@ -88,6 +108,10 @@ export type PaymentMethod =
 export type PaymentMethodInfo = {
   id: PaymentMethod
   currencies: Currency[]
+  fields: {
+    mandatory: PaymentMethodField[][][]
+    optional: PaymentMethodField[]
+  }
   countries?: Country[]
   rounded?: boolean
   anonymous: boolean
