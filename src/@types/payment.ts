@@ -16,9 +16,6 @@ export type PaymentMethodField =
   | 'ukSortCode'
   | 'receiveAddress'
   | 'lnurlAddress'
-  | 'cbu'
-  | 'cvu'
-  | 'cvuAlias'
   | 'pixAlias'
   | 'postePayNumber'
 
