@@ -1,5 +1,7 @@
 import { DisputeOutcome, DisputeReason } from './dispute'
 import { Country, Currency } from './global'
+import { GetBatchStatusResponseBody } from './groupHugAPI/batch'
+import { TradeStatus } from './offer'
 import { PaymentData, PaymentMethod } from './payment'
 import { PublicUser } from './user'
 
@@ -15,7 +17,6 @@ export type Contract = {
   buyer: PublicUser
 
   symmetricKeyEncrypted: string
-  symmetricKey?: string // it is stored encrypted still but with public peach gpg key
   symmetricKeySignature: string
 
   amount: number
@@ -44,7 +45,7 @@ export type Contract = {
   releaseTransaction?: string
   releaseTxId?: string
 
-  releasePSBT?: string
+  releasePsbt: string
   batchId?: string
 
   disputeActive: boolean
@@ -71,4 +72,11 @@ export type Contract = {
 
   buyerFee: number
   sellerFee: number
+
+  tradeStatus: TradeStatus
+  batchReleasePsbt?: string
+  batchInfo?: GetBatchStatusResponseBody
+  isEmailRequired: boolean
+  unreadMessages: number
+  isChatActive: boolean
 }

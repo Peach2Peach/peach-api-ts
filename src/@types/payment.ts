@@ -114,8 +114,12 @@ export type PaymentMethodInfo = {
   anonymous: boolean
 }
 export type PaymentData = {
-  [key: string]: any
   id: string
+  label: string
   type: PaymentMethod
+  currencies: Currency[]
+  country?: PaymentMethodCountry
+  hidden?: boolean
+  reference?: string
 }
 export type MeansOfPayment = Partial<Record<Currency, PaymentMethod[]>>

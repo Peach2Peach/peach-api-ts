@@ -1,9 +1,7 @@
 import { Contract } from '../contract'
 import { DisputeReason } from '../dispute'
 import { APIError, APISuccess, Currency } from '../global'
-import { GetBatchStatusResponseBody } from '../groupHugAPI/batch'
 import { TradeStatus } from '../offer'
-import { PublicUser } from '../user'
 
 export type Message = {
   roomId: string
@@ -71,21 +69,7 @@ export type GetChatErrorResponseBody = APIError<'NOT_FOUND'>
 export type GetContractRequestParams = { contractId: string }
 export type GetContractRequestQuery = {}
 export type GetContractRequestBody = {}
-export type GetContractResponseBody =
-  | Omit<Contract, 'seller' | 'buyer' | 'symmetricKey' | 'disputeOutcomeAcknowledgedBy'> & {
-      seller: PublicUser
-      buyer: PublicUser
-      unreadMessages: number
-      releasePsbt: string
-      batchReleasePsbt?: string
-      batchId?: string
-      batchInfo?: GetBatchStatusResponseBody
-      symmetricKey: undefined
-      tradeStatus: TradeStatus
-      isChatActive: boolean
-      isEmailRequired: boolean
-      disputeOutcomeAcknowledged: boolean
-    }
+export type GetContractResponseBody = Contract
 export type GetContractErrorResponseBody = APIError<'NOT_FOUND' | 'INTERNAL_SERVER_ERROR'>
 
 export type GetContractsRequestParams = {}
