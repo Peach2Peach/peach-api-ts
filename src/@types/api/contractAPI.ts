@@ -34,7 +34,7 @@ export type AcknowledgeDisputeOutcomeRequestBody = {}
 export type AcknowledgeDisputeOutcomeResponseBody = APISuccess
 export type AcknowledgeDisputeOutcomeErrorResponseBody = APIError<'NOT_FOUND' | 'UNAUTHORIZED' | 'DUPLICATE'>
 
-export type CancelContractRequestParams = { contractId: string }
+export type CancelContractRequestParams = { contractId: string; satsPerByte?: number }
 export type CancelContractRequestQuery = {}
 export type CancelContractRequestBody = {}
 export type CancelContractResponseBody = APISuccess & { psbt?: string }
