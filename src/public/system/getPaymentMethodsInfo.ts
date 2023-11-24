@@ -13,7 +13,7 @@ type Props = RequestProps &
   GetPaymentMethodInfoRequestQuery &
   GetPaymentMethodInfoRequestBody
 
-export const getPaymentMethodInfo =
+export const getPaymentMethodsInfo =
   ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
   async ({ signal }: Props = {}) => {
     const response = await fetch(`${url}/v1/info/paymentMethods`, {
