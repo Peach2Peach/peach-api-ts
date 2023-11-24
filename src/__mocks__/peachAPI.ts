@@ -1,4 +1,5 @@
 import { BIP32Interface } from 'bip32'
+import { chatMessages } from './data/chatMessages'
 import { sellOffer } from './data/sellOffer'
 import { defaultUser } from './data/user'
 
@@ -8,6 +9,8 @@ const peachAPIMethods = {
   private: {
     contract: {
       acknowledgeDispute: apiSuccess,
+      cancelContract: apiSuccess,
+      getChat: () => Promise.resolve({ result: chatMessages.slice(0, 22), error: null }),
     },
     offer: {
       postSellOffer: () =>

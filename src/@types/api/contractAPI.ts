@@ -6,12 +6,14 @@ import { TradeStatus } from '../offer'
 import { PublicUser } from '../user'
 
 export type Message = {
-  roomid: string
+  roomId: string
   from: string
   date: Date
-  readBy: string[]
   message: string
+  decrypted?: boolean
+  readBy: string[]
   signature: string
+  failedToSend?: boolean
 }
 
 export type PostChatProps = {
