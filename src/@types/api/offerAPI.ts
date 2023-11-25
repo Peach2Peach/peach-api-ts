@@ -1,6 +1,6 @@
 import { APIError, APISuccess, Currency, Pricebook } from '../global'
 import { PublicMatch } from '../match'
-import { BuyOffer, FundingStatus, OfferPaymentData, SellOffer, TradeStatus } from '../offer'
+import { BuyOffer, FundingStatus, OfferPaymentData, OfferSummary, SellOffer, TradeStatus } from '../offer'
 import { MeansOfPayment, PaymentMethod } from '../payment'
 import { PublicUser } from '../user'
 
@@ -104,19 +104,7 @@ export type GetOffersErrorResponseBody = APIError<null>
 export type GetOfferSummariesRequestParams = {}
 export type GetOfferSummariesRequestQuery = {}
 export type GetOfferSummariesRequestBody = {}
-export type GetOfferSummariesResponseBody =
-  | {
-      id: string
-      creationDate: Date
-      lastModified: Date
-      amount: number | [number, number]
-      matches: string[]
-      prices?: Pricebook
-      tradeStatus: TradeStatus
-      contractId?: string
-      txId?: string
-      fundingTxId?: string
-    }[]
+export type GetOfferSummariesResponseBody = OfferSummary[]
 export type GetOfferSummariesErrorResponseBody = APIError<null>
 
 export type MatchOfferRequestParams = {

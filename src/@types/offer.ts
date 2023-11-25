@@ -122,3 +122,17 @@ export type BuyOffer = Offer & {
   messageSignature?: string
   maxPremium: number | null
 }
+
+export type OfferSummary = {
+  id: string
+  type: 'bid' | 'ask'
+  contractId?: string
+  lastModified: Date
+  creationDate: Date
+  amount: number | [number, number]
+  matches: string[]
+  prices?: Pricebook
+  tradeStatus: TradeStatus
+  txId?: string
+  fundingTxId?: string
+}
