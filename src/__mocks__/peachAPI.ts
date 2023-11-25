@@ -16,7 +16,6 @@ const peachAPIMethods = {
       getChat: () => Promise.resolve({ result: chatMessages.slice(0, 22), error: null }),
       getContract: () => Promise.resolve({ result: contract, error: null }),
       getContractSummaries: () => Promise.resolve({ result: [contractSummary], error: null }),
-      getOfferSummaries: () => Promise.resolve({ result: [offerSummary], error: null }),
       raiseDispute: apiSuccess,
       rateUser: apiSuccess,
     },
@@ -26,6 +25,7 @@ const peachAPIMethods = {
           result: sellOffer,
           error: null,
         }),
+      getOfferSummaries: () => Promise.resolve({ result: [offerSummary], error: null }),
     },
     user: {
       getSelfUser: () => Promise.resolve({ result: defaultUser, error: null }),
