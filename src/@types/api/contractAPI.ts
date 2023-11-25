@@ -1,7 +1,6 @@
-import { Contract } from '../contract'
+import { Contract, ContractSummary } from '../contract'
 import { DisputeReason } from '../dispute'
-import { APIError, APISuccess, Currency } from '../global'
-import { TradeStatus } from '../offer'
+import { APIError, APISuccess } from '../global'
 
 export type Message = {
   roomId: string
@@ -81,24 +80,7 @@ export type GetContractsErrorResponseBody = APIError<null>
 export type GetContractSummariesRequestParams = {}
 export type GetContractSummariesRequestQuery = {}
 export type GetContractSummariesRequestBody = {}
-export type GetContractSummariesResponseBody =
-  | {
-      id: string
-      offerId: string
-      type: 'bid' | 'ask'
-      creationDate: Date
-      lastModified: Date
-      paymentMade?: Date
-      tradeStatus: TradeStatus
-      amount: number
-      price: number
-      currency: Currency
-      disputeWinner?: Contract['disputeWinner']
-      disputeOutcomeAcknowledged: boolean
-      unreadMessages: number
-      releaseTxId?: string
-      isChatActive: boolean
-    }[]
+export type GetContractSummariesResponseBody = ContractSummary[]
 export type GetContractSummariesErrorResponseBody = APIError<null>
 
 export type PostChatRequestParams = { contractId: string }

@@ -80,3 +80,20 @@ export type Contract = {
   unreadMessages: number
   isChatActive: boolean
 }
+
+export type ContractSummary = {
+  id: string
+  offerId: string
+  type: 'bid' | 'ask'
+  creationDate: Date
+  lastModified: Date
+  paymentMade?: Date
+  tradeStatus: TradeStatus
+  disputeWinner?: Contract['disputeWinner']
+  unreadMessages: number
+  amount: number
+  price: number
+  currency: Currency
+  releaseTxId?: string
+  isChatActive: boolean
+}
