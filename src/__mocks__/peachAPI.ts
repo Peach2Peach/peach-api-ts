@@ -2,20 +2,21 @@ import { BIP32Interface } from 'bip32'
 import { chatMessages } from './data/chatMessages'
 import { contract } from './data/contract'
 import { contractSummary } from './data/contractSummary'
+import { defaultFundingStatus } from './data/fundingStatus'
 import { offerSummary } from './data/offerSummary'
 import { sellOffer } from './data/sellOffer'
 import { defaultUser } from './data/user'
 
-const apiSuccess = () => Promise.resolve({ result: { success: true }, error: null })
+const apiSuccess = () => Promise.resolve({ result: { success: true } })
 
 const peachAPIMethods = {
   private: {
     contract: {
       acknowledgeDispute: apiSuccess,
       cancelContract: apiSuccess,
-      getChat: () => Promise.resolve({ result: chatMessages.slice(0, 22), error: null }),
-      getContract: () => Promise.resolve({ result: contract, error: null }),
-      getContractSummaries: () => Promise.resolve({ result: [contractSummary], error: null }),
+      getChat: () => Promise.resolve({ result: chatMessages.slice(0, 22) }),
+      getContract: () => Promise.resolve({ result: contract }),
+      getContractSummaries: () => Promise.resolve({ result: [contractSummary] }),
       raiseDispute: apiSuccess,
       rateUser: apiSuccess,
     },
@@ -23,18 +24,45 @@ const peachAPIMethods = {
       postSellOffer: () =>
         Promise.resolve({
           result: sellOffer,
-          error: null,
         }),
-      getOfferSummaries: () => Promise.resolve({ result: [offerSummary], error: null }),
+      getOfferSummaries: () => Promise.resolve({ result: [offerSummary] }),
+      confirmEscrow: apiSuccess,
+      createEscrow: () =>
+        Promise.resolve({
+          result: {
+            offerId: '38',
+            escrow: 'escrow',
+            funding: defaultFundingStatus,
+          },
+        }),
+      getFundingStatus: () =>
+        Promise.resolve({
+          result: {
+            funding: defaultFundingStatus,
+            userConfirmationRequired: false,
+            returnAddress: '',
+            escrow: '',
+            offerId: '',
+          },
+        }),
+      refundSellOffer: apiSuccess,
+      getRefundPSBT: () =>
+        Promise.resolve({ result: { psbt: 'psbt', returnAddress: '', amount: 21, satsPerByte: 21, fees: 21 } }),
+      patchOffer: apiSuccess,
+      unmatchOffer: apiSuccess,
+      getMatches: () => Promise.resolve({ result: { matches: ['match'], nextPage: undefined } }),
+      republishSellOffer: () => Promise.resolve({ result: { newOfferId: 'newOfferId' } }),
+      matchOffer: apiSuccess,
+      getOffers: () => Promise.resolve({ result: { offers: [] } }),
     },
     user: {
-      getSelfUser: () => Promise.resolve({ result: defaultUser, error: null }),
+      getSelfUser: () => Promise.resolve({ result: defaultUser }),
       submitUserSource: apiSuccess,
     },
   },
   public: {
     user: {
-      checkReferralCode: () => Promise.resolve({ result: { valid: true }, error: null }),
+      checkReferralCode: () => Promise.resolve({ result: { valid: true } }),
     },
   },
 }

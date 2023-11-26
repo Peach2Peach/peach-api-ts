@@ -1,6 +1,6 @@
 import { APIError, APISuccess, Currency, Pricebook } from '../global'
-import { PublicMatch } from '../match'
-import { BuyOffer, FundingStatus, OfferPaymentData, OfferSummary, SellOffer, TradeStatus } from '../offer'
+import { Match } from '../match'
+import { BuyOffer, FundingStatus, OfferPaymentData, OfferSummary, SellOffer, Sorter, TradeStatus } from '../offer'
 import { MeansOfPayment, PaymentMethod } from '../payment'
 import { PublicUser } from '../user'
 
@@ -59,11 +59,11 @@ export type GetFundingStatusResponseBody = {
 export type GetFundingStatusErrorResponseBody = APIError<'NOT_FOUND' | 'BAD_REQUEST'>
 
 export type GetMatchesRequestParams = { offerId: string }
-export type GetMatchesRequestQuery = { page?: string; size?: string; sortBy?: string }
+export type GetMatchesRequestQuery = { page?: number; size?: number; sortBy?: Sorter[] }
 export type GetMatchesRequestBody = {}
 export type GetMatchesResponseBody = {
   offerId: string
-  matches: PublicMatch[]
+  matches: Match[]
   totalMatches: number
   nextPage: number
 }
@@ -115,7 +115,8 @@ export type MatchOfferRequestBody = {
   matchingOfferId: string
   currency: Currency
   paymentMethod: PaymentMethod
-  premium?: number
+  price: number
+  premium: number
   symmetricKeyEncrypted?: string
   symmetricKeySignature?: string
   paymentDataEncrypted?: string
@@ -147,7 +148,7 @@ export type PatchOfferRequestBody = {
   refundAddress?: string
   refundTx?: string
   premium?: number
-  maxPremium?: number
+  maxPremium?: number | null
 }
 export type PatchOfferResponseBody = APISuccess
 export type PatchOfferErrorResponseBody = APIError<'NOT_FOUND' | 'UNAUTHORIZED' | 'INVALID_SIGNATURE'>
@@ -169,7 +170,7 @@ export type PostSellOfferRequestBody = PostOfferRequestBody & {
 export type PostBuyOfferRequestBody = PostOfferRequestBody & {
   type: 'bid'
   amount: [number, number]
-  maxPremium?: number
+  maxPremium?: number | null
   releaseAddress: string
   messageSignature: string
 }

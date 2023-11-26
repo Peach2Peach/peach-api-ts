@@ -1,7 +1,7 @@
 import { Currency, Pricebook } from './global'
 import { OfferPaymentData } from './offer'
-import { MeansOfPayment } from './payment'
-import { PublicUser, TradingLimit, User } from './user'
+import { MeansOfPayment, PaymentMethod } from './payment'
+import { PublicUser, TradingLimit } from './user'
 
 export type MatchUnavailableReasons = {
   exceedsLimit: (keyof TradingLimit)[]
@@ -10,22 +10,19 @@ export type MatchUnavailableReasons = {
 export type Match = {
   creationDate: Date
   lastModified: Date
-  user: User
+  user: PublicUser
   offerId: string
   amount: number
   escrow?: string
   prices: Pricebook
   matchedPrice: number | null
-  premium: number | null
+  premium: number
   meansOfPayment: MeansOfPayment
   paymentData?: OfferPaymentData
   selectedCurrency?: Currency
-  selectedPaymentMethod?: PaymentMethodChangeEvent
+  selectedPaymentMethod?: PaymentMethod
   symmetricKeyEncrypted: string
   symmetricKeySignature: string
   matched: boolean
   unavailable: MatchUnavailableReasons
 }
-export type PublicMatch = Omit<Match, 'user'> & { user: PublicUser }
-
-export type SortBy = 'bestReputation' | 'highestAmount' | 'highestPrice' | 'lowestPremium'

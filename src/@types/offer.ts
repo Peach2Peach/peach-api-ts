@@ -136,3 +136,8 @@ export type OfferSummary = {
   txId?: string
   fundingTxId?: string
 }
+
+type BuySorter = 'highestAmount' | 'lowestPremium' | 'bestReputation'
+type SellSorter = 'highestPrice' | 'bestReputation'
+
+export type Sorter = BuySorter | SellSorter
