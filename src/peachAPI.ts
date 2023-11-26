@@ -34,7 +34,7 @@ export const peachAPI = (options: PeachAPIOptions) => {
       setTimeout(authenticate, authToken?.expiry - Date.now() - PREFETCH_ACCESS_TOKEN)
       return authToken
     }
-    throw Error('Missing peach account')
+    return undefined
   }
 
   const isAuthenticated = () => !!authToken?.accessToken
@@ -99,7 +99,7 @@ export class PeachAPI {
       setTimeout(this.authenticate, this.authToken?.expiry - Date.now() - PREFETCH_ACCESS_TOKEN)
       return this.authToken
     }
-    throw Error('Missing peach account')
+    return undefined
   }
 
   isAuthenticated() {
