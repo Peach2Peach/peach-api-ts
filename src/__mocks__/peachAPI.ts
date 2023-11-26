@@ -2,6 +2,7 @@ import { BIP32Interface } from 'bip32'
 import { chatMessages } from './data/chatMessages'
 import { contract } from './data/contract'
 import { contractSummary } from './data/contractSummary'
+import { estimatedFees } from './data/estimatedFees'
 import { defaultFundingStatus } from './data/fundingStatus'
 import { offerSummary } from './data/offerSummary'
 import { sellOffer } from './data/sellOffer'
@@ -64,6 +65,9 @@ const peachAPIMethods = {
     user: {
       checkReferralCode: () => Promise.resolve({ result: { valid: true } }),
     },
+    bitcoin: {
+      getFeeEstimate: () => Promise.resolve({ result: estimatedFees }),
+    },
   },
 }
 
@@ -74,6 +78,8 @@ export const peachAPI = () => ({
 
 export class PeachAPI {
   private = peachAPIMethods.private
+
+  public = peachAPIMethods.public
 
   peachAccount: BIP32Interface | null = null
 
