@@ -65,6 +65,7 @@ const peachAPIMethods = {
   public: {
     user: {
       checkReferralCode: () => Promise.resolve({ result: { valid: true } }),
+      getUser: () => Promise.resolve({ result: defaultUser }),
     },
     bitcoin: {
       getFeeEstimate: () => Promise.resolve({ result: estimatedFees }),
