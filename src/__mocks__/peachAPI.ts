@@ -71,6 +71,15 @@ const peachAPIMethods = {
     contact: {
       sendReport: apiSuccess,
     },
+    market: {
+      marketPrices: () =>
+        Promise.resolve({
+          result: {
+            EUR: 21000,
+            CHF: 21000,
+          },
+        }),
+    },
   },
 }
 
