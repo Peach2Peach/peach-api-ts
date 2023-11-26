@@ -84,6 +84,9 @@ const peachAPIMethods = {
     events: {
       getEvents: () => Promise.resolve({ result: { events: [belgianBTCEmbassy, decouvreBTC] } }),
     },
+    system: {
+      getInfo: () => Promise.resolve({ result: { info: 'info' } }),
+    },
   },
 }
 

@@ -27,4 +27,4 @@ export type GetStatusResponseBody = {
   status: 'online'
   serverTime: number
 }
-export type GetStatusErrorResponseBody = APIError<null>
+export type GetStatusErrorResponseBody = APIError<'HUMAN_VERIFICATION_REQUIRED'>
