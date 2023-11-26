@@ -3,6 +3,7 @@ import { chatMessages } from './data/chatMessages'
 import { contract } from './data/contract'
 import { contractSummary } from './data/contractSummary'
 import { estimatedFees } from './data/estimatedFees'
+import { belgianBTCEmbassy, decouvreBTC } from './data/events'
 import { defaultFundingStatus } from './data/fundingStatus'
 import { offerSummary } from './data/offerSummary'
 import { sellOffer } from './data/sellOffer'
@@ -79,6 +80,9 @@ const peachAPIMethods = {
             CHF: 21000,
           },
         }),
+    },
+    events: {
+      getEvents: () => Promise.resolve({ result: { events: [belgianBTCEmbassy, decouvreBTC] } }),
     },
   },
 }
