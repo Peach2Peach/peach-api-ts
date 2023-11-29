@@ -60,6 +60,7 @@ const peachAPIMethods = {
     user: {
       getSelfUser: () => Promise.resolve({ result: defaultUser }),
       submitUserSource: apiSuccess,
+      getUserStatus: () => Promise.resolve({ result: { blocked: false, trades: 0 } }),
     },
   },
   public: {
