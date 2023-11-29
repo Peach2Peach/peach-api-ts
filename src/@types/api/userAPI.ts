@@ -43,7 +43,7 @@ export type GetUserErrorResponseBody = APIError<null>
 export type GetUserStatusRequestParams = { userId: string }
 export type GetUserStatusRequestQuery = {}
 export type GetUserStatusRequestBody = {}
-export type GetUserStatusResponseBody = { isBlocked: boolean }
+export type GetUserStatusResponseBody = { isBlocked: boolean; trades: number }
 export type GetUserStatusErrorResponseBody = APIError<null>
 
 export type BlockUserRequestParams = { userId: string }
