@@ -70,6 +70,7 @@ const peachAPIMethods = {
       deletePaymentHash: apiSuccess,
       enableTransactionBatching: apiSuccess,
       getUserPaymentMethodInfo: () => Promise.resolve({ result: { forbidden: { buy: [], sell: [] } } }),
+      updateUser: apiSuccess,
     },
   },
   public: {

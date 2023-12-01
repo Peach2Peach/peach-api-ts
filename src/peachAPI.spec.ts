@@ -1,5 +1,5 @@
-import { createTestWallet } from '../test/unit/helpers/createTestWallet'
 import { peachAPI } from './peachAPI'
+import { createTestWallet } from './test/helpers/createTestWallet'
 import { PeachAPIOptions } from './types'
 
 describe('peachAPI', () => {

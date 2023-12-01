@@ -1,4 +1,4 @@
-import { createTestWallet } from '../../test/unit/helpers/createTestWallet'
+import { createTestWallet } from '../test/helpers/createTestWallet'
 import { peachAccountSet } from './peachAccountSet'
 
 describe('peachAccountSet', () => {
