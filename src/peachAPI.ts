@@ -15,7 +15,7 @@ export const peachAPI = (options: PeachAPIOptions) => {
   const publicHelpers: PublicPeachAPIHelpers = {
     getPublicHeaders: (url: string) => getPublicHeaders(url, options.userAgent),
   }
-  let authToken: Awaited<ReturnType<ReturnType<typeof fetchAccessToken>>>
+  let authToken: { accessToken: string; expiry: number } | undefined
   let clientServerTimeDifference = 0
 
   const adjustClientServerTimeDifference = async () => {
@@ -28,11 +28,12 @@ export const peachAPI = (options: PeachAPIOptions) => {
     const message = getAuthenticationChallenge(clientServerTimeDifference)
 
     if (peachAccountSet(apiOptions)) {
-      authToken = await fetchAccessToken(apiOptions, publicHelpers)(message)
-      if (!authToken) return undefined
+      const { accessToken, error } = await fetchAccessToken(apiOptions, publicHelpers)(message)
+      authToken = accessToken
+      if (!authToken) return { authToken, error }
 
       setTimeout(authenticate, authToken?.expiry - Date.now() - PREFETCH_ACCESS_TOKEN)
-      return authToken
+      return { authToken, error }
     }
     return undefined
   }
@@ -60,7 +61,7 @@ export class PeachAPI {
 
   helpers: PeachAPIHelpers
 
-  authToken: Awaited<ReturnType<ReturnType<typeof fetchAccessToken>>> | undefined
+  authToken: { accessToken: string; expiry: number } | undefined
 
   clientServerTimeDifference = 0
 
@@ -93,11 +94,12 @@ export class PeachAPI {
     const message = getAuthenticationChallenge(this.clientServerTimeDifference)
 
     if (peachAccountSet(this.options)) {
-      this.authToken = await fetchAccessToken(this.options, this.helpers)(message)
-      if (!this.authToken) return undefined
+      const { accessToken, error } = await fetchAccessToken(this.options, this.helpers)(message)
+      this.authToken = accessToken
+      if (!this.authToken) return { authToken: this.authToken, error }
 
       setTimeout(this.authenticate, this.authToken?.expiry - Date.now() - PREFETCH_ACCESS_TOKEN)
-      return this.authToken
+      return { authToken: this.authToken, error }
     }
     return undefined
   }

@@ -1,11 +1,12 @@
+import { BIP32Interface } from 'bip32'
 import { crypto } from 'bitcoinjs-lib'
 import { auth } from '../private/user/auth'
 import { PeachAPIOptions, PublicPeachAPIHelpers } from '../types'
 
 export const fetchAccessToken =
-  (options: Required<PeachAPIOptions>, helpers: PublicPeachAPIHelpers) => async (message: string) => {
-    if (!options.peachAccount) return undefined
-    const authResult = await auth(
+  (options: PeachAPIOptions & { peachAccount: BIP32Interface }, helpers: PublicPeachAPIHelpers) =>
+  async (message: string) => {
+    const { result, error } = await auth(
       options,
       helpers
     )({
@@ -15,10 +16,13 @@ export const fetchAccessToken =
       uniqueId: options.uniqueId,
     })
 
-    if (!authResult.isOk()) return undefined
+    if (!result) return { error, accessToken: undefined }
 
     return {
-      accessToken: `Basic ${Buffer.from(authResult.getValue().accessToken)}`,
-      expiry: authResult.getValue().expiry,
+      accessToken: {
+        accessToken: `Basic ${Buffer.from(result.accessToken)}`,
+        expiry: result.expiry,
+      },
+      error: undefined,
     }
   }
