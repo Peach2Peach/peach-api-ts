@@ -112,12 +112,14 @@ export class PeachAPI {
 
   public = peachAPIMethods.public
 
-  peachAccount: BIP32Interface | null = null
+  options: { peachAccount: BIP32Interface | null } = {
+    peachAccount: null,
+  }
 
   authToken: { accessToken: string; expiry: number } | undefined
 
   setPeachAccount(peachAccount: BIP32Interface) {
-    this.peachAccount = peachAccount
+    this.options.peachAccount = peachAccount
     return peachAccount
   }
 
