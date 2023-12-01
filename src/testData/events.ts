@@ -1,4 +1,4 @@
-import { BitcoinEvent } from '../../@types/events'
+import { BitcoinEvent } from '../@types/events'
 
 export const belgianBTCEmbassy: BitcoinEvent = {
   id: 'be.antwerp.belgian-btc-embassy',

@@ -1,4 +1,4 @@
-import { OfferSummary } from '../../@types/offer'
+import { OfferSummary } from '../@types/offer'
 
 export const offerSummary: OfferSummary = {
   id: '456',

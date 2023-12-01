@@ -5,6 +5,7 @@ import { deletePaymentHash } from './deletePaymentHash'
 import { enableTransactionBatching } from './enableBatching'
 import { getSelfUser } from './getSelfUser'
 import { getTradingLimit } from './getTradingLimit'
+import { getUserPaymentMethodInfo } from './getUserPaymentMethodInfo'
 import { getUserStatus } from './getUserStatus'
 import { logoutUser } from './logoutUser'
 import { redeemNoPeachFees } from './redeemNoPeachFees'
@@ -13,7 +14,6 @@ import { register } from './register'
 import { sumbitUserSource } from './submitUserSource'
 import { unblockUser } from './unblockUser'
 import { updateUser } from './updateUser'
-import { getUserPaymentMethodInfo } from './userPaymentMethodInfo'
 
 export const privateUserAPI = (options: PeachAPIOptions, helpers: PeachAPIHelpers) => ({
   auth: auth(options, helpers),

@@ -1,5 +1,6 @@
-import { SellOffer } from '../../@types/offer'
-import { validSEPADataHashes } from './paymentData'
+import { BuyOffer, SellOffer } from '../@types/offer'
+import { twintDataHashes, validSEPADataHashes } from './paymentData'
+import { defaultUser } from './user'
 
 export const sellOffer: SellOffer = {
   creationDate: new Date('2022-03-08T11:41:07.245Z'),
@@ -53,4 +54,31 @@ export const sellOffer: SellOffer = {
   },
   fundingAmountDifferent: false,
   publicKey: 'TODO add public key',
+}
+
+export const buyOffer: BuyOffer = {
+  creationDate: new Date('2022-03-08T11:41:07.245Z'),
+  publishingDate: new Date('2022-03-08T11:41:07.245Z'),
+  lastModified: new Date('2022-03-08T11:41:07.245Z'),
+  id: '37',
+  online: true,
+  type: 'bid',
+  meansOfPayment: {
+    EUR: ['sepa'],
+    CHF: ['twint'],
+  },
+  paymentData: {
+    sepa: { hashes: validSEPADataHashes },
+    twint: { hashes: twintDataHashes },
+  },
+  amount: [50000, 250000],
+  matches: [],
+  doubleMatched: false,
+  releaseAddress: 'bcrt1q70z7vw93cxs6jx7nav9cmcn5qvlv362qfudnqmz9fnk2hjvz5nus4c0fuh',
+  tradeStatus: 'searchingForPeer',
+  maxPremium: null,
+  user: defaultUser,
+  escrowFee: 0.0001,
+  freeTrade: false,
+  message: 'TODO add message',
 }

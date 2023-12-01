@@ -1,4 +1,4 @@
-import { Contract } from '../../@types/contract'
+import { Contract } from '../@types/contract'
 
 /* eslint-disable max-len */
 export const contract: Contract = {

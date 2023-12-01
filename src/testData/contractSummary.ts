@@ -1,4 +1,4 @@
-import { ContractSummary } from '../../@types/contract'
+import { ContractSummary } from '../@types/contract'
 
 export const contractSummary: ContractSummary = {
   id: '123-456',

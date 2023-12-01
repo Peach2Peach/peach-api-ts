@@ -1,13 +1,13 @@
 import { BIP32Interface } from 'bip32'
-import { chatMessages } from './data/chatMessages'
-import { contract } from './data/contract'
-import { contractSummary } from './data/contractSummary'
-import { estimatedFees } from './data/estimatedFees'
-import { belgianBTCEmbassy, decouvreBTC } from './data/events'
-import { defaultFundingStatus } from './data/fundingStatus'
-import { offerSummary } from './data/offerSummary'
-import { sellOffer } from './data/sellOffer'
-import { defaultUser } from './data/user'
+import { chatMessages } from '../testData/chatMessages'
+import { contract } from '../testData/contract'
+import { contractSummary } from '../testData/contractSummary'
+import { estimatedFees } from '../testData/estimatedFees'
+import { belgianBTCEmbassy, decouvreBTC } from '../testData/events'
+import { defaultFundingStatus } from '../testData/fundingStatus'
+import { offerSummary } from '../testData/offerSummary'
+import { sellOffer } from '../testData/offers'
+import { defaultUser } from '../testData/user'
 
 const apiSuccess = () => Promise.resolve({ result: { success: true } })
 
@@ -56,11 +56,20 @@ const peachAPIMethods = {
       republishSellOffer: () => Promise.resolve({ result: { newOfferId: 'newOfferId' } }),
       matchOffer: apiSuccess,
       getOffers: () => Promise.resolve({ result: { offers: [] } }),
+      getOfferDetails: () => Promise.resolve({ result: sellOffer }),
+      cancelOffer: () => Promise.resolve({ result: { psbt: 'psbt' } }),
     },
     user: {
       getSelfUser: () => Promise.resolve({ result: defaultUser }),
       submitUserSource: apiSuccess,
       getUserStatus: () => Promise.resolve({ result: { blocked: false, trades: 0, badExperience: false } }),
+      logoutUser: apiSuccess,
+      auth: apiSuccess,
+      redeemNoPeachFees: () => Promise.resolve({ result: { success: true, bonusPoints: 10 } }),
+      redeemReferralCode: () => Promise.resolve({ result: { success: true, bonusPoints: 0 } }),
+      deletePaymentHash: apiSuccess,
+      enableTransactionBatching: apiSuccess,
+      getUserPaymentMethodInfo: () => Promise.resolve({ result: { forbidden: { buy: [], sell: [] } } }),
     },
   },
   public: {

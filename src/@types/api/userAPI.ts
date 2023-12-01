@@ -79,7 +79,7 @@ export type UnlinkPaymentHashRequestParams = {}
 export type UnlinkPaymentHashRequestQuery = {}
 export type UnlinkPaymentHashRequestBody = { hashes: string[] }
 export type UnlinkPaymentHashResponseBody = APISuccess
-export type UnlinkPaymentHashErrorResponseBody = APIError<null>
+export type UnlinkPaymentHashErrorResponseBody = APIError<'AUTHENTICATION_FAILED'>
 
 export type CheckReferralCodeRequestParams = {}
 export type CheckReferralCodeRequestQuery = { code: string }
