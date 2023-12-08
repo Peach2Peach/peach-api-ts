@@ -1,6 +1,15 @@
 import { APIError, APISuccess, Currency, Pricebook } from '../global'
 import { Match } from '../match'
-import { BuyOffer, FundingStatus, OfferPaymentData, OfferSummary, SellOffer, Sorter, TradeStatus } from '../offer'
+import {
+  BuyOffer,
+  FundingStatus,
+  InstantTradeCriteria,
+  OfferPaymentData,
+  OfferSummary,
+  SellOffer,
+  Sorter,
+  TradeStatus,
+} from '../offer'
 import { MeansOfPayment, PaymentMethod } from '../payment'
 import { PublicUser } from '../user'
 
@@ -166,6 +175,7 @@ export type PostSellOfferRequestBody = PostOfferRequestBody & {
   premium?: number
   returnAddress?: string
   multi?: number
+  instantTradeCriteria?: InstantTradeCriteria
 }
 export type PostBuyOfferRequestBody = PostOfferRequestBody & {
   type: 'bid'

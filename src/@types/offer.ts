@@ -1,6 +1,6 @@
 import { Pricebook } from './global'
 import { MeansOfPayment, PaymentMethod } from './payment'
-import { PublicUser } from './user'
+import { Medal, PublicUser } from './user'
 
 export type FundingStatus = {
   status: 'NULL' | 'MEMPOOL' | 'FUNDED' | 'WRONG_FUNDING_AMOUNT' | 'CANCELED'
@@ -66,7 +66,10 @@ export type PaymentMethodCountry =
   | 'FI'
 
 export type OfferPaymentData = Partial<
-  Record<PaymentMethod, { hashes: string[]; hash?: string; country?: PaymentMethodCountry }>
+  Record<
+    PaymentMethod,
+    { hashes: string[]; hash?: string; country?: PaymentMethodCountry; encrypted?: string; signature?: string }
+  >
 >
 
 export type Offer = {
@@ -141,3 +144,9 @@ type BuySorter = 'highestAmount' | 'lowestPremium' | 'bestReputation'
 type SellSorter = 'highestPrice' | 'bestReputation'
 
 export type Sorter = BuySorter | SellSorter
+
+export type InstantTradeCriteria = {
+  minReputation: number
+  minTrades: number
+  badges: Medal[]
+}
