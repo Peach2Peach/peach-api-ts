@@ -77,6 +77,7 @@ export const buyOffer: BuyOffer = {
   releaseAddress: 'bcrt1q70z7vw93cxs6jx7nav9cmcn5qvlv362qfudnqmz9fnk2hjvz5nus4c0fuh',
   tradeStatus: 'searchingForPeer',
   maxPremium: null,
+  minReputation: null,
   user: defaultUser,
   escrowFee: 0.0001,
   freeTrade: false,
