@@ -19,13 +19,23 @@ export const postBuyOffer =
     paymentData,
     releaseAddress,
     maxPremium,
+    minReputation,
     messageSignature,
     signal,
   }: Props) => {
     const response = await fetch(`${url}/v1/offer`, {
       headers: helpers.getPrivateHeaders(url),
       method: 'POST',
-      body: JSON.stringify({ type, amount, meansOfPayment, paymentData, releaseAddress, maxPremium, messageSignature }),
+      body: JSON.stringify({
+        type,
+        amount,
+        meansOfPayment,
+        paymentData,
+        releaseAddress,
+        maxPremium,
+        minReputation,
+        messageSignature,
+      }),
       signal,
     })
 

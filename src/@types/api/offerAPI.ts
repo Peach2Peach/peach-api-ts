@@ -151,14 +151,18 @@ export type MatchOfferErrorResponseBody = APIError<
   | 'OFFER_TAKEN'
 >
 
+export type MatchFilter = {
+  maxPremium?: number | null
+  minReputation?: number | null
+}
+
 export type PatchOfferRequestParams = { offerId: string }
 export type PatchOfferRequestQuery = {}
 export type PatchOfferRequestBody = {
   refundAddress?: string
   refundTx?: string
   premium?: number
-  maxPremium?: number | null
-}
+} & MatchFilter
 export type PatchOfferResponseBody = APISuccess
 export type PatchOfferErrorResponseBody = APIError<'NOT_FOUND' | 'UNAUTHORIZED' | 'INVALID_SIGNATURE'>
 
@@ -180,10 +184,9 @@ export type PostSellOfferRequestBody = PostOfferRequestBody & {
 export type PostBuyOfferRequestBody = PostOfferRequestBody & {
   type: 'bid'
   amount: [number, number]
-  maxPremium?: number | null
   releaseAddress: string
   messageSignature: string
-}
+} & MatchFilter
 export type PostOfferResponseBody = BuyOffer | SellOffer | (BuyOffer | SellOffer)[]
 export type PostOfferErrorResponseBody = APIError<
   'TRADING_LIMIT_REACHED' | 'INVALID_SIGNATURE' | 'PAYMENT_HASH_INVALID' | 'PGP_MISSING'

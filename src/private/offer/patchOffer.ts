@@ -12,7 +12,7 @@ type Props = RequestProps & PatchOfferRequestParams & PatchOfferRequestQuery & P
 
 export const patchOffer =
   ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
-  async ({ offerId, refundAddress, refundTx, premium, maxPremium, signal }: Props) => {
+  async ({ offerId, refundAddress, refundTx, premium, maxPremium, minReputation, signal }: Props) => {
     const response = await fetch(`${url}/v1/offer/${offerId}`, {
       headers: helpers.getPrivateHeaders(url),
       method: 'PATCH',
@@ -21,6 +21,7 @@ export const patchOffer =
         refundTx,
         premium,
         maxPremium,
+        minReputation,
       }),
       signal,
     })
