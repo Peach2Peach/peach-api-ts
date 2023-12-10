@@ -1,3 +1,4 @@
+import { MatchFilter } from './api/offerAPI'
 import { Pricebook } from './global'
 import { MeansOfPayment, PaymentMethod } from './payment'
 import { Medal, PublicUser } from './user'
@@ -123,8 +124,7 @@ export type BuyOffer = Offer & {
   amount: [number, number]
   message: string
   messageSignature?: string
-  maxPremium: number | null
-}
+} & Required<MatchFilter>
 
 export type OfferSummary = {
   id: string
