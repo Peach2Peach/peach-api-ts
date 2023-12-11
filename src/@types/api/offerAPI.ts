@@ -156,16 +156,6 @@ export type MatchFilter = {
   minReputation?: number | null
 }
 
-export type PatchOfferRequestParams = { offerId: string }
-export type PatchOfferRequestQuery = {}
-export type PatchOfferRequestBody = {
-  refundAddress?: string
-  refundTx?: string
-  premium?: number
-  releaseAddress?: string
-  messageSignature?: string
-} & MatchFilter
-export type PatchOfferResponseBody = APISuccess
 export type PatchOfferErrorResponseBody = APIError<'NOT_FOUND' | 'UNAUTHORIZED' | 'INVALID_SIGNATURE'>
 
 export type PostOfferRequestParams = {}
