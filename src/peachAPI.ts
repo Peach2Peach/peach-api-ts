@@ -8,7 +8,7 @@ import { getPublicHeaders } from './helpers/getPublicHeaders'
 import { peachAccountSet } from './helpers/peachAccountSet'
 import { peachAPIPrivate } from './private/peachAPIPrivate'
 import { peachAPIPublic } from './public/peachAPIPublic'
-import { PeachAPIHelpers, PeachAPIOptions, PublicPeachAPIHelpers } from './types'
+import { PeachAPIOptions, PublicPeachAPIHelpers } from './types'
 
 export const peachAPI = (options: PeachAPIOptions) => {
   const apiOptions = options
@@ -45,6 +45,8 @@ export const peachAPI = (options: PeachAPIOptions) => {
     getPrivateHeaders: (url: string) => getPrivateHeaders(url, authToken?.accessToken || '', options.userAgent),
   }
 
+  if (options?.peachAccount) authenticate()
+
   return {
     public: peachAPIPublic(apiOptions, helpers),
     private: peachAPIPrivate(apiOptions, helpers),
@@ -53,58 +55,5 @@ export const peachAPI = (options: PeachAPIOptions) => {
     isAuthenticated,
     apiOptions,
     adjustClientServerTimeDifference,
-  }
-}
-
-export class PeachAPI {
-  options: PeachAPIOptions
-
-  helpers: PeachAPIHelpers
-
-  authToken: { accessToken: string; expiry: number } | undefined
-
-  clientServerTimeDifference = 0
-
-  public: ReturnType<typeof peachAPIPublic>
-
-  private: ReturnType<typeof peachAPIPrivate>
-
-  constructor(options: PeachAPIOptions) {
-    this.options = options
-    this.helpers = {
-      getPublicHeaders: (url: string) => getPublicHeaders(url, options.userAgent),
-      getPrivateHeaders: (url: string) => getPrivateHeaders(url, this.authToken?.accessToken || '', options.userAgent),
-    }
-    this.public = peachAPIPublic(options, this.helpers)
-    this.private = peachAPIPrivate(options, this.helpers)
-    this.authenticate()
-  }
-
-  async adjustClientServerTimeDifference() {
-    this.clientServerTimeDifference = await calculateClientServerTimeDifference(this.options, this.helpers)
-  }
-
-  setPeachAccount(peachAccount: BIP32Interface | null) {
-    this.options.peachAccount = peachAccount
-    this.private = peachAPIPrivate(this.options, this.helpers)
-    this.public = peachAPIPublic(this.options, this.helpers)
-  }
-
-  async authenticate() {
-    const message = getAuthenticationChallenge(this.clientServerTimeDifference)
-
-    if (peachAccountSet(this.options)) {
-      const { accessToken, error } = await fetchAccessToken(this.options, this.helpers)(message)
-      this.authToken = accessToken
-      if (!this.authToken) return { authToken: this.authToken, error }
-
-      setTimeout(this.authenticate, this.authToken?.expiry - Date.now() - PREFETCH_ACCESS_TOKEN)
-      return { authToken: this.authToken, error }
-    }
-    return undefined
-  }
-
-  isAuthenticated() {
-    return !!this.authToken?.accessToken
   }
 }
