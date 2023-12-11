@@ -162,6 +162,8 @@ export type PatchOfferRequestBody = {
   refundAddress?: string
   refundTx?: string
   premium?: number
+  releaseAddress?: string
+  messageSignature?: string
 } & MatchFilter
 export type PatchOfferResponseBody = APISuccess
 export type PatchOfferErrorResponseBody = APIError<'NOT_FOUND' | 'UNAUTHORIZED' | 'INVALID_SIGNATURE'>
