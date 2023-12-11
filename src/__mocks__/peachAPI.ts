@@ -100,32 +100,10 @@ const peachAPIMethods = {
       getInfo: () => Promise.resolve({ result: { info: 'info' } }),
     },
   },
+  authenticate: () => ({ authToken: 'authToken' }),
 }
 
 export const peachAPI = () => ({
   ...peachAPIMethods,
   setPeachAccount: (peachAccount: BIP32Interface) => peachAccount,
 })
-
-export class PeachAPI {
-  private = peachAPIMethods.private
-
-  public = peachAPIMethods.public
-
-  options: { peachAccount: BIP32Interface | null } = {
-    peachAccount: null,
-  }
-
-  authToken: { accessToken: string; expiry: number } | undefined
-
-  setPeachAccount(peachAccount: BIP32Interface) {
-    this.options.peachAccount = peachAccount
-    return peachAccount
-  }
-
-  async authenticate() {
-    const newToken = await Promise.resolve({ accessToken: 'accessToken', expiry: new Date('2021-01-01').getTime() })
-    this.authToken = newToken
-    return this.authToken
-  }
-}
