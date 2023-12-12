@@ -9,6 +9,8 @@ export type PaymentReminder = 'sixHours' | 'oneHour' | 'final'
 
 export type TradeParticipant = 'seller' | 'buyer'
 
+export type EncryptionMethod = 'aes256' | 'asymmetric'
+
 export type Contract = {
   creationDate: Date
   lastModified: Date
@@ -79,6 +81,7 @@ export type Contract = {
   isEmailRequired: boolean
   unreadMessages: number
   isChatActive: boolean
+  paymentDataEncryptionMethod: EncryptionMethod
 }
 
 export type ContractSummary = {
