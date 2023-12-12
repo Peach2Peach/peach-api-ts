@@ -91,4 +91,5 @@ export const contract: Contract = {
   disputeOutcomeAcknowledgedBy: [],
   paymentDataEncrypted: '',
   paymentDataSignature: '',
+  paymentDataEncryptionMethod: 'aes256',
 }
