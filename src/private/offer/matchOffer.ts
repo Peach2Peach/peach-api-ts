@@ -23,6 +23,7 @@ export const matchOffer =
     symmetricKeySignature,
     paymentDataEncrypted,
     paymentDataSignature,
+    instantTrade,
     signal,
   }: Props) => {
     const response = await fetch(`${url}/v1/offer/${offerId}/match`, {
@@ -37,6 +38,7 @@ export const matchOffer =
         symmetricKeySignature,
         paymentDataEncrypted,
         paymentDataSignature,
+        instantTrade,
       }),
       method: 'POST',
       signal,

@@ -130,6 +130,7 @@ export type MatchOfferRequestBody = {
   symmetricKeySignature?: string
   paymentDataEncrypted?: string
   paymentDataSignature?: string
+  instantTrade?: boolean
 }
 export type MatchOfferResponseBody =
   | {
