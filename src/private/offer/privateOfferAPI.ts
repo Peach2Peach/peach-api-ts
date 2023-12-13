@@ -15,6 +15,8 @@ import { postBuyOffer } from './postBuyOffer'
 import { postSellOffer } from './postSellOffer'
 import { refundSellOffer } from './refundSellOffer'
 import { republishSellOffer } from './republishSellOffer'
+import { searchOfferSummaries } from './searchOfferSummaries'
+import { searchOffers } from './searchOffers'
 import { unmatchOffer } from './unmatchOffer'
 
 export const privateOfferAPI = (options: PeachAPIOptions, helpers: PeachAPIHelpers) => ({
@@ -34,5 +36,7 @@ export const privateOfferAPI = (options: PeachAPIOptions, helpers: PeachAPIHelpe
   postSellOffer: postSellOffer(options, helpers),
   refundSellOffer: refundSellOffer(options, helpers),
   republishSellOffer: republishSellOffer(options, helpers),
+  searchOffers: searchOffers(options, helpers),
+  searchOfferSummaries: searchOfferSummaries(options, helpers),
   unmatchOffer: unmatchOffer(options, helpers),
 })

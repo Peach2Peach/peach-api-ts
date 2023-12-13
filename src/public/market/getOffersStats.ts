@@ -18,6 +18,7 @@ export const getOffersStats =
   async ({ signal }: RequestProps = {}) => {
     const response = await fetch(`${url}/v1/market/offers/stats`, {
       headers: helpers.getPublicHeaders(url),
+      method: 'GET',
       signal,
     })
     return parseResponse<GetRealTimeOfferDataResponseBody, GetRealTimeOfferDataErrorResponseBody>(response)
