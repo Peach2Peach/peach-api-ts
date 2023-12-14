@@ -8,6 +8,7 @@ type SearchOffersSummaryRequestBody = {
   type?: 'ask' | 'bid'
   amount?: number | [number, number]
   meansOfPayment?: MeansOfPayment
+  premium?: number
   maxPremium?: number
   minReputation?: number
 }
@@ -19,8 +20,8 @@ type Props = RequestProps & SearchOffersSummaryRequestBody
 
 export const searchOfferSummaries =
   ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
-  async ({ signal, type, amount, meansOfPayment, maxPremium, minReputation }: Props) => {
-    const requestBody = { type, amount, meansOfPayment, maxPremium, minReputation }
+  async ({ signal, type, amount, meansOfPayment, premium, maxPremium, minReputation }: Props) => {
+    const requestBody = { type, amount, meansOfPayment, premium, maxPremium, minReputation }
     const response = await fetch(`${url}/v1/offer/search/summary`, {
       headers: helpers.getPrivateHeaders(url),
       method: 'POST',
