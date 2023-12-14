@@ -1,4 +1,5 @@
 import { APIError } from '../../@types/global'
+import { BuyOffer, SellOffer } from '../../@types/offer'
 import { MeansOfPayment } from '../../@types/payment'
 import { parseResponse } from '../../helpers/parseResponse'
 import { PeachAPIHelpers, PeachAPIOptions, RequestProps } from '../../types'
@@ -11,8 +12,7 @@ type SearchOffersSummaryRequestBody = {
   minReputation?: number
 }
 type SearchOffersSummaryResponseBody = {
-  offers: number
-  avgPremium?: number
+  offers: (Pick<SellOffer, 'amount' | 'premium'> | Pick<BuyOffer, 'amount'>)[]
 }
 type SearchOffersSummaryErrorResponseBody = APIError<null>
 type Props = RequestProps & SearchOffersSummaryRequestBody
