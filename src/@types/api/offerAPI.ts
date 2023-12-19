@@ -126,6 +126,7 @@ export type MatchOfferRequestBody = {
   paymentMethod: PaymentMethod
   price: number
   premium: number
+  paymentData: OfferPaymentData
   symmetricKeyEncrypted?: string
   symmetricKeySignature?: string
   paymentDataEncrypted?: string
