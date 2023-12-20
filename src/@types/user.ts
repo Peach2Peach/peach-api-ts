@@ -33,6 +33,7 @@ export type User = {
   recentRating: number
   referralCode?: string
   referredTradingAmount: number
+  openedTrades: number
   trades: number
   uniqueId: string
   usedReferralCode?: string
