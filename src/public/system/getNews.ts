@@ -4,6 +4,7 @@ import { PeachAPIOptions, PublicPeachAPIHelpers, RequestProps } from '../../type
 
 type NewsItem = {
   text: string
+  shareText: string
   url: string
 }
 type GetNewsResponse = NewsItem[]
