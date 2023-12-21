@@ -21,6 +21,7 @@ export const defaultUser: User = {
   recentRating: 1,
   referralCode: 'PR0063',
   referredTradingAmount: 0,
+  openedTrades: 12,
   trades: 11,
   usedReferralCode: 'SATOSHI',
   userRating: 1,
