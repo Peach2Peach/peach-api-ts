@@ -96,6 +96,7 @@ export type RaiseDisputeRequestBody = {
   reason: DisputeReason
   message?: string
   symmetricKeyEncrypted: string
+  paymentDataSellerEncrypted?: string
 }
 export type RaiseDisputeResponseBody = APISuccess
 export type RaiseDisputeErrorResponseBody = APIError<'NOT_FOUND' | 'DUPLICATE' | 'INTERNAL_SERVER_ERROR'>
