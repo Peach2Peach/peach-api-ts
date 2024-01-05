@@ -1,6 +1,6 @@
 {
   "name": "peach-api-ts",
-  "version": "0.2.11",
+  "version": "0.4.0",
   "description": "Peach API wrapper for TypeScript",
   "main": "src/index.ts",
   "scripts": {
