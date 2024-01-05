@@ -87,16 +87,19 @@ export type Contract = {
 export type ContractSummary = {
   id: string
   offerId: string
+  newTradeId?: string
   type: 'bid' | 'ask'
   creationDate: Date
   lastModified: Date
   paymentMade?: Date
   tradeStatus: TradeStatus
-  disputeWinner?: Contract['disputeWinner']
-  unreadMessages: number
   amount: number
   price: number
   currency: Currency
+  disputeWinner?: Contract['disputeWinner']
+  disputeOutcomeAcknowledged: boolean
+  unreadMessages: number
   releaseTxId?: string
   isChatActive: boolean
+  refunded?: boolean
 }
