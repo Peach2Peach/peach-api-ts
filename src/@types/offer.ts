@@ -129,15 +129,17 @@ export type BuyOffer = Offer & {
 export type OfferSummary = {
   id: string
   type: 'bid' | 'ask'
-  contractId?: string
-  lastModified: Date
   creationDate: Date
+  lastModified: Date
   amount: number | [number, number]
   matches: string[]
   prices?: Pricebook
   tradeStatus: TradeStatus
+  contractId?: string
+  newTradeId?: string
   txId?: string
   fundingTxId?: string
+  refunded?: boolean
 }
 
 type BuySorter = 'highestAmount' | 'lowestPremium' | 'bestReputation'
