@@ -12,4 +12,5 @@ export const contractSummary: ContractSummary = {
   currency: 'EUR',
   unreadMessages: 0,
   isChatActive: false,
+  disputeOutcomeAcknowledged: false,
 }
