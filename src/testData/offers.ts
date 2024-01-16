@@ -1,6 +1,6 @@
 import { BuyOffer, SellOffer } from '../@types/offer'
 import { twintDataHashes, validSEPADataHashes } from './paymentData'
-import { defaultUser } from './user'
+import { defaultUser } from './userData'
 
 export const sellOffer: SellOffer = {
   creationDate: new Date('2022-03-08T11:41:07.245Z'),
@@ -50,8 +50,10 @@ export const sellOffer: SellOffer = {
       lost: 0,
       resolved: 0,
     },
-    pgpPublicKey: 'TODO add pgp public key',
-    pgpPublicKeyProof: 'TODO add pgp',
+
+    pgpPublicKey: defaultUser.pgpPublicKey,
+    pgpPublicKeyProof: defaultUser.pgpPublicKeyProof,
+    pgpPublicKeys: defaultUser.pgpPublicKeys,
   },
   fundingAmountDifferent: false,
   publicKey: 'TODO add public key',

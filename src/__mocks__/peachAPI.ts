@@ -7,7 +7,7 @@ import { belgianBTCEmbassy, decouvreBTC } from '../testData/events'
 import { defaultFundingStatus } from '../testData/fundingStatus'
 import { offerSummary } from '../testData/offerSummary'
 import { sellOffer } from '../testData/offers'
-import { defaultUser } from '../testData/user'
+import { defaultUser } from '../testData/userData'
 
 const apiSuccess = () => Promise.resolve({ result: { success: true } })
 

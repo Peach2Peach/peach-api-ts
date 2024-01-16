@@ -1,5 +1,5 @@
 import { Match } from '../@types/match'
-import { defaultUser } from './user'
+import { defaultUser } from './userData'
 
 export const match: Match = {
   user: defaultUser,

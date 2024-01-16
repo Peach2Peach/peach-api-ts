@@ -1,4 +1,4 @@
-import { User } from '../../@types/user'
+import { User } from '../@types/user'
 
 const pgpPublicKey =
   // eslint-disable-next-line max-len

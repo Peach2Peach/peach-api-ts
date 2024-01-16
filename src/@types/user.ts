@@ -8,6 +8,12 @@ export type Disputes = {
   lost: number
   resolved: number
 }
+
+type PGPPublicKeyProofPair = {
+  publicKey: string
+  proof: string
+}
+
 export type User = {
   banned: boolean
   bonusPoints: number
@@ -26,8 +32,15 @@ export type User = {
   maxFreeTrades?: number
   medals: Medal[]
   peachRating: number
+
+  /** @deprecated as of 0.4.2, use `pgpPublicKeys` */
   pgpPublicKey: string
+
+  /** @deprecated as of 0.4.2, use `pgpPublicKeys` */
   pgpPublicKeyProof: string
+
+  pgpPublicKeys: PGPPublicKeyProofPair[]
+
   rating: number
   ratingCount: number
   recentRating: number
