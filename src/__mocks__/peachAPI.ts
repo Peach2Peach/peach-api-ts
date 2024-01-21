@@ -94,7 +94,7 @@ const peachAPIMethods = {
         }),
     },
     events: {
-      getEvents: () => Promise.resolve({ result: { events: [belgianBTCEmbassy, decouvreBTC] } }),
+      getEvents: () => Promise.resolve({ result: [belgianBTCEmbassy, decouvreBTC] }),
     },
     system: {
       getInfo: () => Promise.resolve({ result: { info: 'info' } }),

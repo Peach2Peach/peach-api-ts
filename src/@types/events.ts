@@ -3,7 +3,6 @@ import { Country, Currency } from './global'
 export type BitcoinEvent = {
   id: string
   featured: boolean
-  superFeatured: boolean
   currencies: Currency[]
   country: Country
   city: string
