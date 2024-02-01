@@ -7,8 +7,7 @@ import {
   OfferPaymentData,
   OfferSummary,
   SellOffer,
-  Sorter,
-  TradeStatus,
+  Sorter
 } from '../offer'
 import { MeansOfPayment, PaymentMethod } from '../payment'
 import { PublicUser } from '../user'
@@ -95,19 +94,13 @@ export type GetOfferErrorResponseBody = APIError<'NOT_FOUND'>
 export type GetOfferDetailsRequestParams = { offerId: string }
 export type GetOfferDetailsRequestQuery = {}
 export type GetOfferDetailsRequestBody = {}
-export type GetOfferDetailsResponseBody =
-  | (BuyOffer | SellOffer) & {
-      tradeStatus: TradeStatus
-    }
+export type GetOfferDetailsResponseBody = (BuyOffer | SellOffer)
 export type GetOfferDetailsErrorResponseBody = APIError<'NOT_FOUND'>
 
 export type GetOffersRequestParams = {}
 export type GetOffersRequestQuery = {}
 export type GetOffersRequestBody = {}
-export type GetOffersResponseBody =
-  | ((BuyOffer | SellOffer) & {
-      tradeStatus: TradeStatus
-    })[]
+export type GetOffersResponseBody = (BuyOffer | SellOffer)[]
 export type GetOffersErrorResponseBody = APIError<null>
 
 export type GetOfferSummariesRequestParams = {}
