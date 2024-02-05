@@ -98,6 +98,7 @@ const peachAPIMethods = {
     },
     system: {
       getInfo: () => Promise.resolve({ result: { info: 'info' } }),
+      getStatus: () => Promise.resolve({ result: { status: 'online', serverTime: new Date('2021-01-01').getTime() } }),
     },
   },
   authenticate: () => Promise.resolve({ accessToken: 'accessToken', expiry: new Date('2021-01-01').getTime() }),
