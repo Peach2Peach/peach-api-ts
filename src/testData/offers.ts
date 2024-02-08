@@ -1,6 +1,18 @@
-import { BuyOffer, SellOffer } from '../@types/offer'
-import { twintDataHashes, validSEPADataHashes } from './paymentData'
-import { defaultUser } from './userData'
+import { BuyOffer, FundingStatus, SellOffer } from '../@types/offer';
+import { getDefaultFundingStatus } from './fundingStatus';
+import { twintDataHashes, validSEPADataHashes } from './paymentData';
+import { defaultUser } from './userData';
+
+
+const BITCOIN_BLOCKS_IN_4_DAYS = 576;
+const LIQUID_BLOCKS_IN_4_DAYS = 5760;
+
+const fundingStatusHelper = (
+  fundingStatus: Omit<FundingStatus, 'expiry'>
+): Pick<SellOffer, 'funding'|'fundingLiquid'> => ({
+  funding: { ...fundingStatus, expiry: BITCOIN_BLOCKS_IN_4_DAYS },
+  fundingLiquid: { ...fundingStatus, expiry: LIQUID_BLOCKS_IN_4_DAYS },
+})
 
 export const sellOffer: SellOffer = {
   creationDate: new Date('2022-03-08T11:41:07.245Z'),
@@ -9,19 +21,19 @@ export const sellOffer: SellOffer = {
   id: '38',
   online: true,
   type: 'ask',
+  escrowType: 'bitcoin',
+  escrow: 'bcrt1qd82dyvujm7527admrrwqhwhapyrg3l7px4vyz83adlgk3u8zlgasqf6g2a',
+  escrows: {
+    bitcoin: 'bcrt1qd82dyvujm7527admrrwqhwhapyrg3l7px4vyz83adlgk3u8zlgasqf6g2a',
+    liquid: 'ert1qrxl2jwt08lnzxn77hrtdlhrqtr8q9vj2tucmxfw9tla59ws6jxwqw0qh3e',
+  },
   meansOfPayment: {
     EUR: ['sepa'],
   },
   paymentData: {
     sepa: { hashes: validSEPADataHashes },
   },
-  funding: {
-    status: 'NULL',
-    txIds: [],
-    vouts: [],
-    amounts: [],
-    expiry: 537,
-  },
+  ...fundingStatusHelper(getDefaultFundingStatus('38')),
   amount: 250000,
   premium: 1.5,
   matches: [],
@@ -67,6 +79,7 @@ export const buyOffer: BuyOffer = {
   id: '37',
   online: true,
   type: 'bid',
+  escrowType: 'bitcoin',
   meansOfPayment: {
     EUR: ['sepa'],
     CHF: ['twint'],

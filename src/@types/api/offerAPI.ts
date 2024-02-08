@@ -44,7 +44,13 @@ export type CreateEscrowRequestBody = { publicKey: string }
 export type CreateEscrowResponseBody = {
   offerId: string
   escrow: string
-  funding: Partial<FundingStatus>
+  escrows: {
+    bitcoin: string
+    liquid?: string
+    lightning?: string
+  }
+  funding: FundingStatus
+  fundingLiquid: FundingStatus
 }
 export type CreateEscrowErrorResponseBody = APIError<'NOT_FOUND' | 'BAD_REQUEST'>
 
@@ -60,8 +66,14 @@ export type GetFundingStatusRequestBody = {}
 export type GetFundingStatusResponseBody = {
   offerId: string
   escrow: string
+  escrows: {
+    bitcoin?: string
+    liquid?: string
+    lightning?: string
+  }
   returnAddress: string
   funding: FundingStatus
+  fundingLiquid: FundingStatus
   userConfirmationRequired: boolean
 }
 export type GetFundingStatusErrorResponseBody = APIError<'NOT_FOUND' | 'BAD_REQUEST'>
