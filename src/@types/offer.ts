@@ -73,7 +73,7 @@ export type OfferPaymentData = Partial<
   >
 >
 
-declare type EscrowType = 'bitcoin' | 'liquid'
+export type EscrowType = 'bitcoin' | 'liquid'
 
 export type Offer = {
   type: 'ask' | 'bid'

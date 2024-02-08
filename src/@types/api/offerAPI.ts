@@ -2,6 +2,7 @@ import { APIError, APISuccess, Currency, Pricebook } from '../global'
 import { Match } from '../match'
 import {
   BuyOffer,
+  EscrowType,
   FundingStatus,
   InstantTradeCriteria,
   OfferPaymentData,
@@ -169,6 +170,7 @@ export type PostOfferRequestParams = {}
 export type PostOfferRequestQuery = {}
 export type PostOfferRequestBody = {
   type: 'bid' | 'ask'
+  escrowType?: EscrowType,
   meansOfPayment: MeansOfPayment
   paymentData: OfferPaymentData
 }
