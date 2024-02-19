@@ -22,8 +22,6 @@ export const peachAPI = (options: PeachAPIOptions) => {
     clientServerTimeDifference = await calculateClientServerTimeDifference(apiOptions, publicHelpers)
   }
 
-  const setPeachAccount = (peachAccount: BIP32Interface | null) => (apiOptions.peachAccount = peachAccount)
-
   const authenticate = async () => {
     const message = getAuthenticationChallenge(clientServerTimeDifference)
 
@@ -37,6 +35,13 @@ export const peachAPI = (options: PeachAPIOptions) => {
     }
     return undefined
   }
+
+  const setPeachAccount = (peachAccount: BIP32Interface | null) => {
+    authToken = undefined
+    apiOptions.peachAccount = peachAccount
+    if (options?.peachAccount) authenticate()
+  }
+
 
   const isAuthenticated = () => !!authToken?.accessToken
 
