@@ -39,7 +39,7 @@ export const peachAPI = (options: PeachAPIOptions) => {
   const setPeachAccount = (peachAccount: BIP32Interface | null) => {
     authToken = undefined
     apiOptions.peachAccount = peachAccount
-    if (options?.peachAccount) authenticate()
+    if (peachAccount) authenticate()
   }
 
 
