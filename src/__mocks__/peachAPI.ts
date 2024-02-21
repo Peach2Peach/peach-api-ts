@@ -81,6 +81,9 @@ const peachAPIMethods = {
     bitcoin: {
       getFeeEstimate: () => Promise.resolve({ result: estimatedFees }),
     },
+    liquid: {
+      getFeeEstimate: () => Promise.resolve({ result: estimatedFees }),
+    },
     contact: {
       sendReport: apiSuccess,
     },
