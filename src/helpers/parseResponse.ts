@@ -14,7 +14,7 @@ export const parseResponse = async <R, E extends APIError<string | null>>(
 
     const data = !string ? JSON.parse(await response.text(), dateTimeReviver) : await response.text()
 
-    if (response.status !== 200) return getError(data)
+    if (![200, 201].includes(response.status)) return getError(data)
     return getResult(data)
   } catch (e) {
     const parsedError = parseError(e)
