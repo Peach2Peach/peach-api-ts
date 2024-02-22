@@ -13,11 +13,8 @@ type Props = RequestProps & GetMatchesRequestParams & GetMatchesRequestQuery & G
 export const getMatches =
   ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
   async ({ offerId, page = 0, size = 21, sortBy = ['bestReputation'], signal }: Props) => {
-    const requestUrl = new URL(
-      `${url}/v1/offer/${offerId}/matches?page=${page}&size=${size}&sortBy=${sortBy.join(',')}`
-    )
-
-    const response = await fetch(requestUrl.toString(), {
+    const response = await fetch(
+      `${url}/v1/offer/${offerId}/matches?page=${page}&size=${size}&sortBy=${sortBy.join(',')}`, {
       headers: helpers.getPrivateHeaders(url),
       method: 'GET',
       signal,
