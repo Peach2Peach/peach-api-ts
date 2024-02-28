@@ -178,7 +178,8 @@ export type PostSellOfferRequestBody = PostOfferRequestBody & {
   type: 'ask'
   amount: number
   premium?: number
-  returnAddress?: string
+  returnAddress: string
+  returnAddressLiquid?: string
   multi?: number
   instantTradeCriteria?: InstantTradeCriteria
 }
