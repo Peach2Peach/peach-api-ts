@@ -10,11 +10,8 @@ type GetVersionErrorResponseBody = APIError<null>;
 
 export const getVersion = ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
   async ({ signal }: RequestProps = {}) => {
-    const response = await fetch(`${url}/v1/version`, {
-      headers: {
-        ...helpers.getPublicHeaders(url),
-        'Cache-Control': 'no-cache',
-      },
+    const response = await fetch(`${url}/v1/info/version`, {
+      headers: helpers.getPublicHeaders(url),
       method: 'GET',
       signal,
     });
