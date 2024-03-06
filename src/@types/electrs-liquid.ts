@@ -6,4 +6,7 @@ export type UTXO = {
   vout: number
   value: number
   status: TransactionStatus
+  assetcommitment?: string,
+  noncecommitment?: string,
+  valuecommitment?: string,
 }
