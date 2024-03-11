@@ -22,6 +22,7 @@ export type User = {
   disputes: Disputes
   fcmToken?: string
   feeRate: FeeRate
+  feeRateLiquid: FeeRate
   freeTrades?: number
   historyRating: number
   id: string
