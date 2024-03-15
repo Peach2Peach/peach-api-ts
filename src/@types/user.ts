@@ -70,6 +70,7 @@ export type PublicUser = Omit<
   | 'referredTradingAmount'
   | 'bonusPoints'
   | 'feeRate'
+  | 'feeRateLiquid'
   | 'freeTrades'
   | 'maxFreeTrades'
   | 'isBatchingEnabled'

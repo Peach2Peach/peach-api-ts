@@ -12,6 +12,7 @@ export const defaultUser: User = {
   creationDate: new Date('2023-03-01T13:39:55.942Z'),
   disputes: { opened: 0, won: 0, lost: 0, resolved: 0 },
   feeRate: 'hourFee',
+  feeRateLiquid: 'hourFee',
   freeTrades: 0,
   historyRating: 1,
   id: '0213583209ada26c16e5c3157d86809f8fd46e602936a4e3d51cd988a42ebe19f3',

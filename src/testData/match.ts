@@ -3,6 +3,7 @@ import { defaultUser } from './userData'
 
 export const match: Match = {
   user: defaultUser,
+  escrowType: 'bitcoin',
   offerId: 'offerId',
   amount: 210000,
   premium: 2.1,
