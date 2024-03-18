@@ -140,6 +140,7 @@ export type BuyOffer = Offer & {
 export type OfferSummary = {
   id: string
   type: 'bid' | 'ask'
+  escrowType: EscrowType,
   creationDate: Date
   lastModified: Date
   amount: number | [number, number]
