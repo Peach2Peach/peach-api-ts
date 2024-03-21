@@ -74,6 +74,7 @@ export type OfferPaymentData = Partial<
 >
 
 export type EscrowType = 'bitcoin' | 'liquid'
+export type FundingMechanism = 'bitcoin' | 'liquid' | 'lightning-liquid'
 
 export type Offer = {
   type: 'ask' | 'bid'
@@ -109,6 +110,7 @@ export type SellOffer = Offer & {
   /** @deprecated */
   escrow?: string
 
+  fundingMechanism?: FundingMechanism,
   escrows: {
     bitcoin?: string,
     liquid?: string,

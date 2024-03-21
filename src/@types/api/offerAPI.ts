@@ -2,7 +2,7 @@ import { APIError, APISuccess, Currency, Pricebook } from '../global'
 import { Match } from '../match'
 import {
   BuyOffer,
-  EscrowType,
+  FundingMechanism,
   FundingStatus,
   InstantTradeCriteria,
   OfferPaymentData,
@@ -175,7 +175,7 @@ export type PostOfferRequestBody = {
 }
 export type PostSellOfferRequestBody = PostOfferRequestBody & {
   type: 'ask'
-  escrowType?: EscrowType,
+  fundingMechanism?: FundingMechanism,
   amount: number
   premium?: number
   returnAddress: string
