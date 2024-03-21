@@ -135,6 +135,9 @@ export type BuyOffer = Offer & {
   amount: [number, number]
   message: string
   messageSignature?: string
+  releaseAddressLiquid?: string
+  messageLiquid?: string
+  messageSignatureLiquid?: string
 } & Required<MatchFilter>
 
 export type OfferSummary = {
