@@ -44,7 +44,10 @@ export type CreateEscrowRequestQuery = {}
 export type CreateEscrowRequestBody = { publicKey: string }
 export type CreateEscrowResponseBody = {
   offerId: string
+
+  /** @deprecated */
   escrow: string
+
   escrows: {
     bitcoin: string
     liquid?: string
