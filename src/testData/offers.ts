@@ -22,6 +22,7 @@ export const sellOffer: SellOffer = {
   online: true,
   type: 'ask',
   escrowType: 'bitcoin',
+  fundingMechanism: 'bitcoin',
   escrow: 'bcrt1qd82dyvujm7527admrrwqhwhapyrg3l7px4vyz83adlgk3u8zlgasqf6g2a',
   escrows: {
     bitcoin: 'bcrt1qd82dyvujm7527admrrwqhwhapyrg3l7px4vyz83adlgk3u8zlgasqf6g2a',

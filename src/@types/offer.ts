@@ -103,6 +103,7 @@ export type SellOffer = Offer & {
   amount: number
   premium: number
   returnAddress: string
+  returnAddressLiquid?: string
   funding: FundingStatus
   fundingLiquid: FundingStatus
   multi?: number
@@ -110,7 +111,8 @@ export type SellOffer = Offer & {
   /** @deprecated */
   escrow?: string
 
-  fundingMechanism?: FundingMechanism,
+  escrowType: EscrowType,
+  fundingMechanism: FundingMechanism,
   escrows: {
     bitcoin?: string,
     liquid?: string,
