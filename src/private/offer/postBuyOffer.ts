@@ -14,7 +14,6 @@ export const postBuyOffer =
   ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
   async ({
     type,
-    escrowType,
     amount,
     meansOfPayment,
     paymentData,
@@ -22,6 +21,8 @@ export const postBuyOffer =
     maxPremium,
     minReputation,
     messageSignature,
+    releaseAddressLiquid,
+    messageSignatureLiquid,
     signal,
   }: Props) => {
     const response = await fetch(`${url}/v1/offer`, {
@@ -29,7 +30,6 @@ export const postBuyOffer =
       method: 'POST',
       body: JSON.stringify({
         type,
-        escrowType,
         amount,
         meansOfPayment,
         paymentData,
@@ -37,6 +37,8 @@ export const postBuyOffer =
         maxPremium,
         minReputation,
         messageSignature,
+        releaseAddressLiquid,
+        messageSignatureLiquid,
       }),
       signal,
     })

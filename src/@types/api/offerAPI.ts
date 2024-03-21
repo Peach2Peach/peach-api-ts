@@ -170,12 +170,12 @@ export type PostOfferRequestParams = {}
 export type PostOfferRequestQuery = {}
 export type PostOfferRequestBody = {
   type: 'bid' | 'ask'
-  escrowType?: EscrowType,
   meansOfPayment: MeansOfPayment
   paymentData: OfferPaymentData
 }
 export type PostSellOfferRequestBody = PostOfferRequestBody & {
   type: 'ask'
+  escrowType?: EscrowType,
   amount: number
   premium?: number
   returnAddress: string
@@ -188,6 +188,8 @@ export type PostBuyOfferRequestBody = PostOfferRequestBody & {
   amount: [number, number]
   releaseAddress: string
   messageSignature: string
+  releaseAddressLiquid?: string
+  messageSignatureLiquid?: string
 } & MatchFilter
 export type PostOfferResponseBody = BuyOffer | SellOffer | (BuyOffer | SellOffer)[]
 export type PostOfferErrorResponseBody = APIError<
