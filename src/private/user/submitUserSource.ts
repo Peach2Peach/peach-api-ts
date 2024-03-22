@@ -2,7 +2,7 @@ import { APIError, APISuccess } from '../../@types/global'
 import { parseResponse } from '../../helpers/parseResponse'
 import { PeachAPIHelpers, PeachAPIOptions, RequestProps } from '../../types'
 
-export type UserSource = 'twitter' | 'google' | 'instagram' | 'friend' | 'other'
+export type UserSource = 'twitter' | 'google' | 'instagram' | 'friend'| 'telegram' | 'linkedin' | 'other'
 type Props = RequestProps & { source: UserSource }
 
 export const sumbitUserSource =
