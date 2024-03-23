@@ -6,7 +6,7 @@ import { estimatedFees } from '../testData/estimatedFees'
 import { belgianBTCEmbassy, decouvreBTC } from '../testData/events'
 import { getDefaultFundingStatus } from '../testData/fundingStatus'
 import { offerSummary } from '../testData/offerSummary'
-import { sellOffer } from '../testData/offers'
+import { buyOffer, sellOffer } from '../testData/offers'
 import { defaultUser } from '../testData/userData'
 
 const apiSuccess = () => Promise.resolve({ result: { success: true } })
@@ -26,6 +26,10 @@ const peachAPIMethods = {
       postSellOffer: () =>
         Promise.resolve({
           result: sellOffer,
+        }),
+      postBuyOffer: () =>
+        Promise.resolve({
+          result: buyOffer,
         }),
       getOfferSummaries: () => Promise.resolve({ result: [offerSummary] }),
       confirmEscrow: apiSuccess,
