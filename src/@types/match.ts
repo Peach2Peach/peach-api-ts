@@ -1,5 +1,5 @@
 import { Currency, Pricebook } from './global'
-import { OfferPaymentData } from './offer'
+import { EscrowType, OfferPaymentData } from './offer'
 import { MeansOfPayment, PaymentMethod } from './payment'
 import { PublicUser, TradingLimit } from './user'
 
@@ -14,6 +14,7 @@ export type Match = {
   offerId: string
   amount: number
   escrow?: string
+  escrowType: EscrowType
   prices: Pricebook
   matchedPrice: number | null
   premium: number

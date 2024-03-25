@@ -22,6 +22,7 @@ export type User = {
   disputes: Disputes
   fcmToken?: string
   feeRate: FeeRate
+  feeRateLiquid: FeeRate
   freeTrades?: number
   historyRating: number
   id: string
@@ -69,6 +70,7 @@ export type PublicUser = Omit<
   | 'referredTradingAmount'
   | 'bonusPoints'
   | 'feeRate'
+  | 'feeRateLiquid'
   | 'freeTrades'
   | 'maxFreeTrades'
   | 'isBatchingEnabled'

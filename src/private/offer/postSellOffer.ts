@@ -19,8 +19,10 @@ export const postSellOffer =
     amount,
     premium,
     returnAddress,
+    returnAddressLiquid,
     multi,
     instantTradeCriteria,
+    fundingMechanism,
     signal,
   }: Props) => {
     const response = await fetch(`${url}/v1/offer`, {
@@ -33,8 +35,10 @@ export const postSellOffer =
         amount,
         premium,
         returnAddress,
+        returnAddressLiquid,
         multi,
         instantTradeCriteria,
+        fundingMechanism,
       }),
       signal,
     })

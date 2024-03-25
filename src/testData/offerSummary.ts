@@ -3,6 +3,7 @@ import { OfferSummary } from '../@types/offer'
 export const offerSummary: OfferSummary = {
   id: '456',
   type: 'bid',
+  escrowType: 'bitcoin',
   matches: [],
   creationDate: new Date('2021-01-01'),
   lastModified: new Date('2021-01-01'),

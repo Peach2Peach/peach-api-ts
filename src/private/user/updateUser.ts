@@ -12,7 +12,17 @@ type Props = RequestProps & UpdateUserRequestParams & UpdateUserRequestQuery & U
 
 export const updateUser
   = ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
-    async ({ pgpPublicKey, signature, message, pgpSignature, fcmToken, referralCode, feeRate, signal }: Props) => {
+    async ({
+        pgpPublicKey,
+        signature,
+        message,
+        pgpSignature,
+        fcmToken,
+        referralCode,
+        feeRate,
+        feeRateLiquid,
+        signal
+      }: Props) => {
       const response = await fetch(`${url}/v1/user`, {
         headers: helpers.getPrivateHeaders(url),
         method: 'PATCH',
@@ -24,6 +34,7 @@ export const updateUser
           fcmToken,
           referralCode,
           feeRate,
+          feeRateLiquid,
         }),
         signal,
       })

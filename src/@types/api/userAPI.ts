@@ -103,6 +103,7 @@ export type UpdateUserRequestBody = {
   fcmToken?: string
   referralCode?: string
   feeRate?: FeeRate
+  feeRateLiquid?: FeeRate
 }
 export type UpdateUserResponseBody = APISuccess
 export type UpdateUserErrorResponseBody = APIError<
