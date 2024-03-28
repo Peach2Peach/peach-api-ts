@@ -56,15 +56,25 @@ export type PaymentMethodCountry =
   | 'NL'
   | 'UK'
   | 'BE'
+  | 'BR'
   | 'PT'
   | 'GR'
-  | 'UK'
   | 'GB'
   | 'CY'
   | 'SI'
   | 'LV'
+  | 'MX'
+  | 'AR'
   | 'US'
-  | 'FI'
+  | 'ZA'
+  | 'RU'
+  | 'CN'
+  | 'JP'
+  | 'AU'
+  | 'ID'
+  | 'VN'
+  | 'MA'
+  | 'FI';
 
 export type OfferPaymentData = Partial<
   Record<

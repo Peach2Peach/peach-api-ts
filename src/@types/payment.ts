@@ -1,4 +1,3 @@
-import { BitcoinEvent } from './events'
 import { Country, Currency } from './global'
 import { PaymentMethodCountry } from './offer'
 
@@ -18,6 +17,24 @@ export type PaymentMethodField =
   | 'lnurlAddress'
   | 'pixAlias'
   | 'postePayNumber'
+  | 'edrpou'
+  | 'clabe'
+  | 'bankName'
+  | 'steamFriendCode'
+  | 'upiTag'
+  | 'trSortCode'
+  | 'cardNumber'
+  | 'physicalAddress'
+  | 'mobileNetwork'
+  | 'bankCode' // Replace by mxSortCode ? Might not be the same usage
+  | 'brSortCode' // ISPB code (https://bank.codes/numero-do-banco/)
+  | 'cpf'
+  | 'cedulaIdentidad'
+  | 'country'
+  | 'bankBranch'
+  | 'rutNumber'
+  | 'dniNumber'
+  | 'abitabAgent'
 
 export type EuPaymentMethods =
   | 'advcash'
@@ -45,6 +62,7 @@ export type EuPaymentMethods =
   | 'nationalTransferCH'
   | 'nationalTransferIS'
   | 'nationalTransferSE'
+  | 'nationalTransferMX'
   | 'neteller'
   | 'papara'
   | 'paylib'
@@ -71,7 +89,28 @@ export type LatAmPaymentMethods =
   | 'pix'
   | 'rappipay'
   | 'sinpe'
-  | 'sinpeMovil'
+  | 'boleto'
+  | 'stp'
+  | 'spei'
+  | 'daviPlata'
+  | 'tigoHonduras'
+  | 'tigoBolivia'
+  | 'tigoSalvador'
+  | 'tigoParaguay'
+  | 'tigoGuatemala'
+  | 'abitab'
+  | 'brou'
+  | 'practicaja'
+  | 'ted'
+  | 'nationalTransferBO'
+  | 'nationalTransferCL'
+  | 'nationalTransferGT'
+  | 'nationalTransferNI'
+  | 'nationalTransferPE'
+  | 'nationalTransferPY'
+  | 'nationalTransferSR'
+  | 'nationalTransferVE'
+  | 'sinpeMovil';
 
 export type AfricaPaymentMethods =
   | 'accrue'
@@ -88,17 +127,47 @@ export type AfricaPaymentMethods =
   | 'wave'
   | 'wirepay'
   | 'flutterwave'
-  | 'mobileAirtime'
+  | 'vodafoneCash'
+  | 'djamo'
+  | 'apaym'
+  | 'tigoPesa'
+  | 'westernUnion'
+  | 'equityBank'
+  | 'kcbBank'
+  | 'nationalTransferKE'
+  | 'nationalTransferZA'
+  | 'mobileAirtime';
+
+type AsiaPaymentMethods =
+  | 'payeer'
+  | 'yoomoney'
+  | 'upi'
+  | 'paytmWallet'
+  | 'sberbank'
+  | 'paysend'
+  | 'eft'
+  | 'tinkoff'
+  | 'bankera'
+  | 'trFast'
+  | 'papara'
+  | 'nationalTransferTR'
 
 export type BitcoinPaymentMethods = 'liquid' | 'lnurl'
-export type InternationalPaymentMethds = 'giftCard.amazon' | `giftCard.amazon.${PaymentMethodCountry}`
-export type CashPaymentMethds = `cash.${BitcoinEvent['id']}`
+export type InternationalPaymentMethods =
+  // | 'giftCard.steam'
+  | 'giftCard.amazon'
+  | 'perfectMoney'
+  | 'payeer'
+  | 'paysend'
+  | `giftCard.amazon.${PaymentMethodCountry}`
+export type CashPaymentMethds = `cash.${string}`
 
 export type PaymentMethod =
   | EuPaymentMethods
   | LatAmPaymentMethods
   | AfricaPaymentMethods
-  | InternationalPaymentMethds
+  | AsiaPaymentMethods
+  | InternationalPaymentMethods
   | BitcoinPaymentMethods
   | CashPaymentMethds
 
