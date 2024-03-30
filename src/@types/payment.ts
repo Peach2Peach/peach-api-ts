@@ -1,40 +1,6 @@
+import { BitcoinEvent } from './events'
 import { Country, Currency } from './global'
 import { PaymentMethodCountry } from './offer'
-
-export type PaymentMethodField =
-  | 'userName'
-  | 'email'
-  | 'phone'
-  | 'reference'
-  | 'beneficiary'
-  | 'iban'
-  | 'bic'
-  | 'wallet'
-  | 'accountNumber'
-  | 'ukBankAccount'
-  | 'ukSortCode'
-  | 'receiveAddress'
-  | 'lnurlAddress'
-  | 'pixAlias'
-  | 'postePayNumber'
-  | 'edrpou'
-  | 'clabe'
-  | 'bankName'
-  | 'steamFriendCode'
-  | 'upiTag'
-  | 'trSortCode'
-  | 'cardNumber'
-  | 'physicalAddress'
-  | 'mobileNetwork'
-  | 'bankCode' // Replace by mxSortCode ? Might not be the same usage
-  | 'brSortCode' // ISPB code (https://bank.codes/numero-do-banco/)
-  | 'cpf'
-  | 'cedulaIdentidad'
-  | 'country'
-  | 'bankBranch'
-  | 'rutNumber'
-  | 'dniNumber'
-  | 'abitabAgent'
 
 export type EuPaymentMethods =
   | 'advcash'
@@ -78,7 +44,17 @@ export type EuPaymentMethods =
   | 'swish'
   | 'twint'
   | 'vipps'
+  | 'privat24'
+  | 'twyp'
+  | 'tikkie'
+  | 'perfectMoney'
+  | 'yoomoney'
+  | 'payeer'
+  | 'trFast'
+  | 'eft'
+  | 'westernUnionEU'
   | 'wise'
+
 export type LatAmPaymentMethods =
   | 'alias'
   | 'bancolombia'
@@ -110,7 +86,7 @@ export type LatAmPaymentMethods =
   | 'nationalTransferPY'
   | 'nationalTransferSR'
   | 'nationalTransferVE'
-  | 'sinpeMovil';
+  | 'sinpeMovil'
 
 export type AfricaPaymentMethods =
   | 'accrue'
@@ -129,16 +105,16 @@ export type AfricaPaymentMethods =
   | 'flutterwave'
   | 'vodafoneCash'
   | 'djamo'
-  | 'apaym'
+  | 'aPaym'
   | 'tigoPesa'
   | 'westernUnion'
   | 'equityBank'
   | 'kcbBank'
   | 'nationalTransferKE'
   | 'nationalTransferZA'
-  | 'mobileAirtime';
+  | 'mobileAirtime'
 
-type AsiaPaymentMethods =
+export type AsiaPaymentMethods =
   | 'payeer'
   | 'yoomoney'
   | 'upi'
@@ -152,22 +128,63 @@ type AsiaPaymentMethods =
   | 'papara'
   | 'nationalTransferTR'
 
-export type BitcoinPaymentMethods = 'liquid' | 'lnurl'
-export type InternationalPaymentMethods =
-  // | 'giftCard.steam'
+export type InternationalPaymentMethds =
   | 'giftCard.amazon'
   | 'perfectMoney'
   | 'payeer'
   | 'paysend'
+  // | "giftCard.steam"
   | `giftCard.amazon.${PaymentMethodCountry}`
-export type CashPaymentMethds = `cash.${string}`
+
+export type PaymentMethodField =
+  | 'userName'
+  | 'email'
+  | 'phone'
+  | 'reference'
+  | 'beneficiary'
+  | 'iban'
+  | 'bic'
+  | 'wallet'
+  | 'accountNumber'
+  | 'ukBankAccount'
+  | 'ukSortCode'
+  | 'receiveAddress'
+  | 'lnurlAddress'
+  | 'pixAlias'
+  | 'postePayNumber'
+  | 'edrpou'
+  | 'clabe'
+  | 'bankName'
+  | 'steamFriendCode'
+  | 'upiTag'
+  | 'trSortCode'
+  | 'cardNumber'
+  | 'physicalAddress'
+  | 'mobileNetwork'
+  | 'bankCode' // Replace by mxSortCode ? Might not be the same usage
+  | 'brSortCode' // ISPB code (https://bank.codes/numero-do-banco/)
+  | 'cpf'
+  | 'cedulaIdentidad'
+  | 'country'
+  | 'bankBranch'
+  | 'rutNumber'
+  | 'dniNumber'
+  | 'abitabAgent'
+  | 'payeerNumber'
+  | 'perfectMoneyNumber'
+
+export type BitcoinPaymentMethods = 'liquid' | 'lnurl'
+export type InternationalPaymentMethods =
+  // | 'giftCard.steam'
+  'giftCard.amazon' | 'perfectMoney' | 'payeer' | 'paysend' | `giftCard.amazon.${PaymentMethodCountry}`
+export type CashPaymentMethds = `cash.${BitcoinEvent['id']}`
 
 export type PaymentMethod =
   | EuPaymentMethods
   | LatAmPaymentMethods
   | AfricaPaymentMethods
   | AsiaPaymentMethods
-  | InternationalPaymentMethods
+  | InternationalPaymentMethds
   | BitcoinPaymentMethods
   | CashPaymentMethds
 

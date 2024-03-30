@@ -74,12 +74,18 @@ export type PaymentMethodCountry =
   | 'ID'
   | 'VN'
   | 'MA'
-  | 'FI';
+  | 'FI'
 
 export type OfferPaymentData = Partial<
   Record<
     PaymentMethod,
-    { hashes: string[]; hash?: string; country?: PaymentMethodCountry; encrypted?: string; signature?: string }
+    {
+      hashes: string[]
+      hash?: string
+      country?: PaymentMethodCountry
+      encrypted?: string
+      signature?: string
+    }
   >
 >
 
