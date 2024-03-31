@@ -1,11 +1,11 @@
-import { Country, Currency } from './global'
+import { Currency, MeetupCountries } from './global'
 
 export type BitcoinEvent = {
   id: string
   featured: boolean
   superFeatured?: boolean
   currencies: Currency[]
-  country: Country
+  country: MeetupCountries
   city: string
   shortName: string
   longName: string

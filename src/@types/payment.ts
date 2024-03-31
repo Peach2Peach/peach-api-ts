@@ -1,5 +1,5 @@
 import { BitcoinEvent } from './events'
-import { Country, Currency } from './global'
+import { Currency, MeetupCountries } from './global'
 import { PaymentMethodCountry } from './offer'
 
 export type EuPaymentMethods =
@@ -165,7 +165,7 @@ export type PaymentMethodField =
   | 'brSortCode' // ISPB code (https://bank.codes/numero-do-banco/)
   | 'cpf'
   | 'cedulaIdentidad'
-  | 'country'
+  | 'countryField'
   | 'bankBranch'
   | 'rutNumber'
   | 'dniNumber'
@@ -195,7 +195,7 @@ export type PaymentMethodInfo = {
     mandatory: PaymentMethodField[][][]
     optional: PaymentMethodField[]
   }
-  countries?: Country[]
+  countries?: MeetupCountries[]
   rounded?: boolean
   anonymous: boolean
 }

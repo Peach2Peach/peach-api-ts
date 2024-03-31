@@ -86,4 +86,4 @@ export type Pricebook = {
   [key in Currency]?: number
 }
 
-export type Country = 'DE' | 'FR' | 'IT' | 'ES' | 'NL' | 'UK' | 'SE' | 'FI' | 'BE' | 'LV'
+export type MeetupCountries = 'DE' | 'FR' | 'IT' | 'ES' | 'NL' | 'UK' | 'SE' | 'FI' | 'BE' | 'LV'

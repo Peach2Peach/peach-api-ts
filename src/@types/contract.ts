@@ -1,5 +1,5 @@
 import { DisputeOutcome, DisputeReason } from './dispute'
-import { Country, Currency } from './global'
+import { Currency, MeetupCountries } from './global'
 import { GetBatchStatusResponseBody } from './groupHugAPI/batch'
 import { TradeStatus } from './offer'
 import { PaymentData, PaymentMethod } from './payment'
@@ -35,7 +35,7 @@ export type Contract = {
   buyerPaymentData?: PaymentData
   hashedPaymentData: string[]
   buyerHashedPaymentData: string[]
-  country?: Country
+  country?: MeetupCountries
 
   paymentMade: Date | null
   paymentConfirmed: Date | null
