@@ -1,6 +1,6 @@
-import { BitcoinEvent } from './events'
-import { Currency, MeetupCountries } from './global'
-import { PaymentMethodCountry } from './offer'
+import {BitcoinEvent} from './events'
+import {Currency, MeetupCountries} from './global'
+import {PaymentMethodCountry} from './offer'
 
 export type EuPaymentMethods =
   | 'advcash'
@@ -53,6 +53,7 @@ export type EuPaymentMethods =
   | 'trFast'
   | 'eft'
   | 'westernUnionEU'
+  | 'westernUnion'
   | 'wise'
 
 export type LatAmPaymentMethods =
@@ -87,6 +88,7 @@ export type LatAmPaymentMethods =
   | 'nationalTransferSR'
   | 'nationalTransferVE'
   | 'sinpeMovil'
+  | 'westernUnion'
 
 export type AfricaPaymentMethods =
   | 'accrue'
