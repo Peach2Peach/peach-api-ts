@@ -81,6 +81,8 @@ export type Currency =
   | 'XAF'
   | 'MGA'
   | 'GNF'
+  | 'AED'
+  | 'PKR'
 
 export type Pricebook = {
   [key in Currency]?: number
