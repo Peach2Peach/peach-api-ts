@@ -1,6 +1,6 @@
-import {BitcoinEvent} from './events'
-import {Currency, MeetupCountries} from './global'
-import {PaymentMethodCountry} from './offer'
+import { BitcoinEvent } from './events';
+import { Currency, MeetupCountries } from './global';
+import { PaymentMethodCountry } from './offer';
 
 export type EuPaymentMethods =
   | 'advcash'
@@ -129,13 +129,15 @@ export type AsiaPaymentMethods =
   | 'trFast'
   | 'papara'
   | 'nationalTransferTR'
+  | 'nationalTransferAE'
+  | 'nationalTransferPK'
 
 export type InternationalPaymentMethds =
   | 'giftCard.amazon'
   | 'perfectMoney'
   | 'payeer'
   | 'paysend'
-  // | "giftCard.steam"
+  | 'giftCard.steam'
   | `giftCard.amazon.${PaymentMethodCountry}`
 
 export type PaymentMethodField =
@@ -163,7 +165,7 @@ export type PaymentMethodField =
   | 'cardNumber'
   | 'physicalAddress'
   | 'mobileNetwork'
-  | 'bankCode' // Replace by mxSortCode ? Might not be the same usage
+  | 'bankCode'
   | 'brSortCode' // ISPB code (https://bank.codes/numero-do-banco/)
   | 'cpf'
   | 'cedulaIdentidad'
@@ -177,8 +179,12 @@ export type PaymentMethodField =
 
 export type BitcoinPaymentMethods = 'liquid' | 'lnurl'
 export type InternationalPaymentMethods =
-  // | 'giftCard.steam'
-  'giftCard.amazon' | 'perfectMoney' | 'payeer' | 'paysend' | `giftCard.amazon.${PaymentMethodCountry}`
+  | 'giftCard.steam'
+  | 'giftCard.amazon'
+  | 'perfectMoney'
+  | 'payeer'
+  | 'paysend'
+  | `giftCard.amazon.${PaymentMethodCountry}`
 export type CashPaymentMethds = `cash.${BitcoinEvent['id']}`
 
 export type PaymentMethod =
