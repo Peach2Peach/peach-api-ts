@@ -1,4 +1,4 @@
-import { NewUser, User } from './user'
+import { NewUser, User } from './user';
 
 export type AccessToken = {
   expiry: number
@@ -83,6 +83,7 @@ export type Currency =
   | 'GNF'
   | 'AED'
   | 'PKR'
+  | 'SGD'
 
 export type Pricebook = {
   [key in Currency]?: number

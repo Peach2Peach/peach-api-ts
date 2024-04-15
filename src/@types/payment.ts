@@ -131,6 +131,8 @@ export type AsiaPaymentMethods =
   | 'nationalTransferTR'
   | 'nationalTransferAE'
   | 'nationalTransferPK'
+  | 'nationalTransferSG'
+  | 'payLah'
 
 export type InternationalPaymentMethds =
   | 'giftCard.amazon'
