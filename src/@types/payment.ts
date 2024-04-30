@@ -55,6 +55,7 @@ export type EuPaymentMethods =
   | 'westernUnionEU'
   | 'westernUnion'
   | 'wise'
+  | 'strike'
 
 export type LatAmPaymentMethods =
   | 'alias'
@@ -89,6 +90,7 @@ export type LatAmPaymentMethods =
   | 'nationalTransferVE'
   | 'sinpeMovil'
   | 'westernUnion'
+  | 'strike'
 
 export type AfricaPaymentMethods =
   | 'accrue'
