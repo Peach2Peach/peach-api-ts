@@ -9,7 +9,6 @@ import { extendPaymentTimer } from './extendPaymentTimer'
 import { getChat } from './getChat'
 import { getContract } from './getContract'
 import { getContractSummaries } from './getContractSummaries'
-import { getContracts } from './getContracts'
 import { postChat } from './postChat'
 import { raiseDispute } from './raiseDispute'
 import { rateUser } from './rateUser'
@@ -26,7 +25,6 @@ export const privateContractAPI = (options: PeachAPIOptions, helpers: PeachAPIHe
   extendPaymentTimer: extendPaymentTimer(options, helpers),
   getChat: getChat(options, helpers),
   getContract: getContract(options, helpers),
-  getContracts: getContracts(options, helpers),
   getContractSummaries: getContractSummaries(options, helpers),
   postChat: postChat(options, helpers),
   raiseDispute: raiseDispute(options, helpers),
