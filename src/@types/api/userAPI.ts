@@ -111,7 +111,7 @@ export type UpdateUserErrorResponseBody = APIError<
 
 export type EnableBatchingRequestParams = {}
 export type EnableBatchingRequestQuery = {}
-export type EnableBatchingRequestBody = { enableBatching: boolean }
+export type EnableBatchingRequestBody = { enableBatching: boolean, riskAcknowledged: boolean }
 export type EnableBatchingResponseBody = APISuccess
 export type EnableBatchingErrorResponseBody = APIError<null>
 
