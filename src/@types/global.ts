@@ -58,7 +58,6 @@ export type Currency =
   | 'NIO'
   | 'PAB'
   | 'VES'
-  | 'VEF'
   | 'UYU'
   | 'PYG'
   | 'TZS'
