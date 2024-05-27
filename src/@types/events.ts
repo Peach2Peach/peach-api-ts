@@ -12,5 +12,5 @@ export type BitcoinEvent = {
   url?: string
   address?: string
   frequency?: string
-  logo?: string // path to the logo
+  logo?: string
 }

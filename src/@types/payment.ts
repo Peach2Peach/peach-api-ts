@@ -170,7 +170,7 @@ export type PaymentMethodField =
   | 'physicalAddress'
   | 'mobileNetwork'
   | 'bankCode'
-  | 'brSortCode' // ISPB code (https://bank.codes/numero-do-banco/)
+  | 'brSortCode'
   | 'cpf'
   | 'cedulaIdentidad'
   | 'countryField'
