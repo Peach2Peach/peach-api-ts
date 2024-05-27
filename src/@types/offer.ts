@@ -5,12 +5,12 @@ import { Medal, PublicUser } from './user'
 
 export type FundingStatus = {
   status: 'NULL' | 'MEMPOOL' | 'FUNDED' | 'WRONG_FUNDING_AMOUNT' | 'CANCELED'
-  confirmations?: number
+  confirmations: number
   txIds: string[]
   vouts: number[]
   amounts: number[]
   expiry: number
-  derivationPath?: string
+  derivationPath: string
 }
 
 export type TradeStatus =
@@ -73,6 +73,9 @@ export type OfferPaymentData = Partial<
   >
 >
 
+export type EscrowType = 'bitcoin' | 'liquid'
+export type FundingMechanism = 'bitcoin' | 'liquid' | 'lightning-liquid'
+
 export type Offer = {
   type: 'ask' | 'bid'
   meansOfPayment: MeansOfPayment
@@ -83,6 +86,7 @@ export type Offer = {
   lastModified: Date
   publishingDate?: Date
   online: boolean
+  escrowType: EscrowType
 
   user: PublicUser
   matches: string[]
@@ -99,10 +103,21 @@ export type SellOffer = Offer & {
   amount: number
   premium: number
   returnAddress: string
+  returnAddressLiquid?: string
   funding: FundingStatus
+  fundingLiquid: FundingStatus
   multi?: number
 
+  /** @deprecated */
   escrow?: string
+
+  escrowType: EscrowType,
+  fundingMechanism: FundingMechanism,
+  escrows: {
+    bitcoin?: string,
+    liquid?: string,
+    lightning?: string,
+  }
   escrowNotifiedUser?: boolean
   tx?: string
   refundTx?: string
@@ -124,11 +139,15 @@ export type BuyOffer = Offer & {
   amount: [number, number]
   message: string
   messageSignature?: string
+  releaseAddressLiquid?: string
+  messageLiquid?: string
+  messageSignatureLiquid?: string
 } & Required<MatchFilter>
 
 export type OfferSummary = {
   id: string
   type: 'bid' | 'ask'
+  escrowType: EscrowType,
   creationDate: Date
   lastModified: Date
   amount: number | [number, number]

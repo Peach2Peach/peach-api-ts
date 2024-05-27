@@ -1,7 +1,7 @@
 import { DisputeOutcome, DisputeReason } from './dispute'
 import { Country, Currency } from './global'
 import { GetBatchStatusResponseBody } from './groupHugAPI/batch'
-import { TradeStatus } from './offer'
+import { EscrowType, TradeStatus } from './offer'
 import { PaymentData, PaymentMethod } from './payment'
 import { PublicUser } from './user'
 
@@ -89,6 +89,7 @@ export type ContractSummary = {
   offerId: string
   newTradeId?: string
   type: 'bid' | 'ask'
+  escrowType: EscrowType,
   creationDate: Date
   lastModified: Date
   paymentMade?: Date

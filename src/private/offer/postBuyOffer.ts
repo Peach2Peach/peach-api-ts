@@ -21,6 +21,8 @@ export const postBuyOffer =
     maxPremium,
     minReputation,
     messageSignature,
+    releaseAddressLiquid,
+    messageSignatureLiquid,
     signal,
   }: Props) => {
     const response = await fetch(`${url}/v1/offer`, {
@@ -35,6 +37,8 @@ export const postBuyOffer =
         maxPremium,
         minReputation,
         messageSignature,
+        releaseAddressLiquid,
+        messageSignatureLiquid,
       }),
       signal,
     })

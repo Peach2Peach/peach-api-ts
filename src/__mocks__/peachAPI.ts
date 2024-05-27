@@ -4,9 +4,9 @@ import { contract } from '../testData/contract'
 import { contractSummary } from '../testData/contractSummary'
 import { estimatedFees } from '../testData/estimatedFees'
 import { belgianBTCEmbassy, decouvreBTC } from '../testData/events'
-import { defaultFundingStatus } from '../testData/fundingStatus'
+import { getDefaultFundingStatus } from '../testData/fundingStatus'
 import { offerSummary } from '../testData/offerSummary'
-import { sellOffer } from '../testData/offers'
+import { buyOffer, sellOffer } from '../testData/offers'
 import { defaultUser } from '../testData/userData'
 
 const apiSuccess = () => Promise.resolve({ result: { success: true } })
@@ -27,6 +27,10 @@ const peachAPIMethods = {
         Promise.resolve({
           result: sellOffer,
         }),
+      postBuyOffer: () =>
+        Promise.resolve({
+          result: buyOffer,
+        }),
       getOfferSummaries: () => Promise.resolve({ result: [offerSummary] }),
       confirmEscrow: apiSuccess,
       createEscrow: () =>
@@ -34,13 +38,15 @@ const peachAPIMethods = {
           result: {
             offerId: '38',
             escrow: 'escrow',
-            funding: defaultFundingStatus,
+            funding: getDefaultFundingStatus('38'),
+            fundingLiquid: getDefaultFundingStatus('38'),
           },
         }),
       getFundingStatus: () =>
         Promise.resolve({
           result: {
-            funding: defaultFundingStatus,
+            funding: getDefaultFundingStatus('38'),
+            fundingLiquid: getDefaultFundingStatus('38'),
             userConfirmationRequired: false,
             returnAddress: '',
             escrow: '',
@@ -79,6 +85,10 @@ const peachAPIMethods = {
       getUser: () => Promise.resolve({ result: defaultUser }),
     },
     bitcoin: {
+      getFeeEstimate: () => Promise.resolve({ result: estimatedFees }),
+    },
+    liquid: {
+      postTx: () => Promise.resolve({ result: { txId: 'txId'} }),
       getFeeEstimate: () => Promise.resolve({ result: estimatedFees }),
     },
     contact: {

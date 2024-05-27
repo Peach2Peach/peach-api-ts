@@ -2,6 +2,7 @@ import { APIError, APISuccess, Currency, Pricebook } from '../global'
 import { Match } from '../match'
 import {
   BuyOffer,
+  FundingMechanism,
   FundingStatus,
   InstantTradeCriteria,
   OfferPaymentData,
@@ -43,8 +44,17 @@ export type CreateEscrowRequestQuery = {}
 export type CreateEscrowRequestBody = { publicKey: string }
 export type CreateEscrowResponseBody = {
   offerId: string
+
+  /** @deprecated */
   escrow: string
-  funding: Partial<FundingStatus>
+
+  escrows: {
+    bitcoin: string
+    liquid?: string
+    lightning?: string
+  }
+  funding: FundingStatus
+  fundingLiquid: FundingStatus
 }
 export type CreateEscrowErrorResponseBody = APIError<'NOT_FOUND' | 'BAD_REQUEST'>
 
@@ -60,8 +70,14 @@ export type GetFundingStatusRequestBody = {}
 export type GetFundingStatusResponseBody = {
   offerId: string
   escrow: string
+  escrows: {
+    bitcoin?: string
+    liquid?: string
+    lightning?: string
+  }
   returnAddress: string
   funding: FundingStatus
+  fundingLiquid: FundingStatus
   userConfirmationRequired: boolean
 }
 export type GetFundingStatusErrorResponseBody = APIError<'NOT_FOUND' | 'BAD_REQUEST'>
@@ -163,9 +179,11 @@ export type PostOfferRequestBody = {
 }
 export type PostSellOfferRequestBody = PostOfferRequestBody & {
   type: 'ask'
+  fundingMechanism?: FundingMechanism,
   amount: number
   premium?: number
-  returnAddress?: string
+  returnAddress: string
+  returnAddressLiquid?: string
   multi?: number
   instantTradeCriteria?: InstantTradeCriteria
 }
@@ -174,6 +192,8 @@ export type PostBuyOfferRequestBody = PostOfferRequestBody & {
   amount: [number, number]
   releaseAddress: string
   messageSignature: string
+  releaseAddressLiquid?: string
+  messageSignatureLiquid?: string
 } & MatchFilter
 export type PostOfferResponseBody = BuyOffer | SellOffer | (BuyOffer | SellOffer)[]
 export type PostOfferErrorResponseBody = APIError<
