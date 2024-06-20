@@ -38,6 +38,7 @@ export const sellOffer: SellOffer = {
     creationDate: new Date("2022-03-08T11:41:07.245Z"),
     openedTrades: 0,
     trades: 0,
+    canceledTrades: 0,
     rating: 0,
     userRating: 0,
     historyRating: 0,

@@ -30,6 +30,7 @@ export const defaultUser: User = {
   referralCode: "PR0063",
   referredTradingAmount: 0,
   openedTrades: 12,
+  canceledTrades: 0,
   trades: 11,
   usedReferralCode: "SATOSHI",
   userRating: 1,
