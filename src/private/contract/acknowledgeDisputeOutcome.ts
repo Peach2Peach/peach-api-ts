@@ -4,23 +4,29 @@ import {
   AcknowledgeDisputeOutcomeRequestParams,
   AcknowledgeDisputeOutcomeRequestQuery,
   AcknowledgeDisputeOutcomeResponseBody,
-} from '../../@types/api/contractAPI'
-import { parseResponse } from '../../helpers/parseResponse'
-import { PeachAPIHelpers, PeachAPIOptions, RequestProps } from '../../types'
+} from "../../@types/api/contractAPI";
+import { parseResponse } from "../../helpers/parseResponse";
+import { PeachAPIHelpers, PeachAPIOptions, RequestProps } from "../../types";
 
 type Props = RequestProps &
   AcknowledgeDisputeOutcomeRequestParams &
   AcknowledgeDisputeOutcomeRequestQuery &
-  AcknowledgeDisputeOutcomeRequestBody
+  AcknowledgeDisputeOutcomeRequestBody;
 
-export const acknowledgeDisputeOutcome
-  = ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
-    async ({ contractId, signal }: Props) => {
-      const response = await fetch(`${url}/v1/contract/${contractId}/dispute/acknowledgeOutcome`, {
+export const acknowledgeDisputeOutcome =
+  ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
+  async ({ contractId, signal }: Props) => {
+    const response = await fetch(
+      `${url}/v1/contract/${contractId}/dispute/acknowledgeOutcome`,
+      {
         headers: helpers.getPrivateHeaders(url),
-        method: 'POST',
+        method: "POST",
         signal,
-      })
+      },
+    );
 
-      return parseResponse<AcknowledgeDisputeOutcomeResponseBody, AcknowledgeDisputeOutcomeErrorResponseBody>(response)
-    }
+    return parseResponse<
+      AcknowledgeDisputeOutcomeResponseBody,
+      AcknowledgeDisputeOutcomeErrorResponseBody
+    >(response);
+  };

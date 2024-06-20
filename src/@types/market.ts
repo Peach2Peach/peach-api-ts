@@ -1,9 +1,9 @@
-import { Currency } from './global'
+import { Currency } from "./global";
 
 export type PriceData = {
-  pair: string
-  price: number
-  date: Date
-}
+  pair: string;
+  price: number;
+  date: Date;
+};
 
-export type TradingPair = `BTC${Currency}`
+export type TradingPair = `BTC${Currency}`;

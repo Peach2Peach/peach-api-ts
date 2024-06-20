@@ -4,11 +4,14 @@ import {
   MatchOfferRequestParams,
   MatchOfferRequestQuery,
   MatchOfferResponseBody,
-} from '../../@types/api/offerAPI'
-import { parseResponse } from '../../helpers/parseResponse'
-import { PeachAPIHelpers, PeachAPIOptions, RequestProps } from '../../types'
+} from "../../@types/api/offerAPI";
+import { parseResponse } from "../../helpers/parseResponse";
+import { PeachAPIHelpers, PeachAPIOptions, RequestProps } from "../../types";
 
-type Props = RequestProps & MatchOfferRequestParams & MatchOfferRequestQuery & MatchOfferRequestBody
+type Props = RequestProps &
+  MatchOfferRequestParams &
+  MatchOfferRequestQuery &
+  MatchOfferRequestBody;
 
 export const matchOffer =
   ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
@@ -44,9 +47,11 @@ export const matchOffer =
         paymentDataSignature,
         instantTrade,
       }),
-      method: 'POST',
+      method: "POST",
       signal,
-    })
+    });
 
-    return parseResponse<MatchOfferResponseBody, MatchOfferErrorResponseBody>(response)
-  }
+    return parseResponse<MatchOfferResponseBody, MatchOfferErrorResponseBody>(
+      response,
+    );
+  };

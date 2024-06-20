@@ -3,12 +3,15 @@ import {
   PostOfferErrorResponseBody,
   PostOfferRequestParams,
   PostOfferRequestQuery,
-} from '../../@types/api/offerAPI'
-import { BuyOffer } from '../../@types/offer'
-import { parseResponse } from '../../helpers/parseResponse'
-import { PeachAPIHelpers, PeachAPIOptions, RequestProps } from '../../types'
+} from "../../@types/api/offerAPI";
+import { BuyOffer } from "../../@types/offer";
+import { parseResponse } from "../../helpers/parseResponse";
+import { PeachAPIHelpers, PeachAPIOptions, RequestProps } from "../../types";
 
-type Props = RequestProps & PostOfferRequestParams & PostOfferRequestQuery & PostBuyOfferRequestBody
+type Props = RequestProps &
+  PostOfferRequestParams &
+  PostOfferRequestQuery &
+  PostBuyOfferRequestBody;
 
 export const postBuyOffer =
   ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
@@ -25,7 +28,7 @@ export const postBuyOffer =
   }: Props) => {
     const response = await fetch(`${url}/v1/offer`, {
       headers: helpers.getPrivateHeaders(url),
-      method: 'POST',
+      method: "POST",
       body: JSON.stringify({
         type,
         amount,
@@ -37,7 +40,7 @@ export const postBuyOffer =
         messageSignature,
       }),
       signal,
-    })
+    });
 
-    return parseResponse<BuyOffer, PostOfferErrorResponseBody>(response)
-  }
+    return parseResponse<BuyOffer, PostOfferErrorResponseBody>(response);
+  };

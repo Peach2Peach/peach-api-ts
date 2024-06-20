@@ -4,23 +4,29 @@ import {
   RefundSellOfferRequestParams,
   RefundSellOfferRequestQuery,
   RefundSellOfferResponseBody,
-} from '../../@types/api/offerAPI'
-import { parseResponse } from '../../helpers/parseResponse'
-import { PeachAPIHelpers, PeachAPIOptions, RequestProps } from '../../types'
+} from "../../@types/api/offerAPI";
+import { parseResponse } from "../../helpers/parseResponse";
+import { PeachAPIHelpers, PeachAPIOptions, RequestProps } from "../../types";
 
-type Props = RequestProps & RefundSellOfferRequestParams & RefundSellOfferRequestQuery & RefundSellOfferRequestBody
+type Props = RequestProps &
+  RefundSellOfferRequestParams &
+  RefundSellOfferRequestQuery &
+  RefundSellOfferRequestBody;
 
-export const refundSellOffer
-  = ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
-    async ({ offerId, tx, signal }: Props) => {
-      const response = await fetch(`${url}/v1/offer/${offerId}/refund`, {
-        headers: helpers.getPrivateHeaders(url),
-        method: 'POST',
-        body: JSON.stringify({
-          tx,
-        }),
-        signal,
-      })
+export const refundSellOffer =
+  ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
+  async ({ offerId, tx, signal }: Props) => {
+    const response = await fetch(`${url}/v1/offer/${offerId}/refund`, {
+      headers: helpers.getPrivateHeaders(url),
+      method: "POST",
+      body: JSON.stringify({
+        tx,
+      }),
+      signal,
+    });
 
-      return parseResponse<RefundSellOfferResponseBody, RefundSellOfferErrorResponseBody>(response)
-    }
+    return parseResponse<
+      RefundSellOfferResponseBody,
+      RefundSellOfferErrorResponseBody
+    >(response);
+  };

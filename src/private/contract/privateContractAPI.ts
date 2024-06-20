@@ -1,21 +1,24 @@
-import { PeachAPIHelpers, PeachAPIOptions } from '../../types'
-import { acknowledgeDispute } from './acknowledgeDispute'
-import { acknowledgeDisputeOutcome } from './acknowledgeDisputeOutcome'
-import { cancelContract } from './cancelContract'
-import { confirmContractCancelation } from './confirmContractCancelation'
-import { confirmPaymentBuyer } from './confirmPaymentBuyer'
-import { confirmPaymentSeller } from './confirmPaymentSeller'
-import { extendPaymentTimer } from './extendPaymentTimer'
-import { getChat } from './getChat'
-import { getContract } from './getContract'
-import { getContractSummaries } from './getContractSummaries'
-import { postChat } from './postChat'
-import { raiseDispute } from './raiseDispute'
-import { rateUser } from './rateUser'
-import { rejectContractCancelation } from './rejectContractCancelation'
-import { setMessageRead } from './setMessageRead'
+import { PeachAPIHelpers, PeachAPIOptions } from "../../types";
+import { acknowledgeDispute } from "./acknowledgeDispute";
+import { acknowledgeDisputeOutcome } from "./acknowledgeDisputeOutcome";
+import { cancelContract } from "./cancelContract";
+import { confirmContractCancelation } from "./confirmContractCancelation";
+import { confirmPaymentBuyer } from "./confirmPaymentBuyer";
+import { confirmPaymentSeller } from "./confirmPaymentSeller";
+import { extendPaymentTimer } from "./extendPaymentTimer";
+import { getChat } from "./getChat";
+import { getContract } from "./getContract";
+import { getContractSummaries } from "./getContractSummaries";
+import { postChat } from "./postChat";
+import { raiseDispute } from "./raiseDispute";
+import { rateUser } from "./rateUser";
+import { rejectContractCancelation } from "./rejectContractCancelation";
+import { setMessageRead } from "./setMessageRead";
 
-export const privateContractAPI = (options: PeachAPIOptions, helpers: PeachAPIHelpers) => ({
+export const privateContractAPI = (
+  options: PeachAPIOptions,
+  helpers: PeachAPIHelpers,
+) => ({
   acknowledgeDispute: acknowledgeDispute(options, helpers),
   acknowledgeDisputeOutcome: acknowledgeDisputeOutcome(options, helpers),
   cancelContract: cancelContract(options, helpers),
@@ -31,5 +34,4 @@ export const privateContractAPI = (options: PeachAPIOptions, helpers: PeachAPIHe
   rateUser: rateUser(options, helpers),
   rejectContractCancelation: rejectContractCancelation(options, helpers),
   setMessageRead: setMessageRead(options, helpers),
-})
-
+});

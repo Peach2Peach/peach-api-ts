@@ -1,22 +1,22 @@
-import { BuyOffer, SellOffer } from '../@types/offer'
-import { twintDataHashes, validSEPADataHashes } from './paymentData'
-import { defaultUser } from './userData'
+import { BuyOffer, SellOffer } from "../@types/offer";
+import { twintDataHashes, validSEPADataHashes } from "./paymentData";
+import { defaultUser } from "./userData";
 
 export const sellOffer: SellOffer = {
-  creationDate: new Date('2022-03-08T11:41:07.245Z'),
-  publishingDate: new Date('2022-03-08T11:41:07.245Z'),
-  lastModified: new Date('2022-03-08T11:41:07.245Z'),
-  id: '38',
+  creationDate: new Date("2022-03-08T11:41:07.245Z"),
+  publishingDate: new Date("2022-03-08T11:41:07.245Z"),
+  lastModified: new Date("2022-03-08T11:41:07.245Z"),
+  id: "38",
   online: true,
-  type: 'ask',
+  type: "ask",
   meansOfPayment: {
-    EUR: ['sepa'],
+    EUR: ["sepa"],
   },
   paymentData: {
     sepa: { hashes: validSEPADataHashes },
   },
   funding: {
-    status: 'NULL',
+    status: "NULL",
     txIds: [],
     vouts: [],
     amounts: [],
@@ -26,17 +26,17 @@ export const sellOffer: SellOffer = {
   premium: 1.5,
   matches: [],
   doubleMatched: false,
-  returnAddress: 'bcrt1q70z7vw93cxs6jx7nav9cmcn5qvlv362qfudnqmz9fnk2hjvz5nus4c0fuh',
+  returnAddress:
+    "bcrt1q70z7vw93cxs6jx7nav9cmcn5qvlv362qfudnqmz9fnk2hjvz5nus4c0fuh",
   refunded: false,
   released: false,
-  tradeStatus: 'searchingForPeer',
+  tradeStatus: "searchingForPeer",
   freeTrade: false,
   escrowFee: 0,
   user: {
-    id: '1',
-    creationDate: new Date('2022-03-08T11:41:07.245Z'),
+    id: "1",
+    creationDate: new Date("2022-03-08T11:41:07.245Z"),
     openedTrades: 0,
-    canceledTrades: 0,
     trades: 0,
     rating: 0,
     userRating: 0,
@@ -57,19 +57,19 @@ export const sellOffer: SellOffer = {
     pgpPublicKeys: defaultUser.pgpPublicKeys,
   },
   fundingAmountDifferent: false,
-  publicKey: 'TODO add public key',
-}
+  publicKey: "TODO add public key",
+};
 
 export const buyOffer: BuyOffer = {
-  creationDate: new Date('2022-03-08T11:41:07.245Z'),
-  publishingDate: new Date('2022-03-08T11:41:07.245Z'),
-  lastModified: new Date('2022-03-08T11:41:07.245Z'),
-  id: '37',
+  creationDate: new Date("2022-03-08T11:41:07.245Z"),
+  publishingDate: new Date("2022-03-08T11:41:07.245Z"),
+  lastModified: new Date("2022-03-08T11:41:07.245Z"),
+  id: "37",
   online: true,
-  type: 'bid',
+  type: "bid",
   meansOfPayment: {
-    EUR: ['sepa'],
-    CHF: ['twint'],
+    EUR: ["sepa"],
+    CHF: ["twint"],
   },
   paymentData: {
     sepa: { hashes: validSEPADataHashes },
@@ -78,12 +78,13 @@ export const buyOffer: BuyOffer = {
   amount: [50000, 250000],
   matches: [],
   doubleMatched: false,
-  releaseAddress: 'bcrt1q70z7vw93cxs6jx7nav9cmcn5qvlv362qfudnqmz9fnk2hjvz5nus4c0fuh',
-  tradeStatus: 'searchingForPeer',
+  releaseAddress:
+    "bcrt1q70z7vw93cxs6jx7nav9cmcn5qvlv362qfudnqmz9fnk2hjvz5nus4c0fuh",
+  tradeStatus: "searchingForPeer",
   maxPremium: null,
   minReputation: null,
   user: defaultUser,
   escrowFee: 0.0001,
   freeTrade: false,
-  message: 'TODO add message',
-}
+  message: "TODO add message",
+};

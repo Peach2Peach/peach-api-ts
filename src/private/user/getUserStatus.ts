@@ -4,20 +4,26 @@ import {
   GetUserStatusRequestParams,
   GetUserStatusRequestQuery,
   GetUserStatusResponseBody,
-} from '../../@types/api/userAPI'
-import { parseResponse } from '../../helpers/parseResponse'
-import { PeachAPIHelpers, PeachAPIOptions, RequestProps } from '../../types'
+} from "../../@types/api/userAPI";
+import { parseResponse } from "../../helpers/parseResponse";
+import { PeachAPIHelpers, PeachAPIOptions, RequestProps } from "../../types";
 
-type Props = RequestProps & GetUserStatusRequestParams & GetUserStatusRequestQuery & GetUserStatusRequestBody
+type Props = RequestProps &
+  GetUserStatusRequestParams &
+  GetUserStatusRequestQuery &
+  GetUserStatusRequestBody;
 
 export const getUserStatus =
   ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
   async ({ userId, signal }: Props) => {
     const response = await fetch(`${url}/v1/user/${userId}/status`, {
       headers: helpers.getPrivateHeaders(url),
-      method: 'GET',
+      method: "GET",
       signal,
-    })
+    });
 
-    return parseResponse<GetUserStatusResponseBody, GetUserStatusErrorResponseBody>(response)
-  }
+    return parseResponse<
+      GetUserStatusResponseBody,
+      GetUserStatusErrorResponseBody
+    >(response);
+  };

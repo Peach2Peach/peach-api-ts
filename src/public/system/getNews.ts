@@ -1,22 +1,26 @@
-import { APIError } from '../../@types/global'
-import { parseResponse } from '../../helpers/parseResponse'
-import { PeachAPIOptions, PublicPeachAPIHelpers, RequestProps } from '../../types'
+import { APIError } from "../../@types/global";
+import { parseResponse } from "../../helpers/parseResponse";
+import {
+  PeachAPIOptions,
+  PublicPeachAPIHelpers,
+  RequestProps,
+} from "../../types";
 
 type NewsItem = {
-  text: string
-  shareText: string
-  url: string
-}
-type GetNewsResponse = NewsItem[]
+  text: string;
+  shareText: string;
+  url: string;
+};
+type GetNewsResponse = NewsItem[];
 
 export const getNews =
   ({ url }: PeachAPIOptions, helpers: PublicPeachAPIHelpers) =>
   async ({ signal }: RequestProps = {}) => {
     const response = await fetch(`${url}/v1/info/news`, {
       headers: helpers.getPublicHeaders(url),
-      method: 'GET',
+      method: "GET",
       signal,
-    })
+    });
 
-    return parseResponse<GetNewsResponse, APIError<null>>(response)
-  }
+    return parseResponse<GetNewsResponse, APIError<null>>(response);
+  };

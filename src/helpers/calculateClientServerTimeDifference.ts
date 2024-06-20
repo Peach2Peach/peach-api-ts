@@ -1,5 +1,5 @@
-import { getStatus } from '../public/system/getStatus'
-import { PublicPeachAPIHelpers, PeachAPIOptions } from '../types'
+import { getStatus } from "../public/system/getStatus";
+import { PublicPeachAPIHelpers, PeachAPIOptions } from "../types";
 
 /**
  * Note: we estimate the time it took for the response to arrive from server to client
@@ -10,14 +10,14 @@ export const calculateClientServerTimeDifference = async (
   options: PeachAPIOptions,
   helpers: PublicPeachAPIHelpers,
 ): Promise<number> => {
-  const start = Date.now()
-  const result = await getStatus(options, helpers)()
-  const end = Date.now()
-  const roundTrip = (end - start) / 2
+  const start = Date.now();
+  const result = await getStatus(options, helpers)();
+  const end = Date.now();
+  const roundTrip = (end - start) / 2;
 
   if (!result.isOk()) {
-    return 0
+    return 0;
   }
 
-  return end - roundTrip - result.getValue().serverTime
-}
+  return end - roundTrip - result.getValue().serverTime;
+};

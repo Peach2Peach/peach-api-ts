@@ -1,1 +1,1 @@
-export { isDateString } from './isDateString'
+export { isDateString } from "./isDateString";
