@@ -56,6 +56,7 @@ export type EuPaymentMethods =
   | "satispay"
   | "sepa"
   | "skrill"
+  | "strike"
   | "straksbetaling"
   | "swish"
   | "twint"
