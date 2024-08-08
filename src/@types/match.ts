@@ -27,3 +27,14 @@ export type Match = {
   unavailable: MatchUnavailableReasons;
   instantTrade: boolean;
 };
+
+export type SellOfferSummary = {
+  offerId: string;
+  amount: number;
+  requestedPrice: number | null;
+  premium: number;
+  selectedCurrency?: Currency;
+  tradeRequested: boolean;
+  canInstantTrade: boolean;
+  user: PublicUser;
+};

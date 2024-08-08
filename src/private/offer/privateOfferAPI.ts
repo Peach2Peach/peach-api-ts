@@ -9,6 +9,8 @@ import { getOfferDetails } from "./getOfferDetails";
 import { getOfferSummaries } from "./getOfferSummaries";
 import { getOffers } from "./getOffers";
 import { getRefundPSBT } from "./getRefundPSBT";
+import { getSellOfferSummary } from "./getSellOfferSummary";
+import { getSellOfferSummaryIds } from "./getSellOfferSummaryIds";
 import { matchOffer } from "./matchOffer";
 import { patchOffer } from "./patchOffer";
 import { postBuyOffer } from "./postBuyOffer";
@@ -21,7 +23,7 @@ import { unmatchOffer } from "./unmatchOffer";
 
 export const privateOfferAPI = (
   options: PeachAPIOptions,
-  helpers: PeachAPIHelpers,
+  helpers: PeachAPIHelpers
 ) => ({
   cancelOffer: cancelOffer(options, helpers),
   confirmEscrow: confirmEscrow(options, helpers),
@@ -41,5 +43,7 @@ export const privateOfferAPI = (
   republishSellOffer: republishSellOffer(options, helpers),
   searchOffers: searchOffers(options, helpers),
   searchOfferSummaries: searchOfferSummaries(options, helpers),
+  getSellOfferSummaryIds: getSellOfferSummaryIds(options, helpers),
+  getSellOfferSummary: getSellOfferSummary(options, helpers),
   unmatchOffer: unmatchOffer(options, helpers),
 });
