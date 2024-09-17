@@ -2,6 +2,7 @@ import { PeachAPIHelpers, PeachAPIOptions } from "../../types";
 import { cancelOffer } from "./cancelOffer";
 import { confirmEscrow } from "./confirmEscrow";
 import { createEscrow } from "./createEscrow";
+import { getFundingInfo } from "./getFundingInfo";
 import { getFundingStatus } from "./getFundingStatus";
 import { getMatch } from "./getMatch";
 import { getMatches } from "./getMatches";
@@ -28,6 +29,7 @@ export const privateOfferAPI = (
   cancelOffer: cancelOffer(options, helpers),
   confirmEscrow: confirmEscrow(options, helpers),
   createEscrow: createEscrow(options, helpers),
+  getFundingInfo: getFundingInfo(options, helpers),
   getFundingStatus: getFundingStatus(options, helpers),
   getMatch: getMatch(options, helpers),
   getMatches: getMatches(options, helpers),
