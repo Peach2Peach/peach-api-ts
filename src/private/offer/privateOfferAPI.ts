@@ -4,7 +4,8 @@ import { acceptTradeRequestForBuyOffer } from "./acceptTradeRequestsForBuyOffer"
 import { cancelOffer } from "./cancelOffer";
 import { confirmEscrow } from "./confirmEscrow";
 import { createEscrow } from "./createEscrow";
-import { getFundingInfo } from "./getFundingInfo";
+import { getBuyOfferSummary } from "./getBuyOfferSummary";
+import { getBuyOfferSummaryIds } from "./getBuyOfferSummaryIds";
 import { getFundingStatus } from "./getFundingStatus";
 import { getMatch } from "./getMatch";
 import { getMatches } from "./getMatches";
@@ -63,6 +64,8 @@ export const privateOfferAPI = (
   searchOfferSummaries: searchOfferSummaries(options, helpers),
   getSellOfferSummaryIds: getSellOfferSummaryIds(options, helpers),
   getSellOfferSummary: getSellOfferSummary(options, helpers),
+  getBuyOfferSummaryIds: getBuyOfferSummaryIds(options, helpers),
+  getBuyOfferSummary: getBuyOfferSummary(options, helpers),
   getTradeRequestsForBuyOffer: getTradeRequestsForBuyOffer(options, helpers),
   getTradeRequestsForSellOffer: getTradeRequestsForSellOffer(options, helpers),
   unmatchOffer: unmatchOffer(options, helpers),
