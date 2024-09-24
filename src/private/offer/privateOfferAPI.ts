@@ -18,6 +18,8 @@ import { postBuyOffer } from "./postBuyOffer";
 import { postSellOffer } from "./postSellOffer";
 import { refundSellOffer } from "./refundSellOffer";
 import { republishSellOffer } from "./republishSellOffer";
+import { requestTradeWithBuyOffer } from "./requestTradeWithBuyOffer";
+import { requestTradeWithSellOffer } from "./requestTradeWithSellOffer";
 import { searchOfferSummaries } from "./searchOfferSummaries";
 import { searchOffers } from "./searchOffers";
 import { unmatchOffer } from "./unmatchOffer";
@@ -43,6 +45,8 @@ export const privateOfferAPI = (
   postSellOffer: postSellOffer(options, helpers),
   refundSellOffer: refundSellOffer(options, helpers),
   republishSellOffer: republishSellOffer(options, helpers),
+  requestTradeWithBuyOffer: requestTradeWithBuyOffer(options, helpers),
+  requestTradeWithSellOffer: requestTradeWithSellOffer(options, helpers),
   searchOffers: searchOffers(options, helpers),
   searchOfferSummaries: searchOfferSummaries(options, helpers),
   getSellOfferSummaryIds: getSellOfferSummaryIds(options, helpers),
