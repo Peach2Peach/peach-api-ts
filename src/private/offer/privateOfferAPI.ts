@@ -6,6 +6,7 @@ import { confirmEscrow } from "./confirmEscrow";
 import { createEscrow } from "./createEscrow";
 import { getBuyOfferSummary } from "./getBuyOfferSummary";
 import { getBuyOfferSummaryIds } from "./getBuyOfferSummaryIds";
+import { getEscrowInfo } from "./getEscrowInfo";
 import { getFundingStatus } from "./getFundingStatus";
 import { getMatch } from "./getMatch";
 import { getMatches } from "./getMatches";
@@ -44,7 +45,7 @@ export const privateOfferAPI = (
   cancelOffer: cancelOffer(options, helpers),
   confirmEscrow: confirmEscrow(options, helpers),
   createEscrow: createEscrow(options, helpers),
-  getFundingInfo: getFundingInfo(options, helpers),
+  getEscrowInfo: getEscrowInfo(options, helpers),
   getFundingStatus: getFundingStatus(options, helpers),
   getMatch: getMatch(options, helpers),
   getMatches: getMatches(options, helpers),
