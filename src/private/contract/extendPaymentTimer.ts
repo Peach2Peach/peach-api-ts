@@ -1,17 +1,8 @@
-import {
-  ExtendPaymentTimerErrorResponseBody,
-  ExtendPaymentTimerRequestBody,
-  ExtendPaymentTimerRequestParams,
-  ExtendPaymentTimerRequestQuery,
-  ExtendPaymentTimerResponseBody,
-} from "../../@types/api/contractAPI";
+import { APIError, APISuccess } from "../../@types/global";
 import { parseResponse } from "../../helpers/parseResponse";
 import { PeachAPIHelpers, PeachAPIOptions, RequestProps } from "../../types";
 
-type Props = RequestProps &
-  ExtendPaymentTimerRequestParams &
-  ExtendPaymentTimerRequestQuery &
-  ExtendPaymentTimerRequestBody;
+type Props = RequestProps & { contractId: string };
 
 export const extendPaymentTimer =
   ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
@@ -22,11 +13,10 @@ export const extendPaymentTimer =
         headers: helpers.getPrivateHeaders(url),
         method: "PATCH",
         signal,
-      },
+      }
     );
 
-    return parseResponse<
-      ExtendPaymentTimerResponseBody,
-      ExtendPaymentTimerErrorResponseBody
-    >(response);
+    return parseResponse<APISuccess, APIError<"NOT_FOUND" | "UNAUTHORIZED">>(
+      response
+    );
   };
