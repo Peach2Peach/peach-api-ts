@@ -1,17 +1,9 @@
-import {
-  GetContractErrorResponseBody,
-  GetContractRequestBody,
-  GetContractRequestParams,
-  GetContractRequestQuery,
-  GetContractResponseBody,
-} from "../../@types/api/contractAPI";
+import { Contract } from "../../@types/contract";
+import { APIError } from "../../@types/global";
 import { parseResponse } from "../../helpers/parseResponse";
 import { PeachAPIHelpers, PeachAPIOptions, RequestProps } from "../../types";
 
-type Props = RequestProps &
-  GetContractRequestParams &
-  GetContractRequestQuery &
-  GetContractRequestBody;
+type Props = RequestProps & { contractId: string };
 
 export const getContract =
   ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
@@ -22,7 +14,8 @@ export const getContract =
       signal,
     });
 
-    return parseResponse<GetContractResponseBody, GetContractErrorResponseBody>(
-      response,
-    );
+    return parseResponse<
+      Contract,
+      APIError<"NOT_FOUND" | "INTERNAL_SERVER_ERROR">
+    >(response);
   };

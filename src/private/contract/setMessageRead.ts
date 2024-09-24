@@ -1,17 +1,8 @@
-import {
-  SetMessagesReadByUserErrorResponseBody,
-  SetMessagesReadByUserRequestBody,
-  SetMessagesReadByUserRequestParams,
-  SetMessagesReadByUserRequestQuery,
-  SetMessagesReadByUserResponseBody,
-} from "../../@types/api/contractAPI";
+import { APIError, APISuccess } from "../../@types/global";
 import { parseResponse } from "../../helpers/parseResponse";
 import { PeachAPIHelpers, PeachAPIOptions, RequestProps } from "../../types";
 
-type Props = RequestProps &
-  SetMessagesReadByUserRequestParams &
-  SetMessagesReadByUserRequestQuery &
-  SetMessagesReadByUserRequestBody;
+type Props = RequestProps & { contractId: string; start: number; end: number };
 
 export const setMessageRead =
   ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
@@ -26,8 +17,5 @@ export const setMessageRead =
       signal,
     });
 
-    return parseResponse<
-      SetMessagesReadByUserResponseBody,
-      SetMessagesReadByUserErrorResponseBody
-    >(response);
+    return parseResponse<APISuccess, APIError<"NOT_FOUND">>(response);
   };

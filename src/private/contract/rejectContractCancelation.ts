@@ -1,17 +1,8 @@
-import {
-  RejectCancelationRequestErrorResponseBody,
-  RejectCancelationRequestRequestBody,
-  RejectCancelationRequestRequestParams,
-  RejectCancelationRequestRequestQuery,
-  RejectCancelationRequestResponseBody,
-} from "../../@types/api/contractAPI";
+import { APIError, APISuccess } from "../../@types/global";
 import { parseResponse } from "../../helpers/parseResponse";
 import { PeachAPIHelpers, PeachAPIOptions, RequestProps } from "../../types";
 
-type Props = RequestProps &
-  RejectCancelationRequestRequestParams &
-  RejectCancelationRequestRequestQuery &
-  RejectCancelationRequestRequestBody;
+type Props = RequestProps & { contractId: string };
 
 export const rejectContractCancelation =
   ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
@@ -22,11 +13,10 @@ export const rejectContractCancelation =
         headers: helpers.getPrivateHeaders(url),
         method: "POST",
         signal,
-      },
+      }
     );
 
-    return parseResponse<
-      RejectCancelationRequestResponseBody,
-      RejectCancelationRequestErrorResponseBody
-    >(response);
+    return parseResponse<APISuccess, APIError<"NOT_FOUND" | "UNAUTHORIZED">>(
+      response
+    );
   };
