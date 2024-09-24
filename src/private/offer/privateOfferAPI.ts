@@ -1,4 +1,6 @@
 import { PeachAPIHelpers, PeachAPIOptions } from "../../types";
+import { acceptTradeRequestForSellOffer } from "./acceptTradeRequestForSellOffer";
+import { acceptTradeRequestForBuyOffer } from "./acceptTradeRequestsForBuyOffer";
 import { cancelOffer } from "./cancelOffer";
 import { confirmEscrow } from "./confirmEscrow";
 import { createEscrow } from "./createEscrow";
@@ -28,6 +30,14 @@ export const privateOfferAPI = (
   options: PeachAPIOptions,
   helpers: PeachAPIHelpers
 ) => ({
+  acceptTradeRequestForBuyOffer: acceptTradeRequestForBuyOffer(
+    options,
+    helpers
+  ),
+  acceptTradeRequestForSellOffer: acceptTradeRequestForSellOffer(
+    options,
+    helpers
+  ),
   cancelOffer: cancelOffer(options, helpers),
   confirmEscrow: confirmEscrow(options, helpers),
   createEscrow: createEscrow(options, helpers),
