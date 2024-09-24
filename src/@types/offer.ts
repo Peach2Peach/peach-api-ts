@@ -19,6 +19,8 @@ export type TradeStatus =
   | "dispute"
   | "escrowWaitingForConfirmation"
   | "fundEscrow"
+  | "waitingForFunding"
+  | "fundingExpired"
   | "fundingAmountDifferent"
   | "hasMatchesAvailable"
   | "offerCanceled"

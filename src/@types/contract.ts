@@ -42,7 +42,9 @@ export type Contract = {
   paymentExpectedBy: Date;
   lastReminderSent?: PaymentReminder;
 
-  escrow: string;
+  escrow?: string;
+  fundingExpectedBy: Date;
+  fundingStatus: "NULL" | "MEMPOOL" | "FUNDED";
   releaseAddress: string;
   releaseTransaction?: string;
   releaseTxId?: string;

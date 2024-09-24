@@ -38,3 +38,14 @@ export type SellOfferSummary = {
   canInstantTrade: boolean;
   user: PublicUser;
 };
+
+export type BuyOfferSummary = {
+  offerId: string;
+  amount: [number, number];
+  requestedPrice: number | null;
+  premium: number;
+  selectedCurrency?: Currency;
+  tradeRequested: boolean;
+  canInstantTrade: boolean;
+  user: PublicUser;
+};

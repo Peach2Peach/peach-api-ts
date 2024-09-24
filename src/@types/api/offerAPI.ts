@@ -1,16 +1,14 @@
-import { APIError, APISuccess, Currency, Pricebook } from "../global";
+import { APIError, APISuccess, Currency } from "../global";
 import { Match } from "../match";
 import {
   BuyOffer,
   FundingStatus,
   InstantTradeCriteria,
   OfferPaymentData,
-  OfferSummary,
   SellOffer,
   Sorter,
 } from "../offer";
 import { MeansOfPayment, PaymentMethod } from "../payment";
-import { PublicUser } from "../user";
 
 export type CancelOfferRequestParams = { offerId: string };
 export type CancelOfferRequestQuery = {};
@@ -62,20 +60,6 @@ export type ConfirmEscrowErrorResponseBody = APIError<
   "NOT_FOUND" | "UNAUTHORIZED"
 >;
 
-export type GetFundingStatusRequestParams = { offerId: string };
-export type GetFundingStatusRequestQuery = {};
-export type GetFundingStatusRequestBody = {};
-export type GetFundingStatusResponseBody = {
-  offerId: string;
-  escrow: string;
-  returnAddress: string;
-  funding: FundingStatus;
-  userConfirmationRequired: boolean;
-};
-export type GetFundingStatusErrorResponseBody = APIError<
-  "NOT_FOUND" | "BAD_REQUEST"
->;
-
 export type GetMatchesRequestParams = { offerId: string };
 export type GetMatchesRequestQuery = {
   page?: number;
@@ -93,20 +77,6 @@ export type GetMatchesErrorResponseBody = APIError<
   "NOT_FOUND" | "CONTRACT_EXISTS" | "CANCELED"
 >;
 
-export type GetOfferRequestParams = { offerId: string };
-export type GetOfferRequestQuery = {};
-export type GetOfferRequestBody = {};
-export type GetOfferResponseBody = {
-  id: string;
-  type: "bid" | "ask";
-  user: PublicUser;
-  amount: number | [number, number];
-  premium?: number;
-  prices?: Pricebook;
-  meansOfPayment: MeansOfPayment;
-};
-export type GetOfferErrorResponseBody = APIError<"NOT_FOUND">;
-
 export type GetOfferDetailsRequestParams = { offerId: string };
 export type GetOfferDetailsRequestQuery = {};
 export type GetOfferDetailsRequestBody = {};
@@ -119,12 +89,6 @@ export type GetOffersRequestBody = {};
 export type GetOffersResponseBody = (BuyOffer | SellOffer)[];
 export type GetOffersErrorResponseBody = APIError<null>;
 
-export type GetOfferSummariesRequestParams = {};
-export type GetOfferSummariesRequestQuery = {};
-export type GetOfferSummariesRequestBody = {};
-export type GetOfferSummariesResponseBody = OfferSummary[];
-export type GetOfferSummariesErrorResponseBody = APIError<null>;
-
 export type MatchOfferRequestParams = {
   offerId: string;
 };
@@ -133,8 +97,8 @@ export type MatchOfferRequestBody = {
   matchingOfferId: string;
   currency: Currency;
   paymentMethod: PaymentMethod;
-  price: number;
-  premium: number;
+  price?: number;
+  premium?: number;
   maxMiningFeeRate?: number;
   paymentData?: OfferPaymentData;
   symmetricKeyEncrypted?: string;

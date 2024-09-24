@@ -1,4 +1,4 @@
-import { Contract, ContractSummary } from "../contract";
+import { Contract } from "../contract";
 import { DisputeReason } from "../dispute";
 import { APIError, APISuccess } from "../global";
 
@@ -80,25 +80,11 @@ export type GetChatRequestBody = {};
 export type GetChatResponseBody = Message[];
 export type GetChatErrorResponseBody = APIError<"NOT_FOUND">;
 
-export type GetContractRequestParams = { contractId: string };
-export type GetContractRequestQuery = {};
-export type GetContractRequestBody = {};
-export type GetContractResponseBody = Contract;
-export type GetContractErrorResponseBody = APIError<
-  "NOT_FOUND" | "INTERNAL_SERVER_ERROR"
->;
-
 export type GetContractsRequestParams = {};
 export type GetContractsRequestQuery = {};
 export type GetContractsRequestBody = {};
-export type GetContractsResponseBody = GetContractResponseBody[];
+export type GetContractsResponseBody = Contract[];
 export type GetContractsErrorResponseBody = APIError<null>;
-
-export type GetContractSummariesRequestParams = {};
-export type GetContractSummariesRequestQuery = {};
-export type GetContractSummariesRequestBody = {};
-export type GetContractSummariesResponseBody = ContractSummary[];
-export type GetContractSummariesErrorResponseBody = APIError<null>;
 
 export type PostChatRequestParams = { contractId: string };
 export type PostChatRequestQuery = {};
@@ -126,26 +112,4 @@ export type RateUserRequestBody = { rating: 1 | -1; signature: string };
 export type RateUserResponseBody = APISuccess;
 export type RateUserErrorResponseBody = APIError<
   "NOT_FOUND" | "CANCELED" | "UNAUTHORIZED"
->;
-
-export type RejectCancelationRequestRequestParams = { contractId: string };
-export type RejectCancelationRequestRequestQuery = {};
-export type RejectCancelationRequestRequestBody = {};
-export type RejectCancelationRequestResponseBody = APISuccess;
-export type RejectCancelationRequestErrorResponseBody = APIError<
-  "NOT_FOUND" | "UNAUTHORIZED"
->;
-
-export type SetMessagesReadByUserRequestParams = { contractId: string };
-export type SetMessagesReadByUserRequestQuery = {};
-export type SetMessagesReadByUserRequestBody = { start: number; end: number };
-export type SetMessagesReadByUserResponseBody = APISuccess;
-export type SetMessagesReadByUserErrorResponseBody = APIError<"NOT_FOUND">;
-
-export type ExtendPaymentTimerRequestParams = { contractId: string };
-export type ExtendPaymentTimerRequestQuery = {};
-export type ExtendPaymentTimerRequestBody = {};
-export type ExtendPaymentTimerResponseBody = APISuccess;
-export type ExtendPaymentTimerErrorResponseBody = APIError<
-  "NOT_FOUND" | "UNAUTHORIZED"
 >;
