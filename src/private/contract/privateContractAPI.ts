@@ -5,6 +5,7 @@ import { cancelContract } from "./cancelContract";
 import { confirmContractCancelation } from "./confirmContractCancelation";
 import { confirmPaymentBuyer } from "./confirmPaymentBuyer";
 import { confirmPaymentSeller } from "./confirmPaymentSeller";
+import { extendFundingTimer } from "./extendFundingTimer";
 import { extendPaymentTimer } from "./extendPaymentTimer";
 import { getChat } from "./getChat";
 import { getContract } from "./getContract";
@@ -17,7 +18,7 @@ import { setMessageRead } from "./setMessageRead";
 
 export const privateContractAPI = (
   options: PeachAPIOptions,
-  helpers: PeachAPIHelpers,
+  helpers: PeachAPIHelpers
 ) => ({
   acknowledgeDispute: acknowledgeDispute(options, helpers),
   acknowledgeDisputeOutcome: acknowledgeDisputeOutcome(options, helpers),
@@ -25,6 +26,7 @@ export const privateContractAPI = (
   confirmContractCancelation: confirmContractCancelation(options, helpers),
   confirmPaymentBuyer: confirmPaymentBuyer(options, helpers),
   confirmPaymentSeller: confirmPaymentSeller(options, helpers),
+  extendFundingTimer: extendFundingTimer(options, helpers),
   extendPaymentTimer: extendPaymentTimer(options, helpers),
   getChat: getChat(options, helpers),
   getContract: getContract(options, helpers),
