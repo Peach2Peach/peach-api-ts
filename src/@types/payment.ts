@@ -21,7 +21,6 @@ export type PaymentMethodField =
 
 export type EuPaymentMethods =
   | "advcash"
-  | "applePay"
   | "bankera"
   | "bizum"
   | "blik"
@@ -87,9 +86,7 @@ export type AfricaPaymentMethods =
   | "orangeMoney"
   | "payday"
   | "wave"
-  | "wirepay"
-  | "flutterwave"
-  | "mobileAirtime";
+  | "wirepay";
 
 export type BitcoinPaymentMethods = "liquid" | "lnurl";
 export type InternationalPaymentMethds =
