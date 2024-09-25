@@ -99,4 +99,5 @@ export const contract: Contract = {
   paymentDataEncrypted: "",
   paymentDataSignature: "",
   paymentDataEncryptionMethod: "aes256",
+  fundingStatus: "FUNDED",
 };
