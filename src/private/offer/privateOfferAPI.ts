@@ -16,6 +16,7 @@ import { getOffers } from "./getOffers";
 import { getRefundPSBT } from "./getRefundPSBT";
 import { getSellOfferSummary } from "./getSellOfferSummary";
 import { getSellOfferSummaryIds } from "./getSellOfferSummaryIds";
+import { getTradeRequest } from "./getTradeRequest";
 import { getTradeRequestsForBuyOffer } from "./getTradeRequestsForBuyOffer";
 import { getTradeRequestsForSellOffer } from "./getTradeRequestsForSellOffer";
 import { matchOffer } from "./matchOffer";
@@ -53,6 +54,7 @@ export const privateOfferAPI = (
   getOfferSummaries: getOfferSummaries(options, helpers),
   getOffers: getOffers(options, helpers),
   getRefundPSBT: getRefundPSBT(options, helpers),
+  getTradeRequest: getTradeRequest(options, helpers),
   matchOffer: matchOffer(options, helpers),
   patchOffer: patchOffer(options, helpers),
   postBuyOffer: postBuyOffer(options, helpers),
