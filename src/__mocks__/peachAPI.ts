@@ -48,6 +48,16 @@ const peachAPIMethods = {
             offerId: "",
           },
         }),
+      getEscrowInfo: () =>
+        Promise.resolve({
+          result: {
+            funding: defaultFundingStatus,
+            userConfirmationRequired: false,
+            returnAddress: "",
+            escrow: "",
+            offerId: "",
+          },
+        }),
       refundSellOffer: apiSuccess,
       getRefundPSBT: () =>
         Promise.resolve({
