@@ -3,21 +3,21 @@ import { Country, Currency } from "./global";
 import { PaymentMethodCountry } from "./offer";
 
 export type PaymentMethodField =
-  | "userName"
-  | "email"
-  | "phone"
-  | "reference"
-  | "beneficiary"
-  | "iban"
-  | "bic"
-  | "wallet"
   | "accountNumber"
+  | "beneficiary"
+  | "bic"
+  | "email"
+  | "iban"
+  | "lnurlAddress"
+  | "phone"
+  | "pixAlias"
+  | "postePayNumber"
+  | "receiveAddress"
+  | "reference"
   | "ukBankAccount"
   | "ukSortCode"
-  | "receiveAddress"
-  | "lnurlAddress"
-  | "pixAlias"
-  | "postePayNumber";
+  | "userName"
+  | "wallet";
 
 export type EuPaymentMethods =
   | "advcash"
@@ -26,6 +26,7 @@ export type EuPaymentMethods =
   | "blik"
   | "fasterPayments"
   | "friends24"
+  | "giftCard.steam"
   | "instantSepa"
   | "iris"
   | "keksPay"
@@ -34,50 +35,73 @@ export type EuPaymentMethods =
   | "mobilePay"
   | "n26"
   | "nationalTransferBG"
+  | "nationalTransferCH"
   | "nationalTransferCZ"
   | "nationalTransferDK"
   | "nationalTransferHU"
+  | "nationalTransferIS"
   | "nationalTransferNO"
   | "nationalTransferPL"
   | "nationalTransferRO"
-  | "nationalTransferTR"
-  | "nationalTransferCH"
-  | "nationalTransferIS"
   | "nationalTransferSE"
+  | "nationalTransferTR"
   | "neteller"
   | "papara"
+  | "payeer"
   | "paylib"
   | "paypal"
   | "paysera"
+  | "perfectMoney"
   | "postePay"
   | "rebellion"
   | "revolut"
   | "satispay"
+  | "sberbank"
   | "sepa"
   | "skrill"
-  | "strike"
+  | "stp"
   | "straksbetaling"
+  | "strike"
   | "swish"
+  | "tinkoff"
   | "twint"
   | "vipps"
-  | "wise";
+  | "westernUnion"
+  | "wise"
+  | "yooMoney";
+
 export type LatAmPaymentMethods =
   | "alias"
   | "bancolombia"
+  | "bankTransferSuriname"
   | "cbu"
+  | "chileBankDeposit"
   | "cvu"
+  | "daviPlata"
+  | "guatemalaBankDeposit"
   | "mercadoPago"
   | "nequi"
+  | "paraguayBankTransfer"
+  | "peruBankDeposit"
   | "pix"
   | "rappipay"
   | "sinpe"
-  | "sinpeMovil";
+  | "sinpeMovil"
+  | "spei"
+  | "tigoMoneyBolivia"
+  | "tigoMoneyElSalvador"
+  | "tigoMoneyGuatemala"
+  | "tigoMoneyHonduras"
+  | "tigoMoneyParaguay";
 
 export type AfricaPaymentMethods =
   | "accrue"
   | "airtelMoney"
+  | "apaym"
   | "chippercash"
+  | "djamo"
   | "eversend"
+  | "kcbBankKenya"
   | "klasha"
   | "m-pesa"
   | "moov"
@@ -85,8 +109,16 @@ export type AfricaPaymentMethods =
   | "nationalTransferNG"
   | "orangeMoney"
   | "payday"
+  | "tigoPesa"
   | "wave"
   | "wirepay";
+
+export type OceaniaPaymentMethods = "payID" | "osko";
+export type AsiaPaymentMethods =
+  | "UPI"
+  | "Paytm"
+  | "nationalTransferSG"
+  | "payLah";
 
 export type BitcoinPaymentMethods = "liquid" | "lnurl";
 export type InternationalPaymentMethds =
@@ -98,6 +130,8 @@ export type PaymentMethod =
   | EuPaymentMethods
   | LatAmPaymentMethods
   | AfricaPaymentMethods
+  | OceaniaPaymentMethods
+  | AsiaPaymentMethods
   | InternationalPaymentMethds
   | BitcoinPaymentMethods
   | CashPaymentMethds;
