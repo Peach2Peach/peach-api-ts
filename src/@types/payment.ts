@@ -130,7 +130,7 @@ export type AfricaPaymentMethods =
 export type OceaniaPaymentMethods = "payID" | "osko";
 export type AsiaPaymentMethods =
   | "UPI"
-  | "Paytm"
+  | "paytm"
   | "nationalTransferSG"
   | "payLah";
 
