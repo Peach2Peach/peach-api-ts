@@ -20,7 +20,7 @@ export type GetOfferResponseBody = {
     minReputation: number;
     badges: Medal[];
     minTrades: number;
-  };
+  } | null;
 };
 type ResponseError = APIError<"NOT_FOUND">;
 
