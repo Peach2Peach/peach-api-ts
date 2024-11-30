@@ -1,7 +1,7 @@
 import { APIError, Pricebook } from "../../@types/global";
 import { FundingStatus } from "../../@types/offer";
 import { MeansOfPayment } from "../../@types/payment";
-import { PublicUser } from "../../@types/user";
+import { Medal, PublicUser } from "../../@types/user";
 import { parseResponse } from "../../helpers/parseResponse";
 import { PeachAPIHelpers, PeachAPIOptions, RequestProps } from "../../types";
 
@@ -16,6 +16,11 @@ export type GetOfferResponseBody = {
   meansOfPayment: MeansOfPayment;
   escrow?: string;
   fundingStatus?: FundingStatus["status"];
+  instantTradeCriteria: {
+    minReputation: number;
+    badges: Medal[];
+    minTrades: number;
+  };
 };
 type ResponseError = APIError<"NOT_FOUND">;
 
