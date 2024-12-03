@@ -38,7 +38,7 @@ export const acceptTradeRequestForBuyOffer =
           paymentDataSignature,
           maxMiningFeeRate,
         }),
-      }
+      },
     );
 
     return parseResponse<Response, APIError<"INTERNAL_SERVER_ERROR">>(response);

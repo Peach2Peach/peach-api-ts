@@ -31,7 +31,7 @@ export const getTradeRequestsForBuyOffer =
         headers: helpers.getPrivateHeaders(url),
         method: "GET",
         signal,
-      }
+      },
     );
 
     return parseResponse<Response, APIError<"NOT_FOUND">>(response);

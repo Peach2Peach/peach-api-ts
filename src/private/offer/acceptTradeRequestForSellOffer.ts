@@ -31,7 +31,7 @@ export const acceptTradeRequestForSellOffer =
           paymentDataEncrypted,
           paymentDataSignature,
         }),
-      }
+      },
     );
 
     return parseResponse<Response, APIError<"INTERNAL_SERVER_ERROR">>(response);

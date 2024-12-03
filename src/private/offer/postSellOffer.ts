@@ -50,6 +50,6 @@ export const postSellOffer =
     });
 
     return parseResponse<SellOffer | SellOffer[], PostOfferErrorResponseBody>(
-      response
+      response,
     );
   };

@@ -1,4 +1,3 @@
-
 import { APIError } from "../../@types/global";
 import { MeansOfPayment } from "../../@types/payment";
 import { parseResponse } from "../../helpers/parseResponse";
@@ -8,8 +7,7 @@ type Props = {
   meansOfPayment?: MeansOfPayment;
   amount?: [number, number];
   maxPremium?: number;
-}
-
+};
 
 export const getSellOfferSummaryIds =
   ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
@@ -24,9 +22,5 @@ export const getSellOfferSummaryIds =
       }),
     });
 
-
-    return parseResponse<
-      string[],
-      APIError<"INTERNAL_SERVER_ERROR">
-    >(response);
+    return parseResponse<string[], APIError<"INTERNAL_SERVER_ERROR">>(response);
   };

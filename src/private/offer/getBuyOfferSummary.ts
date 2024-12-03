@@ -16,6 +16,6 @@ export const getBuyOfferSummary =
     });
 
     return parseResponse<BuyOfferSummary, APIError<"INTERNAL_SERVER_ERROR">>(
-      response
+      response,
     );
   };

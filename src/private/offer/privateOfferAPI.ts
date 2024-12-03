@@ -33,15 +33,15 @@ import { unmatchOffer } from "./unmatchOffer";
 
 export const privateOfferAPI = (
   options: PeachAPIOptions,
-  helpers: PeachAPIHelpers
+  helpers: PeachAPIHelpers,
 ) => ({
   acceptTradeRequestForBuyOffer: acceptTradeRequestForBuyOffer(
     options,
-    helpers
+    helpers,
   ),
   acceptTradeRequestForSellOffer: acceptTradeRequestForSellOffer(
     options,
-    helpers
+    helpers,
   ),
   cancelOffer: cancelOffer(options, helpers),
   confirmEscrow: confirmEscrow(options, helpers),
