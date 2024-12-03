@@ -3,12 +3,11 @@ import { Match } from "../match";
 import {
   BuyOffer,
   FundingStatus,
-  InstantTradeCriteria,
   OfferPaymentData,
   SellOffer,
   Sorter,
 } from "../offer";
-import { MeansOfPayment, PaymentMethod } from "../payment";
+import { PaymentMethod } from "../payment";
 
 export type CancelOfferRequestParams = { offerId: string };
 export type CancelOfferRequestQuery = {};
@@ -136,31 +135,6 @@ export type PatchOfferErrorResponseBody = APIError<
   "NOT_FOUND" | "UNAUTHORIZED" | "INVALID_SIGNATURE"
 >;
 
-export type PostOfferRequestParams = {};
-export type PostOfferRequestQuery = {};
-export type PostOfferRequestBody = {
-  type: "bid" | "ask";
-  meansOfPayment: MeansOfPayment;
-  paymentData: OfferPaymentData;
-};
-export type PostSellOfferRequestBody = PostOfferRequestBody & {
-  type: "ask";
-  amount: number;
-  premium?: number;
-  returnAddress?: string;
-  multi?: number;
-  instantTradeCriteria?: InstantTradeCriteria;
-};
-export type PostBuyOfferRequestBody = PostOfferRequestBody & {
-  type: "bid";
-  amount: [number, number];
-  releaseAddress: string;
-  messageSignature: string;
-} & MatchFilter;
-export type PostOfferResponseBody =
-  | BuyOffer
-  | SellOffer
-  | (BuyOffer | SellOffer)[];
 export type PostOfferErrorResponseBody = APIError<
   | "TRADING_LIMIT_REACHED"
   | "INVALID_SIGNATURE"

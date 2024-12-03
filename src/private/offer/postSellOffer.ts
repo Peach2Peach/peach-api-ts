@@ -1,17 +1,24 @@
+import { PostOfferErrorResponseBody } from "../../@types/api/offerAPI";
 import {
-  PostOfferErrorResponseBody,
-  PostOfferRequestParams,
-  PostOfferRequestQuery,
-  PostOfferResponseBody,
-  PostSellOfferRequestBody,
-} from "../../@types/api/offerAPI";
+  InstantTradeCriteria,
+  OfferPaymentData,
+  SellOffer,
+} from "../../@types/offer";
+import { MeansOfPayment } from "../../@types/payment";
 import { parseResponse } from "../../helpers/parseResponse";
-import { PeachAPIHelpers, PeachAPIOptions, RequestProps } from "../../types";
+import { PeachAPIHelpers, PeachAPIOptions } from "../../types";
 
-type Props = RequestProps &
-  PostOfferRequestParams &
-  PostOfferRequestQuery &
-  PostSellOfferRequestBody;
+type Props = {
+  type: "ask";
+  amount: number;
+  premium?: number;
+  returnAddress?: string;
+  multi?: number;
+  instantTradeCriteria?: InstantTradeCriteria;
+  meansOfPayment: MeansOfPayment;
+  paymentData: OfferPaymentData;
+  signal?: AbortSignal;
+};
 
 export const postSellOffer =
   ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
@@ -42,7 +49,7 @@ export const postSellOffer =
       signal,
     });
 
-    return parseResponse<PostOfferResponseBody, PostOfferErrorResponseBody>(
-      response,
+    return parseResponse<SellOffer | SellOffer[], PostOfferErrorResponseBody>(
+      response
     );
   };

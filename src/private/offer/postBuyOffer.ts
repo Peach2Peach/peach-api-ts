@@ -1,17 +1,25 @@
+import { PostOfferErrorResponseBody } from "../../@types/api/offerAPI";
 import {
-  PostBuyOfferRequestBody,
-  PostOfferErrorResponseBody,
-  PostOfferRequestParams,
-  PostOfferRequestQuery,
-} from "../../@types/api/offerAPI";
-import { BuyOffer } from "../../@types/offer";
+  BuyOffer,
+  InstantTradeCriteria,
+  OfferPaymentData,
+} from "../../@types/offer";
+import { MeansOfPayment } from "../../@types/payment";
 import { parseResponse } from "../../helpers/parseResponse";
-import { PeachAPIHelpers, PeachAPIOptions, RequestProps } from "../../types";
+import { PeachAPIHelpers, PeachAPIOptions } from "../../types";
 
-type Props = RequestProps &
-  PostOfferRequestParams &
-  PostOfferRequestQuery &
-  PostBuyOfferRequestBody;
+type Props = {
+  type: "bid";
+  amount: [number, number];
+  meansOfPayment: MeansOfPayment;
+  paymentData: OfferPaymentData;
+  releaseAddress: string;
+  messageSignature: string;
+  maxPremium?: number | null;
+  minReputation?: number | null;
+  instantTradeCriteria?: InstantTradeCriteria;
+  signal?: AbortSignal;
+};
 
 export const postBuyOffer =
   ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
@@ -24,6 +32,7 @@ export const postBuyOffer =
     maxPremium,
     minReputation,
     messageSignature,
+    instantTradeCriteria,
     signal,
   }: Props) => {
     const response = await fetch(`${url}/v1/offer`, {
@@ -38,6 +47,7 @@ export const postBuyOffer =
         maxPremium,
         minReputation,
         messageSignature,
+        instantTradeCriteria,
       }),
       signal,
     });
