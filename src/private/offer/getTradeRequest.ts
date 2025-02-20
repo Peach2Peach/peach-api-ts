@@ -3,7 +3,7 @@ import { PaymentMethod } from "../../@types/payment";
 import { parseResponse } from "../../helpers/parseResponse";
 import { PeachAPIHelpers, PeachAPIOptions, RequestProps } from "../../types";
 
-type Props = RequestProps & { offerId: string };
+type Props = RequestProps & { offerId: string; requestingOfferId?: string };
 
 export type TradeRequest = {
   amount: number;
@@ -18,8 +18,12 @@ type Response = {
 
 export const getTradeRequest =
   ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
-  async ({ offerId, signal }: Props) => {
-    const response = await fetch(`${url}/v1/offer/${offerId}/tradeRequest`, {
+  async ({ offerId, requestingOfferId, signal }: Props) => {
+    let route = `${url}/v1/offer/${offerId}/tradeRequest`;
+    if (requestingOfferId) {
+      route += `/${requestingOfferId}`;
+    }
+    const response = await fetch(route, {
       headers: helpers.getPrivateHeaders(url),
       method: "GET",
       signal,
