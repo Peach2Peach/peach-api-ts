@@ -10,6 +10,7 @@ type Props = {
   paymentDataEncrypted: string;
   paymentDataSignature: string;
   maxMiningFeeRate?: number;
+  requestingOfferId: string | undefined;
 };
 
 type Response = {
@@ -25,6 +26,7 @@ export const acceptTradeRequestForBuyOffer =
     paymentDataEncrypted,
     paymentDataSignature,
     maxMiningFeeRate,
+    requestingOfferId,
   }: Props) => {
     const response = await fetch(
       `${url}/v1/offer/${offerId}/buy/acceptTradeRequest`,
@@ -37,8 +39,9 @@ export const acceptTradeRequestForBuyOffer =
           paymentDataEncrypted,
           paymentDataSignature,
           maxMiningFeeRate,
+          requestingOfferId,
         }),
-      },
+      }
     );
 
     return parseResponse<Response, APIError<"INTERNAL_SERVER_ERROR">>(response);

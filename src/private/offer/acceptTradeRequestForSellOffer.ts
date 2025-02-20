@@ -7,6 +7,7 @@ type Props = {
   userId: string;
   paymentDataEncrypted: string;
   paymentDataSignature: string;
+  requestingOfferId: string | undefined;
 };
 
 type Response = {
@@ -20,6 +21,7 @@ export const acceptTradeRequestForSellOffer =
     userId,
     paymentDataEncrypted,
     paymentDataSignature,
+    requestingOfferId,
   }: Props) => {
     const response = await fetch(
       `${url}/v1/offer/${offerId}/sell/acceptTradeRequest`,
@@ -30,8 +32,9 @@ export const acceptTradeRequestForSellOffer =
           userId,
           paymentDataEncrypted,
           paymentDataSignature,
+          requestingOfferId,
         }),
-      },
+      }
     );
 
     return parseResponse<Response, APIError<"INTERNAL_SERVER_ERROR">>(response);

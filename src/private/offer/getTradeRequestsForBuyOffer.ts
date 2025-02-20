@@ -16,6 +16,7 @@ export type TradeRequestForBuyOffer = {
   paymentDataEncrypted: string;
   paymentDataSignature: string;
   maxMiningFeeRate?: number;
+  requestingOfferId: string | undefined;
 };
 
 type Response = {
@@ -31,7 +32,7 @@ export const getTradeRequestsForBuyOffer =
         headers: helpers.getPrivateHeaders(url),
         method: "GET",
         signal,
-      },
+      }
     );
 
     return parseResponse<Response, APIError<"NOT_FOUND">>(response);
