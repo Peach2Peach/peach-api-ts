@@ -16,6 +16,7 @@ type Props = RequestProps & {
   paymentDataEncrypted: string;
   paymentDataSignature: string;
   instantTrade?: boolean;
+  requestingOfferId?: string;
 };
 
 type RequestTradeResponseBody =
@@ -52,6 +53,7 @@ export const requestTradeWithSellOffer =
     paymentDataEncrypted,
     paymentDataSignature,
     instantTrade,
+    requestingOfferId,
     signal,
   }: Props) => {
     const response = await fetch(`${url}/v1/offer/sell/tradeRequest`, {
@@ -69,6 +71,7 @@ export const requestTradeWithSellOffer =
         paymentDataEncrypted,
         paymentDataSignature,
         instantTrade,
+        requestingOfferId,
       }),
       method: "POST",
       signal,
