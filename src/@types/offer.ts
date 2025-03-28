@@ -132,21 +132,38 @@ export type BuyOffer = Offer & {
   messageSignature?: string;
 } & Required<MatchFilter>;
 
-export type OfferSummary = {
+type EscrowType = "bitcoin" | "liquid";
+
+type BuyOfferSummary = {
   id: string;
-  type: "bid" | "ask";
-  creationDate: Date;
+  type: "bid";
+  escrowType: EscrowType;
+  newTradeId?: string;
   lastModified: Date;
-  amount: number | [number, number];
+  creationDate: Date;
+  amount: [number, number];
+  matches: string[];
+  tradeStatus: TradeStatus;
+};
+type SellOfferSummary = {
+  id: string;
+  type: "ask";
+  escrowType: EscrowType;
+  newTradeId?: string;
+  lastModified: Date;
+  creationDate: Date;
+  amount: number;
   matches: string[];
   prices?: Pricebook;
+  premium: number;
   tradeStatus: TradeStatus;
-  contractId?: string;
-  newTradeId?: string;
   txId?: string;
-  fundingTxId?: string;
-  refunded?: boolean;
+  fundingTxId: string;
+  refunded: boolean;
 };
+
+
+export type OfferSummary = BuyOfferSummary | SellOfferSummary;
 
 type BuySorter = "highestAmount" | "lowestPremium" | "bestReputation";
 type SellSorter = "highestPrice" | "bestReputation";
