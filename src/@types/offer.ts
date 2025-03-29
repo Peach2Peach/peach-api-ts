@@ -134,7 +134,7 @@ export type BuyOffer = Offer & {
 
 type EscrowType = "bitcoin" | "liquid";
 
-type BuyOfferSummary = {
+export type BuyOfferSummary = {
   id: string;
   type: "bid";
   escrowType: EscrowType;
@@ -145,7 +145,7 @@ type BuyOfferSummary = {
   matches: string[];
   tradeStatus: TradeStatus;
 };
-type SellOfferSummary = {
+export type SellOfferSummary = {
   id: string;
   type: "ask";
   escrowType: EscrowType;
