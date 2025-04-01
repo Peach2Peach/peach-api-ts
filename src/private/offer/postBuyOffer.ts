@@ -19,6 +19,7 @@ type Props = {
   minReputation?: number | null;
   instantTradeCriteria?: InstantTradeCriteria;
   signal?: AbortSignal;
+  multiplier?: number;
 };
 
 export const postBuyOffer =
@@ -34,6 +35,7 @@ export const postBuyOffer =
     messageSignature,
     instantTradeCriteria,
     signal,
+    multiplier,
   }: Props) => {
     const response = await fetch(`${url}/v1/offer`, {
       headers: helpers.getPrivateHeaders(url),
@@ -48,6 +50,7 @@ export const postBuyOffer =
         minReputation,
         messageSignature,
         instantTradeCriteria,
+        multiplier,
       }),
       signal,
     });
