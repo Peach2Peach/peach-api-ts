@@ -23,6 +23,6 @@ export const cancelOffer =
     });
 
     return parseResponse<CancelOfferResponseBody, CancelOfferErrorResponseBody>(
-      response,
+      response
     );
   };

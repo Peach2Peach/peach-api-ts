@@ -25,7 +25,7 @@ export const redeemReferralCode =
           code,
         }),
         signal,
-      },
+      }
     );
 
     return parseResponse<

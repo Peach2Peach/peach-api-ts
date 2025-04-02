@@ -9,7 +9,7 @@ import { publicUserAPI } from "./user/publicUserAPI";
 
 export const peachAPIPublic = (
   options: PeachAPIOptions,
-  helpers: PeachAPIHelpers,
+  helpers: PeachAPIHelpers
 ) => ({
   bitcoin: publicBitcoinAPI(options, helpers),
   contact: publicContactAPI(options, helpers),

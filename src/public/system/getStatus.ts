@@ -27,6 +27,6 @@ export const getStatus =
     });
 
     return parseResponse<GetStatusResponseBody, GetStatusErrorResponseBody>(
-      response,
+      response
     );
   };

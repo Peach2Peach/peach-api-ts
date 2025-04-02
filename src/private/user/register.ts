@@ -28,6 +28,6 @@ export const register =
       signal,
     });
     return parseResponse<RegisterResponseBody, RegisterErrorResponseBody>(
-      response,
+      response
     );
   };

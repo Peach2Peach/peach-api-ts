@@ -3,7 +3,7 @@ import { getEvents } from "./getEvents";
 
 export const publicEventsAPI = (
   options: PeachAPIOptions,
-  helpers: PeachAPIHelpers,
+  helpers: PeachAPIHelpers
 ) => ({
   getEvents: getEvents(options, helpers),
 });

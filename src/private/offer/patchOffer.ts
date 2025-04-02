@@ -62,6 +62,6 @@ export const patchOffer =
     });
 
     return parseResponse<PatchOfferResponseBody, PatchOfferErrorResponseBody>(
-      response,
+      response
     );
   };

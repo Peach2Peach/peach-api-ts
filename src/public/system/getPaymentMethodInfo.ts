@@ -19,7 +19,7 @@ export const getPaymentMethodInfo =
         },
         method: "GET",
         signal,
-      },
+      }
     );
 
     return parseResponse<PaymentMethodInfo, APIError<null>>(response);

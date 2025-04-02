@@ -27,6 +27,6 @@ export const rateUser =
     });
 
     return parseResponse<RateUserResponseBody, RateUserErrorResponseBody>(
-      response,
+      response
     );
   };

@@ -5,7 +5,7 @@ import { privateUserAPI } from "./user/privateUserAPI";
 
 export const peachAPIPrivate = (
   options: PeachAPIOptions,
-  helpers: PeachAPIHelpers,
+  helpers: PeachAPIHelpers
 ) => ({
   contract: privateContractAPI(options, helpers),
   offer: privateOfferAPI(options, helpers),

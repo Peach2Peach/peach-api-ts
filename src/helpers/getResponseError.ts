@@ -11,7 +11,7 @@ export const RESPONSE_ERRORS = {
 };
 
 export const isErrorStatus = (
-  status?: number | string | null,
+  status?: number | string | null
 ): status is keyof typeof RESPONSE_ERRORS =>
   typeof status !== "undefined" && status !== null && status in RESPONSE_ERRORS;
 

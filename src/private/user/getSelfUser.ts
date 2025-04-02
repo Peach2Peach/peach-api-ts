@@ -23,6 +23,6 @@ export const getSelfUser =
     });
 
     return parseResponse<GetSelfUserResponseBody, GetSelfUserErrorResponseBody>(
-      response,
+      response
     );
   };

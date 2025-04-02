@@ -41,6 +41,6 @@ export const updateUser =
     });
 
     return parseResponse<UpdateUserResponseBody, UpdateUserErrorResponseBody>(
-      response,
+      response
     );
   };

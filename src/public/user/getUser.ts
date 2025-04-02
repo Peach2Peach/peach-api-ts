@@ -19,6 +19,6 @@ export const getUser =
     });
 
     return parseResponse<GetUserResponseBody, GetUserErrorResponseBody>(
-      response,
+      response
     );
   };

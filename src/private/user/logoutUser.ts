@@ -23,6 +23,6 @@ export const logoutUser =
     });
 
     return parseResponse<LogoutUserResponseBody, LogoutUserErrorResponseBody>(
-      response,
+      response
     );
   };

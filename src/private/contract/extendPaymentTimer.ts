@@ -13,10 +13,10 @@ export const extendPaymentTimer =
         headers: helpers.getPrivateHeaders(url),
         method: "PATCH",
         signal,
-      },
+      }
     );
 
     return parseResponse<APISuccess, APIError<"NOT_FOUND" | "UNAUTHORIZED">>(
-      response,
+      response
     );
   };

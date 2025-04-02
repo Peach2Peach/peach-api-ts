@@ -18,7 +18,7 @@ import { setMessageRead } from "./setMessageRead";
 
 export const privateContractAPI = (
   options: PeachAPIOptions,
-  helpers: PeachAPIHelpers,
+  helpers: PeachAPIHelpers
 ) => ({
   acknowledgeDispute: acknowledgeDispute(options, helpers),
   acknowledgeDisputeOutcome: acknowledgeDisputeOutcome(options, helpers),

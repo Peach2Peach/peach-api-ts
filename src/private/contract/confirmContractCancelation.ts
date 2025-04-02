@@ -22,7 +22,7 @@ export const confirmContractCancelation =
         headers: helpers.getPrivateHeaders(url),
         method: "POST",
         signal,
-      },
+      }
     );
 
     return parseResponse<

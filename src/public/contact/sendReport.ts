@@ -28,6 +28,6 @@ export const sendReport =
     });
 
     return parseResponse<SendReportResponseBody, SendReportErrorResponseBody>(
-      response,
+      response
     );
   };

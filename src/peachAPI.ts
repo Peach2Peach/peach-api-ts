@@ -21,7 +21,7 @@ export const peachAPI = (options: PeachAPIOptions) => {
   const adjustClientServerTimeDifference = async () => {
     clientServerTimeDifference = await calculateClientServerTimeDifference(
       apiOptions,
-      publicHelpers,
+      publicHelpers
     );
   };
 
@@ -31,14 +31,14 @@ export const peachAPI = (options: PeachAPIOptions) => {
     if (peachAccountSet(apiOptions)) {
       const { accessToken, error } = await fetchAccessToken(
         apiOptions,
-        publicHelpers,
+        publicHelpers
       )(message);
       authToken = accessToken;
       if (!authToken) return { authToken, error };
 
       setTimeout(
         authenticate,
-        authToken?.expiry - Date.now() - PREFETCH_ACCESS_TOKEN,
+        authToken?.expiry - Date.now() - PREFETCH_ACCESS_TOKEN
       );
       return { authToken, error };
     }

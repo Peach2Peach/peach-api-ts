@@ -37,8 +37,8 @@ describe("peachAPI", () => {
     });
     expect(
       fetchMock.mock.calls[0][1].body.includes(
-        `"publicKey":"${peachAccount.publicKey.toString("hex")}`,
-      ),
+        `"publicKey":"${peachAccount.publicKey.toString("hex")}`
+      )
     ).toBeTruthy();
   });
 });

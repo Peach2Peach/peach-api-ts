@@ -23,15 +23,17 @@ export const getMatches =
     signal,
   }: Props) => {
     const response = await fetch(
-      `${url}/v1/offer/${offerId}/matches?page=${page}&size=${size}&sortBy=${sortBy.join(",")}`,
+      `${url}/v1/offer/${offerId}/matches?page=${page}&size=${size}&sortBy=${sortBy.join(
+        ","
+      )}`,
       {
         headers: helpers.getPrivateHeaders(url),
         method: "GET",
         signal,
-      },
+      }
     );
 
     return parseResponse<GetMatchesResponseBody, GetMatchesErrorResponseBody>(
-      response,
+      response
     );
   };

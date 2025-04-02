@@ -21,6 +21,6 @@ export const marketPrices =
       signal,
     });
     return parseResponse<GetPricesResponseBody, GetPricesErrorResponseBody>(
-      response,
+      response
     );
   };

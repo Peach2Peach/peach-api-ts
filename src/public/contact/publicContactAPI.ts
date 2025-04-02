@@ -3,7 +3,7 @@ import { sendReport } from "./sendReport";
 
 export const publicContactAPI = (
   options: PeachAPIOptions,
-  helpers: PeachAPIHelpers,
+  helpers: PeachAPIHelpers
 ) => ({
   sendReport: sendReport(options, helpers),
 });

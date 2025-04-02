@@ -17,7 +17,7 @@ export const getMatch =
         headers: helpers.getPrivateHeaders(url),
         method: "GET",
         signal,
-      },
+      }
     );
 
     return parseResponse<Match, GetMatchErrorResponseBody>(response);

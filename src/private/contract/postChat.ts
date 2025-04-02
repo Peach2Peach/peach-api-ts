@@ -27,6 +27,6 @@ export const postChat =
     });
 
     return parseResponse<PostChatResponseBody, PostChatErrorResponseBody>(
-      response,
+      response
     );
   };

@@ -8,7 +8,7 @@ import { PublicPeachAPIHelpers, PeachAPIOptions } from "../types";
  */
 export const calculateClientServerTimeDifference = async (
   options: PeachAPIOptions,
-  helpers: PublicPeachAPIHelpers,
+  helpers: PublicPeachAPIHelpers
 ): Promise<number> => {
   const start = Date.now();
   const result = await getStatus(options, helpers)();

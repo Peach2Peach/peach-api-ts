@@ -23,6 +23,6 @@ export const getEvents =
     });
 
     return parseResponse<GetEventsResponseBody, GetEventsErrorResponseBody>(
-      response,
+      response
     );
   };

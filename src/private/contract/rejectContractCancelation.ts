@@ -13,10 +13,10 @@ export const rejectContractCancelation =
         headers: helpers.getPrivateHeaders(url),
         method: "POST",
         signal,
-      },
+      }
     );
 
     return parseResponse<APISuccess, APIError<"NOT_FOUND" | "UNAUTHORIZED">>(
-      response,
+      response
     );
   };

@@ -4,7 +4,7 @@ import { postTx } from "./postTx";
 
 export const publicBitcoinAPI = (
   options: PeachAPIOptions,
-  helpers: PeachAPIHelpers,
+  helpers: PeachAPIHelpers
 ) => ({
   getFeeEstimate: getFeeEstimate(options, helpers),
   postTx: postTx(options, helpers),

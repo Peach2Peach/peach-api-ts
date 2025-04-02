@@ -9,7 +9,7 @@ import { getVersion } from "./getVersion";
 
 export const publicSystemAPI = (
   options: PeachAPIOptions,
-  helpers: PeachAPIHelpers,
+  helpers: PeachAPIHelpers
 ) => ({
   getInfo: getInfo(options, helpers),
   getVersion: getVersion(options, helpers),

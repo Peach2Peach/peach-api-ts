@@ -18,6 +18,6 @@ export const getVersion =
     });
 
     return parseResponse<GetVersionResponseBody, GetVersionErrorResponseBody>(
-      response,
+      response
     );
   };

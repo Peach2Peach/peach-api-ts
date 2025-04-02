@@ -17,7 +17,7 @@ import { updateUser } from "./updateUser";
 
 export const privateUserAPI = (
   options: PeachAPIOptions,
-  helpers: PeachAPIHelpers,
+  helpers: PeachAPIHelpers
 ) => ({
   auth: auth(options, helpers),
   blockUser: blockUser(options, helpers),

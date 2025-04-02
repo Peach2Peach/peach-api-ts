@@ -23,6 +23,6 @@ export const unblockUser =
     });
 
     return parseResponse<UnblockUserResponseBody, UnblockUserErrorResponseBody>(
-      response,
+      response
     );
   };

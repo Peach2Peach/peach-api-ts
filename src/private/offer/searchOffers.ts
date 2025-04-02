@@ -46,13 +46,15 @@ export const searchOffers =
       minReputation,
     };
     const response = await fetch(
-      `${url}/v1/offer/search?page=${page}&size=${size}&sortBy=${sortBy.join(",")}`,
+      `${url}/v1/offer/search?page=${page}&size=${size}&sortBy=${sortBy.join(
+        ","
+      )}`,
       {
         headers: helpers.getPrivateHeaders(url),
         method: "POST",
         body: JSON.stringify(requestBody),
         signal,
-      },
+      }
     );
 
     return parseResponse<

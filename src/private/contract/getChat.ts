@@ -23,10 +23,10 @@ export const getChat =
         headers: helpers.getPrivateHeaders(url),
         method: "GET",
         signal,
-      },
+      }
     );
 
     return parseResponse<GetChatResponseBody, GetChatErrorResponseBody>(
-      response,
+      response
     );
   };

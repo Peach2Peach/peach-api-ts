@@ -2,7 +2,7 @@ import { PublicHeaders } from "../types";
 
 export const getPublicHeaders = (
   url: string,
-  userAgent?: string,
+  userAgent?: string
 ): PublicHeaders => ({
   Origin: url,
   Referer: url,

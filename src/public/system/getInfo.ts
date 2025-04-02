@@ -26,6 +26,6 @@ export const getInfo =
     });
 
     return parseResponse<GetInfoResponseBody, GetInfoErrorResponseBody>(
-      response,
+      response
     );
   };

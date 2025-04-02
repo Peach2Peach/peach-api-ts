@@ -52,6 +52,6 @@ export const matchOffer =
     });
 
     return parseResponse<MatchOfferResponseBody, MatchOfferErrorResponseBody>(
-      response,
+      response
     );
   };

@@ -23,6 +23,6 @@ export const getOffers =
     });
 
     return parseResponse<GetOffersResponseBody, GetOffersErrorResponseBody>(
-      response,
+      response
     );
   };

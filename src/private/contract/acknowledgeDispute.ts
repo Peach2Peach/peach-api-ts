@@ -25,7 +25,7 @@ export const acknowledgeDispute =
           email,
         }),
         signal,
-      },
+      }
     );
 
     return parseResponse<

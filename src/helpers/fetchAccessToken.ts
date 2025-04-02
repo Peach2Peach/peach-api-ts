@@ -6,12 +6,12 @@ import { PeachAPIOptions, PublicPeachAPIHelpers } from "../types";
 export const fetchAccessToken =
   (
     options: PeachAPIOptions & { peachAccount: BIP32Interface },
-    helpers: PublicPeachAPIHelpers,
+    helpers: PublicPeachAPIHelpers
   ) =>
   async (message: string) => {
     const { result, error } = await auth(
       options,
-      helpers,
+      helpers
     )({
       publicKey: options.peachAccount.publicKey.toString("hex"),
       message,

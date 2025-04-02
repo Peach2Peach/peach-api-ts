@@ -15,7 +15,7 @@ describe("dateTimeReviver", () => {
 
   it("returns a date object if passed an ISO 8601 string", () => {
     expect(dateTimeReviver("", "2022-02-13T16:23:45.678Z")).toEqual(
-      new Date("2022-02-13T16:23:45.678Z"),
+      new Date("2022-02-13T16:23:45.678Z")
     );
   });
 
