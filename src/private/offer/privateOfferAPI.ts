@@ -29,6 +29,8 @@ import { requestTradeWithBuyOffer } from "./requestTradeWithBuyOffer";
 import { requestTradeWithSellOffer } from "./requestTradeWithSellOffer";
 import { searchOfferSummaries } from "./searchOfferSummaries";
 import { searchOffers } from "./searchOffers";
+import { undoRequestTradeWithBuyOffer } from "./undoRequestTradeWithBuyOffer";
+import { undoRequestTradeWithSellOffer } from "./undoRequestTradeWithSellOffer";
 import { unmatchOffer } from "./unmatchOffer";
 
 export const privateOfferAPI = (
@@ -63,6 +65,11 @@ export const privateOfferAPI = (
   republishSellOffer: republishSellOffer(options, helpers),
   requestTradeWithBuyOffer: requestTradeWithBuyOffer(options, helpers),
   requestTradeWithSellOffer: requestTradeWithSellOffer(options, helpers),
+  undoRequestTradeWithBuyOffer: undoRequestTradeWithBuyOffer(options, helpers),
+  undoRequestTradeWithSellOffer: undoRequestTradeWithSellOffer(
+    options,
+    helpers,
+  ),
   searchOffers: searchOffers(options, helpers),
   searchOfferSummaries: searchOfferSummaries(options, helpers),
   getSellOfferSummaryIds: getSellOfferSummaryIds(options, helpers),
