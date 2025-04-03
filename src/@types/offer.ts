@@ -112,6 +112,7 @@ export type Offer = {
 
   user: PublicUser;
   matches: string[];
+  tradeRequests: string[];
   doubleMatched: boolean;
   contractId?: string;
   escrowFee: number;
@@ -159,6 +160,7 @@ export type OfferSummary = {
   lastModified: Date;
   amount: number | [number, number];
   matches: string[];
+  tradeRequests: string[];
   prices?: Pricebook;
   tradeStatus: TradeStatus;
   contractId?: string;
