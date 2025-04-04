@@ -7,11 +7,13 @@ type Props = {
   meansOfPayment?: MeansOfPayment;
   amount?: number;
   minPremium?: number;
+  sortBy?: string;
 };
 
 export const getBuyOfferSummaryIds =
   ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
-  async ({ meansOfPayment, amount, minPremium }: Props = {}) => {
+  async ({ meansOfPayment, amount, minPremium, sortBy }: Props = {}) => {
+    console.log("shiii");
     const response = await fetch(`${url}/v1/offer/buy/summaryIds`, {
       headers: helpers.getPrivateHeaders(url),
       method: "POST",
@@ -19,6 +21,7 @@ export const getBuyOfferSummaryIds =
         meansOfPayment,
         amount,
         minPremium,
+        sortBy,
       }),
     });
 
