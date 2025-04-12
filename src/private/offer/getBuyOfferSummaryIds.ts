@@ -1,3 +1,4 @@
+import { BuySorter } from "../../../../src/store/offerPreferenes/useOfferPreferences";
 import { APIError } from "../../@types/global";
 import { MeansOfPayment } from "../../@types/payment";
 import { parseResponse } from "../../helpers/parseResponse";
@@ -7,7 +8,7 @@ type Props = {
   meansOfPayment?: MeansOfPayment;
   amount?: number;
   minPremium?: number;
-  sortBy?: string;
+  sortBy?: BuySorter;
 };
 
 export const getBuyOfferSummaryIds =
