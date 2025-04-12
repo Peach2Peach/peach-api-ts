@@ -41,7 +41,7 @@ export const acceptTradeRequestForBuyOffer =
           maxMiningFeeRate,
           requestingOfferId,
         }),
-      }
+      },
     );
 
     return parseResponse<Response, APIError<"INTERNAL_SERVER_ERROR">>(response);
