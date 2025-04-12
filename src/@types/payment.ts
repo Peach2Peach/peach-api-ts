@@ -106,7 +106,9 @@ export type LatAmPaymentMethods =
   | "tigoMoneyElSalvador"
   | "tigoMoneyGuatemala"
   | "tigoMoneyHonduras"
-  | "tigoMoneyParaguay";
+  | "tigoMoneyParaguay"
+  | "moncash"
+  | "natcash";
 
 export type AfricaPaymentMethods =
   | "accrue"
