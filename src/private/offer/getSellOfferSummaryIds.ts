@@ -1,5 +1,5 @@
-import { SellSorter } from "../../../../src/store/offerPreferenes/useOfferPreferences";
 import { APIError } from "../../@types/global";
+import { SellSorter } from "../../@types/offer";
 import { MeansOfPayment } from "../../@types/payment";
 import { parseResponse } from "../../helpers/parseResponse";
 import { PeachAPIHelpers, PeachAPIOptions } from "../../types";

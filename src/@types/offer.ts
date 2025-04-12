@@ -169,8 +169,8 @@ export type OfferSummary = {
   refunded?: boolean;
 };
 
-type BuySorter = "highestAmount" | "lowestPremium" | "bestReputation";
-type SellSorter = "highestPrice" | "bestReputation";
+export type BuySorter = "highestAmount" | "lowestPremium" | "bestReputation";
+export type SellSorter = "highestPrice" | "bestReputation";
 
 export type Sorter = BuySorter | SellSorter;
 
