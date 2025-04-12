@@ -55,5 +55,7 @@ export const postBuyOffer =
       signal,
     });
 
-    return parseResponse<BuyOffer, PostOfferErrorResponseBody>(response);
+    return parseResponse<BuyOffer | BuyOffer[], PostOfferErrorResponseBody>(
+      response,
+    );
   };
