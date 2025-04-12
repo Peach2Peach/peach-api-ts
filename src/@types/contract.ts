@@ -104,5 +104,4 @@ export type ContractSummary = {
   releaseTxId?: string;
   isChatActive: boolean;
   refunded?: boolean;
-  tradeRequests?: string[]; // meant for a compatibil;ity fix on a OfferSummary | ContractSummary case
 };
