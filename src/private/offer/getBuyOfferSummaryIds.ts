@@ -1,4 +1,5 @@
 import { APIError } from "../../@types/global";
+import { BuySorter } from "../../@types/offer";
 import { MeansOfPayment } from "../../@types/payment";
 import { parseResponse } from "../../helpers/parseResponse";
 import { PeachAPIHelpers, PeachAPIOptions } from "../../types";
@@ -7,11 +8,12 @@ type Props = {
   meansOfPayment?: MeansOfPayment;
   amount?: number;
   minPremium?: number;
+  sortBy?: BuySorter;
 };
 
 export const getBuyOfferSummaryIds =
   ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
-  async ({ meansOfPayment, amount, minPremium }: Props = {}) => {
+  async ({ meansOfPayment, amount, minPremium, sortBy }: Props = {}) => {
     const response = await fetch(`${url}/v1/offer/buy/summaryIds`, {
       headers: helpers.getPrivateHeaders(url),
       method: "POST",
@@ -19,6 +21,7 @@ export const getBuyOfferSummaryIds =
         meansOfPayment,
         amount,
         minPremium,
+        sortBy,
       }),
     });
 
