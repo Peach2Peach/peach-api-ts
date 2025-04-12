@@ -1,5 +1,5 @@
 import { APIError } from "../../@types/global";
-import { BuySorter } from "../../@types/offer";
+import { SellSorter } from "../../@types/offer";
 import { MeansOfPayment } from "../../@types/payment";
 import { parseResponse } from "../../helpers/parseResponse";
 import { PeachAPIHelpers, PeachAPIOptions } from "../../types";
@@ -8,7 +8,7 @@ type Props = {
   meansOfPayment?: MeansOfPayment;
   amount?: number;
   minPremium?: number;
-  sortBy?: BuySorter;
+  sortBy?: SellSorter;
 };
 
 export const getBuyOfferSummaryIds =
