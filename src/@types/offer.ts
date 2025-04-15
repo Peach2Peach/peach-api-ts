@@ -167,6 +167,7 @@ export type OfferSummary = {
   txId?: string;
   fundingTxId?: string;
   refunded?: boolean;
+  instantTradeCriteria?: object;
 };
 
 export type BuySorter = "highestAmount" | "lowestPremium" | "bestReputation";
