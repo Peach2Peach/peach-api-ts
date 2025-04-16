@@ -11,7 +11,7 @@ import { logoutUser } from "./logoutUser";
 import { redeemNoPeachFees } from "./redeemNoPeachFees";
 import { redeemReferralCode } from "./redeemReferralCode";
 import { register } from "./register";
-import { submitUserCryptoLevel } from "./submitUserCryptoLevel";
+import { submitUserBitcoinLevel } from "./submitUserBitcoinLevel";
 import { sumbitUserSource } from "./submitUserSource";
 import { unblockUser } from "./unblockUser";
 import { updateUser } from "./updateUser";
@@ -33,7 +33,7 @@ export const privateUserAPI = (
   redeemReferralCode: redeemReferralCode(options, helpers),
   register: register(options, helpers),
   submitUserSource: sumbitUserSource(options, helpers),
-  submitUserCryptoLevel: submitUserCryptoLevel(options, helpers),
+  submitUserBitcoinLevel: submitUserBitcoinLevel(options, helpers),
   unblockUser: unblockUser(options, helpers),
   updateUser: updateUser(options, helpers),
 });

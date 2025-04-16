@@ -2,17 +2,17 @@ import { APIError, APISuccess } from "../../@types/global";
 import { parseResponse } from "../../helpers/parseResponse";
 import { PeachAPIHelpers, PeachAPIOptions, RequestProps } from "../../types";
 
-export type UserCryptoLevel = "firstTime" | "firstTimeP2P" | "bitcoiner";
-type Props = RequestProps & { cryptoLevel: UserCryptoLevel };
+export type UserBitcoinLevel = "firstTime" | "firstTimeP2P" | "bitcoiner";
+type Props = RequestProps & { bitcoinLevel: UserBitcoinLevel };
 
-export const submitUserCryptoLevel =
+export const submitUserBitcoinLevel =
   ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
-  async ({ cryptoLevel, signal }: Props) => {
-    const response = await fetch(`${url}/v1/user/cryptoLevel`, {
+  async ({ bitcoinLevel, signal }: Props) => {
+    const response = await fetch(`${url}/v1/user/bitcoinLevel`, {
       headers: helpers.getPrivateHeaders(url),
       method: "POST",
       body: JSON.stringify({
-        cryptoLevel,
+        bitcoinLevel,
       }),
       signal,
     });
