@@ -1,6 +1,7 @@
 import { MatchFilter } from "./api/offerAPI";
+import { BitcoinEvent } from "./events";
 import { Pricebook } from "./global";
-import { MeansOfPayment, PaymentMethod } from "./payment";
+import { GiftCardCountry, MeansOfPayment, PaymentMethod } from "./payment";
 import { Medal, PublicUser } from "./user";
 
 export type FundingStatus = {
@@ -40,60 +41,13 @@ export type TradeStatus =
   | "tradeCanceled"
   | "tradeCompleted";
 
-export type PaymentMethodCountry =
-  | "AD"
-  | "AE"
-  | "AT"
-  | "BA"
-  | "BE"
-  | "BG"
-  | "BR"
-  | "CD"
-  | "CH"
-  | "CI"
-  | "CO"
-  | "CY"
-  | "CZ"
-  | "DE"
-  | "DK"
-  | "ES"
-  | "FI"
-  | "FR"
-  | "GB"
-  | "GR"
-  | "HR"
-  | "HU"
-  | "IN"
-  | "ISK"
-  | "IT"
-  | "JP"
-  | "KE"
-  | "LV"
-  | "ME"
-  | "MK"
-  | "MT"
-  | "NG"
-  | "NL"
-  | "NO"
-  | "PL"
-  | "PT"
-  | "RO"
-  | "RS"
-  | "SE"
-  | "SI"
-  | "TH"
-  | "TR"
-  | "UK"
-  | "US"
-  | "ZA";
-
 export type OfferPaymentData = Partial<
   Record<
     PaymentMethod,
     {
       hashes: string[];
       hash?: string;
-      country?: PaymentMethodCountry;
+      country?: GiftCardCountry | BitcoinEvent["country"];
       encrypted?: string;
       signature?: string;
     }
