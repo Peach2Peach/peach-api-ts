@@ -1,6 +1,6 @@
 import { BuyOfferSummary } from "../@types/offer";
 
-export const offerSummary: BuyOfferSummary= {
+export const offerSummary: BuyOfferSummary = {
   id: "456",
   type: "bid",
   matches: [],
@@ -8,5 +8,5 @@ export const offerSummary: BuyOfferSummary= {
   lastModified: new Date("2021-01-01"),
   tradeStatus: "searchingForPeer",
   amount: [21000, 22000],
-  escrowType: "bitcoin"
+  escrowType: "bitcoin",
 };
