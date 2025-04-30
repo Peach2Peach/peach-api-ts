@@ -1,5 +1,5 @@
 import { getStatus } from "../public/system/getStatus";
-import { PublicPeachAPIHelpers, PeachAPIOptions } from "../types";
+import { PeachAPIOptions, PublicPeachAPIHelpers } from "../types";
 
 /**
  * Note: we estimate the time it took for the response to arrive from server to client
@@ -19,5 +19,5 @@ export const calculateClientServerTimeDifference = async (
     return 0;
   }
 
-  return end - roundTrip - result.getValue().serverTime;
+  return end - roundTrip - result.getValue()!.serverTime;
 };

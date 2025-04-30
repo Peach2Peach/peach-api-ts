@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "esnext",
     "module": "esnext",
     "typeRoots": ["./node_modules/@types"],
     "resolveJsonModule": true,
@@ -16,8 +16,8 @@
     "declaration": true,
     "sourceMap": true,
     "outDir": "dist",
-    "rootDir": "src"
+    "rootDir": "src",
   },
   "include": ["src/**/*.ts"],
-  "exclude": ["src/**/*.spec.ts", "node_modules", "dist"]
+  "exclude": ["src/**/*.spec.ts", "node_modules", "dist"],
 }
