@@ -17,12 +17,14 @@ import { getRefundPSBT } from "./getRefundPSBT";
 import { getSellOfferSummary } from "./getSellOfferSummary";
 import { getSellOfferSummaryIds } from "./getSellOfferSummaryIds";
 import { getTradeRequest } from "./getTradeRequest";
+import { getTradeRequestChat } from "./getTradeRequestChat";
 import { getTradeRequestsForBuyOffer } from "./getTradeRequestsForBuyOffer";
 import { getTradeRequestsForSellOffer } from "./getTradeRequestsForSellOffer";
 import { matchOffer } from "./matchOffer";
 import { patchOffer } from "./patchOffer";
 import { postBuyOffer } from "./postBuyOffer";
 import { postSellOffer } from "./postSellOffer";
+import { postTradeRequestChat } from "./postTradeRequestChat";
 import { refundSellOffer } from "./refundSellOffer";
 import { republishSellOffer } from "./republishSellOffer";
 import { requestTradeWithBuyOffer } from "./requestTradeWithBuyOffer";
@@ -46,6 +48,7 @@ export const privateOfferAPI = (
   cancelOffer: cancelOffer(options, helpers),
   confirmEscrow: confirmEscrow(options, helpers),
   createEscrow: createEscrow(options, helpers),
+  getTradeRequestChat: getTradeRequestChat(options, helpers),
   getEscrowInfo: getEscrowInfo(options, helpers),
   getFundingStatus: getFundingStatus(options, helpers),
   getMatch: getMatch(options, helpers),
@@ -57,6 +60,7 @@ export const privateOfferAPI = (
   getTradeRequest: getTradeRequest(options, helpers),
   matchOffer: matchOffer(options, helpers),
   patchOffer: patchOffer(options, helpers),
+  postTradeRequestChat: postTradeRequestChat(options, helpers),
   postBuyOffer: postBuyOffer(options, helpers),
   postSellOffer: postSellOffer(options, helpers),
   refundSellOffer: refundSellOffer(options, helpers),
