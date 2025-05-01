@@ -1,6 +1,7 @@
 import { MatchFilter } from "./api/offerAPI";
+import { BitcoinEvent } from "./events";
 import { Pricebook } from "./global";
-import { MeansOfPayment, PaymentMethod } from "./payment";
+import { GiftCardCountry, MeansOfPayment, PaymentMethod } from "./payment";
 import { Medal, PublicUser } from "./user";
 
 export type FundingStatus = {
@@ -40,60 +41,13 @@ export type TradeStatus =
   | "tradeCanceled"
   | "tradeCompleted";
 
-export type PaymentMethodCountry =
-  | "AD"
-  | "AE"
-  | "AT"
-  | "BA"
-  | "BE"
-  | "BG"
-  | "BR"
-  | "CD"
-  | "CH"
-  | "CI"
-  | "CO"
-  | "CY"
-  | "CZ"
-  | "DE"
-  | "DK"
-  | "ES"
-  | "FI"
-  | "FR"
-  | "GB"
-  | "GR"
-  | "HR"
-  | "HU"
-  | "IN"
-  | "ISK"
-  | "IT"
-  | "JP"
-  | "KE"
-  | "LV"
-  | "ME"
-  | "MK"
-  | "MT"
-  | "NG"
-  | "NL"
-  | "NO"
-  | "PL"
-  | "PT"
-  | "RO"
-  | "RS"
-  | "SE"
-  | "SI"
-  | "TH"
-  | "TR"
-  | "UK"
-  | "US"
-  | "ZA";
-
 export type OfferPaymentData = Partial<
   Record<
     PaymentMethod,
     {
       hashes: string[];
       hash?: string;
-      country?: PaymentMethodCountry;
+      country?: GiftCardCountry | BitcoinEvent["country"];
       encrypted?: string;
       signature?: string;
     }
@@ -153,25 +107,41 @@ export type BuyOffer = Offer & {
   messageSignature?: string;
 } & Required<MatchFilter>;
 
-export type OfferSummary = {
+type EscrowType = "bitcoin" | "liquid";
+
+export type BuyOfferSummary = {
   id: string;
-  type: "bid" | "ask";
-  creationDate: Date;
+  type: "bid";
+  escrowType: EscrowType;
+  newTradeId?: string;
   lastModified: Date;
-  amount: number | [number, number];
+  creationDate: Date;
+  amount: [number, number];
+  matches: string[];
+  tradeStatus: TradeStatus;
+};
+export type SellOfferSummary = {
+  id: string;
+  type: "ask";
+  escrowType: EscrowType;
+  newTradeId?: string;
+  lastModified: Date;
+  creationDate: Date;
+  amount: number;
   matches: string[];
   prices?: Pricebook;
+  premium: number;
   tradeStatus: TradeStatus;
-  contractId?: string;
-  newTradeId?: string;
   txId?: string;
-  fundingTxId?: string;
-  refunded?: boolean;
   instantTradeCriteria?: object;
+  fundingTxId: string;
+  refunded: boolean;
 };
 
 export type BuySorter = "highestAmount" | "lowestPremium" | "bestReputation";
 export type SellSorter = "highestPrice" | "bestReputation";
+
+export type OfferSummary = BuyOfferSummary | SellOfferSummary;
 
 export type Sorter = BuySorter | SellSorter;
 

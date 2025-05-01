@@ -1,6 +1,5 @@
 import { BitcoinEvent } from "./events";
-import { Country, Currency } from "./global";
-import { PaymentMethodCountry } from "./offer";
+import { Currency } from "./global";
 
 export type PaymentMethodField =
   | "accountNumber"
@@ -137,9 +136,18 @@ export type AsiaPaymentMethods =
   | "payLah";
 
 export type BitcoinPaymentMethods = "liquid" | "lnurl";
+export type GiftCardCountry =
+  | "DE"
+  | "FR"
+  | "IT"
+  | "ES"
+  | "NL"
+  | "UK"
+  | "SE"
+  | "PT";
 export type InternationalPaymentMethds =
   | "giftCard.amazon"
-  | `giftCard.amazon.${PaymentMethodCountry}`;
+  | `giftCard.amazon.${GiftCardCountry}`;
 export type CashPaymentMethds = `cash.${BitcoinEvent["id"]}`;
 
 export type PaymentMethod =
@@ -159,7 +167,7 @@ export type PaymentMethodInfo = {
     mandatory: PaymentMethodField[][][];
     optional: PaymentMethodField[];
   };
-  countries?: Country[];
+  countries?: (GiftCardCountry | BitcoinEvent["country"])[];
   rounded?: boolean;
   anonymous: boolean;
 };
@@ -168,7 +176,7 @@ export type PaymentData = {
   label: string;
   type: PaymentMethod;
   currencies: Currency[];
-  country?: PaymentMethodCountry;
+  country?: GiftCardCountry | BitcoinEvent["country"];
   hidden?: boolean;
   reference?: string;
 };
