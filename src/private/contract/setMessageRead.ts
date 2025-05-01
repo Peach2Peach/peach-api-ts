@@ -7,15 +7,18 @@ type Props = RequestProps & { contractId: string; start: number; end: number };
 export const setMessageRead =
   ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
   async ({ contractId, start, end, signal }: Props) => {
-    const response = await fetch(`${url}/v1/contract/${contractId}/chat`, {
-      headers: helpers.getPrivateHeaders(url),
-      method: "POST",
-      body: JSON.stringify({
-        start,
-        end,
-      }),
-      signal,
-    });
+    const response = await fetch(
+      `${url}/v1/contract/${contractId}/chat/received`,
+      {
+        headers: helpers.getPrivateHeaders(url),
+        method: "POST",
+        body: JSON.stringify({
+          start,
+          end,
+        }),
+        signal,
+      },
+    );
 
     return parseResponse<APISuccess, APIError<"NOT_FOUND">>(response);
   };
