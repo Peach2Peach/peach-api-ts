@@ -133,6 +133,7 @@ export type SellOfferSummary = {
   premium: number;
   tradeStatus: TradeStatus;
   txId?: string;
+  instantTradeCriteria?: object;
   fundingTxId: string;
   refunded: boolean;
 };
