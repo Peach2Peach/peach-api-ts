@@ -1,3 +1,4 @@
+import { Contract } from "../../@types/contract";
 import { APIError, Currency } from "../../@types/global";
 import { PaymentMethod } from "../../@types/payment";
 import { parseResponse } from "../../helpers/parseResponse";
@@ -14,6 +15,8 @@ export type TradeRequest = {
 
 type Response = {
   tradeRequest: TradeRequest | null;
+  contract?: Contract | null;
+  online?: boolean;
 };
 
 export const getTradeRequest =
