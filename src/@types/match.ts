@@ -1,3 +1,4 @@
+import { Contract } from "./contract";
 import { Currency, Pricebook } from "./global";
 import { OfferPaymentData } from "./offer";
 import { MeansOfPayment, PaymentMethod } from "./payment";
@@ -37,6 +38,8 @@ export type SellOfferSummary = {
   tradeRequested: boolean;
   canInstantTrade: boolean;
   user: PublicUser;
+  online: boolean;
+  contract?: Contract;
 };
 
 export type BuyOfferSummary = {
@@ -48,4 +51,6 @@ export type BuyOfferSummary = {
   tradeRequested: boolean;
   canInstantTrade: boolean;
   user: PublicUser;
+  online: boolean;
+  contract?: Contract;
 };
