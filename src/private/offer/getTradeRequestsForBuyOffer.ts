@@ -7,6 +7,7 @@ type Props = RequestProps & { offerId: string };
 
 export type TradeRequestForBuyOffer = {
   userId: string;
+  requestingUserId: string;
   amount: number;
   currency: Currency;
   fiatPrice: number;

@@ -1,17 +1,7 @@
 import { Contract } from "../contract";
 import { DisputeReason } from "../dispute";
 import { APIError, APISuccess } from "../global";
-
-export type Message = {
-  roomId: string;
-  from: string;
-  date: Date;
-  message: string;
-  decrypted?: boolean;
-  readBy: string[];
-  signature: string;
-  failedToSend?: boolean;
-};
+import { Message } from "./chatAPI";
 
 export type PostChatProps = {
   contractId: string;
