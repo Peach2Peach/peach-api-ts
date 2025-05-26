@@ -1,6 +1,6 @@
 /* eslint-disable max-lines */
 
-import { Message } from "../@types/api/contractAPI";
+import { Message } from "../@types/api/chatAPI";
 
 /* eslint-disable max-len */
 export const chatMessages: Message[] = [
