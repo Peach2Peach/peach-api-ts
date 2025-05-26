@@ -8,6 +8,30 @@ import {
   Sorter,
 } from "../offer";
 import { PaymentMethod } from "../payment";
+import { Message } from "./chatAPI";
+
+export type PostTradeRequestChatRequestParams = {
+  offerId: string;
+  requestingUserId: string;
+};
+export type PostTradeRequestChatRequestQuery = {};
+export type PostTradeRequestChatRequestBody = {
+  message: string;
+  signature: string;
+};
+export type PostTradeRequestChatResponseBody = APISuccess;
+export type PostTradeRequestChatErrorResponseBody = APIError<"NOT_FOUND">;
+
+export type GetTradeRequestChatRequestParams = {
+  offerId: string;
+  requestingUserId: string;
+};
+export type GetTradeRequestChatRequestQuery = { page?: number };
+export type GetTradeRequestChatRequestBody = {};
+export type GetTradeRequestChatResponseBody = Message[];
+export type GetTradeRequestChatErrorResponseBody = APIError<"NOT_FOUND">;
+
+export type IsAllowedToTradeRequestChatResponseBody = { result: boolean };
 
 export type CancelOfferRequestParams = { offerId: string };
 export type CancelOfferRequestQuery = {};

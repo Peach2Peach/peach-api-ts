@@ -11,6 +11,19 @@ export type TradeParticipant = "seller" | "buyer";
 
 export type EncryptionMethod = "aes256" | "asymmetric";
 
+export type TradeRequest = {
+  amount: number;
+  currency: Currency;
+  fiatPrice: number;
+  paymentMethod: PaymentMethod;
+  symmetricKeyEncrypted: string;
+  symmetricKeySignature: string;
+  paymentDataEncrypted: string;
+  paymentDataSignature: string;
+  requestingUserId: string;
+  offerId: string;
+};
+
 export type Contract = {
   creationDate: Date;
   lastModified: Date;

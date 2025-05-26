@@ -1,16 +1,9 @@
-import { APIError, Currency } from "../../@types/global";
-import { PaymentMethod } from "../../@types/payment";
+import { TradeRequest } from "../../@types/contract";
+import { APIError } from "../../@types/global";
 import { parseResponse } from "../../helpers/parseResponse";
 import { PeachAPIHelpers, PeachAPIOptions, RequestProps } from "../../types";
 
 type Props = RequestProps & { offerId: string; requestingOfferId?: string };
-
-export type TradeRequest = {
-  amount: number;
-  currency: Currency;
-  fiatPrice: number;
-  paymentMethod: PaymentMethod;
-};
 
 type Response = {
   tradeRequest: TradeRequest | null;
