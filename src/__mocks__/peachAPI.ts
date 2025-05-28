@@ -5,6 +5,7 @@ import { contractSummary } from "../testData/contractSummary";
 import { estimatedFees } from "../testData/estimatedFees";
 import { belgianBTCEmbassy, decouvreBTC } from "../testData/events";
 import { defaultFundingStatus } from "../testData/fundingStatus";
+import { match } from "../testData/match";
 import { offerSummary } from "../testData/offerSummary";
 import { sellOffer } from "../testData/offers";
 import { defaultUser } from "../testData/userData";
@@ -73,7 +74,10 @@ const peachAPIMethods = {
       unmatchOffer: apiSuccess,
       getMatches: () =>
         Promise.resolve({
-          result: { matches: ["match"], nextPage: undefined },
+          result: {
+            matches: [match],
+            nextPage: undefined,
+          },
         }),
       republishSellOffer: () =>
         Promise.resolve({ result: { newOfferId: "newOfferId" } }),
