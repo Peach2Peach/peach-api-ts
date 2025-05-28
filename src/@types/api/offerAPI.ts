@@ -31,7 +31,9 @@ export type GetTradeRequestChatRequestBody = {};
 export type GetTradeRequestChatResponseBody = Message[];
 export type GetTradeRequestChatErrorResponseBody = APIError<"NOT_FOUND">;
 
-export type IsAllowedToTradeRequestChatResponseBody = { result: boolean };
+export type IsAllowedToTradeRequestChatResponseBody = {
+  symmetricKeyEncrypted: string;
+};
 
 export type CancelOfferRequestParams = { offerId: string };
 export type CancelOfferRequestQuery = {};
