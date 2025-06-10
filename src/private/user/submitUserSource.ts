@@ -8,6 +8,7 @@ export type UserSource =
   | "instagram"
   | "friend"
   | "telegram"
+  | "nostr"
   | "linkedin"
   | "other";
 type Props = RequestProps & { source: UserSource };
