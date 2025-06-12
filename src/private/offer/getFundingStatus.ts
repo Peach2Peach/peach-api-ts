@@ -1,10 +1,9 @@
 import { APIError } from "../../@types/global";
-import { FundingStatus } from "../../@types/offer";
 import { parseResponse } from "../../helpers/parseResponse";
 import { PeachAPIHelpers, PeachAPIOptions, RequestProps } from "../../types";
 
 type Props = RequestProps & { offerId: string };
-type Response = { fundingStatus: FundingStatus };
+type Response = "NULL" | "MEMPOOL" | "FUNDED";
 type ResponseError = APIError<"NOT_FOUND" | "BAD_REQUEST">;
 
 export const getFundingStatus =
