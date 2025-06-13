@@ -35,7 +35,6 @@ export type IsAllowedToMatchChatResponseBody = {
   symmetricKeyEncrypted: string;
 };
 
-///
 export type PostTradeRequestChatRequestParams = {
   offerId: string;
   requestingUserId: string;
