@@ -9,6 +9,7 @@ import { getBuyOfferSummaryIds } from "./getBuyOfferSummaryIds";
 import { getEscrowInfo } from "./getEscrowInfo";
 import { getFundingStatus } from "./getFundingStatus";
 import { getMatch } from "./getMatch";
+import { getMatchChat } from "./getMatchChat";
 import { getMatches } from "./getMatches";
 import { getOfferDetails } from "./getOfferDetails";
 import { getOfferSummaries } from "./getOfferSummaries";
@@ -20,10 +21,12 @@ import { getTradeRequest } from "./getTradeRequest";
 import { getTradeRequestChat } from "./getTradeRequestChat";
 import { getTradeRequestsForBuyOffer } from "./getTradeRequestsForBuyOffer";
 import { getTradeRequestsForSellOffer } from "./getTradeRequestsForSellOffer";
+import { isAllowedToMatchChat } from "./isAllowedToMatchChat";
 import { isAllowedToTradeRequestChat } from "./isAllowedToTradeRequestChat";
 import { matchOffer } from "./matchOffer";
 import { patchOffer } from "./patchOffer";
 import { postBuyOffer } from "./postBuyOffer";
+import { postMatchChat } from "./postMatchChat";
 import { postSellOffer } from "./postSellOffer";
 import { postTradeRequestChat } from "./postTradeRequestChat";
 import { refundSellOffer } from "./refundSellOffer";
@@ -52,7 +55,9 @@ export const privateOfferAPI = (
   confirmEscrow: confirmEscrow(options, helpers),
   createEscrow: createEscrow(options, helpers),
   isAllowedToTradeRequestChat: isAllowedToTradeRequestChat(options, helpers),
+  isAllowedToMatchChat: isAllowedToMatchChat(options, helpers),
   getTradeRequestChat: getTradeRequestChat(options, helpers),
+  getMatchChat: getMatchChat(options, helpers),
   getEscrowInfo: getEscrowInfo(options, helpers),
   getFundingStatus: getFundingStatus(options, helpers),
   getMatch: getMatch(options, helpers),
@@ -65,6 +70,7 @@ export const privateOfferAPI = (
   matchOffer: matchOffer(options, helpers),
   patchOffer: patchOffer(options, helpers),
   postTradeRequestChat: postTradeRequestChat(options, helpers),
+  postMatchChat: postMatchChat(options, helpers),
   postBuyOffer: postBuyOffer(options, helpers),
   postSellOffer: postSellOffer(options, helpers),
   refundSellOffer: refundSellOffer(options, helpers),

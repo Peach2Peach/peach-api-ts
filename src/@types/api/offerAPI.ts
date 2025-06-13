@@ -10,6 +10,31 @@ import {
 import { PaymentMethod } from "../payment";
 import { Message } from "./chatAPI";
 
+export type PostMatchChatRequestParams = {
+  offerId: string;
+  matchingOfferId: string;
+};
+export type PostMatchChatRequestQuery = {};
+export type PostMatchChatRequestBody = {
+  message: string;
+  signature: string;
+};
+export type PostMatchChatResponseBody = APISuccess;
+export type PostMatchChatErrorResponseBody = APIError<"NOT_FOUND">;
+
+export type GetMatchChatRequestParams = {
+  offerId: string;
+  matchingOfferId: string;
+};
+export type GetMatchChatRequestQuery = { page?: number };
+export type GetMatchChatRequestBody = {};
+export type GetMatchChatResponseBody = Message[];
+export type GetMatchChatErrorResponseBody = APIError<"NOT_FOUND">;
+
+export type IsAllowedToMatchChatResponseBody = {
+  symmetricKeyEncrypted: string;
+};
+
 export type PostTradeRequestChatRequestParams = {
   offerId: string;
   requestingUserId: string;
