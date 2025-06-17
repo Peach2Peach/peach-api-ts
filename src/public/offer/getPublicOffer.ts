@@ -24,7 +24,7 @@ export type GetOfferResponseBody = {
 };
 type ResponseError = APIError<"NOT_FOUND">;
 
-export const getOffer =
+export const getPublicOffer =
   ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
   async ({ offerId, signal }: Props) => {
     const response = await fetch(`${url}/v1/offer/${offerId}`, {
