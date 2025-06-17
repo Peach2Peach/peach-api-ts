@@ -39,6 +39,8 @@ export type SellOfferSummary = {
   user: PublicUser;
   meansOfPayment: MeansOfPayment;
   prices: Pricebook;
+  online: boolean;
+  contractId?: string;
 };
 
 export type BuyOfferSummary = {
@@ -51,4 +53,6 @@ export type BuyOfferSummary = {
   canInstantTrade: boolean;
   user: PublicUser;
   meansOfPayment: MeansOfPayment;
+  online: boolean;
+  contractId?: string;
 };
