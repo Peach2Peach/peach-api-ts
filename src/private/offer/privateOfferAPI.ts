@@ -4,6 +4,7 @@ import { acceptTradeRequestForBuyOffer } from "./acceptTradeRequestsForBuyOffer"
 import { cancelOffer } from "./cancelOffer";
 import { confirmEscrow } from "./confirmEscrow";
 import { createEscrow } from "./createEscrow";
+import { getBuyOfferPreferences } from "./getBuyOfferPreferences";
 import { getBuyOfferSummary } from "./getBuyOfferSummary";
 import { getBuyOfferSummaryIds } from "./getBuyOfferSummaryIds";
 import { getEscrowInfo } from "./getEscrowInfo";
@@ -14,10 +15,12 @@ import { getOfferDetails } from "./getOfferDetails";
 import { getOfferSummaries } from "./getOfferSummaries";
 import { getOffers } from "./getOffers";
 import { getRefundPSBT } from "./getRefundPSBT";
+import { getSellOfferPreferences } from "./getSellOfferPreferences";
 import { getSellOfferSummary } from "./getSellOfferSummary";
 import { getSellOfferSummaryIds } from "./getSellOfferSummaryIds";
-import { getTradeRequest } from "./getTradeRequest";
 import { getTradeRequestChat } from "./getTradeRequestChat";
+import { getTradeRequestForBuyOffer } from "./getTradeRequestForBuyOffer";
+import { getTradeRequestForSellOffer } from "./getTradeRequestForSellOffer";
 import { getTradeRequestsForBuyOffer } from "./getTradeRequestsForBuyOffer";
 import { getTradeRequestsForSellOffer } from "./getTradeRequestsForSellOffer";
 import { isAllowedToTradeRequestChat } from "./isAllowedToTradeRequestChat";
@@ -58,10 +61,13 @@ export const privateOfferAPI = (
   getMatch: getMatch(options, helpers),
   getMatches: getMatches(options, helpers),
   getOfferDetails: getOfferDetails(options, helpers),
+  getBuyOfferPreferences: getBuyOfferPreferences(options, helpers),
+  getSellOfferPreferences: getSellOfferPreferences(options, helpers),
   getOfferSummaries: getOfferSummaries(options, helpers),
   getOffers: getOffers(options, helpers),
   getRefundPSBT: getRefundPSBT(options, helpers),
-  getTradeRequest: getTradeRequest(options, helpers),
+  getTradeRequestForBuyOffer: getTradeRequestForBuyOffer(options, helpers),
+  getTradeRequestForSellOffer: getTradeRequestForSellOffer(options, helpers),
   matchOffer: matchOffer(options, helpers),
   patchOffer: patchOffer(options, helpers),
   postTradeRequestChat: postTradeRequestChat(options, helpers),
