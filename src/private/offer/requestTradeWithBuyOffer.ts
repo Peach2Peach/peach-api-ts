@@ -11,7 +11,7 @@ type Props = RequestProps & {
   currency: Currency;
   paymentMethod: PaymentMethod;
   paymentData: OfferPaymentData;
-  refundAddress: string;
+  refundAddress?: string;
   symmetricKeyEncrypted: string;
   symmetricKeySignature: string;
   paymentDataEncrypted: string;
@@ -30,13 +30,15 @@ type RequestTradeResponseBody =
 
 type RequestTradeErrorResponseBody = APIError<
   | "NOT_FOUND"
-  | "UNAUTHORIZED"
+  | "OFFER_TAKEN"
   | "CANNOT_MATCH"
   | "FORM_INVALID"
-  | "CANNOT_DOUBLEMATCH"
-  | "TRANSACTION_INVALID"
   | "TRADING_LIMIT_REACHED"
-  | "OFFER_TAKEN"
+  | "FORBIDDEN"
+  | "INTERNAL_SERVER_ERROR"
+  | "PAYMENT_HASH_INVALID"
+  | "AUTHENTICATION_FAILED"
+  | "UNAVAILABLE_FOR_LEGAL_REASONS"
 >;
 
 export const requestTradeWithBuyOffer =
