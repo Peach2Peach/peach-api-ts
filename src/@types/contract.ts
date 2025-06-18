@@ -63,6 +63,7 @@ export type Contract = {
 
   releasePsbt: string;
   batchId?: string;
+  batchTxMinerFees?: number;
 
   disputeActive: boolean;
   disputeDate: Date | null;
