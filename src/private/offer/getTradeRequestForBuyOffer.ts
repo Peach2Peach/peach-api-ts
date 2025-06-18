@@ -10,7 +10,7 @@ type Response = TradeRequestForBuyOffer | null;
 export const getTradeRequestForBuyOffer =
   ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
   async ({ offerId, requestingOfferId, signal }: Props) => {
-    let route = `${url}/v1/offer/${offerId}/tradeRequest`;
+    let route = `${url}/v1/offer/buy/${offerId}/tradeRequest`;
     if (requestingOfferId) {
       route += `/${requestingOfferId}`;
     }

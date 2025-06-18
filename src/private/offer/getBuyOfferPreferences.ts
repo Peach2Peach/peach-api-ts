@@ -15,7 +15,7 @@ type Res = {
 export const getBuyOfferPreferences =
   ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
   async ({ offerId, signal }: Props) => {
-    const response = await fetch(`${url}/v1/offer/${offerId}/buy/details`, {
+    const response = await fetch(`${url}/v1/offer/${offerId}/buy/preferences`, {
       headers: helpers.getPrivateHeaders(url),
       method: "GET",
       signal,
