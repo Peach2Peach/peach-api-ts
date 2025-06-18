@@ -6,7 +6,7 @@ import { parseResponse } from "../../helpers/parseResponse";
 import { PeachAPIHelpers, PeachAPIOptions, RequestProps } from "../../types";
 
 type Props = RequestProps & { offerId: string };
-export type GetOfferResponseBody = {
+type Res = {
   id: string;
   type: "bid" | "ask";
   user: PublicUser;
@@ -14,7 +14,6 @@ export type GetOfferResponseBody = {
   premium?: number;
   prices?: Pricebook;
   meansOfPayment: MeansOfPayment;
-  escrow?: string;
   fundingStatus?: FundingStatus["status"];
   instantTradeCriteria: {
     minReputation: number;
@@ -24,7 +23,7 @@ export type GetOfferResponseBody = {
 };
 type ResponseError = APIError<"NOT_FOUND">;
 
-export const getOffer =
+export const getPublicOffer =
   ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
   async ({ offerId, signal }: Props) => {
     const response = await fetch(`${url}/v1/offer/${offerId}`, {
@@ -33,5 +32,5 @@ export const getOffer =
       signal,
     });
 
-    return parseResponse<GetOfferResponseBody, ResponseError>(response);
+    return parseResponse<Res, ResponseError>(response);
   };

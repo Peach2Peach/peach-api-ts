@@ -5,12 +5,15 @@ import { PeachAPIHelpers, PeachAPIOptions } from "../../types";
 
 type Props = {
   offerId: string;
+  requestingOfferId?: string;
 };
 
 export const getSellOfferSummary =
   ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
-  async ({ offerId }: Props) => {
-    const response = await fetch(`${url}/v1/offer/sell/summary/${offerId}`, {
+  async ({ offerId, requestingOfferId }: Props) => {
+    let API_URL = `${url}/v1/offer/sell/summary/${offerId}`;
+    if (requestingOfferId) API_URL += `/${requestingOfferId}`;
+    const response = await fetch(API_URL, {
       headers: helpers.getPrivateHeaders(url),
       method: "GET",
     });

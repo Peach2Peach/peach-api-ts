@@ -7,7 +7,6 @@ type Props = RequestProps & { offerId: string };
 
 export type TradeRequestForBuyOffer = {
   userId: string;
-  requestingUserId: string;
   amount: number;
   currency: Currency;
   fiatPrice: number;
@@ -16,12 +15,7 @@ export type TradeRequestForBuyOffer = {
   symmetricKeySignature: string;
   paymentDataEncrypted: string;
   paymentDataSignature: string;
-  maxMiningFeeRate?: number;
   requestingOfferId: string | undefined;
-};
-
-type Response = {
-  tradeRequests: TradeRequestForBuyOffer[];
 };
 
 export const getTradeRequestsForBuyOffer =
@@ -36,5 +30,8 @@ export const getTradeRequestsForBuyOffer =
       },
     );
 
-    return parseResponse<Response, APIError<"NOT_FOUND">>(response);
+    return parseResponse<
+      TradeRequestForBuyOffer[],
+      APIError<"UNAUTHORIZED" | "AUTHENTICATION_FAILED" | "FORM_INVALID">
+    >(response);
   };

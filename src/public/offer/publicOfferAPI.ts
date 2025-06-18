@@ -1,9 +1,9 @@
 import { PeachAPIHelpers, PeachAPIOptions } from "../../types";
-import { getOffer } from "./getOffer";
+import { getPublicOffer } from "./getPublicOffer";
 
 export const publicOfferAPI = (
   options: PeachAPIOptions,
   helpers: PeachAPIHelpers,
 ) => ({
-  getOffer: getOffer(options, helpers),
+  getPublicOffer: getPublicOffer(options, helpers),
 });

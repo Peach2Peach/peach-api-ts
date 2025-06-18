@@ -4,6 +4,7 @@ import { PeachAPIHelpers, PeachAPIOptions } from "../../types";
 
 type Props = {
   offerId: string;
+  requestingOfferId?: string;
 };
 
 type Response = {
@@ -12,14 +13,18 @@ type Response = {
 
 export const undoRequestTradeWithSellOffer =
   ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
-  async ({ offerId }: Props) => {
-    const response = await fetch(
-      `${url}/v1/offer/${offerId}/sell/undoTradeRequest`,
-      {
-        headers: helpers.getPrivateHeaders(url),
-        method: "DELETE",
-      },
-    );
+  async ({ offerId, requestingOfferId }: Props) => {
+    let API_URL = `${url}/v1/offer/${offerId}/sell/undoTradeRequest`;
+    if (requestingOfferId) {
+      API_URL += `/${requestingOfferId}`;
+    }
+    const response = await fetch(API_URL, {
+      headers: helpers.getPrivateHeaders(url),
+      method: "DELETE",
+    });
 
-    return parseResponse<Response, APIError<"INTERNAL_SERVER_ERROR">>(response);
+    return parseResponse<
+      Response,
+      APIError<"INTERNAL_SERVER_ERROR" | "NOT_FOUND">
+    >(response);
   };

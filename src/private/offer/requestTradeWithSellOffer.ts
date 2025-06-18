@@ -8,8 +8,8 @@ type Props = RequestProps & {
   currency: string;
   paymentMethod: string;
   paymentData: OfferPaymentData;
-  releaseAddress: string;
-  messageSignature: string;
+  releaseAddress?: string;
+  messageSignature?: string;
   maxMiningFeeRate?: number;
   symmetricKeyEncrypted: string;
   symmetricKeySignature: string;
