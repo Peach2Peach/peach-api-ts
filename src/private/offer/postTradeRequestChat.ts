@@ -1,23 +1,19 @@
-import {
-  PostTradeRequestChatErrorResponseBody,
-  PostTradeRequestChatRequestBody,
-  PostTradeRequestChatRequestParams,
-  PostTradeRequestChatRequestQuery,
-  PostTradeRequestChatResponseBody,
-} from "../../@types/api/offerAPI";
+import { APIError, APISuccess } from "../../@types/global";
 import { parseResponse } from "../../helpers/parseResponse";
 import { PeachAPIHelpers, PeachAPIOptions, RequestProps } from "../../types";
 
-type Props = RequestProps &
-  PostTradeRequestChatRequestParams &
-  PostTradeRequestChatRequestQuery &
-  PostTradeRequestChatRequestBody;
+type Props = RequestProps & {
+  offerType: "buyOffer" | "sellOffer";
+  chatRoomId: string;
+  message: string;
+  signature: string;
+};
 
 export const postTradeRequestChat =
   ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
-  async ({ offerId, requestingUserId, message, signature, signal }: Props) => {
+  async ({ offerType, chatRoomId, message, signature, signal }: Props) => {
     const response = await fetch(
-      `${url}/v1/offer/${offerId}/tradeRequest/${requestingUserId}/chat`,
+      `${url}/v1/chat/tradeRequest/${offerType}/${chatRoomId}`,
       {
         headers: helpers.getPrivateHeaders(url),
         method: "POST",
@@ -30,7 +26,7 @@ export const postTradeRequestChat =
     );
 
     return parseResponse<
-      PostTradeRequestChatResponseBody,
-      PostTradeRequestChatErrorResponseBody
+      APISuccess,
+      APIError<"NOT_FOUND" | "FORM_INVALID" | "UNAUTHORIZED">
     >(response);
   };

@@ -18,12 +18,12 @@ import { getRefundPSBT } from "./getRefundPSBT";
 import { getSellOfferPreferences } from "./getSellOfferPreferences";
 import { getSellOfferSummary } from "./getSellOfferSummary";
 import { getSellOfferSummaryIds } from "./getSellOfferSummaryIds";
+import { getSymmetricKeyEncryptedForTradeRequestChat } from "./getSymmetricKeyEncryptedForTradeRequestChat";
 import { getTradeRequestChat } from "./getTradeRequestChat";
 import { getTradeRequestForBuyOffer } from "./getTradeRequestForBuyOffer";
 import { getTradeRequestForSellOffer } from "./getTradeRequestForSellOffer";
 import { getTradeRequestsForBuyOffer } from "./getTradeRequestsForBuyOffer";
 import { getTradeRequestsForSellOffer } from "./getTradeRequestsForSellOffer";
-import { isAllowedToTradeRequestChat } from "./isAllowedToTradeRequestChat";
 import { matchOffer } from "./matchOffer";
 import { patchOffer } from "./patchOffer";
 import { postBuyOffer } from "./postBuyOffer";
@@ -54,7 +54,8 @@ export const privateOfferAPI = (
   cancelOffer: cancelOffer(options, helpers),
   confirmEscrow: confirmEscrow(options, helpers),
   createEscrow: createEscrow(options, helpers),
-  isAllowedToTradeRequestChat: isAllowedToTradeRequestChat(options, helpers),
+  getSymmetricKeyEncryptedForTradeRequestChat:
+    getSymmetricKeyEncryptedForTradeRequestChat(options, helpers),
   getTradeRequestChat: getTradeRequestChat(options, helpers),
   getEscrowInfo: getEscrowInfo(options, helpers),
   getFundingStatus: getFundingStatus(options, helpers),
