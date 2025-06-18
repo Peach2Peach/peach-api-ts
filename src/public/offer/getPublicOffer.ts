@@ -6,7 +6,7 @@ import { parseResponse } from "../../helpers/parseResponse";
 import { PeachAPIHelpers, PeachAPIOptions, RequestProps } from "../../types";
 
 type Props = RequestProps & { offerId: string };
-export type GetOfferResponseBody = {
+type Res = {
   id: string;
   type: "bid" | "ask";
   user: PublicUser;
@@ -14,7 +14,6 @@ export type GetOfferResponseBody = {
   premium?: number;
   prices?: Pricebook;
   meansOfPayment: MeansOfPayment;
-  escrow?: string;
   fundingStatus?: FundingStatus["status"];
   instantTradeCriteria: {
     minReputation: number;
@@ -33,5 +32,5 @@ export const getPublicOffer =
       signal,
     });
 
-    return parseResponse<GetOfferResponseBody, ResponseError>(response);
+    return parseResponse<Res, ResponseError>(response);
   };
