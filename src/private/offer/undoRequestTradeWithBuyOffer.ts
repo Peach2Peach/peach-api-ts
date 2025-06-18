@@ -16,7 +16,7 @@ export const undoRequestTradeWithBuyOffer =
   async ({ offerId, requestingOfferId }: Props) => {
     let API_URL = `${url}/v1/offer/${offerId}/buy/undoTradeRequest`;
     if (requestingOfferId) {
-      API_URL += `${requestingOfferId}`;
+      API_URL += `/${requestingOfferId}`;
     }
     const response = await fetch(API_URL, {
       headers: helpers.getPrivateHeaders(url),

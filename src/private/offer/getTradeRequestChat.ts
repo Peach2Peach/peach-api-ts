@@ -14,7 +14,7 @@ export const getTradeRequestChat =
   ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
   async ({ offerType, chatRoomId, page = 0, signal }: Props) => {
     const response = await fetch(
-      `${url}/v1/chat/tradeRequest/${offerType}/${chatRoomId}/?page=${page}`,
+      `${url}/v1/chat/tradeRequest/${offerType}/${chatRoomId}?page=${page}`,
       {
         headers: helpers.getPrivateHeaders(url),
         method: "GET",
