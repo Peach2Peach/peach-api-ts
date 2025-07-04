@@ -34,7 +34,9 @@ export type TradeStatus =
   | "releaseEscrow"
   | "searchingForPeer"
   | "tradeCanceled"
-  | "tradeCompleted";
+  | "tradeCompleted"
+  | "fundingExpired"
+  | "createEscrow";
 
 export type PaymentMethodCountry =
   | "BG"
