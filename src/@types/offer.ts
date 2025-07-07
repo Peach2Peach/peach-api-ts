@@ -1,6 +1,6 @@
 import { MatchFilter } from "./api/offerAPI";
 import { Pricebook } from "./global";
-import { MeansOfPayment, PaymentMethod } from "./payment";
+import { MeansOfPayment, PaymentData, PaymentMethod } from "./payment";
 import { Medal, PublicUser } from "./user";
 
 export type FundingStatus = {
@@ -177,3 +177,34 @@ export type InstantTradeCriteria = {
   minTrades: number;
   badges: Medal[];
 };
+
+
+export type BuyOffer69 = {
+  id: number;
+  amountSats:number;
+  userId:string;
+  status:string;
+  releaseAddress:string;
+  releaseAddressMessageSignature: string;
+  minReputation?:number;
+  premium:number;
+  freeTrade:boolean;
+  paymentData: PaymentData;
+  meansOfPayment:MeansOfPayment;
+  creationDate: Date;  
+};
+
+export type BuyOffer69TradeRequest ={
+  id   :number;
+  buyOfferId           :number;
+  userId                :string;
+  paymentMethod         :string;
+  paymentDataHashed     :string;
+  paymentDataEncrypted   :string;
+  paymentDataSignature  :string;
+  symmetricKeyEncrypted  :string;
+  symmetricKeySignature  :string;
+  maxMiningFeeRate       :number;
+  currency               :string;
+  price                 :number;
+}
