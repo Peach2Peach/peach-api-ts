@@ -5,7 +5,7 @@ import { BuyOffer69 } from "../../@types/offer";
 import { parseResponse } from "../../helpers/parseResponse";
 import { PeachAPIHelpers, PeachAPIOptions, RequestProps } from "../../types";
 
-export type GetBuyOfferByIdRequestParams = {buyOfferId:number};
+export type GetBuyOfferByIdRequestParams = {buyOfferId:string};
 export type GetBuyOfferByIdRequestQuery = {};
 export type GetBuyOfferByIdRequestBody =   {} 
 
