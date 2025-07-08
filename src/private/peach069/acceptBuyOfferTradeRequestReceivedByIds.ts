@@ -7,7 +7,9 @@ import { PeachAPIHelpers, PeachAPIOptions, RequestProps } from "../../types";
 
 export type AcceptBuyOfferTradeRequestByIdsRequestParams = {buyOfferId:string, userId:string};
 export type AcceptBuyOfferTradeRequestByIdsRequestQuery = {};
-export type AcceptBuyOfferTradeRequestByIdsRequestBody =   {} 
+export type AcceptBuyOfferTradeRequestByIdsRequestBody =   {paymentDataEncrypted:string,
+  paymentDataSignature:string, paymentData:string
+} 
 
 type Props = RequestProps &
   AcceptBuyOfferTradeRequestByIdsRequestParams &
@@ -16,7 +18,7 @@ type Props = RequestProps &
 
 export const acceptBuyOfferTradeRequestReceivedByIds =
   ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
-  async ({buyOfferId,userId}: Props) => {
+  async ({buyOfferId,userId,paymentDataEncrypted,paymentDataSignature,paymentData}: Props) => {
 
 
 
@@ -25,6 +27,12 @@ export const acceptBuyOfferTradeRequestReceivedByIds =
     const response = await fetch(finalUrl, {
       headers: helpers.getPrivateHeaders(url),
       method: "POST",
+       body: JSON.stringify({ 
+        paymentDataEncrypted,
+  paymentDataSignature,
+  paymentData
+        
+      }),
      }) 
 
      
