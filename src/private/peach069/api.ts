@@ -7,6 +7,7 @@ import { getBuyOfferTradeRequestPerformedById } from "./getBuyOfferTradeRequestP
 import { getBuyOfferTradeRequestsReceivedById } from "./getBuyOfferTradeRequestsReceivedById";
 import { performBuyOfferTradeRequest } from "./performBuyOfferTradeRequest";
 import { rejectBuyOfferTradeRequestReceivedByIds } from "./rejectBuyOfferTradeRequestReceivedByIds";
+import { removePerformedBuyOfferTradeRequest } from "./removePerformedBuyOfferTradeRequest";
 
 export const peach069API = (
   options: PeachAPIOptions,
@@ -17,6 +18,7 @@ export const peach069API = (
   getBuyOfferById: getBuyOfferById(options, helpers),
   getBuyOfferTradeRequestPerformedById : getBuyOfferTradeRequestPerformedById(options, helpers),
   performBuyOfferTradeRequest:performBuyOfferTradeRequest(options, helpers),
+  removePerformedBuyOfferTradeRequest:removePerformedBuyOfferTradeRequest(options, helpers),
   getBuyOfferTradeRequestsReceivedById:getBuyOfferTradeRequestsReceivedById(options, helpers),
   rejectBuyOfferTradeRequestReceivedByIds:rejectBuyOfferTradeRequestReceivedByIds(options, helpers),
   acceptBuyOfferTradeRequestReceivedByIds:acceptBuyOfferTradeRequestReceivedByIds(options, helpers),
