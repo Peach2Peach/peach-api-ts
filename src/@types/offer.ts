@@ -208,3 +208,18 @@ export type BuyOffer69TradeRequest ={
   currency               :string;
   price                 :number;
 }
+
+export type SellOffer69TradeRequest ={
+  id   :number;
+  sellOfferId           :number;
+  userId                :string;
+  paymentMethod         :string;
+  paymentDataHashed     :string;
+  paymentDataEncrypted   :string;
+  paymentDataSignature  :string;
+  symmetricKeyEncrypted  :string;
+  symmetricKeySignature  :string;
+  maxMiningFeeRate       :number;
+  currency               :string;
+  price                 :number;
+}

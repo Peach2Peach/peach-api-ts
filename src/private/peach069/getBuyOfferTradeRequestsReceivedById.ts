@@ -5,14 +5,14 @@ import { BuyOffer69TradeRequest } from "../../@types/offer";
 import { parseResponse } from "../../helpers/parseResponse";
 import { PeachAPIHelpers, PeachAPIOptions, RequestProps } from "../../types";
 
-export type GetBuyOfferTradeRequestsREceivedByIdRequestParams = {buyOfferId:number};
-export type GetBuyOfferTradeRequestsREceivedByIdRequestQuery = {};
-export type GetBuyOfferTradeRequestsREceivedByIdRequestBody =   {} 
+export type GetBuyOfferTradeRequestsReceivedByIdRequestParams = {buyOfferId:number};
+export type GetBuyOfferTradeRequestsReceivedByIdRequestQuery = {};
+export type GetBuyOfferTradeRequestsReceivedByIdRequestBody =   {} 
 
 type Props = RequestProps &
-  GetBuyOfferTradeRequestsREceivedByIdRequestParams &
-  GetBuyOfferTradeRequestsREceivedByIdRequestQuery &
-  GetBuyOfferTradeRequestsREceivedByIdRequestBody;
+  GetBuyOfferTradeRequestsReceivedByIdRequestParams &
+  GetBuyOfferTradeRequestsReceivedByIdRequestQuery &
+  GetBuyOfferTradeRequestsReceivedByIdRequestBody;
 
 export const getBuyOfferTradeRequestsReceivedById =
   ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>

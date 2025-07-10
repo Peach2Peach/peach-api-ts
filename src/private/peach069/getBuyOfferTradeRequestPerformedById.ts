@@ -6,8 +6,8 @@ import { parseResponse } from "../../helpers/parseResponse";
 import { PeachAPIHelpers, PeachAPIOptions, RequestProps } from "../../types";
 
 export type GetBuyOfferTradeRequestPerformedByIdRequestParams = {buyOfferId:number};
-export type GetBuyOfferTradeRequestPerformedByIdRequestQuery = {};
-export type GetBuyOfferTradeRequestPerformedByIdRequestBody =   {} 
+export type GetBuyOfferTradeRequestPerformedByIdRequestQuery = {}; 
+export type GetBuyOfferTradeRequestPerformedByIdRequestBody =   {} ;
 
 type Props = RequestProps &
   GetBuyOfferTradeRequestPerformedByIdRequestParams &
