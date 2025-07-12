@@ -164,7 +164,6 @@ export type SellOfferSummary = {
   refunded: boolean;
 };
 
-
 export type OfferSummary = BuyOfferSummary | SellOfferSummary;
 
 type BuySorter = "highestAmount" | "lowestPremium" | "bestReputation";
@@ -178,48 +177,55 @@ export type InstantTradeCriteria = {
   badges: Medal[];
 };
 
-
 export type BuyOffer69 = {
   id: number;
-  amountSats:number;
-  userId:string;
-  status:string;
-  releaseAddress:string;
+  amountSats: number;
+  userId: string;
+  status: string;
+  releaseAddress: string;
   releaseAddressMessageSignature: string;
-  minReputation?:number;
-  premium:number;
-  freeTrade:boolean;
+  minReputation?: number;
+  premium: number;
+  freeTrade: boolean;
   paymentData: PaymentData;
-  meansOfPayment:MeansOfPayment;
-  creationDate: Date;  
+  meansOfPayment: MeansOfPayment;
+  creationDate: Date;
 };
 
-export type BuyOffer69TradeRequest ={
-  id   :number;
-  buyOfferId           :number;
-  userId                :string;
-  paymentMethod         :string;
-  paymentDataHashed     :string;
-  paymentDataEncrypted   :string;
-  paymentDataSignature  :string;
-  symmetricKeyEncrypted  :string;
-  symmetricKeySignature  :string;
-  maxMiningFeeRate       :number;
-  currency               :string;
-  price                 :number;
-}
+export type Offer69TradeRequestChatMessage = {
+  id: number;
+  encryptedMessage: string;
+  creationDate: string;
+  seen: boolean;
+  sender: "offerOwner" | "tradeRequester";
+};
 
-export type SellOffer69TradeRequest ={
-  id   :number;
-  sellOfferId           :number;
-  userId                :string;
-  paymentMethod         :string;
-  paymentDataHashed     :string;
-  paymentDataEncrypted   :string;
-  paymentDataSignature  :string;
-  symmetricKeyEncrypted  :string;
-  symmetricKeySignature  :string;
-  maxMiningFeeRate       :number;
-  currency               :string;
-  price                 :number;
-}
+export type BuyOffer69TradeRequest = {
+  id: number;
+  buyOfferId: number;
+  userId: string;
+  paymentMethod: string;
+  paymentDataHashed: string;
+  paymentDataEncrypted: string;
+  paymentDataSignature: string;
+  symmetricKeyEncrypted: string;
+  symmetricKeySignature: string;
+  maxMiningFeeRate: number;
+  currency: string;
+  price: number;
+};
+
+export type SellOffer69TradeRequest = {
+  id: number;
+  sellOfferId: number;
+  userId: string;
+  paymentMethod: string;
+  paymentDataHashed: string;
+  paymentDataEncrypted: string;
+  paymentDataSignature: string;
+  symmetricKeyEncrypted: string;
+  symmetricKeySignature: string;
+  maxMiningFeeRate: number;
+  currency: string;
+  price: number;
+};

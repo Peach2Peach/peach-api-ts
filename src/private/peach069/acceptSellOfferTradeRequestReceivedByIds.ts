@@ -27,7 +27,7 @@ export const acceptSellOfferTradeRequestReceivedByIds =
     const response = await fetch(finalUrl, {
       headers: helpers.getPrivateHeaders(url),
       method: "POST",
-       body: JSON.stringify({ 
+      body: JSON.stringify({ 
         paymentDataEncrypted,
   paymentDataSignature,
   paymentData
