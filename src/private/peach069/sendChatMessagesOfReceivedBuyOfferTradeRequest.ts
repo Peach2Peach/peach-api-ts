@@ -29,8 +29,6 @@ export const sendChatMessagesOfReceivedBuyOfferTradeRequest =
       }),
     });
 
-    console.log("res status", response.status);
-
     return parseResponse<void, APIError<"UNAUTHORIZED" | "NOT_FOUND">>(
       response,
     );

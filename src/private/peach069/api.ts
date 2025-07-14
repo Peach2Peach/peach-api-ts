@@ -8,6 +8,7 @@ import { getBuyOfferTradeRequestPerformedById } from "./getBuyOfferTradeRequestP
 import { getBuyOfferTradeRequestReceivedByIds } from "./getBuyOfferTradeRequestReceivedByIds";
 import { getBuyOfferTradeRequestsReceivedById } from "./getBuyOfferTradeRequestsReceivedById";
 import { getChatMessagesOfPerformedBuyOfferTradeRequest } from "./getChatMessagesOfPerformedBuyOfferTradeRequest";
+import { getChatMessagesOfPerformedSellOfferTradeRequest } from "./getChatMessagesOfPerformedSellOfferTradeRequest";
 import { getChatMessagesOfReceivedBuyOfferTradeRequest } from "./getChatMessagesOfReceivedBuyOfferTradeRequest";
 import { getChatMessagesOfReceivedSellOfferTradeRequest } from "./getChatMessagesOfReceivedSellOfferTradeRequest";
 import { getSellOfferById } from "./getSellOfferById";
@@ -22,7 +23,9 @@ import { rejectSellOfferTradeRequestReceivedByIds } from "./rejectSellOfferTrade
 import { removePerformedBuyOfferTradeRequest } from "./removePerformedBuyOfferTradeRequest";
 import { removePerformedSellOfferTradeRequest } from "./removePerformedSellOfferTradeRequest";
 import { sendChatMessagesOfPerformedBuyOfferTradeRequest } from "./sendChatMessagesOfPerformedBuyOfferTradeRequest";
+import { sendChatMessagesOfPerformedSellOfferTradeRequest } from "./sendChatMessagesOfPerformedSellOfferTradeRequest";
 import { sendChatMessagesOfReceivedBuyOfferTradeRequest } from "./sendChatMessagesOfReceivedBuyOfferTradeRequest";
+import { sendChatMessagesOfReceivedSellOfferTradeRequest } from "./sendChatMessagesOfReceivedSellOfferTradeRequest";
 
 export const peach069API = (
   options: PeachAPIOptions,
@@ -56,10 +59,8 @@ export const peach069API = (
     rejectBuyOfferTradeRequestReceivedByIds(options, helpers),
   acceptBuyOfferTradeRequestReceivedByIds:
     acceptBuyOfferTradeRequestReceivedByIds(options, helpers),
-
   getSellOffers: getSellOffers(options, helpers),
   getSellOfferById: getSellOfferById(options, helpers),
-
   getSellOfferTradeRequestPerformedById: getSellOfferTradeRequestPerformedById(
     options,
     helpers,
@@ -68,7 +69,6 @@ export const peach069API = (
     options,
     helpers,
   ),
-
   getSellOfferTradeRequestsReceivedById: getSellOfferTradeRequestsReceivedById(
     options,
     helpers,
@@ -78,17 +78,20 @@ export const peach069API = (
   acceptSellOfferTradeRequestReceivedByIds:
     acceptSellOfferTradeRequestReceivedByIds(options, helpers),
   performSellOfferTradeRequest: performSellOfferTradeRequest(options, helpers),
-
   getChatMessagesOfPerformedBuyOfferTradeRequest:
     getChatMessagesOfPerformedBuyOfferTradeRequest(options, helpers),
   sendChatMessagesOfPerformedBuyOfferTradeRequest:
     sendChatMessagesOfPerformedBuyOfferTradeRequest(options, helpers),
-
+  sendChatMessagesOfPerformedSellOfferTradeRequest:
+    sendChatMessagesOfPerformedSellOfferTradeRequest(options, helpers),
   getChatMessagesOfReceivedBuyOfferTradeRequest:
     getChatMessagesOfReceivedBuyOfferTradeRequest(options, helpers),
   sendChatMessagesOfReceivedBuyOfferTradeRequest:
     sendChatMessagesOfReceivedBuyOfferTradeRequest(options, helpers),
-
+  sendChatMessagesOfReceivedSellOfferTradeRequest:
+    sendChatMessagesOfReceivedSellOfferTradeRequest(options, helpers),
   getChatMessagesOfReceivedSellOfferTradeRequest:
     getChatMessagesOfReceivedSellOfferTradeRequest(options, helpers),
+  getChatMessagesOfPerformedSellOfferTradeRequest:
+    getChatMessagesOfPerformedSellOfferTradeRequest(options, helpers),
 });

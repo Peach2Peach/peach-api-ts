@@ -3,22 +3,21 @@ import { Offer69TradeRequestChatMessage } from "../../@types/offer";
 import { parseResponse } from "../../helpers/parseResponse";
 import { PeachAPIHelpers, PeachAPIOptions, RequestProps } from "../../types";
 
-export type GetChatMessagesOfReceivedSellOfferTradeRequestParams = {
+export type GetChatMessagesOfPerformedSellOfferTradeRequestParams = {
   sellOfferId: string;
-  userId: string;
 };
-export type GetChatMessagesOfReceivedSellOfferTradeRequestQuery = {};
-export type GetChatMessagesOfReceivedSellOfferTradeRequestBody = {};
+export type GetChatMessagesOfPerformedSellOfferTradeRequestQuery = {};
+export type GetChatMessagesOfPerformedSellOfferTradeRequestBody = {};
 
 type Props = RequestProps &
-  GetChatMessagesOfReceivedSellOfferTradeRequestParams &
-  GetChatMessagesOfReceivedSellOfferTradeRequestQuery &
-  GetChatMessagesOfReceivedSellOfferTradeRequestBody;
+  GetChatMessagesOfPerformedSellOfferTradeRequestParams &
+  GetChatMessagesOfPerformedSellOfferTradeRequestQuery &
+  GetChatMessagesOfPerformedSellOfferTradeRequestBody;
 
-export const getChatMessagesOfReceivedSellOfferTradeRequest =
+export const getChatMessagesOfPerformedSellOfferTradeRequest =
   ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
-  async ({ sellOfferId, userId }: Props) => {
-    const finalUrl = `${url}/v069/sellOffer/${sellOfferId}/tradeRequestReceived/${userId}/chat`;
+  async ({ sellOfferId }: Props) => {
+    const finalUrl = `${url}/v069/sellOffer/${sellOfferId}/tradeRequestPerformed/chat`;
 
     const response = await fetch(finalUrl, {
       headers: helpers.getPrivateHeaders(url),
