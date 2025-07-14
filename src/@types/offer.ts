@@ -217,7 +217,7 @@ export type BuyOffer69TradeRequest = {
 
 export type SellOffer69TradeRequest = {
   id: number;
-  sellOfferId: number;
+  sellOfferId: string;
   userId: string;
   paymentMethod: string;
   paymentDataHashed: string;
