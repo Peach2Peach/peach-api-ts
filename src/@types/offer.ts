@@ -189,6 +189,7 @@ export type BuyOffer69 = {
   freeTrade: boolean;
   paymentData: PaymentData;
   meansOfPayment: MeansOfPayment;
+  instantTradeCriteria?: InstantTradeCriteria;
   creationDate: Date;
 };
 

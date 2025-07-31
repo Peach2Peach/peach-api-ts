@@ -1,6 +1,7 @@
 import { PeachAPIHelpers, PeachAPIOptions } from "../../types";
 import { acceptBuyOfferTradeRequestReceivedByIds } from "./acceptBuyOfferTradeRequestReceivedByIds";
 import { acceptSellOfferTradeRequestReceivedByIds } from "./acceptSellOfferTradeRequestReceivedByIds";
+import { canPerformInstantTradeWithBuyOfferById } from "./canPerformInstantTradeWithBuyOfferById";
 import { canPerformInstantTradeWithSellOfferById } from "./canPerformInstantTradeWithSellOfferById";
 import { createBuyOffer } from "./createBuyOffer";
 import { getBuyOfferById } from "./getBuyOfferById";
@@ -18,6 +19,7 @@ import { getSellOfferTradeRequestPerformedById } from "./getSellOfferTradeReques
 import { getSellOfferTradeRequestReceivedByIds } from "./getSellOfferTradeRequestReceivedByIds";
 import { getSellOfferTradeRequestsReceivedById } from "./getSellOfferTradeRequestsReceivedById";
 import { performBuyOfferTradeRequest } from "./performBuyOfferTradeRequest";
+import { performInstantTradeWithBuyOfferById } from "./performInstantTradeWithBuyOfferById";
 import { performInstantTradeWithSellOfferById } from "./performInstantTradeWithSellOfferById";
 import { performSellOfferTradeRequest } from "./performSellOfferTradeRequest";
 import { rejectBuyOfferTradeRequestReceivedByIds } from "./rejectBuyOfferTradeRequestReceivedByIds";
@@ -99,6 +101,12 @@ export const peach069API = (
   canPerformInstantTradeWithSellOfferById:
     canPerformInstantTradeWithSellOfferById(options, helpers),
   performInstantTradeWithSellOfferById: performInstantTradeWithSellOfferById(
+    options,
+    helpers,
+  ),
+  canPerformInstantTradeWithBuyOfferById:
+    canPerformInstantTradeWithBuyOfferById(options, helpers),
+  performInstantTradeWithBuyOfferById: performInstantTradeWithBuyOfferById(
     options,
     helpers,
   ),
