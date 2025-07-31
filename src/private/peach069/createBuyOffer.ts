@@ -1,5 +1,9 @@
 import { PostOfferErrorResponseBody } from "../../@types/api/offerAPI";
-import { BuyOffer69, OfferPaymentData } from "../../@types/offer";
+import {
+  BuyOffer69,
+  InstantTradeCriteria,
+  OfferPaymentData,
+} from "../../@types/offer";
 import { MeansOfPayment } from "../../@types/payment";
 import { parseResponse } from "../../helpers/parseResponse";
 import { PeachAPIHelpers, PeachAPIOptions, RequestProps } from "../../types";
@@ -17,6 +21,7 @@ export type CreateBuyOfferRequestBody = CreateOfferRequestBody & {
   releaseAddressMessageSignature: string;
   premium: number;
   minReputation?: number;
+  instantTradeCriteria?: InstantTradeCriteria;
 };
 
 type Props = RequestProps &
@@ -34,6 +39,7 @@ export const createBuyOffer =
     releaseAddressMessageSignature,
     premium,
     minReputation,
+    instantTradeCriteria,
   }: Props) => {
     const response = await fetch(`${url}/v069/buyOffer`, {
       headers: helpers.getPrivateHeaders(url),
@@ -46,6 +52,7 @@ export const createBuyOffer =
         releaseAddressMessageSignature,
         premium,
         minReputation,
+        instantTradeCriteria,
       }),
     });
     return parseResponse<BuyOffer69, PostOfferErrorResponseBody>(response);
