@@ -17,11 +17,12 @@ export type CreateOfferRequestBody = {
 
 export type CreateBuyOfferRequestBody = CreateOfferRequestBody & {
   amount: number;
-  releaseAddress: string;
-  releaseAddressMessageSignature: string;
+  releaseAddresses: string[];
+  releaseAddressMessageSignatures: string[];
   premium: number;
   minReputation?: number;
   instantTradeCriteria?: InstantTradeCriteria;
+  multi?: number;
 };
 
 type Props = RequestProps &
@@ -35,11 +36,12 @@ export const createBuyOffer =
     amount,
     meansOfPayment,
     paymentData,
-    releaseAddress,
-    releaseAddressMessageSignature,
+    releaseAddresses,
+    releaseAddressMessageSignatures,
     premium,
     minReputation,
     instantTradeCriteria,
+    multi,
   }: Props) => {
     const response = await fetch(`${url}/v069/buyOffer`, {
       headers: helpers.getPrivateHeaders(url),
@@ -48,11 +50,12 @@ export const createBuyOffer =
         amount,
         meansOfPayment,
         paymentData,
-        releaseAddress,
-        releaseAddressMessageSignature,
+        releaseAddresses,
+        releaseAddressMessageSignatures,
         premium,
         minReputation,
         instantTradeCriteria,
+        multi,
       }),
     });
     return parseResponse<BuyOffer69, PostOfferErrorResponseBody>(response);
