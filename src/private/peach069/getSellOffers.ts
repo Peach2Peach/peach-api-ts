@@ -7,6 +7,8 @@ export type GetSellOfferRequestParams = {};
 export type GetSellOfferRequestQuery = {
   minAmountSats?: number;
   maxAmountSats?: number;
+  currencies?: string[];
+  paymentMethods?: string[];
 };
 
 export type GetSellOfferRequestBody = {};
@@ -18,11 +20,18 @@ type Props = RequestProps &
 
 export const getSellOffers =
   ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
-  async ({ minAmountSats, maxAmountSats }: Props) => {
+  async ({
+    minAmountSats,
+    maxAmountSats,
+    currencies,
+    paymentMethods,
+  }: Props) => {
     const searchParams = new URLSearchParams();
     for (const [key, value] of Object.entries({
       minAmountSats,
       maxAmountSats,
+      currencies,
+      paymentMethods,
     })) {
       if (value !== undefined) {
         searchParams.append(key, String(value));
