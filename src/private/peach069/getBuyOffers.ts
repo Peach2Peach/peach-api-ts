@@ -7,6 +7,7 @@ export type GetBuyOfferRequestParams = {};
 export type GetBuyOfferRequestQuery = {
   minAmountSats?: number;
   maxAmountSats?: number;
+  minPremium?: number;
   currencies?: string[];
   paymentMethods?: string[];
   ownOffers?: boolean;
@@ -24,6 +25,7 @@ export const getBuyOffers =
   async ({
     minAmountSats,
     maxAmountSats,
+    minPremium,
     currencies,
     paymentMethods,
     ownOffers,
@@ -32,6 +34,7 @@ export const getBuyOffers =
     for (const [key, value] of Object.entries({
       minAmountSats,
       maxAmountSats,
+      minPremium,
       ownOffers,
       currencies,
       paymentMethods,

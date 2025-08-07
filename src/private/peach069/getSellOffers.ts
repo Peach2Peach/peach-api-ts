@@ -7,6 +7,7 @@ export type GetSellOfferRequestParams = {};
 export type GetSellOfferRequestQuery = {
   minAmountSats?: number;
   maxAmountSats?: number;
+  maxPremium?: number;
   currencies?: string[];
   paymentMethods?: string[];
 };
@@ -23,6 +24,7 @@ export const getSellOffers =
   async ({
     minAmountSats,
     maxAmountSats,
+    maxPremium,
     currencies,
     paymentMethods,
   }: Props) => {
@@ -30,6 +32,7 @@ export const getSellOffers =
     for (const [key, value] of Object.entries({
       minAmountSats,
       maxAmountSats,
+      maxPremium,
       currencies,
       paymentMethods,
     })) {
