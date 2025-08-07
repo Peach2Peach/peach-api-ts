@@ -10,6 +10,7 @@ export type GetSellOfferRequestQuery = {
   maxPremium?: number;
   currencies?: string[];
   paymentMethods?: string[];
+  offersSorter?: string;
 };
 
 export type GetSellOfferRequestBody = {};
@@ -27,6 +28,7 @@ export const getSellOffers =
     maxPremium,
     currencies,
     paymentMethods,
+    offersSorter,
   }: Props) => {
     const searchParams = new URLSearchParams();
     for (const [key, value] of Object.entries({
@@ -35,6 +37,7 @@ export const getSellOffers =
       maxPremium,
       currencies,
       paymentMethods,
+      offersSorter,
     })) {
       if (value !== undefined) {
         searchParams.append(key, String(value));

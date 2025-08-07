@@ -11,6 +11,7 @@ export type GetBuyOfferRequestQuery = {
   currencies?: string[];
   paymentMethods?: string[];
   ownOffers?: boolean;
+  offersSorter?: string;
 };
 
 export type GetBuyOfferRequestBody = {};
@@ -29,6 +30,7 @@ export const getBuyOffers =
     currencies,
     paymentMethods,
     ownOffers,
+    offersSorter,
   }: Props) => {
     const searchParams = new URLSearchParams();
     for (const [key, value] of Object.entries({
@@ -38,6 +40,7 @@ export const getBuyOffers =
       ownOffers,
       currencies,
       paymentMethods,
+      offersSorter,
     })) {
       if (value !== undefined) {
         searchParams.append(key, String(value));
