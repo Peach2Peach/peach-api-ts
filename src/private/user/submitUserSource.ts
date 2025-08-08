@@ -4,6 +4,7 @@ import { PeachAPIHelpers, PeachAPIOptions, RequestProps } from "../../types";
 
 export type UserSource =
   | "twitter"
+  | "nostr"
   | "google"
   | "instagram"
   | "friend"
