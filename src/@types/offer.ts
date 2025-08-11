@@ -36,7 +36,11 @@ export type TradeStatus =
   | "tradeCanceled"
   | "tradeCompleted"
   | "fundingExpired"
-  | "createEscrow";
+  | "createEscrow"
+  | "waitingForFunding"
+  // status for peach69
+  | "waitingForTradeRequest"
+  | "acceptTradeRequest";
 
 export type PaymentMethodCountry =
   | "BG"

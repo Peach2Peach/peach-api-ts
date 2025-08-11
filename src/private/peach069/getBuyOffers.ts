@@ -1,5 +1,5 @@
 import { APIError } from "../../@types/global";
-import { BuyOffer69 } from "../../@types/offer";
+import { BuyOffer69, TradeStatus } from "../../@types/offer";
 import { parseResponse } from "../../helpers/parseResponse";
 import { PeachAPIHelpers, PeachAPIOptions, RequestProps } from "../../types";
 
@@ -55,5 +55,5 @@ export const getBuyOffers =
       method: "GET",
     });
 
-    return parseResponse<BuyOffer69[], APIError<"UNAUTHORIZED">>(response);
+    return parseResponse<(BuyOffer69 & {tradeStatusNew:TradeStatus})[], APIError<"UNAUTHORIZED">>(response);
   };
