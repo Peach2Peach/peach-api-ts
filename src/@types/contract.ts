@@ -102,4 +102,5 @@ export type ContractSummary = {
   releaseTxId?: string;
   isChatActive: boolean;
   refunded?: boolean;
+  tradeStatusNew?: TradeStatus;
 };

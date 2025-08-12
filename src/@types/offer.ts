@@ -150,6 +150,7 @@ export type BuyOfferSummary = {
   amount: [number, number];
   matches: string[];
   tradeStatus: TradeStatus;
+  tradeStatusNew?: TradeStatus;
 };
 export type SellOfferSummary = {
   id: string;
@@ -166,6 +167,7 @@ export type SellOfferSummary = {
   txId?: string;
   fundingTxId: string;
   refunded: boolean;
+  tradeStatusNew?: TradeStatus;
 };
 
 export type OfferSummary = BuyOfferSummary | SellOfferSummary;
