@@ -52,5 +52,8 @@ export const getSellOffers =
       method: "GET",
     });
 
-    return parseResponse<SellOffer[], APIError<"UNAUTHORIZED">>(response);
+    return parseResponse<
+      (SellOffer & { allowedToInstantTrade: boolean })[],
+      APIError<"UNAUTHORIZED">
+    >(response);
   };
