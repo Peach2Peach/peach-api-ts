@@ -61,6 +61,7 @@ export const getBuyOffers =
         tradeStatusNew?: TradeStatus;
         user: User;
         allowedToInstantTrade: boolean;
+        hasPerformedTradeRequest: boolean;
       })[],
       APIError<"UNAUTHORIZED">
     >(response);
