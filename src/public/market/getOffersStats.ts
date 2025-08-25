@@ -5,6 +5,7 @@ import { PeachAPIHelpers, PeachAPIOptions, RequestProps } from "../../types";
 type GetRealTimeOfferDataResponseBody = {
   buy: {
     open: number;
+    avgPremium: number;
   };
   sell: {
     open: number;
