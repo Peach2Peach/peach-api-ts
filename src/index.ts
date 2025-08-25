@@ -1,1 +1,1 @@
-export { peachAPI } from "./peachAPI";
+export { PeachAPI } from "./peachAPI";

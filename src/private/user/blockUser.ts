@@ -16,7 +16,7 @@ type Props = RequestProps &
 export const blockUser =
   ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
   async ({ userId, signal }: Props) => {
-    const response = await fetch(`${url}/v1/user/${userId}/block`, {
+    const response = await helpers.fetch(`${url}/v1/user/${userId}/block`, {
       headers: helpers.getPrivateHeaders(url),
       method: "PUT",
       signal,

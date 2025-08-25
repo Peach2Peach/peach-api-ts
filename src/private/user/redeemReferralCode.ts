@@ -16,7 +16,7 @@ type Props = RequestProps &
 export const redeemReferralCode =
   ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
   async ({ code, signal }: Props) => {
-    const response = await fetch(
+    const response = await helpers.fetch(
       `${url}/v1/user/referral/redeem/referralCode`,
       {
         headers: helpers.getPrivateHeaders(url),

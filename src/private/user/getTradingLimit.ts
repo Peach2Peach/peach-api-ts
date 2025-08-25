@@ -16,7 +16,7 @@ type Props = RequestProps &
 export const getTradingLimit =
   ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
   async ({ signal }: Props = {}) => {
-    const response = await fetch(`${url}/v1/user/tradingLimit`, {
+    const response = await helpers.fetch(`${url}/v1/user/tradingLimit`, {
       headers: helpers.getPrivateHeaders(url),
       method: "GET",
       signal,

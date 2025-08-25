@@ -51,7 +51,7 @@ export const getBuyOffers =
     const endpointUrl = `${url}/v069/buyOffer`;
     const finalUrl = `${endpointUrl}?${searchParams.toString()}`;
 
-    const response = await fetch(finalUrl, {
+    const response = await helpers.fetch(finalUrl, {
       headers: helpers.getPrivateHeaders(url),
       method: "GET",
     });

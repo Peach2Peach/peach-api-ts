@@ -1,5 +1,4 @@
 import { BIP32Interface } from "bip32";
-import { PREFETCH_ACCESS_TOKEN } from "./constants";
 import { calculateClientServerTimeDifference } from "./helpers/calculateClientServerTimeDifference";
 import { fetchAccessToken } from "./helpers/fetchAccessToken";
 import { getAuthenticationChallenge } from "./helpers/getAuthenticationChallenge";
@@ -10,64 +9,123 @@ import { peachAPIPrivate } from "./private/peachAPIPrivate";
 import { peachAPIPublic } from "./public/peachAPIPublic";
 import { PeachAPIOptions, PublicPeachAPIHelpers } from "./types";
 
-export const peachAPI = (options: PeachAPIOptions) => {
-  const apiOptions = options;
-  const publicHelpers: PublicPeachAPIHelpers = {
-    getPublicHeaders: (url: string) => getPublicHeaders(url, options.userAgent),
-  };
-  let authToken: { accessToken: string; expiry: number } | undefined;
-  let clientServerTimeDifference = 0;
+export class PeachAPI {
+  private apiOptions: PeachAPIOptions;
+  private authToken?: { accessToken: string; expiry: number };
+  private clientServerTimeDifference = 0;
 
-  const adjustClientServerTimeDifference = async () => {
-    clientServerTimeDifference = await calculateClientServerTimeDifference(
-      apiOptions,
-      publicHelpers,
-    );
-  };
+  private publicHelpers: PublicPeachAPIHelpers;
+  private isFetchingAuthToken: boolean;
 
-  const authenticate = async () => {
-    const message = getAuthenticationChallenge(clientServerTimeDifference);
+  constructor(options: PeachAPIOptions) {
+    this.apiOptions = options;
 
-    if (peachAccountSet(apiOptions)) {
-      const { accessToken, error } = await fetchAccessToken(
-        apiOptions,
-        publicHelpers,
-      )(message);
-      authToken = accessToken;
-      if (!authToken) return { authToken, error };
+    this.publicHelpers = {
+      getPublicHeaders: (url: string) =>
+        getPublicHeaders(url, options.userAgent),
+    };
+    this.isFetchingAuthToken = false;
 
-      setTimeout(
-        authenticate,
-        authToken?.expiry - Date.now() - PREFETCH_ACCESS_TOKEN,
-      );
-      return { authToken, error };
+    if (options?.peachAccount) {
+      this.authenticate();
     }
+  }
+
+  public async myFetch(
+    input: RequestInfo | URL,
+    init?: RequestInit,
+  ): Promise<Response> {
+    let response = await fetch(input, init);
+
+    if (response.status === 401) {
+      const cloned = response.clone();
+      const body = await cloned.text();
+      if (!body.includes("AUTHENTICATION_FAILED")) {
+        return response;
+      }
+
+      const authResult = await this.authenticate();
+
+      if (authResult?.authToken) {
+        const url = typeof input === "string" ? input : input.toString();
+        const newInit: RequestInit = {
+          ...init,
+          headers: {
+            ...(init?.headers || {}),
+            ...this.helpers.getPrivateHeaders(url),
+          },
+        };
+
+        response = await fetch(input, newInit);
+      }
+    }
+
+    return response;
+  }
+
+  private get helpers() {
+    return {
+      ...this.publicHelpers,
+      getPrivateHeaders: (url: string) =>
+        getPrivateHeaders(
+          url,
+          this.authToken?.accessToken || "",
+          this.apiOptions.userAgent,
+        ),
+      fetch: this.myFetch.bind(this),
+    };
+  }
+
+  public get public() {
+    return peachAPIPublic(this.apiOptions, this.helpers);
+  }
+
+  public get private() {
+    return peachAPIPrivate(this.apiOptions, this.helpers);
+  }
+
+  public async adjustClientServerTimeDifference() {
+    this.clientServerTimeDifference = await calculateClientServerTimeDifference(
+      this.apiOptions,
+      this.publicHelpers,
+    );
+  }
+
+  public async authenticate() {
+    if (this.isFetchingAuthToken) {
+      return undefined;
+    }
+    this.isFetchingAuthToken = true;
+    const message = getAuthenticationChallenge(this.clientServerTimeDifference);
+    if (peachAccountSet(this.apiOptions)) {
+      const { accessToken, error } = await fetchAccessToken(
+        this.apiOptions,
+        this.publicHelpers,
+      )(message);
+
+      this.authToken = accessToken;
+      if (!this.authToken) return { authToken: this.authToken, error };
+
+      this.isFetchingAuthToken = false;
+      return { authToken: this.authToken, error };
+    }
+
+    this.isFetchingAuthToken = false;
+
     return undefined;
-  };
+  }
 
-  const setPeachAccount = (peachAccount: BIP32Interface | null) => {
-    authToken = undefined;
-    apiOptions.peachAccount = peachAccount;
-    if (peachAccount) authenticate();
-  };
+  public setPeachAccount(peachAccount: BIP32Interface | null) {
+    this.authToken = undefined;
+    this.apiOptions.peachAccount = peachAccount;
+    if (peachAccount) this.authenticate();
+  }
 
-  const isAuthenticated = () => !!authToken?.accessToken;
+  public isAuthenticated() {
+    return !!this.authToken?.accessToken;
+  }
 
-  const helpers = {
-    ...publicHelpers,
-    getPrivateHeaders: (url: string) =>
-      getPrivateHeaders(url, authToken?.accessToken || "", options.userAgent),
-  };
-
-  if (options?.peachAccount) authenticate();
-
-  return {
-    public: peachAPIPublic(apiOptions, helpers),
-    private: peachAPIPrivate(apiOptions, helpers),
-    authenticate,
-    setPeachAccount,
-    isAuthenticated,
-    apiOptions,
-    adjustClientServerTimeDifference,
-  };
-};
+  public getOptions() {
+    return this.apiOptions;
+  }
+}

@@ -24,5 +24,6 @@ export type PublicPeachAPIHelpers = {
 };
 export type PrivateAPIHelpers = {
   getPrivateHeaders: (url: string) => PrivateHeaders;
+  fetch: Function;
 };
 export type PeachAPIHelpers = PublicPeachAPIHelpers & PrivateAPIHelpers;

@@ -16,7 +16,7 @@ type Props = RequestProps &
 export const acknowledgeDisputeOutcome =
   ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
   async ({ contractId, signal }: Props) => {
-    const response = await fetch(
+    const response = await helpers.fetch(
       `${url}/v1/contract/${contractId}/dispute/acknowledgeOutcome`,
       {
         headers: helpers.getPrivateHeaders(url),

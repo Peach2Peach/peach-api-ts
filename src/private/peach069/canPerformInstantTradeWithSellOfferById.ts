@@ -18,7 +18,7 @@ export const canPerformInstantTradeWithSellOfferById =
   async ({ sellOfferId }: Props) => {
     const finalUrl = `${url}/v069/sellOffer/${sellOfferId}/canPerformInstantTrade`;
 
-    const response = await fetch(finalUrl, {
+    const response = await helpers.fetch(finalUrl, {
       headers: helpers.getPrivateHeaders(url),
       method: "GET",
     });

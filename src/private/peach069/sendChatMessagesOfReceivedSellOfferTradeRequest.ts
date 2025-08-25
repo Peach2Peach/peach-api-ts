@@ -21,7 +21,7 @@ export const sendChatMessagesOfReceivedSellOfferTradeRequest =
   async ({ sellOfferId, userId, messageEncrypted }: Props) => {
     const finalUrl = `${url}/v069/sellOffer/${sellOfferId}/tradeRequestReceived/${userId}/chat`;
 
-    const response = await fetch(finalUrl, {
+    const response = await helpers.fetch(finalUrl, {
       headers: helpers.getPrivateHeaders(url),
       method: "POST",
       body: JSON.stringify({

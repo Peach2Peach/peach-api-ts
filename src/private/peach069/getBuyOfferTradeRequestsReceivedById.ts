@@ -19,7 +19,7 @@ export const getBuyOfferTradeRequestsReceivedById =
   async ({ buyOfferId }: Props) => {
     const finalUrl = `${url}/v069/buyOffer/${buyOfferId}/tradeRequestReceived/`;
 
-    const response = await fetch(finalUrl, {
+    const response = await helpers.fetch(finalUrl, {
       headers: helpers.getPrivateHeaders(url),
       method: "GET",
     });

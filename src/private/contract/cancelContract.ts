@@ -16,14 +16,17 @@ type Props = RequestProps &
 export const cancelContract =
   ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
   async ({ contractId, satsPerByte, signal }: Props) => {
-    const response = await fetch(`${url}/v1/contract/${contractId}/cancel`, {
-      headers: helpers.getPrivateHeaders(url),
-      method: "POST",
-      body: JSON.stringify({
-        satsPerByte,
-      }),
-      signal,
-    });
+    const response = await helpers.fetch(
+      `${url}/v1/contract/${contractId}/cancel`,
+      {
+        headers: helpers.getPrivateHeaders(url),
+        method: "POST",
+        body: JSON.stringify({
+          satsPerByte,
+        }),
+        signal,
+      },
+    );
 
     return parseResponse<
       CancelContractResponseBody,

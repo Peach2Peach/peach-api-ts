@@ -16,7 +16,7 @@ export const deleteBuyOfferById =
   async ({ buyOfferId }: Props) => {
     const finalUrl = `${url}/v069/buyOffer/` + String(buyOfferId);
 
-    const response = await fetch(finalUrl, {
+    const response = await helpers.fetch(finalUrl, {
       headers: helpers.getPrivateHeaders(url),
       method: "DELETE",
     });

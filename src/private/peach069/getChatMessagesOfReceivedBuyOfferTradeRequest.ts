@@ -20,7 +20,7 @@ export const getChatMessagesOfReceivedBuyOfferTradeRequest =
   async ({ buyOfferId, userId }: Props) => {
     const finalUrl = `${url}/v069/buyOffer/${buyOfferId}/tradeRequestReceived/${userId}/chat`;
 
-    const response = await fetch(finalUrl, {
+    const response = await helpers.fetch(finalUrl, {
       headers: helpers.getPrivateHeaders(url),
       method: "GET",
     });

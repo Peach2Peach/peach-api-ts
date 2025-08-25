@@ -17,7 +17,7 @@ export const patchBuyOfferPremiumById =
   async ({ buyOfferId, premium }: Props) => {
     const finalUrl = `${url}/v069/buyOffer/` + String(buyOfferId);
 
-    const response = await fetch(finalUrl, {
+    const response = await helpers.fetch(finalUrl, {
       headers: helpers.getPrivateHeaders(url),
       method: "PATCH",
       body: JSON.stringify({ premium }),
