@@ -11,6 +11,7 @@ type GetRealTimeOfferDataResponseBody = {
     open: number;
     avgPremium: number;
   };
+  totalAvgPremium: number;
 };
 type GetRealTimeOfferDataErrorResponseBody = APIError<null>;
 
