@@ -9,6 +9,7 @@ export type GetChatMessagesOfReceivedSellOfferTradeRequestParams = {
 export type GetChatMessagesOfReceivedSellOfferTradeRequestQuery = {};
 export type GetChatMessagesOfReceivedSellOfferTradeRequestBody = {
   messageEncrypted: string;
+  signature?: string;
 };
 
 type Props = RequestProps &
@@ -18,7 +19,7 @@ type Props = RequestProps &
 
 export const sendChatMessagesOfReceivedSellOfferTradeRequest =
   ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
-  async ({ sellOfferId, userId, messageEncrypted }: Props) => {
+  async ({ sellOfferId, userId, messageEncrypted, signature }: Props) => {
     const finalUrl = `${url}/v069/sellOffer/${sellOfferId}/tradeRequestReceived/${userId}/chat`;
 
     const response = await helpers.fetch(finalUrl, {
@@ -26,6 +27,7 @@ export const sendChatMessagesOfReceivedSellOfferTradeRequest =
       method: "POST",
       body: JSON.stringify({
         messageEncrypted,
+        signature
       }),
     });
 
