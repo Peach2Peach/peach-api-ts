@@ -57,12 +57,12 @@ export const getBuyOffers =
     });
 
     return parseResponse<
-      (BuyOffer69 & {
+      {stats: any, offers:(BuyOffer69 & {
         tradeStatusNew?: TradeStatus;
         user: User;
         allowedToInstantTrade: boolean;
         hasPerformedTradeRequest: boolean;
-      })[],
+      })[]},
       APIError<"UNAUTHORIZED">
     >(response);
   };

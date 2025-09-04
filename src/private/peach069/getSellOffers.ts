@@ -53,10 +53,10 @@ export const getSellOffers =
     });
 
     return parseResponse<
-      (SellOffer & {
+      {stats: any, offers:(SellOffer & {
         allowedToInstantTrade: boolean;
         hasPerformedTradeRequest: boolean;
-      })[],
+      })[]},
       APIError<"UNAUTHORIZED">
     >(response);
   };
