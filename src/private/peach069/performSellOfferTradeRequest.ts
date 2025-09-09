@@ -14,7 +14,7 @@ export type PerformSellOfferTradeRequestRequestBody = {
   paymentDataSignature: string;
   symmetricKeyEncrypted: string;
   symmetricKeySignature: string;
-  maxMiningFeeRate: number;
+  maxMiningFeeRate?: number;
   releaseAddress: string;
   releaseAddressMessageSignature: string;
 };

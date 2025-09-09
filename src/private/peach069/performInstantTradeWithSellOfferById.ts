@@ -16,7 +16,7 @@ export type performInstantTradeWithSellOfferByIdRequestBody = {
   paymentDataSignature: string;
   symmetricKeyEncrypted: string;
   symmetricKeySignature: string;
-  maxMiningFeeRate: number;
+  maxMiningFeeRate?: number;
   releaseAddress: string;
   releaseAddressMessageSignature: string;
 };
