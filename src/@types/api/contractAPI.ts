@@ -114,6 +114,7 @@ export type RaiseDisputeRequestBody = {
   message?: string;
   symmetricKeyEncrypted: string;
   paymentDataSellerEncrypted?: string;
+  paymentDataBuyerEncrypted?: string
 };
 export type RaiseDisputeResponseBody = APISuccess;
 export type RaiseDisputeErrorResponseBody = APIError<

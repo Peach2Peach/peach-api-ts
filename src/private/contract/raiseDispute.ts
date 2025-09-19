@@ -22,6 +22,7 @@ export const raiseDispute =
     message,
     symmetricKeyEncrypted,
     paymentDataSellerEncrypted,
+    paymentDataBuyerEncrypted,
     signal,
   }: Props) => {
     const response = await helpers.fetch(
@@ -35,6 +36,7 @@ export const raiseDispute =
           message,
           symmetricKeyEncrypted,
           paymentDataSellerEncrypted,
+          paymentDataBuyerEncrypted
         }),
         signal,
       },
