@@ -22,7 +22,7 @@ export class PeachAPI {
 
     this.publicHelpers = {
       getPublicHeaders: (url: string) =>
-        getPublicHeaders(url, options.userAgent),
+        getPublicHeaders(url, options.buildNumber, options.userAgent),
     };
     this.isFetchingAuthToken = false;
 
@@ -70,6 +70,7 @@ export class PeachAPI {
         getPrivateHeaders(
           url,
           this.authToken?.accessToken || "",
+          this.apiOptions.buildNumber,
           this.apiOptions.userAgent,
         ),
       fetch: this.myFetch.bind(this),
