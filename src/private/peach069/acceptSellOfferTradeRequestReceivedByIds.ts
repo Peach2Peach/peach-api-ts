@@ -1,0 +1,43 @@
+import { Contract } from "../../@types/contract";
+import { APIError } from "../../@types/global";
+import { parseResponse } from "../../helpers/parseResponse";
+import { PeachAPIHelpers, PeachAPIOptions, RequestProps } from "../../types";
+
+export type AcceptSellOfferTradeRequestByIdsRequestParams = {
+  sellOfferId: string;
+  userId: string;
+};
+export type AcceptSellOfferTradeRequestByIdsRequestQuery = {};
+export type AcceptSellOfferTradeRequestByIdsRequestBody = {
+  paymentDataEncrypted: string;
+  paymentDataSignature: string;
+};
+
+type Props = RequestProps &
+  AcceptSellOfferTradeRequestByIdsRequestParams &
+  AcceptSellOfferTradeRequestByIdsRequestQuery &
+  AcceptSellOfferTradeRequestByIdsRequestBody;
+
+export const acceptSellOfferTradeRequestReceivedByIds =
+  ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
+  async ({
+    sellOfferId,
+    userId,
+    paymentDataEncrypted,
+    paymentDataSignature,
+  }: Props) => {
+    const finalUrl = `${url}/v069/sellOffer/${sellOfferId}/tradeRequestReceived/${userId}/accept`;
+
+    const response = await helpers.fetch(finalUrl, {
+      headers: helpers.getPrivateHeaders(url),
+      method: "POST",
+      body: JSON.stringify({
+        paymentDataEncrypted,
+        paymentDataSignature,
+      }),
+    });
+
+    return parseResponse<Contract, APIError<"UNAUTHORIZED" | "NOT_FOUND">>(
+      response,
+    );
+  };

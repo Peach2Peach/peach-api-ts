@@ -43,7 +43,7 @@ export const patchOffer =
     paymentData,
     signal,
   }: Props) => {
-    const response = await fetch(`${url}/v1/offer/${offerId}`, {
+    const response = await helpers.fetch(`${url}/v1/offer/${offerId}`, {
       headers: helpers.getPrivateHeaders(url),
       method: "PATCH",
       body: JSON.stringify({

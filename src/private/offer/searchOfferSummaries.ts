@@ -34,7 +34,7 @@ export const searchOfferSummaries =
       maxPremium,
       minReputation,
     };
-    const response = await fetch(`${url}/v1/offer/search/summary`, {
+    const response = await helpers.fetch(`${url}/v1/offer/search/summary`, {
       headers: helpers.getPrivateHeaders(url),
       method: "POST",
       body: JSON.stringify(requestBody),

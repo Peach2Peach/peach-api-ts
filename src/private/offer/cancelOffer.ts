@@ -16,7 +16,7 @@ type Props = RequestProps &
 export const cancelOffer =
   ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
   async ({ offerId, signal }: Props) => {
-    const response = await fetch(`${url}/v1/offer/${offerId}/cancel`, {
+    const response = await helpers.fetch(`${url}/v1/offer/${offerId}/cancel`, {
       headers: helpers.getPrivateHeaders(url),
       method: "POST",
       signal,

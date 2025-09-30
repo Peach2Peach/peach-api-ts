@@ -22,20 +22,25 @@ export const raiseDispute =
     message,
     symmetricKeyEncrypted,
     paymentDataSellerEncrypted,
+    paymentDataBuyerEncrypted,
     signal,
   }: Props) => {
-    const response = await fetch(`${url}/v1/contract/${contractId}/dispute`, {
-      headers: helpers.getPrivateHeaders(url),
-      method: "POST",
-      body: JSON.stringify({
-        email,
-        reason,
-        message,
-        symmetricKeyEncrypted,
-        paymentDataSellerEncrypted,
-      }),
-      signal,
-    });
+    const response = await helpers.fetch(
+      `${url}/v1/contract/${contractId}/dispute`,
+      {
+        headers: helpers.getPrivateHeaders(url),
+        method: "POST",
+        body: JSON.stringify({
+          email,
+          reason,
+          message,
+          symmetricKeyEncrypted,
+          paymentDataSellerEncrypted,
+          paymentDataBuyerEncrypted
+        }),
+        signal,
+      },
+    );
 
     return parseResponse<
       RaiseDisputeResponseBody,

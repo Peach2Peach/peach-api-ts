@@ -16,7 +16,7 @@ type Props = RequestProps &
 export const unmatchOffer =
   ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
   async ({ offerId, matchingOfferId, signal }: Props) => {
-    const response = await fetch(`${url}/v1/offer/${offerId}/match`, {
+    const response = await helpers.fetch(`${url}/v1/offer/${offerId}/match`, {
       headers: helpers.getPrivateHeaders(url),
       body: JSON.stringify({
         matchingOfferId,

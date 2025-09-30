@@ -1,6 +1,6 @@
 import { MatchFilter } from "./api/offerAPI";
 import { Pricebook } from "./global";
-import { MeansOfPayment, PaymentMethod } from "./payment";
+import { MeansOfPayment, PaymentData, PaymentMethod } from "./payment";
 import { Medal, PublicUser } from "./user";
 
 export type FundingStatus = {
@@ -34,7 +34,13 @@ export type TradeStatus =
   | "releaseEscrow"
   | "searchingForPeer"
   | "tradeCanceled"
-  | "tradeCompleted";
+  | "tradeCompleted"
+  | "fundingExpired"
+  | "createEscrow"
+  | "waitingForFunding"
+  // status for peach69
+  | "waitingForTradeRequest"
+  | "acceptTradeRequest";
 
 export type PaymentMethodCountry =
   | "BG"
@@ -144,6 +150,7 @@ export type BuyOfferSummary = {
   amount: [number, number];
   matches: string[];
   tradeStatus: TradeStatus;
+  tradeStatusNew?: TradeStatus;
 };
 export type SellOfferSummary = {
   id: string;
@@ -160,8 +167,8 @@ export type SellOfferSummary = {
   txId?: string;
   fundingTxId: string;
   refunded: boolean;
+  tradeStatusNew?: TradeStatus;
 };
-
 
 export type OfferSummary = BuyOfferSummary | SellOfferSummary;
 
@@ -174,4 +181,58 @@ export type InstantTradeCriteria = {
   minReputation: number;
   minTrades: number;
   badges: Medal[];
+};
+
+export type BuyOffer69 = {
+  id: number;
+  amountSats: number;
+  userId: string;
+  status: string;
+  releaseAddress: string;
+  releaseAddressMessageSignature: string;
+  minReputation?: number;
+  premium: number;
+  freeTrade: boolean;
+  paymentData: PaymentData;
+  meansOfPayment: MeansOfPayment;
+  instantTradeCriteria?: InstantTradeCriteria;
+  creationDate: Date;
+};
+
+export type Offer69TradeRequestChatMessage = {
+  id: number;
+  encryptedMessage: string;
+  creationDate: string;
+  seen: boolean;
+  sender: "offerOwner" | "tradeRequester";
+};
+
+export type BuyOffer69TradeRequest = {
+  id: number;
+  buyOfferId: number;
+  userId: string;
+  paymentMethod: string;
+  paymentDataHashed: string;
+  paymentDataEncrypted: string;
+  paymentDataSignature: string;
+  symmetricKeyEncrypted: string;
+  symmetricKeySignature: string;
+  maxMiningFeeRate: number;
+  currency: string;
+  price: number;
+};
+
+export type SellOffer69TradeRequest = {
+  id: number;
+  sellOfferId: string;
+  userId: string;
+  paymentMethod: string;
+  paymentDataHashed: string;
+  paymentDataEncrypted: string;
+  paymentDataSignature: string;
+  symmetricKeyEncrypted: string;
+  symmetricKeySignature: string;
+  maxMiningFeeRate: number;
+  currency: string;
+  price: number;
 };

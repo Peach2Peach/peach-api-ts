@@ -16,7 +16,7 @@ type Props = RequestProps &
 export const enableTransactionBatching =
   ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
   async ({ enableBatching, riskAcknowledged, signal }: Props) => {
-    const response = await fetch(`${url}/v1/user/batching`, {
+    const response = await helpers.fetch(`${url}/v1/user/batching`, {
       headers: helpers.getPrivateHeaders(url),
       method: "POST",
       body: JSON.stringify({

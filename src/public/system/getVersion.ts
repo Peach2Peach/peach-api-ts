@@ -5,6 +5,7 @@ import { PeachAPIHelpers, PeachAPIOptions, RequestProps } from "../../types";
 type GetVersionResponseBody = {
   latestAppVersion: string;
   minAppVersion: string;
+  minBuildNumber: string
 };
 type GetVersionErrorResponseBody = APIError<null>;
 

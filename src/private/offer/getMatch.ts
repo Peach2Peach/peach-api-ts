@@ -11,7 +11,7 @@ type GetMatchErrorResponseBody = APIError<
 export const getMatch =
   ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
   async ({ offerId, matchId, signal }: Props) => {
-    const response = await fetch(
+    const response = await helpers.fetch(
       `${url}/v1/offer/${offerId}/match/${matchId}`,
       {
         headers: helpers.getPrivateHeaders(url),

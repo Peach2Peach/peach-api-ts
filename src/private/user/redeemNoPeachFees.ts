@@ -16,11 +16,14 @@ type Props = RequestProps &
 export const redeemNoPeachFees =
   ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
   async ({ signal }: Props = {}) => {
-    const response = await fetch(`${url}/v1/user/referral/redeem/freeTrades`, {
-      headers: helpers.getPrivateHeaders(url),
-      method: "PATCH",
-      signal,
-    });
+    const response = await helpers.fetch(
+      `${url}/v1/user/referral/redeem/freeTrades`,
+      {
+        headers: helpers.getPrivateHeaders(url),
+        method: "PATCH",
+        signal,
+      },
+    );
 
     return parseResponse<
       RedeemTradesResponseBody,

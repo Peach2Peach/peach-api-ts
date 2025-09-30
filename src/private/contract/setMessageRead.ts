@@ -16,15 +16,18 @@ type Props = RequestProps &
 export const setMessageRead =
   ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
   async ({ contractId, start, end, signal }: Props) => {
-    const response = await fetch(`${url}/v1/contract/${contractId}/chat`, {
-      headers: helpers.getPrivateHeaders(url),
-      method: "POST",
-      body: JSON.stringify({
-        start,
-        end,
-      }),
-      signal,
-    });
+    const response = await helpers.fetch(
+      `${url}/v1/contract/${contractId}/chat`,
+      {
+        headers: helpers.getPrivateHeaders(url),
+        method: "POST",
+        body: JSON.stringify({
+          start,
+          end,
+        }),
+        signal,
+      },
+    );
 
     return parseResponse<
       SetMessagesReadByUserResponseBody,

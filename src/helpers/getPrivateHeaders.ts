@@ -4,8 +4,9 @@ import { getPublicHeaders } from "./getPublicHeaders";
 export const getPrivateHeaders = (
   url: string,
   authToken: string,
+  buildNumber: string,
   userAgent?: string,
 ): PrivateHeaders => ({
-  ...getPublicHeaders(url, userAgent),
+  ...getPublicHeaders(url,buildNumber, userAgent),
   Authorization: authToken,
 });

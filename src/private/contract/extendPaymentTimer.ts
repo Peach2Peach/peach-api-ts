@@ -16,7 +16,7 @@ type Props = RequestProps &
 export const extendPaymentTimer =
   ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
   async ({ contractId, signal }: Props) => {
-    const response = await fetch(
+    const response = await helpers.fetch(
       `${url}/v1/contract/${contractId}/extendTime`,
       {
         headers: helpers.getPrivateHeaders(url),

@@ -16,7 +16,7 @@ type Props = RequestProps &
 export const getSelfUser =
   ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
   async ({ signal }: Props = {}) => {
-    const response = await fetch(`${url}/v1/user/me`, {
+    const response = await helpers.fetch(`${url}/v1/user/me`, {
       headers: helpers.getPrivateHeaders(url),
       method: "GET",
       signal,

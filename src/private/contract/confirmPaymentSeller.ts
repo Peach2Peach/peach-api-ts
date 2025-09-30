@@ -21,7 +21,7 @@ export const confirmPaymentSeller =
     batchReleasePsbt,
     signal,
   }: Props) => {
-    const response = await fetch(
+    const response = await helpers.fetch(
       `${url}/v1/contract/${contractId}/payment/confirm`,
       {
         headers: helpers.getPrivateHeaders(url),
