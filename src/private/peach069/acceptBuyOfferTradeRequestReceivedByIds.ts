@@ -11,7 +11,6 @@ export type AcceptBuyOfferTradeRequestByIdsRequestQuery = {};
 export type AcceptBuyOfferTradeRequestByIdsRequestBody = {
   paymentDataEncrypted: string;
   paymentDataSignature: string;
-  paymentData: string;
 };
 
 type Props = RequestProps &
@@ -26,7 +25,6 @@ export const acceptBuyOfferTradeRequestReceivedByIds =
     userId,
     paymentDataEncrypted,
     paymentDataSignature,
-    paymentData,
   }: Props) => {
     const finalUrl = `${url}/v069/buyOffer/${buyOfferId}/tradeRequestReceived/${userId}/accept`;
 
@@ -36,7 +34,6 @@ export const acceptBuyOfferTradeRequestReceivedByIds =
       body: JSON.stringify({
         paymentDataEncrypted,
         paymentDataSignature,
-        paymentData,
       }),
     });
 

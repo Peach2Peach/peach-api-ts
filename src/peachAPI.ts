@@ -11,10 +11,13 @@ import { PeachAPIOptions, PublicPeachAPIHelpers } from "./types";
 
 export class PeachAPI {
   private apiOptions: PeachAPIOptions;
+
   private authToken?: { accessToken: string; expiry: number };
+
   private clientServerTimeDifference = 0;
 
   private publicHelpers: PublicPeachAPIHelpers;
+
   private isFetchingAuthToken: boolean;
 
   constructor(options: PeachAPIOptions) {

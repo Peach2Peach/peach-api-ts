@@ -15,7 +15,7 @@ type Props = RequestProps &
 export const getSellOfferById =
   ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
   async ({ sellOfferId }: Props) => {
-    const finalUrl = `${url}/v069/sellOffer/` + String(sellOfferId);
+    const finalUrl = `${url}/v069/sellOffer/${String(sellOfferId)}`;
 
     const response = await helpers.fetch(finalUrl, {
       headers: helpers.getPrivateHeaders(url),

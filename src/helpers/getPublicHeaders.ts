@@ -10,5 +10,5 @@ export const getPublicHeaders = (
   Accept: "application/json",
   "Content-Type": "application/json",
   "User-Agent": userAgent,
-  "buildNumber" : buildNumber
+  buildNumber
 });
