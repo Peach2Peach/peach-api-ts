@@ -103,4 +103,5 @@ export type ContractSummary = {
   isChatActive: boolean;
   refunded?: boolean;
   tradeStatusNew?: TradeStatus;
+  premium: number
 };
