@@ -207,9 +207,8 @@ export type Offer69TradeRequestChatMessage = {
   sender: "offerOwner" | "tradeRequester";
 };
 
-export type BuyOffer69TradeRequest = {
+type Offer69TradeRequest = {
   id: number;
-  buyOfferId: number;
   userId: string;
   paymentMethod: string;
   paymentDataHashed: string;
@@ -220,19 +219,13 @@ export type BuyOffer69TradeRequest = {
   maxMiningFeeRate: number;
   currency: string;
   price: number;
+  chatMessages: Offer69TradeRequestChatMessage[];
 };
 
-export type SellOffer69TradeRequest = {
-  id: number;
+export type BuyOffer69TradeRequest = Offer69TradeRequest & {
+  buyOfferId: number;
+};
+
+export type SellOffer69TradeRequest = Offer69TradeRequest & {
   sellOfferId: string;
-  userId: string;
-  paymentMethod: string;
-  paymentDataHashed: string;
-  paymentDataEncrypted: string;
-  paymentDataSignature: string;
-  symmetricKeyEncrypted: string;
-  symmetricKeySignature: string;
-  maxMiningFeeRate: number;
-  currency: string;
-  price: number;
 };
