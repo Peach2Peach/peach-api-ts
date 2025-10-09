@@ -19,6 +19,8 @@ import { getSellOffers } from "./getSellOffers";
 import { getSellOfferTradeRequestPerformedById } from "./getSellOfferTradeRequestPerformedById";
 import { getSellOfferTradeRequestReceivedByIds } from "./getSellOfferTradeRequestReceivedByIds";
 import { getSellOfferTradeRequestsReceivedById } from "./getSellOfferTradeRequestsReceivedById";
+import { hasBuyOfferTurnedToMyContract } from "./hasBuyOfferTurnedToMyContract";
+import { hasSellOfferTurnedToMyContract } from "./hasSellOfferTurnedToMyContract";
 import { patchBuyOfferPremiumById } from "./patchBuyOfferPremiumById";
 import { performBuyOfferTradeRequest } from "./performBuyOfferTradeRequest";
 import { performInstantTradeWithBuyOfferById } from "./performInstantTradeWithBuyOfferById";
@@ -111,6 +113,15 @@ export const peach069API = (
   canPerformInstantTradeWithBuyOfferById:
     canPerformInstantTradeWithBuyOfferById(options, helpers),
   performInstantTradeWithBuyOfferById: performInstantTradeWithBuyOfferById(
+    options,
+    helpers,
+  ),
+
+  hasBuyOfferTurnedToMyContract: hasBuyOfferTurnedToMyContract(
+    options,
+    helpers,
+  ),
+  hasSellOfferTurnedToMyContract: hasSellOfferTurnedToMyContract(
     options,
     helpers,
   ),
