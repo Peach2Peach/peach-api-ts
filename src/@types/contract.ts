@@ -82,6 +82,8 @@ export type Contract = {
   unreadMessages: number;
   isChatActive: boolean;
   paymentDataEncryptionMethod: EncryptionMethod;
+
+  buyOffer69Id?: number;
 };
 
 export type ContractSummary = {
@@ -103,5 +105,5 @@ export type ContractSummary = {
   isChatActive: boolean;
   refunded?: boolean;
   tradeStatusNew?: TradeStatus;
-  premium: number
+  premium: number;
 };
