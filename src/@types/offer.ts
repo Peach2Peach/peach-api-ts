@@ -220,6 +220,7 @@ export type BuyOffer69TradeRequest = {
   maxMiningFeeRate: number;
   currency: string;
   price: number;
+  creationDate: Date;
 };
 
 export type SellOffer69TradeRequest = {
@@ -235,4 +236,5 @@ export type SellOffer69TradeRequest = {
   maxMiningFeeRate: number;
   currency: string;
   price: number;
+  creationDate: Date;
 };
