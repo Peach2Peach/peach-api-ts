@@ -100,20 +100,25 @@ export class PeachAPI {
       return undefined;
     }
     this.isFetchingAuthToken = true;
-    const message = getAuthenticationChallenge(this.clientServerTimeDifference);
-    if (peachAccountSet(this.apiOptions)) {
-      const { accessToken, error } = await fetchAccessToken(
-        this.apiOptions,
-        this.publicHelpers,
-      )(message);
+    try {
+      const message = getAuthenticationChallenge(
+        this.clientServerTimeDifference,
+      );
+      if (peachAccountSet(this.apiOptions)) {
+        const { accessToken, error } = await fetchAccessToken(
+          this.apiOptions,
+          this.publicHelpers,
+        )(message);
 
-      this.authToken = accessToken;
-      if (!this.authToken) return { authToken: this.authToken, error };
+        this.authToken = accessToken;
+        if (!this.authToken) return { authToken: this.authToken, error };
 
-      this.isFetchingAuthToken = false;
-      return { authToken: this.authToken, error };
+        this.isFetchingAuthToken = false;
+        return { authToken: this.authToken, error };
+      }
+    } catch (err) {
+      console.log("Authenticate Failed with error: ", err);
     }
-
     this.isFetchingAuthToken = false;
 
     return undefined;
