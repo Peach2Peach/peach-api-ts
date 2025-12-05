@@ -42,7 +42,11 @@ export class PeachAPI {
       try {
         const decodedJwt = decodeJwt(this.authToken.accessToken);
         const currentMoment = new Date().getTime();
-        if (decodedJwt.exp && currentMoment >= (decodedJwt.exp - 60) * 1000) {
+        if (
+          decodedJwt.exp &&
+          currentMoment >= (decodedJwt.exp - 5 * 60) * 1000
+        ) {
+          // refresh the token 5 minutes before it expires
           await this.authenticate();
         }
       } catch (err) {
