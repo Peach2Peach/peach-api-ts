@@ -1,4 +1,5 @@
 import { BIP32Interface } from "bip32";
+import { decodeJwt } from "jose";
 import { calculateClientServerTimeDifference } from "./helpers/calculateClientServerTimeDifference";
 import { fetchAccessToken } from "./helpers/fetchAccessToken";
 import { getAuthenticationChallenge } from "./helpers/getAuthenticationChallenge";
@@ -8,7 +9,6 @@ import { peachAccountSet } from "./helpers/peachAccountSet";
 import { peachAPIPrivate } from "./private/peachAPIPrivate";
 import { peachAPIPublic } from "./public/peachAPIPublic";
 import { PeachAPIOptions, PublicPeachAPIHelpers } from "./types";
-
 export class PeachAPI {
   private apiOptions: PeachAPIOptions;
 
@@ -18,7 +18,7 @@ export class PeachAPI {
 
   private publicHelpers: PublicPeachAPIHelpers;
 
-  private isFetchingAuthToken: boolean;
+  private isPerformingAuthentication: boolean;
 
   constructor(options: PeachAPIOptions) {
     this.apiOptions = options;
@@ -27,7 +27,7 @@ export class PeachAPI {
       getPublicHeaders: (url: string) =>
         getPublicHeaders(url, options.buildNumber, options.userAgent),
     };
-    this.isFetchingAuthToken = false;
+    this.isPerformingAuthentication = false;
 
     if (options?.peachAccount) {
       this.authenticate();
@@ -38,6 +38,18 @@ export class PeachAPI {
     input: RequestInfo | URL,
     init?: RequestInit,
   ): Promise<Response> {
+    if (this.authToken) {
+      try {
+        const decodedJwt = decodeJwt(this.authToken.accessToken);
+        const currentMoment = new Date().getTime();
+        if (decodedJwt.exp && currentMoment >= (decodedJwt.exp - 60) * 1000) {
+          await this.authenticate();
+        }
+      } catch (err) {
+        await this.authenticate();
+      }
+    }
+
     let response = await fetch(input, init);
 
     if (response.status === 401) {
@@ -96,10 +108,10 @@ export class PeachAPI {
   }
 
   public async authenticate() {
-    if (this.isFetchingAuthToken) {
+    if (this.isPerformingAuthentication) {
       return undefined;
     }
-    this.isFetchingAuthToken = true;
+    this.isPerformingAuthentication = true;
     try {
       const message = getAuthenticationChallenge(
         this.clientServerTimeDifference,
@@ -113,13 +125,13 @@ export class PeachAPI {
         this.authToken = accessToken;
         if (!this.authToken) return { authToken: this.authToken, error };
 
-        this.isFetchingAuthToken = false;
+        this.isPerformingAuthentication = false;
         return { authToken: this.authToken, error };
       }
     } catch (err) {
       console.log("Authenticate Failed with error: ", err);
     }
-    this.isFetchingAuthToken = false;
+    this.isPerformingAuthentication = false;
 
     return undefined;
   }
