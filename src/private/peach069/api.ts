@@ -14,6 +14,7 @@ import { getChatMessagesOfPerformedBuyOfferTradeRequest } from "./getChatMessage
 import { getChatMessagesOfPerformedSellOfferTradeRequest } from "./getChatMessagesOfPerformedSellOfferTradeRequest";
 import { getChatMessagesOfReceivedBuyOfferTradeRequest } from "./getChatMessagesOfReceivedBuyOfferTradeRequest";
 import { getChatMessagesOfReceivedSellOfferTradeRequest } from "./getChatMessagesOfReceivedSellOfferTradeRequest";
+import { getSelfUser69 } from "./getSelfUser69";
 import { getSellOfferById } from "./getSellOfferById";
 import { getSellOffers } from "./getSellOffers";
 import { getSellOfferTradeRequestPerformedById } from "./getSellOfferTradeRequestPerformedById";
@@ -34,6 +35,7 @@ import { sendChatMessagesOfPerformedBuyOfferTradeRequest } from "./sendChatMessa
 import { sendChatMessagesOfPerformedSellOfferTradeRequest } from "./sendChatMessagesOfPerformedSellOfferTradeRequest";
 import { sendChatMessagesOfReceivedBuyOfferTradeRequest } from "./sendChatMessagesOfReceivedBuyOfferTradeRequest";
 import { sendChatMessagesOfReceivedSellOfferTradeRequest } from "./sendChatMessagesOfReceivedSellOfferTradeRequest";
+import { setFilterOfferAlertsOnSelfUser69 } from "./setFilterOfferAlertsOnSelfUser69";
 
 export const peach069API = (
   options: PeachAPIOptions,
@@ -122,6 +124,11 @@ export const peach069API = (
     helpers,
   ),
   hasSellOfferTurnedToMyContract: hasSellOfferTurnedToMyContract(
+    options,
+    helpers,
+  ),
+  getSelfUser69: getSelfUser69(options, helpers),
+  setFilterOfferAlertsOnSelfUser69: setFilterOfferAlertsOnSelfUser69(
     options,
     helpers,
   ),
