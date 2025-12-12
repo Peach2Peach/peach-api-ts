@@ -34,6 +34,11 @@ export class PeachAPI {
     }
   }
 
+  public deleteAuthToken(): void {
+    this.authToken = undefined;
+    this.isPerformingAuthentication = false;
+  }
+
   public async myFetch(
     input: RequestInfo | URL,
     init?: RequestInit,
