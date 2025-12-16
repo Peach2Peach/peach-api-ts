@@ -16,7 +16,7 @@ type Props = RequestProps &
 export const cancelContract =
   ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
   async ({ contractId, satsPerByte, signal }: Props) => {
-    const response = await helpers.fetch(
+    const response = await helpers.fetchWithAuth(
       `${url}/v1/contract/${contractId}/cancel`,
       {
         headers: helpers.getPrivateHeaders(url),

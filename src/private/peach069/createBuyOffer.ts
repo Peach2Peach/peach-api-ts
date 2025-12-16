@@ -43,7 +43,7 @@ export const createBuyOffer =
     instantTradeCriteria,
     multi,
   }: Props) => {
-    const response = await helpers.fetch(`${url}/v069/buyOffer`, {
+    const response = await helpers.fetchWithAuth(`${url}/v069/buyOffer`, {
       headers: helpers.getPrivateHeaders(url),
       method: "POST",
       body: JSON.stringify({

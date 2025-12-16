@@ -20,7 +20,7 @@ export const getSellOfferTradeRequestReceivedByIds =
   async ({ sellOfferId, userId }: Props) => {
     const finalUrl = `${url}/v069/sellOffer/${sellOfferId}/tradeRequestReceived/${userId}`;
 
-    const response = await helpers.fetch(finalUrl, {
+    const response = await helpers.fetchWithAuth(finalUrl, {
       headers: helpers.getPrivateHeaders(url),
       method: "GET",
     });

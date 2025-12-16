@@ -16,7 +16,7 @@ type Props = RequestProps &
 export const getOfferSummaries =
   ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
   async ({ signal }: Props = {}) => {
-    const response = await helpers.fetch(`${url}/v1/offers/summary`, {
+    const response = await helpers.fetchWithAuth(`${url}/v1/offers/summary`, {
       headers: helpers.getPrivateHeaders(url),
       method: "GET",
       signal,

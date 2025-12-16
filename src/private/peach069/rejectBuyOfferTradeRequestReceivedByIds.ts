@@ -19,7 +19,7 @@ export const rejectBuyOfferTradeRequestReceivedByIds =
   async ({ buyOfferId, userId }: Props) => {
     const finalUrl = `${url}/v069/buyOffer/${buyOfferId}/tradeRequestReceived/${userId}`;
 
-    const response = await helpers.fetch(finalUrl, {
+    const response = await helpers.fetchWithAuth(finalUrl, {
       headers: helpers.getPrivateHeaders(url),
       method: "DELETE",
     });

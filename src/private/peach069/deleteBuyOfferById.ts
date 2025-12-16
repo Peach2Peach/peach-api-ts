@@ -14,9 +14,9 @@ type Props = RequestProps &
 export const deleteBuyOfferById =
   ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
   async ({ buyOfferId }: Props) => {
-    const finalUrl = `${url}/v069/buyOffer/${String(buyOfferId)}`; 
+    const finalUrl = `${url}/v069/buyOffer/${String(buyOfferId)}`;
 
-    const response = await helpers.fetch(finalUrl, {
+    const response = await helpers.fetchWithAuth(finalUrl, {
       headers: helpers.getPrivateHeaders(url),
       method: "DELETE",
     });

@@ -16,7 +16,7 @@ type Props = RequestProps &
 export const rateUser =
   ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
   async ({ contractId, rating, signature, signal }: Props) => {
-    const response = await helpers.fetch(
+    const response = await helpers.fetchWithAuth(
       `${url}/v1/contract/${contractId}/user/rate`,
       {
         headers: helpers.getPrivateHeaders(url),

@@ -16,11 +16,14 @@ type Props = RequestProps &
 export const republishSellOffer =
   ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
   async ({ offerId, signal }: Props) => {
-    const response = await helpers.fetch(`${url}/v1/offer/${offerId}/revive`, {
-      headers: helpers.getPrivateHeaders(url),
-      method: "POST",
-      signal,
-    });
+    const response = await helpers.fetchWithAuth(
+      `${url}/v1/offer/${offerId}/revive`,
+      {
+        headers: helpers.getPrivateHeaders(url),
+        method: "POST",
+        signal,
+      },
+    );
 
     return parseResponse<
       RepublishSellOfferResponseBody,

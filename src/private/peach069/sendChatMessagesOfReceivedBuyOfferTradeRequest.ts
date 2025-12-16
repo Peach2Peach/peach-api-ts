@@ -19,15 +19,15 @@ type Props = RequestProps &
 
 export const sendChatMessagesOfReceivedBuyOfferTradeRequest =
   ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
-  async ({ buyOfferId, userId, messageEncrypted ,signature}: Props) => {
+  async ({ buyOfferId, userId, messageEncrypted, signature }: Props) => {
     const finalUrl = `${url}/v069/buyOffer/${buyOfferId}/tradeRequestReceived/${userId}/chat`;
 
-    const response = await helpers.fetch(finalUrl, {
+    const response = await helpers.fetchWithAuth(finalUrl, {
       headers: helpers.getPrivateHeaders(url),
       method: "POST",
       body: JSON.stringify({
         messageEncrypted,
-        signature
+        signature,
       }),
     });
 

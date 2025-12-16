@@ -8,7 +8,7 @@ export const getSelfUser69 =
   async () => {
     const endpointUrl = `${url}/v069/selfUser/`;
 
-    const response = await helpers.fetch(endpointUrl, {
+    const response = await helpers.fetchWithAuth(endpointUrl, {
       headers: helpers.getPrivateHeaders(url),
       method: "GET",
     });

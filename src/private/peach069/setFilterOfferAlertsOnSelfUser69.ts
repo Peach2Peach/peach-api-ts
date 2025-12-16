@@ -18,7 +18,7 @@ export const setFilterOfferAlertsOnSelfUser69 =
   async ({ active }: Props) => {
     const endpointUrl = `${url}/v069/selfUser/toggleOfferFilterNotification`;
 
-    const response = await helpers.fetch(endpointUrl, {
+    const response = await helpers.fetchWithAuth(endpointUrl, {
       headers: helpers.getPrivateHeaders(url),
       method: "POST",
       body: JSON.stringify({

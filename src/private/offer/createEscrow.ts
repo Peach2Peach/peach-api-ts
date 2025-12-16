@@ -16,14 +16,17 @@ type Props = RequestProps &
 export const createEscrow =
   ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
   async ({ offerId, publicKey, signal }: Props) => {
-    const response = await helpers.fetch(`${url}/v1/offer/${offerId}/escrow`, {
-      headers: helpers.getPrivateHeaders(url),
-      method: "POST",
-      body: JSON.stringify({
-        publicKey,
-      }),
-      signal,
-    });
+    const response = await helpers.fetchWithAuth(
+      `${url}/v1/offer/${offerId}/escrow`,
+      {
+        headers: helpers.getPrivateHeaders(url),
+        method: "POST",
+        body: JSON.stringify({
+          publicKey,
+        }),
+        signal,
+      },
+    );
 
     return parseResponse<
       CreateEscrowResponseBody,

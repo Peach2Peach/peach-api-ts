@@ -39,13 +39,14 @@ export class PeachAPI {
     this.isPerformingAuthentication = false;
   }
 
-  public async myFetch(
+  public async fetchWithAuth(
     input: RequestInfo | URL,
     init?: RequestInit,
   ): Promise<Response> {
-    if (this.authToken) {
+    const currentAuthToken = this.authToken;
+    if (currentAuthToken) {
       try {
-        const decodedJwt = decodeJwt(this.authToken.accessToken);
+        const decodedJwt = decodeJwt(currentAuthToken.accessToken);
         const currentMoment = new Date().getTime();
         if (
           decodedJwt.exp &&
@@ -57,9 +58,29 @@ export class PeachAPI {
       } catch (err) {
         await this.authenticate();
       }
+    } else {
+      await this.authenticate();
     }
 
-    let response = await fetch(input, init);
+    const maxAttempts = 25;
+    let attempts = 0;
+
+    while (!this.authToken && attempts < maxAttempts) {
+      await new Promise((resolve) => setTimeout(resolve, 200));
+      attempts++;
+    }
+
+    const url = typeof input === "string" ? input : input.toString();
+
+    let newInit: RequestInit = {
+      ...init,
+      headers: {
+        ...(init?.headers || {}),
+        ...this.helpers.getPrivateHeaders(url),
+      },
+    };
+
+    let response = await fetch(input, newInit);
 
     if (response.status === 401) {
       const cloned = response.clone();
@@ -68,20 +89,24 @@ export class PeachAPI {
         return response;
       }
 
-      const authResult = await this.authenticate();
+      await this.authenticate();
 
-      if (authResult?.authToken) {
-        const url = typeof input === "string" ? input : input.toString();
-        const newInit: RequestInit = {
-          ...init,
-          headers: {
-            ...(init?.headers || {}),
-            ...this.helpers.getPrivateHeaders(url),
-          },
-        };
+      attempts = 0;
 
-        response = await fetch(input, newInit);
+      while (!this.authToken && attempts < 5) {
+        await new Promise((resolve) => setTimeout(resolve, 200));
+        attempts++;
       }
+
+      newInit = {
+        ...init,
+        headers: {
+          ...(init?.headers || {}),
+          ...this.helpers.getPrivateHeaders(url),
+        },
+      };
+
+      response = await fetch(input, newInit);
     }
 
     return response;
@@ -97,7 +122,7 @@ export class PeachAPI {
           this.apiOptions.buildNumber,
           this.apiOptions.userAgent,
         ),
-      fetch: this.myFetch.bind(this),
+      fetchWithAuth: this.fetchWithAuth.bind(this),
     };
   }
 
@@ -117,10 +142,11 @@ export class PeachAPI {
   }
 
   public async authenticate() {
-    if (this.isPerformingAuthentication) {
+    if (this.isPerformingAuthentication || !peachAccountSet(this.apiOptions)) {
       return undefined;
     }
     this.isPerformingAuthentication = true;
+    this.authToken = undefined;
     try {
       const message = getAuthenticationChallenge(
         this.clientServerTimeDifference,

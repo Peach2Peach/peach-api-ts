@@ -22,7 +22,7 @@ export const getMatches =
     sortBy = ["bestReputation"],
     signal,
   }: Props) => {
-    const response = await helpers.fetch(
+    const response = await helpers.fetchWithAuth(
       `${url}/v1/offer/${offerId}/matches?page=${page}&size=${size}&sortBy=${sortBy.join(",")}`,
       {
         headers: helpers.getPrivateHeaders(url),

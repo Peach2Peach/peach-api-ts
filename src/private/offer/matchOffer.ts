@@ -31,25 +31,28 @@ export const matchOffer =
     instantTrade,
     signal,
   }: Props) => {
-    const response = await helpers.fetch(`${url}/v1/offer/${offerId}/match`, {
-      headers: helpers.getPrivateHeaders(url),
-      body: JSON.stringify({
-        matchingOfferId,
-        currency,
-        paymentMethod,
-        price,
-        premium,
-        maxMiningFeeRate,
-        symmetricKeyEncrypted,
-        symmetricKeySignature,
-        paymentData,
-        paymentDataEncrypted,
-        paymentDataSignature,
-        instantTrade,
-      }),
-      method: "POST",
-      signal,
-    });
+    const response = await helpers.fetchWithAuth(
+      `${url}/v1/offer/${offerId}/match`,
+      {
+        headers: helpers.getPrivateHeaders(url),
+        body: JSON.stringify({
+          matchingOfferId,
+          currency,
+          paymentMethod,
+          price,
+          premium,
+          maxMiningFeeRate,
+          symmetricKeyEncrypted,
+          symmetricKeySignature,
+          paymentData,
+          paymentDataEncrypted,
+          paymentDataSignature,
+          instantTrade,
+        }),
+        method: "POST",
+        signal,
+      },
+    );
 
     return parseResponse<MatchOfferResponseBody, MatchOfferErrorResponseBody>(
       response,
