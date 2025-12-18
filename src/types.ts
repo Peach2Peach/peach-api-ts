@@ -2,6 +2,7 @@ import { BIP32Interface } from "bip32";
 
 export type RequestProps = {
   signal?: AbortSignal;
+  cancelAbortSignal?: () => void;
 };
 
 export type PublicHeaders = {
