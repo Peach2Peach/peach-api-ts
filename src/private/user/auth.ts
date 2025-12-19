@@ -19,20 +19,34 @@ type Props = RequestProps &
 
 export const auth =
   ({ url }: PeachAPIOptions, helpers: PublicPeachAPIHelpers) =>
-  async ({ publicKey, message, signature, uniqueId, signal }: Props) => {
-    const response = await fetch(`${url}/v1/user/auth/`, {
-      headers: helpers.getPublicHeaders(url),
-      method: "POST",
-      body: JSON.stringify({
-        publicKey,
-        uniqueId,
-        message,
-        signature,
-      }),
-      signal,
-    });
-    return parseResponse<
-      AuthenticateResponseBody,
-      AuthenticateErrorResponseBody
-    >(response);
+  async ({
+    publicKey,
+    message,
+    signature,
+    uniqueId,
+    signal,
+    cancelAbortSignal,
+  }: Props) => {
+    try {
+      const response = await fetch(`${url}/v1/user/auth/`, {
+        headers: helpers.getPublicHeaders(url),
+        method: "POST",
+        body: JSON.stringify({
+          publicKey,
+          uniqueId,
+          message,
+          signature,
+        }),
+        signal,
+      });
+
+      return parseResponse<
+        AuthenticateResponseBody,
+        AuthenticateErrorResponseBody
+      >(response);
+    } finally {
+      if (cancelAbortSignal) {
+        cancelAbortSignal();
+      }
+    }
   };

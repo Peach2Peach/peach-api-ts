@@ -16,14 +16,17 @@ type Props = RequestProps &
 export const refundSellOffer =
   ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
   async ({ offerId, tx, signal }: Props) => {
-    const response = await helpers.fetch(`${url}/v1/offer/${offerId}/refund`, {
-      headers: helpers.getPrivateHeaders(url),
-      method: "POST",
-      body: JSON.stringify({
-        tx,
-      }),
-      signal,
-    });
+    const response = await helpers.fetchWithAuth(
+      `${url}/v1/offer/${offerId}/refund`,
+      {
+        headers: helpers.getPrivateHeaders(url),
+        method: "POST",
+        body: JSON.stringify({
+          tx,
+        }),
+        signal,
+      },
+    );
 
     return parseResponse<
       RefundSellOfferResponseBody,

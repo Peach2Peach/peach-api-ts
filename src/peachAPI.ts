@@ -18,7 +18,7 @@ export class PeachAPI {
 
   private publicHelpers: PublicPeachAPIHelpers;
 
-  private isPerformingAuthentication: boolean;
+  private isPerformingAuthentication?: Date; // date of when it started performing
 
   constructor(options: PeachAPIOptions) {
     this.apiOptions = options;
@@ -27,7 +27,7 @@ export class PeachAPI {
       getPublicHeaders: (url: string) =>
         getPublicHeaders(url, options.buildNumber, options.userAgent),
     };
-    this.isPerformingAuthentication = false;
+    this.isPerformingAuthentication = undefined;
 
     if (options?.peachAccount) {
       this.authenticate();
@@ -36,16 +36,17 @@ export class PeachAPI {
 
   public deleteAuthToken(): void {
     this.authToken = undefined;
-    this.isPerformingAuthentication = false;
+    this.isPerformingAuthentication = undefined;
   }
 
-  public async myFetch(
+  public async fetchWithAuth(
     input: RequestInfo | URL,
     init?: RequestInit,
   ): Promise<Response> {
-    if (this.authToken) {
+    const currentAuthToken = this.authToken;
+    if (currentAuthToken) {
       try {
-        const decodedJwt = decodeJwt(this.authToken.accessToken);
+        const decodedJwt = decodeJwt(currentAuthToken.accessToken);
         const currentMoment = new Date().getTime();
         if (
           decodedJwt.exp &&
@@ -57,9 +58,29 @@ export class PeachAPI {
       } catch (err) {
         await this.authenticate();
       }
+    } else {
+      await this.authenticate();
     }
 
-    let response = await fetch(input, init);
+    const maxAttempts = 25;
+    let attempts = 0;
+
+    while (!this.authToken && attempts < maxAttempts) {
+      await new Promise((resolve) => setTimeout(resolve, 200));
+      attempts++;
+    }
+
+    const url = typeof input === "string" ? input : input.toString();
+
+    let newInit: RequestInit = {
+      ...init,
+      headers: {
+        ...(init?.headers || {}),
+        ...this.helpers.getPrivateHeaders(url),
+      },
+    };
+
+    let response = await fetch(input, newInit);
 
     if (response.status === 401) {
       const cloned = response.clone();
@@ -68,20 +89,24 @@ export class PeachAPI {
         return response;
       }
 
-      const authResult = await this.authenticate();
+      await this.authenticate();
 
-      if (authResult?.authToken) {
-        const url = typeof input === "string" ? input : input.toString();
-        const newInit: RequestInit = {
-          ...init,
-          headers: {
-            ...(init?.headers || {}),
-            ...this.helpers.getPrivateHeaders(url),
-          },
-        };
+      attempts = 0;
 
-        response = await fetch(input, newInit);
+      while (!this.authToken && attempts < 5) {
+        await new Promise((resolve) => setTimeout(resolve, 200));
+        attempts++;
       }
+
+      newInit = {
+        ...init,
+        headers: {
+          ...(init?.headers || {}),
+          ...this.helpers.getPrivateHeaders(url),
+        },
+      };
+
+      response = await fetch(input, newInit);
     }
 
     return response;
@@ -97,7 +122,7 @@ export class PeachAPI {
           this.apiOptions.buildNumber,
           this.apiOptions.userAgent,
         ),
-      fetch: this.myFetch.bind(this),
+      fetchWithAuth: this.fetchWithAuth.bind(this),
     };
   }
 
@@ -117,30 +142,65 @@ export class PeachAPI {
   }
 
   public async authenticate() {
-    if (this.isPerformingAuthentication) {
+    console.log(
+      "this.isPerformingAuthentication",
+      this.isPerformingAuthentication,
+    );
+    console.log("this.authToken", this.authToken);
+
+    const momentTenSecondsAgo = new Date(Date.now() - 10 * 1000);
+
+    if (
+      (this.isPerformingAuthentication &&
+        this.isPerformingAuthentication > momentTenSecondsAgo) ||
+      !peachAccountSet(this.apiOptions)
+    ) {
+      console.log("not performing auth, already performing... ");
       return undefined;
     }
-    this.isPerformingAuthentication = true;
+    console.log("Performing auth!!!!", this.isPerformingAuthentication);
+    if (this.isPerformingAuthentication) {
+      console.log(
+        "Performing auth SECONDS!!!!",
+        this.isPerformingAuthentication.getTime(),
+      );
+    }
+    if (
+      this.isPerformingAuthentication &&
+      this.isPerformingAuthentication.getTime() < momentTenSecondsAgo.getTime()
+    ) {
+      console.log(
+        "Apparently it was performing auth, but it took longer than 10 secs to finish so lets do it again",
+      );
+    }
+    this.isPerformingAuthentication = new Date(Date.now());
+    console.log("Set date", this.isPerformingAuthentication.getTime());
+
+    this.authToken = undefined;
     try {
       const message = getAuthenticationChallenge(
         this.clientServerTimeDifference,
       );
       if (peachAccountSet(this.apiOptions)) {
+        console.log("STARTIIIIIIING!!!!!");
         const { accessToken, error } = await fetchAccessToken(
           this.apiOptions,
           this.publicHelpers,
         )(message);
+        console.log("DONE!!!!!", error);
+        if (error) {
+          throw error;
+        }
 
         this.authToken = accessToken;
-        if (!this.authToken) return { authToken: this.authToken, error };
 
-        this.isPerformingAuthentication = false;
+        this.isPerformingAuthentication = undefined;
         return { authToken: this.authToken, error };
       }
     } catch (err) {
       console.log("Authenticate Failed with error: ", err);
     }
-    this.isPerformingAuthentication = false;
+    this.isPerformingAuthentication = undefined;
 
     return undefined;
   }

@@ -16,7 +16,7 @@ type Props = RequestProps &
 export const postChat =
   ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
   async ({ contractId, message, signature, signal }: Props) => {
-    const response = await helpers.fetch(
+    const response = await helpers.fetchWithAuth(
       `${url}/v1/contract/${contractId}/chat`,
       {
         headers: helpers.getPrivateHeaders(url),

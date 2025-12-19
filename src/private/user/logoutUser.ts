@@ -16,7 +16,7 @@ type Props = RequestProps &
 export const logoutUser =
   ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
   async ({ signal }: Props = {}) => {
-    const response = await helpers.fetch(`${url}/v1/user/logout`, {
+    const response = await helpers.fetchWithAuth(`${url}/v1/user/logout`, {
       headers: helpers.getPrivateHeaders(url),
       method: "PATCH",
       signal,

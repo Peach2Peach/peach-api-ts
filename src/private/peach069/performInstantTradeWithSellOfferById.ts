@@ -43,7 +43,7 @@ export const performInstantTradeWithSellOfferById =
   }: Props) => {
     const finalUrl = `${url}/v069/sellOffer/${sellOfferId}/performInstantTrade`;
 
-    const response = await helpers.fetch(finalUrl, {
+    const response = await helpers.fetchWithAuth(finalUrl, {
       headers: helpers.getPrivateHeaders(url),
       method: "POST",
       body: JSON.stringify({

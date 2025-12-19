@@ -45,7 +45,7 @@ export const searchOffers =
       maxPremium,
       minReputation,
     };
-    const response = await helpers.fetch(
+    const response = await helpers.fetchWithAuth(
       `${url}/v1/offer/search?page=${page}&size=${size}&sortBy=${sortBy.join(",")}`,
       {
         headers: helpers.getPrivateHeaders(url),

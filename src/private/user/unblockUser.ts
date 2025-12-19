@@ -16,11 +16,14 @@ type Props = RequestProps &
 export const unblockUser =
   ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
   async ({ userId, signal }: Props) => {
-    const response = await helpers.fetch(`${url}/v1/user/${userId}/block`, {
-      headers: helpers.getPrivateHeaders(url),
-      method: "DELETE",
-      signal,
-    });
+    const response = await helpers.fetchWithAuth(
+      `${url}/v1/user/${userId}/block`,
+      {
+        headers: helpers.getPrivateHeaders(url),
+        method: "DELETE",
+        signal,
+      },
+    );
 
     return parseResponse<UnblockUserResponseBody, UnblockUserErrorResponseBody>(
       response,

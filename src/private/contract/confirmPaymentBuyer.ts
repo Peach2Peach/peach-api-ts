@@ -16,7 +16,7 @@ type Props = RequestProps &
 export const confirmPaymentBuyer =
   ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
   async ({ contractId, signal }: Props) => {
-    const response = await helpers.fetch(
+    const response = await helpers.fetchWithAuth(
       `${url}/v1/contract/${contractId}/payment/confirm`,
       {
         headers: helpers.getPrivateHeaders(url),

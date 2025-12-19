@@ -39,7 +39,7 @@ export const performBuyOfferTradeRequest =
   }: Props) => {
     const finalUrl = `${url}/v069/buyOffer/${buyOfferId}/tradeRequestPerformed`;
 
-    const response = await helpers.fetch(finalUrl, {
+    const response = await helpers.fetchWithAuth(finalUrl, {
       headers: helpers.getPrivateHeaders(url),
       method: "POST",
       body: JSON.stringify({

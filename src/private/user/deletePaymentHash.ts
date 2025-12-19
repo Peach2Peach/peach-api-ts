@@ -16,7 +16,7 @@ type Props = RequestProps &
 export const deletePaymentHash =
   ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
   async ({ hashes, signal }: Props) => {
-    const response = await helpers.fetch(`${url}/v1/user/paymentHash`, {
+    const response = await helpers.fetchWithAuth(`${url}/v1/user/paymentHash`, {
       headers: helpers.getPrivateHeaders(url),
       method: "DELETE",
       body: JSON.stringify({

@@ -2,6 +2,7 @@ import { BIP32Interface } from "bip32";
 
 export type RequestProps = {
   signal?: AbortSignal;
+  cancelAbortSignal?: () => void;
 };
 
 export type PublicHeaders = {
@@ -10,7 +11,7 @@ export type PublicHeaders = {
   Accept: "application/json";
   "Content-Type": "application/json";
   "User-Agent"?: string;
-  buildNumber:string
+  buildNumber: string;
 };
 export type PrivateHeaders = PublicHeaders & { Authorization: string };
 
@@ -19,13 +20,13 @@ export type PeachAPIOptions = {
   peachAccount: BIP32Interface | null;
   uniqueId: string;
   userAgent?: string;
-  buildNumber: string
+  buildNumber: string;
 };
 export type PublicPeachAPIHelpers = {
   getPublicHeaders: (url: string) => PublicHeaders;
 };
 export type PrivateAPIHelpers = {
   getPrivateHeaders: (url: string) => PrivateHeaders;
-  fetch: Function;
+  fetchWithAuth: Function;
 };
 export type PeachAPIHelpers = PublicPeachAPIHelpers & PrivateAPIHelpers;

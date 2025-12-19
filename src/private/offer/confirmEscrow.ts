@@ -16,7 +16,7 @@ type Props = RequestProps &
 export const confirmEscrow =
   ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
   async ({ offerId, signal }: Props) => {
-    const response = await helpers.fetch(
+    const response = await helpers.fetchWithAuth(
       `${url}/v1/offer/${offerId}/escrow/confirm`,
       {
         headers: helpers.getPrivateHeaders(url),

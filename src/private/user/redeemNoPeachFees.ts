@@ -16,7 +16,7 @@ type Props = RequestProps &
 export const redeemNoPeachFees =
   ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
   async ({ signal }: Props = {}) => {
-    const response = await helpers.fetch(
+    const response = await helpers.fetchWithAuth(
       `${url}/v1/user/referral/redeem/freeTrades`,
       {
         headers: helpers.getPrivateHeaders(url),

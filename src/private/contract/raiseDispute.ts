@@ -25,7 +25,7 @@ export const raiseDispute =
     paymentDataBuyerEncrypted,
     signal,
   }: Props) => {
-    const response = await helpers.fetch(
+    const response = await helpers.fetchWithAuth(
       `${url}/v1/contract/${contractId}/dispute`,
       {
         headers: helpers.getPrivateHeaders(url),
@@ -36,7 +36,7 @@ export const raiseDispute =
           message,
           symmetricKeyEncrypted,
           paymentDataSellerEncrypted,
-          paymentDataBuyerEncrypted
+          paymentDataBuyerEncrypted,
         }),
         signal,
       },

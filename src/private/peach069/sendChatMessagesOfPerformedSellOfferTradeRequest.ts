@@ -21,12 +21,12 @@ export const sendChatMessagesOfPerformedSellOfferTradeRequest =
   async ({ sellOfferId, messageEncrypted, signature }: Props) => {
     const finalUrl = `${url}/v069/sellOffer/${sellOfferId}/tradeRequestPerformed/chat`;
 
-    const response = await helpers.fetch(finalUrl, {
+    const response = await helpers.fetchWithAuth(finalUrl, {
       headers: helpers.getPrivateHeaders(url),
       method: "POST",
       body: JSON.stringify({
         messageEncrypted,
-        signature
+        signature,
       }),
     });
 

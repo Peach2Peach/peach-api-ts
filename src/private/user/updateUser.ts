@@ -25,7 +25,7 @@ export const updateUser =
     feeRate,
     signal,
   }: Props) => {
-    const response = await helpers.fetch(`${url}/v1/user`, {
+    const response = await helpers.fetchWithAuth(`${url}/v1/user`, {
       headers: helpers.getPrivateHeaders(url),
       method: "PATCH",
       body: JSON.stringify({

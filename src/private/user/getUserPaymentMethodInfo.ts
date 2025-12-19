@@ -16,11 +16,14 @@ type Props = RequestProps &
 export const getUserPaymentMethodInfo =
   ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
   async ({ signal }: Props = {}) => {
-    const response = await helpers.fetch(`${url}/v1/user/me/paymentMethods`, {
-      headers: helpers.getPrivateHeaders(url),
-      method: "GET",
-      signal,
-    });
+    const response = await helpers.fetchWithAuth(
+      `${url}/v1/user/me/paymentMethods`,
+      {
+        headers: helpers.getPrivateHeaders(url),
+        method: "GET",
+        signal,
+      },
+    );
 
     return parseResponse<
       GetUserPaymentMethodInfoResponseBody,

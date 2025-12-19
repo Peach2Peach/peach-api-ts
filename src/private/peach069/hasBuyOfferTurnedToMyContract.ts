@@ -17,7 +17,7 @@ export const hasBuyOfferTurnedToMyContract =
   async ({ buyOfferId }: Props) => {
     const finalUrl = `${url}/v069/buyOffer/${String(buyOfferId)}/hasTurnedToMyContract`;
 
-    const response = await helpers.fetch(finalUrl, {
+    const response = await helpers.fetchWithAuth(finalUrl, {
       headers: helpers.getPrivateHeaders(url),
       method: "GET",
     });

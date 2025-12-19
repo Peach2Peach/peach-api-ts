@@ -47,16 +47,19 @@ export const getSellOffers =
     const endpointUrl = `${url}/v069/sellOffer`;
     const finalUrl = `${endpointUrl}?${searchParams.toString()}`;
 
-    const response = await helpers.fetch(finalUrl, {
+    const response = await helpers.fetchWithAuth(finalUrl, {
       headers: helpers.getPrivateHeaders(url),
       method: "GET",
     });
 
     return parseResponse<
-      {stats: any, offers:(SellOffer & {
-        allowedToInstantTrade: boolean;
-        hasPerformedTradeRequest: boolean;
-      })[]},
+      {
+        stats: any;
+        offers: (SellOffer & {
+          allowedToInstantTrade: boolean;
+          hasPerformedTradeRequest: boolean;
+        })[];
+      },
       APIError<"UNAUTHORIZED">
     >(response);
   };
