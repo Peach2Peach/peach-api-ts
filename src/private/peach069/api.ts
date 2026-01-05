@@ -20,6 +20,7 @@ import { getSellOffers } from "./getSellOffers";
 import { getSellOfferTradeRequestPerformedById } from "./getSellOfferTradeRequestPerformedById";
 import { getSellOfferTradeRequestReceivedByIds } from "./getSellOfferTradeRequestReceivedByIds";
 import { getSellOfferTradeRequestsReceivedById } from "./getSellOfferTradeRequestsReceivedById";
+import { getUserOpenOffersByUserId } from "./getUserOpenOffersByUserId";
 import { hasBuyOfferTurnedToMyContract } from "./hasBuyOfferTurnedToMyContract";
 import { hasSellOfferTurnedToMyContract } from "./hasSellOfferTurnedToMyContract";
 import { patchBuyOfferPremiumById } from "./patchBuyOfferPremiumById";
@@ -128,6 +129,7 @@ export const peach069API = (
     helpers,
   ),
   getSelfUser69: getSelfUser69(options, helpers),
+  getUserOpenOffersByUserId: getUserOpenOffersByUserId(options, helpers),
   setFilterOfferAlertsOnSelfUser69: setFilterOfferAlertsOnSelfUser69(
     options,
     helpers,
