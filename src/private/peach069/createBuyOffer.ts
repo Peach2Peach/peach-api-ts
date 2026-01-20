@@ -17,8 +17,8 @@ export type CreateOfferRequestBody = {
 
 export type CreateBuyOfferRequestBody = CreateOfferRequestBody & {
   amount: number;
-  releaseAddresses: string[];
-  releaseAddressMessageSignatures: string[];
+  releaseAddresses?: string[];
+  releaseAddressMessageSignatures?: string[];
   premium: number;
   minReputation?: number;
   instantTradeCriteria?: InstantTradeCriteria;
