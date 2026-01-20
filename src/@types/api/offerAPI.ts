@@ -44,7 +44,7 @@ export type GetRefundPSBTErrorResponseBody = APIError<
 
 export type CreateEscrowRequestParams = { offerId: string };
 export type CreateEscrowRequestQuery = {};
-export type CreateEscrowRequestBody = { publicKey: string };
+export type CreateEscrowRequestBody = { publicKey: string,returnAddress?:string };
 export type CreateEscrowResponseBody = {
   offerId: string;
   escrow: string;
