@@ -17,7 +17,7 @@ export type performInstantTradeWithBuyOfferByIdRequestBody = {
   symmetricKeyEncrypted: string;
   symmetricKeySignature: string;
   maxMiningFeeRate?: number;
-  returnAddress: string;
+  // returnAddress: string;
 };
 
 type Props = RequestProps &
@@ -37,7 +37,7 @@ export const performInstantTradeWithBuyOfferById =
     symmetricKeyEncrypted,
     symmetricKeySignature,
     maxMiningFeeRate,
-    returnAddress,
+    // returnAddress,
   }: Props) => {
     const finalUrl = `${url}/v069/buyOffer/${buyOfferId}/performInstantTrade`;
 
@@ -53,7 +53,7 @@ export const performInstantTradeWithBuyOfferById =
         symmetricKeyEncrypted,
         symmetricKeySignature,
         maxMiningFeeRate,
-        returnAddress,
+        // returnAddress,
       }),
     });
 

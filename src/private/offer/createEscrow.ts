@@ -15,7 +15,7 @@ type Props = RequestProps &
 
 export const createEscrow =
   ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
-  async ({ offerId, publicKey, signal }: Props) => {
+  async ({ offerId, publicKey,returnAddress, signal }: Props) => {
     const response = await helpers.fetchWithAuth(
       `${url}/v1/offer/${offerId}/escrow`,
       {
@@ -23,6 +23,7 @@ export const createEscrow =
         method: "POST",
         body: JSON.stringify({
           publicKey,
+          returnAddress
         }),
         signal,
       },

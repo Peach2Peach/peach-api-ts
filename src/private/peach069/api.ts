@@ -37,6 +37,7 @@ import { sendChatMessagesOfPerformedSellOfferTradeRequest } from "./sendChatMess
 import { sendChatMessagesOfReceivedBuyOfferTradeRequest } from "./sendChatMessagesOfReceivedBuyOfferTradeRequest";
 import { sendChatMessagesOfReceivedSellOfferTradeRequest } from "./sendChatMessagesOfReceivedSellOfferTradeRequest";
 import { setFilterOfferAlertsOnSelfUser69 } from "./setFilterOfferAlertsOnSelfUser69";
+import { setLastAddressIndexUsedOnSelfUser69 } from "./setLastAddressIndexUsedOnSelfUser69";
 
 export const peach069API = (
   options: PeachAPIOptions,
@@ -131,6 +132,10 @@ export const peach069API = (
   getSelfUser69: getSelfUser69(options, helpers),
   getUserOpenOffersByUserId: getUserOpenOffersByUserId(options, helpers),
   setFilterOfferAlertsOnSelfUser69: setFilterOfferAlertsOnSelfUser69(
+    options,
+    helpers,
+  ),
+  setLastAddressUsedIndexOnSelfUser69:setLastAddressIndexUsedOnSelfUser69(
     options,
     helpers,
   ),

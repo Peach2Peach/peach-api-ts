@@ -56,7 +56,7 @@ export type ConfirmCancelationRequestErrorResponseBody = APIError<
 
 export type ConfirmPaymentRequestParams = { contractId: string };
 export type ConfirmPaymentRequestQuery = {};
-export type ConfirmPaymentBuyerRequestBody = {};
+export type ConfirmPaymentBuyerRequestBody = {releaseAddress?:string, releaseAddressMessageSignature?:string};
 export type ConfirmPaymentBuyerResponseBody = APISuccess;
 export type ConfirmPaymentSellerRequestBody = {
   releaseTransaction: string;

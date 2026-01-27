@@ -15,8 +15,8 @@ export type PerformSellOfferTradeRequestRequestBody = {
   symmetricKeyEncrypted: string;
   symmetricKeySignature: string;
   maxMiningFeeRate?: number;
-  releaseAddress: string;
-  releaseAddressMessageSignature: string;
+  // releaseAddress: string;
+  // releaseAddressMessageSignature: string;
 };
 
 type Props = RequestProps &
@@ -36,8 +36,8 @@ export const performSellOfferTradeRequest =
     symmetricKeyEncrypted,
     symmetricKeySignature,
     maxMiningFeeRate,
-    releaseAddress,
-    releaseAddressMessageSignature,
+    // releaseAddress,
+    // releaseAddressMessageSignature,
   }: Props) => {
     const finalUrl = `${url}/v069/sellOffer/${sellOfferId}/tradeRequestPerformed`;
 
@@ -53,8 +53,8 @@ export const performSellOfferTradeRequest =
         symmetricKeyEncrypted,
         symmetricKeySignature,
         maxMiningFeeRate,
-        releaseAddress,
-        releaseAddressMessageSignature,
+        // releaseAddress,
+        // releaseAddressMessageSignature,
       }),
     });
 
