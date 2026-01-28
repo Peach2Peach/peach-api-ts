@@ -142,11 +142,8 @@ export class PeachAPI {
   }
 
   public async authenticate() {
-    console.log(
-      "this.isPerformingAuthentication",
-      this.isPerformingAuthentication,
-    );
-    console.log("this.authToken", this.authToken);
+    
+    
 
     const momentTenSecondsAgo = new Date(Date.now() - 10 * 1000);
 
@@ -155,26 +152,12 @@ export class PeachAPI {
         this.isPerformingAuthentication > momentTenSecondsAgo) ||
       !peachAccountSet(this.apiOptions)
     ) {
-      console.log("not performing auth, already performing... ");
+      
       return undefined;
     }
-    console.log("Performing auth!!!!", this.isPerformingAuthentication);
-    if (this.isPerformingAuthentication) {
-      console.log(
-        "Performing auth SECONDS!!!!",
-        this.isPerformingAuthentication.getTime(),
-      );
-    }
-    if (
-      this.isPerformingAuthentication &&
-      this.isPerformingAuthentication.getTime() < momentTenSecondsAgo.getTime()
-    ) {
-      console.log(
-        "Apparently it was performing auth, but it took longer than 10 secs to finish so lets do it again",
-      );
-    }
+    
+    
     this.isPerformingAuthentication = new Date(Date.now());
-    console.log("Set date", this.isPerformingAuthentication.getTime());
 
     this.authToken = undefined;
     try {
@@ -182,12 +165,10 @@ export class PeachAPI {
         this.clientServerTimeDifference,
       );
       if (peachAccountSet(this.apiOptions)) {
-        console.log("STARTIIIIIIING!!!!!");
         const { accessToken, error } = await fetchAccessToken(
           this.apiOptions,
           this.publicHelpers,
         )(message);
-        console.log("DONE!!!!!", error);
         if (error) {
           throw error;
         }
@@ -197,9 +178,7 @@ export class PeachAPI {
         this.isPerformingAuthentication = undefined;
         return { authToken: this.authToken, error };
       }
-    } catch (err) {
-      console.log("Authenticate Failed with error: ", err);
-    }
+    } catch (err) { }
     this.isPerformingAuthentication = undefined;
 
     return undefined;
