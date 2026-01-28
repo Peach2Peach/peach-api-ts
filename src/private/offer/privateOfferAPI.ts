@@ -7,6 +7,7 @@ import { getMatch } from "./getMatch";
 import { getMatches } from "./getMatches";
 import { getOfferDetails } from "./getOfferDetails";
 import { getOfferSummaries } from "./getOfferSummaries";
+import { getSummariesForWallet } from "./getOfferSummariesForWallet";
 import { getOffers } from "./getOffers";
 import { getRefundPSBT } from "./getRefundPSBT";
 import { matchOffer } from "./matchOffer";
@@ -31,6 +32,7 @@ export const privateOfferAPI = (
   getMatches: getMatches(options, helpers),
   getOfferDetails: getOfferDetails(options, helpers),
   getOfferSummaries: getOfferSummaries(options, helpers),
+  getSummariesForWallet:getSummariesForWallet(options, helpers),
   getOffers: getOffers(options, helpers),
   getRefundPSBT: getRefundPSBT(options, helpers),
   matchOffer: matchOffer(options, helpers),
