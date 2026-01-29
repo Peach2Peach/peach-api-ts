@@ -39,6 +39,7 @@ export type Currency =
   | "CUP"
   | "CZK"
   | "DKK"
+  | "DOC"
   | "DOP"
   | "EGP"
   | "EUR"

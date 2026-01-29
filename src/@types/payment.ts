@@ -28,6 +28,9 @@ export type PaymentMethodField =
   | "pixAlias"
   | "postePayNumber"
   | "receiveAddress"
+  | "receiveAddressEthereum"
+  | "receiveAddressTron"
+  | "receiveAddressSolana"
   | "reference"
   | "residentialAddress"
   | "routingDetails"
@@ -57,6 +60,7 @@ export type PaymentMethod =
   | "cvu"
   | "dana"
   | "daviPlata"
+  | "dollaronchain"
   | "djamo"
   | "easypaisa"
   | "eversend"
@@ -164,6 +168,13 @@ export type PaymentMethod =
   | "wise"
   | "ziraat"
   | `cash.${string}`
+  | "ethereumusdt"
+  | "tronusdt"
+  | "rootstockusdt"
+  | "arbitrumusdt"
+  | "baseusdt"
+  | "bnbusdt"
+  | "solanausdt"; 
 
 export type PaymentMethodInfo = {
   id: PaymentMethod;
