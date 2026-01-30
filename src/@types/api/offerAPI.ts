@@ -227,3 +227,12 @@ export type RefundSellOfferResponseBody = APISuccess;
 export type RefundSellOfferErrorResponseBody = APIError<
   "NOT_FOUND" | "UNAUTHORIZED" | "TRANSACTION_INVALID" | "INTERNAL_SERVER_ERROR"
 >;
+
+export type GetSummariesForWalletRequestParams = {};
+export type GetSummariesForWalletRequestQuery = {};
+export type GetSummariesForWalletRequestBody = {};
+export type GetSummariesForWalletResponseBody = {offers:{ id: string; fundingTxId?: string; txId?: string }[] , contracts:{
+          id: string;
+          releaseTxId: string;
+        }[]};
+export type GetSummariesForWalletErrorResponseBody = APIError<null>;
