@@ -62,6 +62,14 @@ export type ConfirmEscrowErrorResponseBody = APIError<
   "NOT_FOUND" | "UNAUTHORIZED"
 >;
 
+export type SetEscrowAsFundedByPeachWalletRequestParams = { offerId: string };
+export type SetEscrowAsFundedByPeachWalletRequestQuery = {};
+export type SetEscrowAsFundedByPeachWalletRequestBody = {};
+export type SetEscrowAsFundedByPeachWalletResponseBody = APISuccess;
+export type SetEscrowAsFundedByPeachWalletErrorResponseBody = APIError<
+  "NOT_FOUND" | "UNAUTHORIZED"
+>;
+
 export type GetFundingStatusRequestParams = { offerId: string };
 export type GetFundingStatusRequestQuery = {};
 export type GetFundingStatusRequestBody = {};
