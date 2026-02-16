@@ -18,6 +18,7 @@ import { refundSellOffer } from "./refundSellOffer";
 import { republishSellOffer } from "./republishSellOffer";
 import { searchOfferSummaries } from "./searchOfferSummaries";
 import { searchOffers } from "./searchOffers";
+import { setEscrowAsFundedByPeachWallet } from "./setEscrowAsFundedByPeachWallet";
 import { unmatchOffer } from "./unmatchOffer";
 
 export const privateOfferAPI = (
@@ -44,4 +45,5 @@ export const privateOfferAPI = (
   searchOffers: searchOffers(options, helpers),
   searchOfferSummaries: searchOfferSummaries(options, helpers),
   unmatchOffer: unmatchOffer(options, helpers),
+  setEscrowAsFundedByPeachWallet: setEscrowAsFundedByPeachWallet(options, helpers),
 });

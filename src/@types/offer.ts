@@ -40,7 +40,8 @@ export type TradeStatus =
   | "waitingForFunding"
   // status for peach69
   | "waitingForTradeRequest"
-  | "acceptTradeRequest";
+  | "acceptTradeRequest"
+  | "wrongAmountFundedOnContractRefundWaiting";
 
 export type PaymentMethodCountry =
   | "BG"
