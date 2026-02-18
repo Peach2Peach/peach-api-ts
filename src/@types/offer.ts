@@ -129,6 +129,8 @@ export type SellOffer = Offer & {
   oldOfferId?: string;
   newOfferId?: string;
   prices?: Pricebook;
+
+  expiryDate?: number
 };
 
 export type BuyOffer = Offer & {
@@ -198,6 +200,7 @@ export type BuyOffer69 = {
   meansOfPayment: MeansOfPayment;
   instantTradeCriteria?: InstantTradeCriteria;
   creationDate: Date;
+  expiryDate?: number
 };
 
 export type Offer69TradeRequestChatMessage = {
