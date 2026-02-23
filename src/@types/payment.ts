@@ -40,7 +40,10 @@ export type PaymentMethodField =
   | "ukSortCode"
   | "userId"
   | "userName"
-  | "wallet";
+  | "wallet"
+  | "mpesa_name"
+  | "mpesa_phone"
+  | "mpesa_finalCurrency";
 
 export type PaymentMethod =
   | "accrue"
