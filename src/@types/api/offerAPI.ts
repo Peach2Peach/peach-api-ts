@@ -2,6 +2,7 @@ import { APIError, APISuccess, Currency, Pricebook } from "../global";
 import { Match } from "../match";
 import {
   BuyOffer,
+  ExperienceLevel,
   FundingStatus,
   InstantTradeCriteria,
   OfferPaymentData,
@@ -194,6 +195,7 @@ export type PostSellOfferRequestBody = PostOfferRequestBody & {
   returnAddress?: string;
   multi?: number;
   instantTradeCriteria?: InstantTradeCriteria;
+  experienceLevelCriteria?:ExperienceLevel;
 };
 export type PostBuyOfferRequestBody = PostOfferRequestBody & {
   type: "bid";

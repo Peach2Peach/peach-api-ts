@@ -1,6 +1,7 @@
 import { PostOfferErrorResponseBody } from "../../@types/api/offerAPI";
 import {
   BuyOffer69,
+  ExperienceLevel,
   InstantTradeCriteria,
   OfferPaymentData,
 } from "../../@types/offer";
@@ -22,6 +23,7 @@ export type CreateBuyOfferRequestBody = CreateOfferRequestBody & {
   premium: number;
   minReputation?: number;
   instantTradeCriteria?: InstantTradeCriteria;
+  experienceLevelCriteria?: ExperienceLevel;
   multi?: number;
 };
 
@@ -41,6 +43,7 @@ export const createBuyOffer =
     premium,
     minReputation,
     instantTradeCriteria,
+    experienceLevelCriteria,
     multi,
   }: Props) => {
     const response = await helpers.fetchWithAuth(`${url}/v069/buyOffer`, {
@@ -56,6 +59,7 @@ export const createBuyOffer =
         minReputation,
         instantTradeCriteria,
         multi,
+        experienceLevelCriteria
       }),
     });
     return parseResponse<BuyOffer69, PostOfferErrorResponseBody>(response);

@@ -186,6 +186,8 @@ export type InstantTradeCriteria = {
   badges: Medal[];
 };
 
+export type ExperienceLevel = "newUsersOnly" | "experiencedUsersOnly";
+
 export type BuyOffer69 = {
   id: number;
   amountSats: number;
@@ -201,6 +203,7 @@ export type BuyOffer69 = {
   instantTradeCriteria?: InstantTradeCriteria;
   creationDate: Date;
   expiryDate?: number
+  experienceLevelCriteria?: ExperienceLevel;
 };
 
 export type Offer69TradeRequestChatMessage = {
