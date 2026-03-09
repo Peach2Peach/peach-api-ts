@@ -59,7 +59,7 @@ export type ConfirmPaymentRequestQuery = {};
 export type ConfirmPaymentBuyerRequestBody = {releaseAddress?:string, releaseAddressMessageSignature?:string};
 export type ConfirmPaymentBuyerResponseBody = APISuccess;
 export type ConfirmPaymentSellerRequestBody = {
-  releaseTransaction: string;
+  releaseTransactionSignature: string;
   batchReleasePsbt?: string;
 };
 export type ConfirmPaymentSellerResponseBody = APISuccess & {

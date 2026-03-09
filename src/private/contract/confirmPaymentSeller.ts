@@ -17,7 +17,7 @@ export const confirmPaymentSeller =
   ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
   async ({
     contractId,
-    releaseTransaction,
+    releaseTransactionSignature,
     batchReleasePsbt,
     signal,
   }: Props) => {
@@ -27,7 +27,7 @@ export const confirmPaymentSeller =
         headers: helpers.getPrivateHeaders(url),
         method: "POST",
         body: JSON.stringify({
-          releaseTransaction,
+          releaseTransactionSignature,
           batchReleasePsbt,
         }),
         signal,
