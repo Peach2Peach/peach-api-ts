@@ -39,6 +39,7 @@ import { sendChatMessagesOfReceivedSellOfferTradeRequest } from "./sendChatMessa
 import { setEncryptedPaymentDataOnSelfUser69 } from "./setEncryptedPaymentDataOnSelfUser69";
 import { setFilterOfferAlertsOnSelfUser69 } from "./setFilterOfferAlertsOnSelfUser69";
 import { setLastAddressIndexUsedOnSelfUser69 } from "./setLastAddressIndexUsedOnSelfUser69";
+import { submitDesktopConnectionData } from "./submitDesktopConnectionData";
 
 export const peach069API = (
   options: PeachAPIOptions,
@@ -141,6 +142,10 @@ export const peach069API = (
     helpers,
   ),
   setEncryptedPaymentDataOnSelfUser69:setEncryptedPaymentDataOnSelfUser69(
+    options,
+    helpers,
+  ),
+  submitDesktopConnectionData:submitDesktopConnectionData(
     options,
     helpers,
   ),
