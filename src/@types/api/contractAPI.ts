@@ -88,6 +88,8 @@ export type GetContractErrorResponseBody = APIError<
   "NOT_FOUND" | "INTERNAL_SERVER_ERROR"
 >;
 
+export type GetContractSignedReleasePSBTResponseBody  = { releasePsbt: string }
+
 export type GetContractsRequestParams = {};
 export type GetContractsRequestQuery = {};
 export type GetContractsRequestBody = {};
