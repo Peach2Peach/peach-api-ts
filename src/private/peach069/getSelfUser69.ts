@@ -15,7 +15,7 @@ export const getSelfUser69 =
 
     return parseResponse<
       {
-        user: User69;
+        user: (User69 & {blockedUserIds?:string[]});
       },
       APIError<"UNAUTHORIZED">
     >(response);
