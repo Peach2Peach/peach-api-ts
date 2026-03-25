@@ -5,6 +5,7 @@ import { canPerformInstantTradeWithBuyOfferById } from "./canPerformInstantTrade
 import { canPerformInstantTradeWithSellOfferById } from "./canPerformInstantTradeWithSellOfferById";
 import { createBuyOffer } from "./createBuyOffer";
 import { deleteBuyOfferById } from "./deleteBuyOfferById";
+import { getBlockedUsers } from "./getBlockedUsers";
 import { getBuyOfferById } from "./getBuyOfferById";
 import { getBuyOffers } from "./getBuyOffers";
 import { getBuyOfferTradeRequestPerformedById } from "./getBuyOfferTradeRequestPerformedById";
@@ -146,6 +147,10 @@ export const peach069API = (
     helpers,
   ),
   submitDesktopConnectionData:submitDesktopConnectionData(
+    options,
+    helpers,
+  ),
+  getBlockedUsers:getBlockedUsers(
     options,
     helpers,
   ),
