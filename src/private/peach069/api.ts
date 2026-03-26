@@ -15,6 +15,10 @@ import { getChatMessagesOfPerformedBuyOfferTradeRequest } from "./getChatMessage
 import { getChatMessagesOfPerformedSellOfferTradeRequest } from "./getChatMessagesOfPerformedSellOfferTradeRequest";
 import { getChatMessagesOfReceivedBuyOfferTradeRequest } from "./getChatMessagesOfReceivedBuyOfferTradeRequest";
 import { getChatMessagesOfReceivedSellOfferTradeRequest } from "./getChatMessagesOfReceivedSellOfferTradeRequest";
+import { getMobilePendingActionPaymentConfirmed } from "./getMobilePendingActionPaymentConfirmed";
+import { getMobilePendingActionPaymentMade } from "./getMobilePendingActionPaymentMade";
+import { getMobilePendingActionRefund } from "./getMobilePendingActionRefund";
+import { getMobilePendingActions } from "./getMobilePendingActions";
 import { getSelfUser69 } from "./getSelfUser69";
 import { getSellOfferById } from "./getSellOfferById";
 import { getSellOffers } from "./getSellOffers";
@@ -29,6 +33,9 @@ import { performBuyOfferTradeRequest } from "./performBuyOfferTradeRequest";
 import { performInstantTradeWithBuyOfferById } from "./performInstantTradeWithBuyOfferById";
 import { performInstantTradeWithSellOfferById } from "./performInstantTradeWithSellOfferById";
 import { performSellOfferTradeRequest } from "./performSellOfferTradeRequest";
+import { postMobilePendingActionPaymentConfirmed } from "./postMobilePendingActionPaymentConfirmed";
+import { postMobilePendingActionPaymentMade } from "./postMobilePendingActionPaymentMade";
+import { postMobilePendingActionRefund } from "./postMobilePendingActionRefund";
 import { rejectBuyOfferTradeRequestReceivedByIds } from "./rejectBuyOfferTradeRequestReceivedByIds";
 import { rejectSellOfferTradeRequestReceivedByIds } from "./rejectSellOfferTradeRequestByIds";
 import { removePerformedBuyOfferTradeRequest } from "./removePerformedBuyOfferTradeRequest";
@@ -151,6 +158,34 @@ export const peach069API = (
     helpers,
   ),
   getBlockedUsers:getBlockedUsers(
+    options,
+    helpers,
+  ),
+  getMobilePendingActions:getMobilePendingActions(
+    options,
+    helpers,
+  ),
+  getMobilePendingActionPaymentMade:getMobilePendingActionPaymentMade(
+    options,
+    helpers,
+  ),
+  postMobilePendingActionPaymentMade:postMobilePendingActionPaymentMade(
+    options,
+    helpers,
+  ),
+    getMobilePendingActionPaymentConfirmed:getMobilePendingActionPaymentConfirmed(
+    options,
+    helpers,
+  ),
+  postMobilePendingActionPaymentConfirmed:postMobilePendingActionPaymentConfirmed(
+    options,
+    helpers,
+  ),
+  getMobilePendingActionRefund:getMobilePendingActionRefund(
+    options,
+    helpers,
+  ),
+  postMobilePendingActionRefund:postMobilePendingActionRefund(
     options,
     helpers,
   ),

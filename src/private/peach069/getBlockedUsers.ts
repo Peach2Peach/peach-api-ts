@@ -3,14 +3,14 @@ import { User } from "../../@types/user";
 import { parseResponse } from "../../helpers/parseResponse";
 import { PeachAPIHelpers, PeachAPIOptions, RequestProps } from "../../types";
 
-export type GetBuyOfferRequestParams = {};
-export type GetBuyOfferRequestQuery = {};
-export type GetBuyOfferRequestBody = {};
+export type GetBlockedUsersRequestParams = {};
+export type GetBlockedUsersRequestQuery = {};
+export type GetBlockedUsersRequestBody = {};
 
 type Props = RequestProps &
-  GetBuyOfferRequestParams &
-  GetBuyOfferRequestQuery &
-  GetBuyOfferRequestBody;
+  GetBlockedUsersRequestParams &
+  GetBlockedUsersRequestQuery &
+  GetBlockedUsersRequestBody;
 
 export const getBlockedUsers =
   ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
