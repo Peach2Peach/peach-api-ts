@@ -12,8 +12,17 @@ export type MobilePendingActionRefund = {
 
 export type MobilePendingActionContract = {
     id: number;
-    userId: string; 
+    userId: string;
     contractId: string;
+    creationDate: Date;
+    payload: string;
+    status: MobilePendingActionStatus;
+    }
+
+export type MobilePendingActionFundEscrow = {
+    id: number;
+    userId: string;
+    offerId: number;
     creationDate: Date;
     payload: string;
     status: MobilePendingActionStatus;

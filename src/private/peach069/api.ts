@@ -15,6 +15,7 @@ import { getChatMessagesOfPerformedBuyOfferTradeRequest } from "./getChatMessage
 import { getChatMessagesOfPerformedSellOfferTradeRequest } from "./getChatMessagesOfPerformedSellOfferTradeRequest";
 import { getChatMessagesOfReceivedBuyOfferTradeRequest } from "./getChatMessagesOfReceivedBuyOfferTradeRequest";
 import { getChatMessagesOfReceivedSellOfferTradeRequest } from "./getChatMessagesOfReceivedSellOfferTradeRequest";
+import { getMobilePendingActionFundEscrow } from "./getMobilePendingActionFundEscrow";
 import { getMobilePendingActionPaymentConfirmed } from "./getMobilePendingActionPaymentConfirmed";
 import { getMobilePendingActionPaymentMade } from "./getMobilePendingActionPaymentMade";
 import { getMobilePendingActionRefund } from "./getMobilePendingActionRefund";
@@ -33,6 +34,7 @@ import { performBuyOfferTradeRequest } from "./performBuyOfferTradeRequest";
 import { performInstantTradeWithBuyOfferById } from "./performInstantTradeWithBuyOfferById";
 import { performInstantTradeWithSellOfferById } from "./performInstantTradeWithSellOfferById";
 import { performSellOfferTradeRequest } from "./performSellOfferTradeRequest";
+import { postMobilePendingActionFundEscrow } from "./postMobilePendingActionFundEscrow";
 import { postMobilePendingActionPaymentConfirmed } from "./postMobilePendingActionPaymentConfirmed";
 import { postMobilePendingActionPaymentMade } from "./postMobilePendingActionPaymentMade";
 import { postMobilePendingActionRefund } from "./postMobilePendingActionRefund";
@@ -186,6 +188,14 @@ export const peach069API = (
     helpers,
   ),
   postMobilePendingActionRefund:postMobilePendingActionRefund(
+    options,
+    helpers,
+  ),
+  getMobilePendingActionFundEscrow:getMobilePendingActionFundEscrow(
+    options,
+    helpers,
+  ),
+  postMobilePendingActionFundEscrow:postMobilePendingActionFundEscrow(
     options,
     helpers,
   ),
