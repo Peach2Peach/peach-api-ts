@@ -141,6 +141,16 @@ export class PeachAPI {
     );
   }
 
+  public async fetchAccessToken() {
+    if (!peachAccountSet(this.apiOptions)) {
+      return { accessToken: undefined, error: undefined };
+    }
+    const message = getAuthenticationChallenge(
+      this.clientServerTimeDifference,
+    );
+    return fetchAccessToken(this.apiOptions, this.publicHelpers)(message);
+  }
+
   public async authenticate() {
     
     
