@@ -15,10 +15,12 @@ import { getChatMessagesOfPerformedBuyOfferTradeRequest } from "./getChatMessage
 import { getChatMessagesOfPerformedSellOfferTradeRequest } from "./getChatMessagesOfPerformedSellOfferTradeRequest";
 import { getChatMessagesOfReceivedBuyOfferTradeRequest } from "./getChatMessagesOfReceivedBuyOfferTradeRequest";
 import { getChatMessagesOfReceivedSellOfferTradeRequest } from "./getChatMessagesOfReceivedSellOfferTradeRequest";
+import { getMobilePendingActionFundContractEscrow } from "./getMobilePendingActionFundContractEscrow";
 import { getMobilePendingActionFundEscrow } from "./getMobilePendingActionFundEscrow";
 import { getMobilePendingActionPaymentConfirmed } from "./getMobilePendingActionPaymentConfirmed";
 import { getMobilePendingActionPaymentMade } from "./getMobilePendingActionPaymentMade";
 import { getMobilePendingActionRefund } from "./getMobilePendingActionRefund";
+import { getMobilePendingActionRefundContractEscrow } from "./getMobilePendingActionRefundContractEscrow";
 import { getMobilePendingActions } from "./getMobilePendingActions";
 import { getSelfUser69 } from "./getSelfUser69";
 import { getSellOfferById } from "./getSellOfferById";
@@ -34,10 +36,12 @@ import { performBuyOfferTradeRequest } from "./performBuyOfferTradeRequest";
 import { performInstantTradeWithBuyOfferById } from "./performInstantTradeWithBuyOfferById";
 import { performInstantTradeWithSellOfferById } from "./performInstantTradeWithSellOfferById";
 import { performSellOfferTradeRequest } from "./performSellOfferTradeRequest";
+import { postMobilePendingActionFundContractEscrow } from "./postMobilePendingActionFundContractEscrow";
 import { postMobilePendingActionFundEscrow } from "./postMobilePendingActionFundEscrow";
 import { postMobilePendingActionPaymentConfirmed } from "./postMobilePendingActionPaymentConfirmed";
 import { postMobilePendingActionPaymentMade } from "./postMobilePendingActionPaymentMade";
 import { postMobilePendingActionRefund } from "./postMobilePendingActionRefund";
+import { postMobilePendingActionRefundContractEscrow } from "./postMobilePendingActionRefundContractEscrow";
 import { rejectBuyOfferTradeRequestReceivedByIds } from "./rejectBuyOfferTradeRequestReceivedByIds";
 import { rejectSellOfferTradeRequestReceivedByIds } from "./rejectSellOfferTradeRequestByIds";
 import { removePerformedBuyOfferTradeRequest } from "./removePerformedBuyOfferTradeRequest";
@@ -196,6 +200,22 @@ export const peach069API = (
     helpers,
   ),
   postMobilePendingActionFundEscrow:postMobilePendingActionFundEscrow(
+    options,
+    helpers,
+  ),
+  getMobilePendingActionFundContractEscrow:getMobilePendingActionFundContractEscrow(
+    options,
+    helpers,
+  ),
+  postMobilePendingActionFundContractEscrow:postMobilePendingActionFundContractEscrow(
+    options,
+    helpers,
+  ),
+  getMobilePendingActionRefundContractEscrow:getMobilePendingActionRefundContractEscrow(
+    options,
+    helpers,
+  ),
+  postMobilePendingActionRefundContractEscrow:postMobilePendingActionRefundContractEscrow(
     options,
     helpers,
   ),

@@ -28,6 +28,8 @@ export const getMobilePendingActions =
         paymentMadePendingActions: MobilePendingActionContract[];
         paymentConfirmedPendingActions: MobilePendingActionContract[];
         fundEscrowPendingActions: MobilePendingActionFundEscrow[];
+        fundEscrowContractPendingActions: MobilePendingActionContract[];
+        refundEscrowContractPendingActions: MobilePendingActionContract[];
       },
       APIError<"UNAUTHORIZED">
     >(response);
