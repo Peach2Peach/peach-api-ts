@@ -7,7 +7,6 @@ export type PostMobilePendingActionPaymentConfirmedRequestQuery = {};
 export type PostMobilePendingActionPaymentConfirmedRequestBody = {
    releaseTransactionSignature: string;
   batchReleasePsbt?: string;
-  ratingSignature:string
 };
 
 type Props = RequestProps &
@@ -17,7 +16,7 @@ type Props = RequestProps &
 
 export const postMobilePendingActionPaymentConfirmed =
   ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
-  async ({id, releaseTransactionSignature, batchReleasePsbt,ratingSignature}: Props) => {
+  async ({id, releaseTransactionSignature, batchReleasePsbt}: Props) => {
     const endpointUrl = `${url}/v069/selfUser/pendingAction/paymentConfirmed/${id}`;
 
     const response = await helpers.fetchWithAuth(endpointUrl, {
@@ -25,8 +24,7 @@ export const postMobilePendingActionPaymentConfirmed =
       method: "POST",
       body: JSON.stringify({
           releaseTransactionSignature,
-          batchReleasePsbt,
-          ratingSignature
+          batchReleasePsbt
         }),
 
     });
