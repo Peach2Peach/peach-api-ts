@@ -4,7 +4,7 @@ import { PeachAPIHelpers, PeachAPIOptions, RequestProps } from "../../types";
 
 export type PostMobilePendingActionFundEscrowRequestParams = { id: string };
 export type PostMobilePendingActionFundEscrowRequestQuery = {};
-export type PostMobilePendingActionFundEscrowRequestBody = {};
+export type PostMobilePendingActionFundEscrowRequestBody = { txHex: string };
 
 type Props = RequestProps &
   PostMobilePendingActionFundEscrowRequestParams &
@@ -13,12 +13,13 @@ type Props = RequestProps &
 
 export const postMobilePendingActionFundEscrow =
   ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
-  async ({ id }: Props) => {
+  async ({ id, txHex }: Props) => {
     const endpointUrl = `${url}/v069/selfUser/pendingAction/fundEscrow/${id}`;
 
     const response = await helpers.fetchWithAuth(endpointUrl, {
       headers: helpers.getPrivateHeaders(url),
       method: "POST",
+      body: JSON.stringify({ txHex }),
     });
 
     return parseResponse<{ success: boolean }, APIError<"UNAUTHORIZED">>(
