@@ -1,5 +1,5 @@
 import { APIError } from "../../@types/global";
-import { MobilePendingActionContract, MobilePendingActionFundEscrow, MobilePendingActionRefund } from "../../@types/mobilePendingAction";
+import { MobilePendingActionContract, MobilePendingActionFundEscrow, MobilePendingActionFundMultipleEscrow, MobilePendingActionRefund } from "../../@types/mobilePendingAction";
 import { parseResponse } from "../../helpers/parseResponse";
 import { PeachAPIHelpers, PeachAPIOptions, RequestProps } from "../../types";
 
@@ -28,6 +28,7 @@ export const getMobilePendingActions =
         paymentMadePendingActions: MobilePendingActionContract[];
         paymentConfirmedPendingActions: MobilePendingActionContract[];
         fundEscrowPendingActions: MobilePendingActionFundEscrow[];
+        fundMultipleEscrowPendingActions: MobilePendingActionFundMultipleEscrow[];
         fundEscrowContractPendingActions: MobilePendingActionContract[];
         refundEscrowContractPendingActions: MobilePendingActionContract[];
       },

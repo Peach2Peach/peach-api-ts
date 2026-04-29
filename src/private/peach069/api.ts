@@ -17,6 +17,7 @@ import { getChatMessagesOfReceivedBuyOfferTradeRequest } from "./getChatMessages
 import { getChatMessagesOfReceivedSellOfferTradeRequest } from "./getChatMessagesOfReceivedSellOfferTradeRequest";
 import { getMobilePendingActionFundContractEscrow } from "./getMobilePendingActionFundContractEscrow";
 import { getMobilePendingActionFundEscrow } from "./getMobilePendingActionFundEscrow";
+import { getMobilePendingActionFundMultipleEscrow } from "./getMobilePendingActionFundMultipleEscrow";
 import { getMobilePendingActionPaymentConfirmed } from "./getMobilePendingActionPaymentConfirmed";
 import { getMobilePendingActionPaymentMade } from "./getMobilePendingActionPaymentMade";
 import { getMobilePendingActionRefund } from "./getMobilePendingActionRefund";
@@ -38,6 +39,7 @@ import { performInstantTradeWithSellOfferById } from "./performInstantTradeWithS
 import { performSellOfferTradeRequest } from "./performSellOfferTradeRequest";
 import { postMobilePendingActionFundContractEscrow } from "./postMobilePendingActionFundContractEscrow";
 import { postMobilePendingActionFundEscrow } from "./postMobilePendingActionFundEscrow";
+import { postMobilePendingActionFundMultipleEscrow } from "./postMobilePendingActionFundMultipleEscrow";
 import { postMobilePendingActionPaymentConfirmed } from "./postMobilePendingActionPaymentConfirmed";
 import { postMobilePendingActionPaymentMade } from "./postMobilePendingActionPaymentMade";
 import { postMobilePendingActionRefund } from "./postMobilePendingActionRefund";
@@ -200,6 +202,14 @@ export const peach069API = (
     helpers,
   ),
   postMobilePendingActionFundEscrow:postMobilePendingActionFundEscrow(
+    options,
+    helpers,
+  ),
+  getMobilePendingActionFundMultipleEscrow:getMobilePendingActionFundMultipleEscrow(
+    options,
+    helpers,
+  ),
+  postMobilePendingActionFundMultipleEscrow:postMobilePendingActionFundMultipleEscrow(
     options,
     helpers,
   ),

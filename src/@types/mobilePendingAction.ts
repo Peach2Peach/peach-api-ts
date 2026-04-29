@@ -26,4 +26,12 @@ export type MobilePendingActionFundEscrow = {
     creationDate: Date;
     payload: string;
     status: MobilePendingActionStatus;
-    } 
+    }
+
+export type MobilePendingActionFundMultipleEscrow = {
+    id: number;
+    userId: string;
+    creationDate: Date;
+    payload: string;
+    status: MobilePendingActionStatus;
+    }
