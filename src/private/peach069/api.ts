@@ -15,6 +15,14 @@ import { getChatMessagesOfPerformedBuyOfferTradeRequest } from "./getChatMessage
 import { getChatMessagesOfPerformedSellOfferTradeRequest } from "./getChatMessagesOfPerformedSellOfferTradeRequest";
 import { getChatMessagesOfReceivedBuyOfferTradeRequest } from "./getChatMessagesOfReceivedBuyOfferTradeRequest";
 import { getChatMessagesOfReceivedSellOfferTradeRequest } from "./getChatMessagesOfReceivedSellOfferTradeRequest";
+import { getMobilePendingActionFundContractEscrow } from "./getMobilePendingActionFundContractEscrow";
+import { getMobilePendingActionFundEscrow } from "./getMobilePendingActionFundEscrow";
+import { getMobilePendingActionFundMultipleEscrow } from "./getMobilePendingActionFundMultipleEscrow";
+import { getMobilePendingActionPaymentConfirmed } from "./getMobilePendingActionPaymentConfirmed";
+import { getMobilePendingActionPaymentMade } from "./getMobilePendingActionPaymentMade";
+import { getMobilePendingActionRefund } from "./getMobilePendingActionRefund";
+import { getMobilePendingActionRefundContractEscrow } from "./getMobilePendingActionRefundContractEscrow";
+import { getMobilePendingActions } from "./getMobilePendingActions";
 import { getSelfUser69 } from "./getSelfUser69";
 import { getSellOfferById } from "./getSellOfferById";
 import { getSellOffers } from "./getSellOffers";
@@ -29,6 +37,13 @@ import { performBuyOfferTradeRequest } from "./performBuyOfferTradeRequest";
 import { performInstantTradeWithBuyOfferById } from "./performInstantTradeWithBuyOfferById";
 import { performInstantTradeWithSellOfferById } from "./performInstantTradeWithSellOfferById";
 import { performSellOfferTradeRequest } from "./performSellOfferTradeRequest";
+import { postMobilePendingActionFundContractEscrow } from "./postMobilePendingActionFundContractEscrow";
+import { postMobilePendingActionFundEscrow } from "./postMobilePendingActionFundEscrow";
+import { postMobilePendingActionFundMultipleEscrow } from "./postMobilePendingActionFundMultipleEscrow";
+import { postMobilePendingActionPaymentConfirmed } from "./postMobilePendingActionPaymentConfirmed";
+import { postMobilePendingActionPaymentMade } from "./postMobilePendingActionPaymentMade";
+import { postMobilePendingActionRefund } from "./postMobilePendingActionRefund";
+import { postMobilePendingActionRefundContractEscrow } from "./postMobilePendingActionRefundContractEscrow";
 import { rejectBuyOfferTradeRequestReceivedByIds } from "./rejectBuyOfferTradeRequestReceivedByIds";
 import { rejectSellOfferTradeRequestReceivedByIds } from "./rejectSellOfferTradeRequestByIds";
 import { removePerformedBuyOfferTradeRequest } from "./removePerformedBuyOfferTradeRequest";
@@ -40,6 +55,7 @@ import { sendChatMessagesOfReceivedSellOfferTradeRequest } from "./sendChatMessa
 import { setEncryptedPaymentDataOnSelfUser69 } from "./setEncryptedPaymentDataOnSelfUser69";
 import { setFilterOfferAlertsOnSelfUser69 } from "./setFilterOfferAlertsOnSelfUser69";
 import { setLastAddressIndexUsedOnSelfUser69 } from "./setLastAddressIndexUsedOnSelfUser69";
+import { submitDesktopConnectionData } from "./submitDesktopConnectionData";
 
 export const peach069API = (
   options: PeachAPIOptions,
@@ -145,7 +161,71 @@ export const peach069API = (
     options,
     helpers,
   ),
+  submitDesktopConnectionData:submitDesktopConnectionData(
+    options,
+    helpers,
+  ),
   getBlockedUsers:getBlockedUsers(
+    options,
+    helpers,
+  ),
+  getMobilePendingActions:getMobilePendingActions(
+    options,
+    helpers,
+  ),
+  getMobilePendingActionPaymentMade:getMobilePendingActionPaymentMade(
+    options,
+    helpers,
+  ),
+  postMobilePendingActionPaymentMade:postMobilePendingActionPaymentMade(
+    options,
+    helpers,
+  ),
+    getMobilePendingActionPaymentConfirmed:getMobilePendingActionPaymentConfirmed(
+    options,
+    helpers,
+  ),
+  postMobilePendingActionPaymentConfirmed:postMobilePendingActionPaymentConfirmed(
+    options,
+    helpers,
+  ),
+  getMobilePendingActionRefund:getMobilePendingActionRefund(
+    options,
+    helpers,
+  ),
+  postMobilePendingActionRefund:postMobilePendingActionRefund(
+    options,
+    helpers,
+  ),
+  getMobilePendingActionFundEscrow:getMobilePendingActionFundEscrow(
+    options,
+    helpers,
+  ),
+  postMobilePendingActionFundEscrow:postMobilePendingActionFundEscrow(
+    options,
+    helpers,
+  ),
+  getMobilePendingActionFundMultipleEscrow:getMobilePendingActionFundMultipleEscrow(
+    options,
+    helpers,
+  ),
+  postMobilePendingActionFundMultipleEscrow:postMobilePendingActionFundMultipleEscrow(
+    options,
+    helpers,
+  ),
+  getMobilePendingActionFundContractEscrow:getMobilePendingActionFundContractEscrow(
+    options,
+    helpers,
+  ),
+  postMobilePendingActionFundContractEscrow:postMobilePendingActionFundContractEscrow(
+    options,
+    helpers,
+  ),
+  getMobilePendingActionRefundContractEscrow:getMobilePendingActionRefundContractEscrow(
+    options,
+    helpers,
+  ),
+  postMobilePendingActionRefundContractEscrow:postMobilePendingActionRefundContractEscrow(
     options,
     helpers,
   ),

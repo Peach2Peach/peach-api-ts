@@ -153,8 +153,6 @@ export class PeachAPI {
 
   public async authenticate() {
     
-    
-
     const momentTenSecondsAgo = new Date(Date.now() - 10 * 1000);
 
     if (
