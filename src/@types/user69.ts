@@ -4,4 +4,6 @@ export type User69 = {
   lastAddressUsedIndex?: number;
   encryptedPaymentData?: string | null;
   encryptedPaymentDataSignature?: string | null;
+  encryptedCustomRefundAddress?: string | null;
+  encryptedCustomRefundAddressSignature?: string | null;
 };
