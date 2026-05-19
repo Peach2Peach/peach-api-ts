@@ -2,7 +2,7 @@ import { APIError } from "../../@types/global";
 import { parseResponse } from "../../helpers/parseResponse";
 import { PeachAPIHelpers, PeachAPIOptions, RequestProps } from "../../types";
 
-export type PostMobilePendingActionRefundContractEscrowRequestParams = { contractId: string };
+export type PostMobilePendingActionRefundContractEscrowRequestParams = { id: string };
 export type PostMobilePendingActionRefundContractEscrowRequestQuery = {};
 export type PostMobilePendingActionRefundContractEscrowRequestBody = {
   signature: string;
@@ -15,8 +15,8 @@ type Props = RequestProps &
 
 export const postMobilePendingActionRefundContractEscrow =
   ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
-  async ({ contractId, signature }: Props) => {
-    const endpointUrl = `${url}/v069/selfUser/pendingAction/refundEscrowContract/${contractId}`;
+  async ({ id, signature }: Props) => {
+    const endpointUrl = `${url}/v069/selfUser/pendingAction/refundEscrowContract/${id}`;
 
     const response = await helpers.fetchWithAuth(endpointUrl, {
       headers: helpers.getPrivateHeaders(url),

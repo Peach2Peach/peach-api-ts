@@ -6,4 +6,6 @@ export type User69 = {
   encryptedPaymentDataSignature?: string | null;
   encryptedCustomRefundAddress?: string | null;
   encryptedCustomRefundAddressSignature?: string | null;
+  encryptedCustomPayoutAddress?: string | null;
+  encryptedCustomPayoutAddressSignature?: string | null;
 };

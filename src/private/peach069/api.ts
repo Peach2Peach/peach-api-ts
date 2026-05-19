@@ -52,6 +52,7 @@ import { sendChatMessagesOfPerformedBuyOfferTradeRequest } from "./sendChatMessa
 import { sendChatMessagesOfPerformedSellOfferTradeRequest } from "./sendChatMessagesOfPerformedSellOfferTradeRequest";
 import { sendChatMessagesOfReceivedBuyOfferTradeRequest } from "./sendChatMessagesOfReceivedBuyOfferTradeRequest";
 import { sendChatMessagesOfReceivedSellOfferTradeRequest } from "./sendChatMessagesOfReceivedSellOfferTradeRequest";
+import { setEncryptedCustomPayoutAddressOnSelfUser69 } from "./setEncryptedCustomPayoutAddressOnSelfUser69";
 import { setEncryptedCustomRefundAddressOnSelfUser69 } from "./setEncryptedCustomRefundAddressOnSelfUser69";
 import { setEncryptedPaymentDataOnSelfUser69 } from "./setEncryptedPaymentDataOnSelfUser69";
 import { setFilterOfferAlertsOnSelfUser69 } from "./setFilterOfferAlertsOnSelfUser69";
@@ -163,6 +164,10 @@ export const peach069API = (
     helpers,
   ),
   setEncryptedCustomRefundAddressOnSelfUser69:setEncryptedCustomRefundAddressOnSelfUser69(
+    options,
+    helpers,
+  ),
+  setEncryptedCustomPayoutAddressOnSelfUser69:setEncryptedCustomPayoutAddressOnSelfUser69(
     options,
     helpers,
   ),

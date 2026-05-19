@@ -3,7 +3,7 @@ import { MobilePendingActionContract } from "../../@types/mobilePendingAction";
 import { parseResponse } from "../../helpers/parseResponse";
 import { PeachAPIHelpers, PeachAPIOptions, RequestProps } from "../../types";
 
-export type GetMobilePendingActionRefundContractEscrowRequestParams = { contractId: string };
+export type GetMobilePendingActionRefundContractEscrowRequestParams = { id: string };
 export type GetMobilePendingActionRefundContractEscrowRequestQuery = {};
 export type GetMobilePendingActionRefundContractEscrowRequestBody = {};
 
@@ -14,8 +14,8 @@ type Props = RequestProps &
 
 export const getMobilePendingActionRefundContractEscrow =
   ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
-  async ({ contractId }: Props) => {
-    const endpointUrl = `${url}/v069/selfUser/pendingAction/refundEscrowContract/${contractId}`;
+  async ({ id }: Props) => {
+    const endpointUrl = `${url}/v069/selfUser/pendingAction/refundEscrowContract/${id}`;
 
     const response = await helpers.fetchWithAuth(endpointUrl, {
       headers: helpers.getPrivateHeaders(url),
