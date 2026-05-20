@@ -5,7 +5,7 @@ import { PeachAPIHelpers, PeachAPIOptions, RequestProps } from "../../types";
 export type PostMobilePendingActionRefundRequestParams = {id:string};
 export type PostMobilePendingActionRefundRequestQuery = {};
 export type PostMobilePendingActionRefundRequestBody = {
-   signature: string;
+   signatures: string[];
   
 };
 
@@ -16,14 +16,14 @@ type Props = RequestProps &
 
 export const postMobilePendingActionRefund =
   ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
-  async ({id, signature}: Props) => {
+  async ({id, signatures}: Props) => {
     const endpointUrl = `${url}/v069/selfUser/pendingAction/refund/${id}`;
 
     const response = await helpers.fetchWithAuth(endpointUrl, {
       headers: helpers.getPrivateHeaders(url),
       method: "POST",
       body: JSON.stringify({
-          signature,
+          signatures,
         }),
 
     });
