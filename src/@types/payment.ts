@@ -126,13 +126,12 @@ export type PaymentMethod =
   | "papara"
   | "paraguayBankTransfer"
   | "payday"
-  | "payeer"
+  // | "payeer"
   | "payID"
   | "payLah"
   | "paypal"
   | "paysera"
   | "paytm"
-  | "perfectMoney"
   | "peruBankDeposit"
   | "philippineBankTransfer"
   | "pix"
@@ -176,7 +175,12 @@ export type PaymentMethod =
   | "arbitrumusdt"
   | "baseusdt"
   | "bnbusdt"
-  | "solanausdt"; 
+  | "solanausdt"
+  | "meru"
+  | "halcash"
+  | "hype"
+  | "global66"
+  | "krak"; 
 
 export type PaymentMethodInfo = {
   id: PaymentMethod;
