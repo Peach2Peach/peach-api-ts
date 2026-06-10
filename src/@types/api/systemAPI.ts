@@ -10,6 +10,8 @@ export type GetInfoResponseBody = {
   paymentMethods: PaymentMethodInfo[];
   minAppVersion: string;
   latestAppVersion: string;
+  webAppAvailable?: boolean;
+  showPasteDesktopConnection ?: boolean;
 };
 export type GetInfoErrorResponseBody = APIError<null>;
 
