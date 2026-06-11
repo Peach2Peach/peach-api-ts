@@ -6,6 +6,8 @@ import { canPerformInstantTradeWithSellOfferById } from "./canPerformInstantTrad
 import { createBuyOffer } from "./createBuyOffer";
 import { deleteBuyOfferById } from "./deleteBuyOfferById";
 import { getBlockedUsers } from "./getBlockedUsers";
+import { getEncryptedDataOnSelfUser69 } from "./getEncryptedDataOnSelfUser69";
+import { rotatePgpKeyOnSelfUser69 } from "./rotatePgpKeyOnSelfUser69";
 import { getBuyOfferById } from "./getBuyOfferById";
 import { getBuyOffers } from "./getBuyOffers";
 import { getBuyOfferTradeRequestPerformedById } from "./getBuyOfferTradeRequestPerformedById";
@@ -150,6 +152,8 @@ export const peach069API = (
     helpers,
   ),
   getSelfUser69: getSelfUser69(options, helpers),
+  getEncryptedDataOnSelfUser69: getEncryptedDataOnSelfUser69(options, helpers),
+  rotatePgpKeyOnSelfUser69: rotatePgpKeyOnSelfUser69(options, helpers),
   getUserOpenOffersByUserId: getUserOpenOffersByUserId(options, helpers),
   setFilterOfferAlertsOnSelfUser69: setFilterOfferAlertsOnSelfUser69(
     options,
