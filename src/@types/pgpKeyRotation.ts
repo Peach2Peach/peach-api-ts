@@ -41,6 +41,16 @@ export type EncryptedDataBlob =
       // counterparty key(s), plus Peach's key only for instant-trade symmetricKey
       // blobs where Peach is already a recipient.
       recipientPgpPublicKeys: string[];
+    }
+  | {
+      // A trade request the user PERFORMED; its symmetricKeyEncrypted is encrypted
+      // to the requester + the offer owner.
+      source: "buyOfferTradeRequest" | "sellOfferTradeRequest";
+      tradeRequestId: number;
+      encrypted: string;
+      signature: string;
+      // The offer owner's current key(s) — must remain recipients.
+      recipientPgpPublicKeys: string[];
     };
 
 // Re-encrypted replacement sent to POST /v069/selfUser/rotatePgpKey. Same
@@ -70,6 +80,12 @@ export type SubmittedEncryptedBlob =
       source: "contract";
       contractId: string;
       field: ContractEncryptedField;
+      encrypted: string;
+      signature: string;
+    }
+  | {
+      source: "buyOfferTradeRequest" | "sellOfferTradeRequest";
+      tradeRequestId: number;
       encrypted: string;
       signature: string;
     };
