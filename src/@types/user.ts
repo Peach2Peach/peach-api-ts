@@ -91,6 +91,8 @@ export type TradingLimit = {
   dailyAmount: number;
   yearly: number;
   yearlyAmount: number;
+  yearlyWithoutKyc?: number;
+  yearlyAmountWithoutKyc?: number;
   monthlyAnonymous: number;
   monthlyAnonymousAmount: number;
 };
