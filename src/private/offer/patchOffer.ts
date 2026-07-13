@@ -11,6 +11,7 @@ export type PatchOfferRequestBody = {
   refundAddress?: string;
   refundTx?: string;
   premium?: number;
+  fixedPrice?: number;
   releaseAddress?: string;
   messageSignature?: string;
   amount?: [number, number];
@@ -36,6 +37,7 @@ export const patchOffer =
     messageSignature,
     refundTx,
     premium,
+    fixedPrice,
     maxPremium,
     minReputation,
     amount,
@@ -50,6 +52,7 @@ export const patchOffer =
         refundAddress,
         refundTx,
         premium,
+        fixedPrice,
         maxPremium,
         minReputation,
         releaseAddress,

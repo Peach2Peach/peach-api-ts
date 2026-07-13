@@ -111,6 +111,10 @@ export type SellOffer = Offer & {
   type: "ask";
   amount: number;
   premium: number;
+  fixedPrice?: number;
+  /** currency code; kept as string to stay assignable across the app's
+   * diverging Currency unions (may include discontinued currencies) */
+  fixedPriceCurrency?: string;
   returnAddress: string;
   funding: FundingStatus;
   multi?: number;
