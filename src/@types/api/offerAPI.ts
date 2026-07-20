@@ -192,6 +192,8 @@ export type PostSellOfferRequestBody = PostOfferRequestBody & {
   type: "ask";
   amount: number;
   premium?: number;
+  fixedPrice?: number;
+  fixedPriceCurrency?: string;
   returnAddress?: string;
   multi?: number;
   instantTradeCriteria?: InstantTradeCriteria;
