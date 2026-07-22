@@ -77,6 +77,7 @@ export type Currency =
   | "TZS"
   | "UAH"
   | "USD"
+  | "USDC"
   | "USDT"
   | "UYU"
   | "VEF"
