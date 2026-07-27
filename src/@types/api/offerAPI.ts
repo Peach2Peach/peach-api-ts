@@ -2,6 +2,8 @@ import { APIError, APISuccess, Currency, Pricebook } from "../global";
 import { Match } from "../match";
 import {
   BuyOffer,
+  Chain,
+  EscrowType,
   ExperienceLevel,
   FundingStatus,
   InstantTradeCriteria,
@@ -48,11 +50,69 @@ export type CreateEscrowRequestQuery = {};
 export type CreateEscrowRequestBody = { publicKey: string,returnAddress?:string };
 export type CreateEscrowResponseBody = {
   offerId: string;
+  /** the address to fund; same value as the populated key of `escrows` */
   escrow: string;
+  /** single-chain: only the offer's own chain is populated */
+  escrows?: Partial<Record<EscrowType, string>>;
+  /** Peach's escrow pubkey (33-byte compressed hex), for MuSig2 key
+   * aggregation on liquid offers */
+  escrowPeachPublicKey?: Partial<Record<EscrowType, string>>;
   funding: Partial<FundingStatus>;
 };
 export type CreateEscrowErrorResponseBody = APIError<
   "NOT_FOUND" | "BAD_REQUEST"
+>;
+
+export type StartLiquidEscrowReleaseRequestParams = { offerId: string };
+export type StartLiquidEscrowReleaseRequestQuery = {};
+export type StartLiquidEscrowReleaseRequestBody = {};
+export type StartLiquidEscrowReleaseResponseBody = {
+  sessionId: string;
+  /** the release transaction, hex */
+  unsignedTx: string;
+  /** 32-byte hex; this is what gets MuSig2-signed */
+  sighash: string;
+  /** Peach's 66-byte hex public nonce, for this attempt */
+  peachPubNonce: string;
+
+  // everything needed to rebuild the taproot tweak, so releasing works after a
+  // reinstall or on a new device with no state from escrow creation
+  /** Peach's escrow pubkey, 33-byte compressed hex, for key aggregation */
+  peachPublicKey: string;
+  /** CSV blocks, for the refund tapleaf */
+  expiry: number;
+  /** the funded escrow address; the derivation must reproduce this */
+  escrowAddress: string;
+
+  /** sats the buyer receives on mainchain, after Boltz fees */
+  expectedReceiveAmount: number;
+};
+export type StartLiquidEscrowReleaseErrorResponseBody = APIError<
+  "NOT_FOUND" | "BAD_REQUEST" | "INTERNAL_SERVER_ERROR"
+>;
+
+export type CompleteLiquidEscrowReleaseRequestParams = { offerId: string };
+export type CompleteLiquidEscrowReleaseRequestQuery = {};
+export type CompleteLiquidEscrowReleaseRequestBody = {
+  sessionId: string;
+  /** 66-byte hex */
+  sellerPubNonce: string;
+  /** 32-byte hex */
+  sellerPartialSig: string;
+};
+export type CompleteLiquidEscrowReleaseResponseBody = APISuccess & {
+  txId: string;
+};
+export type CompleteLiquidEscrowReleaseErrorResponseBody = APIError<
+  "NOT_FOUND" | "BAD_REQUEST" | "INTERNAL_SERVER_ERROR"
+>;
+
+export type RefundLiquidEscrowRequestParams = { offerId: string };
+export type RefundLiquidEscrowRequestQuery = {};
+export type RefundLiquidEscrowRequestBody = {};
+export type RefundLiquidEscrowResponseBody = APISuccess & { txId: string };
+export type RefundLiquidEscrowErrorResponseBody = APIError<
+  "NOT_FOUND" | "BAD_REQUEST" | "INTERNAL_SERVER_ERROR"
 >;
 
 export type ConfirmEscrowRequestParams = { offerId: string };
@@ -77,8 +137,14 @@ export type GetFundingStatusRequestBody = {};
 export type GetFundingStatusResponseBody = {
   offerId: string;
   escrow: string;
+  escrows?: Partial<Record<EscrowType, string>>;
   returnAddress: string;
+  /** the bitcoin escrow funding; `NULL` for a liquid offer */
   funding: FundingStatus;
+  /** the liquid escrow funding, present for liquid offers. Sibling of
+   * `funding`, NOT nested inside it. `pickFundingStatus` selects between the
+   * two. */
+  fundingLiquid?: FundingStatus;
   userConfirmationRequired: boolean;
 };
 export type GetFundingStatusErrorResponseBody = APIError<
@@ -190,6 +256,9 @@ export type PostOfferRequestBody = {
 };
 export type PostSellOfferRequestBody = PostOfferRequestBody & {
   type: "ask";
+  /** omitted => "mainchain". Liquid offers must be >= 25000 sats and carry a
+   * Liquid `returnAddress`. */
+  chain?: Chain;
   amount: number;
   premium?: number;
   fixedPrice?: number;

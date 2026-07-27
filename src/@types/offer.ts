@@ -115,9 +115,15 @@ export type SellOffer = Offer & {
   /** currency code; kept as string to stay assignable across the app's
    * diverging Currency unions (may include discontinued currencies) */
   fixedPriceCurrency?: string;
+  /** chain-typed: a Liquid address when the escrow is liquid, a Bitcoin
+   * address otherwise */
   returnAddress: string;
   funding: FundingStatus;
   multi?: number;
+
+  /** which chain this offer's escrow lives on; absent on offers created before
+   * liquid support, which are always mainchain */
+  escrowType?: EscrowType;
 
   escrow?: string;
   escrowNotifiedUser?: boolean;
@@ -145,7 +151,11 @@ export type BuyOffer = Offer & {
   messageSignature?: string;
 } & Required<MatchFilter>;
 
-type EscrowType = "bitcoin" | "liquid";
+export type EscrowType = "bitcoin" | "liquid";
+
+/** Chain a sell offer's escrow lives on. Sent on offer creation; the server
+ * defaults to "mainchain" when omitted. Read back as `EscrowType`. */
+export type Chain = "mainchain" | "liquid";
 
 export type BuyOfferSummary = {
   id: string;

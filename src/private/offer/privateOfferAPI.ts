@@ -1,5 +1,6 @@
 import { PeachAPIHelpers, PeachAPIOptions } from "../../types";
 import { cancelOffer } from "./cancelOffer";
+import { completeLiquidEscrowRelease } from "./completeLiquidEscrowRelease";
 import { confirmEscrow } from "./confirmEscrow";
 import { createEscrow } from "./createEscrow";
 import { getFundingStatus } from "./getFundingStatus";
@@ -14,10 +15,12 @@ import { matchOffer } from "./matchOffer";
 import { patchOffer } from "./patchOffer";
 import { postBuyOffer } from "./postBuyOffer";
 import { postSellOffer } from "./postSellOffer";
+import { refundLiquidEscrow } from "./refundLiquidEscrow";
 import { refundSellOffer } from "./refundSellOffer";
 import { republishSellOffer } from "./republishSellOffer";
 import { searchOfferSummaries } from "./searchOfferSummaries";
 import { searchOffers } from "./searchOffers";
+import { startLiquidEscrowRelease } from "./startLiquidEscrowRelease";
 import { setEscrowAsFundedByPeachWallet } from "./setEscrowAsFundedByPeachWallet";
 import { unmatchOffer } from "./unmatchOffer";
 
@@ -46,4 +49,7 @@ export const privateOfferAPI = (
   searchOfferSummaries: searchOfferSummaries(options, helpers),
   unmatchOffer: unmatchOffer(options, helpers),
   setEscrowAsFundedByPeachWallet: setEscrowAsFundedByPeachWallet(options, helpers),
+  startLiquidEscrowRelease: startLiquidEscrowRelease(options, helpers),
+  completeLiquidEscrowRelease: completeLiquidEscrowRelease(options, helpers),
+  refundLiquidEscrow: refundLiquidEscrow(options, helpers),
 });

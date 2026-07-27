@@ -17,6 +17,7 @@ export const postSellOffer =
   ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
   async ({
     type,
+    chain,
     meansOfPayment,
     paymentData,
     amount,
@@ -34,6 +35,7 @@ export const postSellOffer =
       method: "POST",
       body: JSON.stringify({
         type,
+        chain,
         meansOfPayment,
         paymentData,
         amount,

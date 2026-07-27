@@ -71,6 +71,23 @@ const peachAPIMethods = {
       getOffers: () => Promise.resolve({ result: { offers: [] } }),
       getOfferDetails: () => Promise.resolve({ result: sellOffer }),
       cancelOffer: () => Promise.resolve({ result: { psbt: "psbt" } }),
+      startLiquidEscrowRelease: () =>
+        Promise.resolve({
+          result: {
+            sessionId: "sessionId",
+            unsignedTx: "unsignedTx",
+            sighash: "00".repeat(32),
+            peachPubNonce: "00".repeat(66),
+            peachPublicKey: "00".repeat(33),
+            expiry: 43200,
+            escrowAddress: "ert1p",
+            expectedReceiveAmount: 21,
+          },
+        }),
+      completeLiquidEscrowRelease: () =>
+        Promise.resolve({ result: { success: true, txId: "txId" } }),
+      refundLiquidEscrow: () =>
+        Promise.resolve({ result: { success: true, txId: "txId" } }),
     },
     user: {
       getSelfUser: () => Promise.resolve({ result: defaultUser }),
