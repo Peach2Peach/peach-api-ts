@@ -1,5 +1,5 @@
 import { APIError, Currency } from "../../@types/global";
-import { BuyOffer69TradeRequest } from "../../@types/offer";
+import { BuyOffer69TradeRequest, EscrowVersion } from "../../@types/offer";
 import { PaymentMethod } from "../../@types/payment";
 import { parseResponse } from "../../helpers/parseResponse";
 import { PeachAPIHelpers, PeachAPIOptions, RequestProps } from "../../types";
@@ -15,6 +15,8 @@ export type PerformBuyOfferTradeRequestRequestBody = {
   symmetricKeyEncrypted: string;
   symmetricKeySignature: string;
   maxMiningFeeRate?: number;
+  /** opt in to the MuSig2 taproot escrow (bitcoin only) by sending 2 */
+  escrowVersion?: EscrowVersion;
   // returnAddress: string;
 };
 
@@ -35,6 +37,7 @@ export const performBuyOfferTradeRequest =
     symmetricKeyEncrypted,
     symmetricKeySignature,
     maxMiningFeeRate,
+    escrowVersion,
     // returnAddress,
   }: Props) => {
     const finalUrl = `${url}/v069/buyOffer/${buyOfferId}/tradeRequestPerformed`;
@@ -51,6 +54,7 @@ export const performBuyOfferTradeRequest =
         symmetricKeyEncrypted,
         symmetricKeySignature,
         maxMiningFeeRate,
+        escrowVersion,
         // returnAddress,
       }),
     });

@@ -2,6 +2,8 @@ import { APIError, APISuccess, Currency, Pricebook } from "../global";
 import { Match } from "../match";
 import {
   BuyOffer,
+  EscrowType,
+  EscrowVersion,
   ExperienceLevel,
   FundingStatus,
   InstantTradeCriteria,
@@ -50,9 +52,60 @@ export type CreateEscrowResponseBody = {
   offerId: string;
   escrow: string;
   funding: Partial<FundingStatus>;
+  /** escrow addresses per chain - `bitcoin` is a P2TR address on escrow version 2 */
+  escrows?: Partial<Record<EscrowType, string>>;
+  /** Peach's 33 byte compressed escrow public key (hex) per chain */
+  escrowPeachPublicKey?: Partial<Record<EscrowType, string>>;
 };
 export type CreateEscrowErrorResponseBody = APIError<
   "NOT_FOUND" | "BAD_REQUEST"
+>;
+
+export type StartTaprootEscrowReleaseRequestParams = { offerId: string };
+export type StartTaprootEscrowReleaseRequestQuery = {};
+export type StartTaprootEscrowReleaseRequestBody = {};
+export type StartTaprootEscrowReleaseResponseBody = {
+  /** opaque session id, to be echoed back on /complete */
+  sessionId: string;
+  /** the unsigned release transaction (hex) */
+  unsignedTx: string;
+  /** the 32 byte message to MuSig2-sign (hex) */
+  sighash: string;
+  /** Peach's 66 byte round-1 public nonce for this attempt (hex) */
+  peachPubNonce: string;
+  /** Peach's 33 byte compressed escrow public key (hex) */
+  peachPublicKey: string;
+  /** CSV blocks of the refund tapleaf */
+  expiry: number;
+  /** the P2TR escrow address - re-verify the derivation against this */
+  escrowAddress: string;
+};
+export type StartTaprootEscrowReleaseErrorResponseBody = APIError<
+  "NOT_FOUND" | "BAD_REQUEST" | "INTERNAL_SERVER_ERROR"
+>;
+
+export type CompleteTaprootEscrowReleaseRequestParams = { offerId: string };
+export type CompleteTaprootEscrowReleaseRequestQuery = {};
+export type CompleteTaprootEscrowReleaseRequestBody = {
+  sessionId: string;
+  /** the seller's 66 byte round-1 public nonce (hex) */
+  sellerPubNonce: string;
+  /** the seller's 32 byte partial signature (hex) */
+  sellerPartialSig: string;
+};
+export type CompleteTaprootEscrowReleaseResponseBody = APISuccess & {
+  txId: string;
+};
+export type CompleteTaprootEscrowReleaseErrorResponseBody = APIError<
+  "NOT_FOUND" | "BAD_REQUEST" | "INTERNAL_SERVER_ERROR"
+>;
+
+export type RefundTaprootEscrowRequestParams = { offerId: string };
+export type RefundTaprootEscrowRequestQuery = {};
+export type RefundTaprootEscrowRequestBody = {};
+export type RefundTaprootEscrowResponseBody = APISuccess & { txId: string };
+export type RefundTaprootEscrowErrorResponseBody = APIError<
+  "NOT_FOUND" | "BAD_REQUEST" | "INTERNAL_SERVER_ERROR"
 >;
 
 export type ConfirmEscrowRequestParams = { offerId: string };
@@ -198,6 +251,8 @@ export type PostSellOfferRequestBody = PostOfferRequestBody & {
   multi?: number;
   instantTradeCriteria?: InstantTradeCriteria;
   experienceLevelCriteria?:ExperienceLevel;
+  /** opt in to the MuSig2 taproot escrow (bitcoin only) by sending 2 */
+  escrowVersion?: EscrowVersion;
 };
 export type PostBuyOfferRequestBody = PostOfferRequestBody & {
   type: "bid";

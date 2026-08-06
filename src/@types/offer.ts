@@ -145,7 +145,14 @@ export type BuyOffer = Offer & {
   messageSignature?: string;
 } & Required<MatchFilter>;
 
-type EscrowType = "bitcoin" | "liquid";
+export type EscrowType = "bitcoin" | "liquid";
+
+/**
+ * escrow implementation used for an offer
+ * - 1 (or undefined): legacy P2WSH script escrow
+ * - 2: MuSig2 taproot (P2TR) escrow, bitcoin mainchain only
+ */
+export type EscrowVersion = 1 | 2;
 
 export type BuyOfferSummary = {
   id: string;

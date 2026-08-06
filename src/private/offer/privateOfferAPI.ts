@@ -1,5 +1,6 @@
 import { PeachAPIHelpers, PeachAPIOptions } from "../../types";
 import { cancelOffer } from "./cancelOffer";
+import { completeTaprootEscrowRelease } from "./completeTaprootEscrowRelease";
 import { confirmEscrow } from "./confirmEscrow";
 import { createEscrow } from "./createEscrow";
 import { getFundingStatus } from "./getFundingStatus";
@@ -15,10 +16,12 @@ import { patchOffer } from "./patchOffer";
 import { postBuyOffer } from "./postBuyOffer";
 import { postSellOffer } from "./postSellOffer";
 import { refundSellOffer } from "./refundSellOffer";
+import { refundTaprootEscrow } from "./refundTaprootEscrow";
 import { republishSellOffer } from "./republishSellOffer";
 import { searchOfferSummaries } from "./searchOfferSummaries";
 import { searchOffers } from "./searchOffers";
 import { setEscrowAsFundedByPeachWallet } from "./setEscrowAsFundedByPeachWallet";
+import { startTaprootEscrowRelease } from "./startTaprootEscrowRelease";
 import { unmatchOffer } from "./unmatchOffer";
 
 export const privateOfferAPI = (
@@ -41,6 +44,9 @@ export const privateOfferAPI = (
   postBuyOffer: postBuyOffer(options, helpers),
   postSellOffer: postSellOffer(options, helpers),
   refundSellOffer: refundSellOffer(options, helpers),
+  refundTaprootEscrow: refundTaprootEscrow(options, helpers),
+  startTaprootEscrowRelease: startTaprootEscrowRelease(options, helpers),
+  completeTaprootEscrowRelease: completeTaprootEscrowRelease(options, helpers),
   republishSellOffer: republishSellOffer(options, helpers),
   searchOffers: searchOffers(options, helpers),
   searchOfferSummaries: searchOfferSummaries(options, helpers),
