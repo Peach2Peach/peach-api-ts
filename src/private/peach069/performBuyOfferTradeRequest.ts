@@ -15,6 +15,8 @@ export type PerformBuyOfferTradeRequestRequestBody = {
   symmetricKeyEncrypted: string;
   symmetricKeySignature: string;
   maxMiningFeeRate?: number;
+  /** mandatory since the single-sig escrow release - must be 2 */
+  escrowVersion: number;
   // returnAddress: string;
 };
 
@@ -35,6 +37,7 @@ export const performBuyOfferTradeRequest =
     symmetricKeyEncrypted,
     symmetricKeySignature,
     maxMiningFeeRate,
+    escrowVersion,
     // returnAddress,
   }: Props) => {
     const finalUrl = `${url}/v069/buyOffer/${buyOfferId}/tradeRequestPerformed`;
@@ -51,6 +54,7 @@ export const performBuyOfferTradeRequest =
         symmetricKeyEncrypted,
         symmetricKeySignature,
         maxMiningFeeRate,
+        escrowVersion,
         // returnAddress,
       }),
     });

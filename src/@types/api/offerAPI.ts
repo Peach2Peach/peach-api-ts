@@ -13,6 +13,8 @@ import {
 import { MeansOfPayment, PaymentMethod } from "../payment";
 import { PublicUser } from "../user";
 
+type EscrowChain = "bitcoin" | "liquid";
+
 export type CancelOfferRequestParams = { offerId: string };
 export type CancelOfferRequestQuery = {};
 export type CancelOfferRequestBody = { satsPerByte?: number };
@@ -40,7 +42,7 @@ export type GetRefundPSBTResponseBody = {
   satsPerByte: number;
 };
 export type GetRefundPSBTErrorResponseBody = APIError<
-  "UNAUTHORIZED" | "TRANSACTION_INVALID" | "NOT_FOUND"
+  "UNAUTHORIZED" | "TRANSACTION_INVALID" | "NOT_FOUND" | "BAD_REQUEST"
 >;
 
 export type CreateEscrowRequestParams = { offerId: string };
@@ -49,6 +51,11 @@ export type CreateEscrowRequestBody = { publicKey: string,returnAddress?:string 
 export type CreateEscrowResponseBody = {
   offerId: string;
   escrow: string;
+  /** escrow address per chain. For escrowVersion 2 `bitcoin` is a P2TR
+   * (`bc1p…`) address derived from the seller's pubkey alone. */
+  escrows?: Partial<Record<EscrowChain, string>>;
+  /** undefined for escrowVersion 2 - Peach holds no key in that escrow */
+  escrowPeachPublicKey?: Partial<Record<EscrowChain, string | undefined>>;
   funding: Partial<FundingStatus>;
 };
 export type CreateEscrowErrorResponseBody = APIError<
@@ -190,6 +197,8 @@ export type PostOfferRequestBody = {
 };
 export type PostSellOfferRequestBody = PostOfferRequestBody & {
   type: "ask";
+  /** mandatory since the single-sig escrow release - must be 2 */
+  escrowVersion: number;
   amount: number;
   premium?: number;
   fixedPrice?: number;

@@ -129,6 +129,9 @@ export type SellOffer = Offer & {
   released: boolean;
   fundingAmountDifferent: boolean;
   publicKey: string;
+  /** 2 = single-sig taproot escrow owned by the seller alone.
+   * 0/1/undefined = legacy 2-of-2 P2WSH escrow shared with Peach. */
+  escrowVersion?: number;
 
   oldOfferId?: string;
   newOfferId?: string;
@@ -174,6 +177,10 @@ export type SellOfferSummary = {
   txId?: string;
   fundingTxId: string;
   refunded: boolean;
+  /** 2 = single-sig taproot escrow, 0/1 = legacy P2WSH escrow. Absent on
+   * servers that do not send it yet - never assume legacy from a missing
+   * value here, see [[isLegacyEscrowSummary]]. */
+  escrowVersion?: number;
   tradeStatusNew?: TradeStatus;
 };
 

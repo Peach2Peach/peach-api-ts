@@ -8,6 +8,7 @@ import { confirmPaymentSeller } from "./confirmPaymentSeller";
 import { extendPaymentTimer } from "./extendPaymentTimer";
 import { getChat } from "./getChat";
 import { getContract } from "./getContract";
+import { getContractSignedReleasePSBT } from "./getContractSignedReleasePSBT";
 import { getContractSummaries } from "./getContractSummaries";
 import { postChat } from "./postChat";
 import { raiseDispute } from "./raiseDispute";
@@ -28,6 +29,7 @@ export const privateContractAPI = (
   extendPaymentTimer: extendPaymentTimer(options, helpers),
   getChat: getChat(options, helpers),
   getContract: getContract(options, helpers),
+  getContractSignedReleasePSBT: getContractSignedReleasePSBT(options, helpers),
   getContractSummaries: getContractSummaries(options, helpers),
   postChat: postChat(options, helpers),
   raiseDispute: raiseDispute(options, helpers),

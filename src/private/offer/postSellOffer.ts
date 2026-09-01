@@ -27,6 +27,7 @@ export const postSellOffer =
     multi,
     instantTradeCriteria,
     experienceLevelCriteria,
+    escrowVersion,
     signal,
   }: Props) => {
     const response = await helpers.fetchWithAuth(`${url}/v1/offer`, {
@@ -43,7 +44,8 @@ export const postSellOffer =
         returnAddress,
         multi,
         instantTradeCriteria,
-        experienceLevelCriteria
+        experienceLevelCriteria,
+        escrowVersion,
       }),
       signal,
     });
