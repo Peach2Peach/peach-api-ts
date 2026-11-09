@@ -215,6 +215,9 @@ export type BuyOffer69 = {
   creationDate: Date;
   expiryDate?: number
   experienceLevelCriteria?: ExperienceLevel;
+  /** owner only: null until submitted. Absent on other users' offers */
+  publicKey?: string | null;
+  publicKeyOwnershipProof?: unknown;
 };
 
 export type Offer69TradeRequestChatMessage = {

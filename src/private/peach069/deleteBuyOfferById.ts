@@ -1,6 +1,7 @@
 import { APIError } from "../../@types/global";
 import { parseResponse } from "../../helpers/parseResponse";
 import { PeachAPIHelpers, PeachAPIOptions, RequestProps } from "../../types";
+import { getOk } from "../../utils/result";
 
 export type DeleteBuyOfferByIdRequestParams = { buyOfferId: string };
 export type DeleteBuyOfferByIdRequestQuery = {};
@@ -20,7 +21,11 @@ export const deleteBuyOfferById =
       headers: helpers.getPrivateHeaders(url),
       method: "DELETE",
     });
-    return parseResponse<void, APIError<"UNAUTHORIZED" | "NOT_FOUND">>(
+
+    // success has an empty body, which parseResponse would fail to parse as JSON
+    if (response.status === 200) return getOk(true);
+
+    return parseResponse<true, APIError<"UNAUTHORIZED" | "NOT_FOUND">>(
       response,
     );
   };

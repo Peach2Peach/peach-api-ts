@@ -43,8 +43,11 @@ export type Contract = {
   lastReminderSent?: PaymentReminder;
 
   escrow: string;
-  /** 2 = single-sig taproot escrow, 0/1/undefined = legacy P2WSH escrow */
+  /** 3 = single-sig taproot escrow only the buyer can spend, 2 = same but only
+   * the seller, 0/1/undefined = legacy P2WSH escrow */
   escrowVersion?: number;
+  /** escrowVersion 3, for the buyer, once the escrow is funded */
+  buyerOnlyEscrowRelease?: { peachFeeAddress?: string; peachFeeSats: number };
   releaseAddress: string;
   releaseTransaction?: string;
   releaseTxId?: string;

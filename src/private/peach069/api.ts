@@ -4,6 +4,9 @@ import { acceptSellOfferTradeRequestReceivedByIds } from "./acceptSellOfferTrade
 import { canPerformInstantTradeWithBuyOfferById } from "./canPerformInstantTradeWithBuyOfferById";
 import { canPerformInstantTradeWithSellOfferById } from "./canPerformInstantTradeWithSellOfferById";
 import { createBuyOffer } from "./createBuyOffer";
+import { getMobilePendingActionSubmitBuyOfferProof } from "./getMobilePendingActionSubmitBuyOfferProof";
+import { postMobilePendingActionSubmitBuyOfferProof } from "./postMobilePendingActionSubmitBuyOfferProof";
+import { submitBuyOfferPublicKey } from "./submitBuyOfferPublicKey";
 import { deleteBuyOfferById } from "./deleteBuyOfferById";
 import { getBlockedUsers } from "./getBlockedUsers";
 import { getBuyOfferById } from "./getBuyOfferById";
@@ -64,6 +67,7 @@ export const peach069API = (
   helpers: PeachAPIHelpers,
 ) => ({
   createBuyOffer: createBuyOffer(options, helpers),
+  submitBuyOfferPublicKey: submitBuyOfferPublicKey(options, helpers),
   getBuyOffers: getBuyOffers(options, helpers),
   getBuyOfferById: getBuyOfferById(options, helpers),
   patchBuyOfferPremiumById: patchBuyOfferPremiumById(options, helpers),
@@ -239,4 +243,8 @@ export const peach069API = (
     options,
     helpers,
   ),
+  getMobilePendingActionSubmitBuyOfferProof:
+    getMobilePendingActionSubmitBuyOfferProof(options, helpers),
+  postMobilePendingActionSubmitBuyOfferProof:
+    postMobilePendingActionSubmitBuyOfferProof(options, helpers),
 });

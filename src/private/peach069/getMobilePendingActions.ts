@@ -1,5 +1,5 @@
 import { APIError } from "../../@types/global";
-import { MobilePendingActionContract, MobilePendingActionFundEscrow, MobilePendingActionFundMultipleEscrow, MobilePendingActionRefund } from "../../@types/mobilePendingAction";
+import { MobilePendingActionContract, MobilePendingActionFundEscrow, MobilePendingActionFundMultipleEscrow, MobilePendingActionRefund, MobilePendingActionSubmitBuyOfferProof } from "../../@types/mobilePendingAction";
 import { parseResponse } from "../../helpers/parseResponse";
 import { PeachAPIHelpers, PeachAPIOptions, RequestProps } from "../../types";
 
@@ -31,6 +31,7 @@ export const getMobilePendingActions =
         fundMultipleEscrowPendingActions: MobilePendingActionFundMultipleEscrow[];
         fundEscrowContractPendingActions: MobilePendingActionContract[];
         refundEscrowContractPendingActions: MobilePendingActionContract[];
+        submitBuyOfferProofPendingActions: MobilePendingActionSubmitBuyOfferProof[];
       },
       APIError<"UNAUTHORIZED">
     >(response);

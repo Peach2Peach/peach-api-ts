@@ -10,6 +10,8 @@ import { getChat } from "./getChat";
 import { getContract } from "./getContract";
 import { getContractSignedReleasePSBT } from "./getContractSignedReleasePSBT";
 import { getContractSummaries } from "./getContractSummaries";
+import { getBuyerOnlyEscrowRefundPsbt } from "./getBuyerOnlyEscrowRefundPsbt";
+import { postBuyerOnlyEscrowRefund } from "./postBuyerOnlyEscrowRefund";
 import { postChat } from "./postChat";
 import { raiseDispute } from "./raiseDispute";
 import { rateUser } from "./rateUser";
@@ -31,6 +33,8 @@ export const privateContractAPI = (
   getContract: getContract(options, helpers),
   getContractSignedReleasePSBT: getContractSignedReleasePSBT(options, helpers),
   getContractSummaries: getContractSummaries(options, helpers),
+  getBuyerOnlyEscrowRefundPsbt: getBuyerOnlyEscrowRefundPsbt(options, helpers),
+  postBuyerOnlyEscrowRefund: postBuyerOnlyEscrowRefund(options, helpers),
   postChat: postChat(options, helpers),
   raiseDispute: raiseDispute(options, helpers),
   rateUser: rateUser(options, helpers),

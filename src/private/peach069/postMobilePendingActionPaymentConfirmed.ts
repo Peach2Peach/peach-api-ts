@@ -5,7 +5,8 @@ import { PeachAPIHelpers, PeachAPIOptions, RequestProps } from "../../types";
 export type PostMobilePendingActionPaymentConfirmedRequestParams = {id:string};
 export type PostMobilePendingActionPaymentConfirmedRequestQuery = {};
 export type PostMobilePendingActionPaymentConfirmedRequestBody = {
-   releaseTransactionSignature: string;
+   /** not needed for escrowVersion 3 */
+   releaseTransactionSignature?: string;
   batchReleasePsbt?: string;
 };
 

@@ -1,6 +1,5 @@
 import { PostOfferErrorResponseBody } from "../../@types/api/offerAPI";
 import {
-  BuyOffer69,
   ExperienceLevel,
   InstantTradeCriteria,
   OfferPaymentData,
@@ -59,8 +58,11 @@ export const createBuyOffer =
         minReputation,
         instantTradeCriteria,
         multi,
-        experienceLevelCriteria
+        experienceLevelCriteria,
+        version: 2,
       }),
     });
-    return parseResponse<BuyOffer69, PostOfferErrorResponseBody>(response);
+    return parseResponse<{ ids: number[] }, PostOfferErrorResponseBody>(
+      response,
+    );
   };

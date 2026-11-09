@@ -19,7 +19,7 @@ export type performInstantTradeWithBuyOfferByIdRequestBody = {
   maxMiningFeeRate?: number;
   /** mandatory since the single-sig escrow release - must be 2 */
   escrowVersion: number;
-  // returnAddress: string;
+  returnAddress: string;
 };
 
 type Props = RequestProps &
@@ -40,7 +40,7 @@ export const performInstantTradeWithBuyOfferById =
     symmetricKeySignature,
     maxMiningFeeRate,
     escrowVersion,
-    // returnAddress,
+    returnAddress,
   }: Props) => {
     const finalUrl = `${url}/v069/buyOffer/${buyOfferId}/performInstantTrade`;
 
@@ -57,7 +57,7 @@ export const performInstantTradeWithBuyOfferById =
         symmetricKeySignature,
         maxMiningFeeRate,
         escrowVersion,
-        // returnAddress,
+        returnAddress,
       }),
     });
 

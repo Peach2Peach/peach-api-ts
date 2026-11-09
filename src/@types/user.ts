@@ -57,6 +57,8 @@ export type User = {
   uniqueId: string;
   usedReferralCode?: string;
   userRating: number;
+  /** only returned to the user themselves by `GET /v1/user/me` */
+  whitelisted?: boolean;
 };
 
 export type NewUser = User & {
@@ -77,6 +79,7 @@ export type PublicUser = Omit<
   | "freeTrades"
   | "maxFreeTrades"
   | "isBatchingEnabled"
+  | "whitelisted"
 >;
 
 export type Rating = {

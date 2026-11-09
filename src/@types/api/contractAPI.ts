@@ -56,10 +56,11 @@ export type ConfirmCancelationRequestErrorResponseBody = APIError<
 
 export type ConfirmPaymentRequestParams = { contractId: string };
 export type ConfirmPaymentRequestQuery = {};
-export type ConfirmPaymentBuyerRequestBody = {releaseAddress?:string, releaseAddressMessageSignature?:string};
+export type ConfirmPaymentBuyerRequestBody = {buyerOnlyEscrowReleaseTx?: string, releaseAddress?:string, releaseAddressMessageSignature?:string};
 export type ConfirmPaymentBuyerResponseBody = APISuccess;
 export type ConfirmPaymentSellerRequestBody = {
-  releaseTransactionSignature: string;
+  /** not needed for escrowVersion 3 */
+  releaseTransactionSignature?: string;
   batchReleasePsbt?: string;
 };
 export type ConfirmPaymentSellerResponseBody = APISuccess & {

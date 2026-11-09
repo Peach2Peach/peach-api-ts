@@ -28,6 +28,14 @@ export type MobilePendingActionFundEscrow = {
     status: MobilePendingActionStatus;
     }
 
+export type MobilePendingActionSubmitBuyOfferProof = {
+    id: number;
+    userId: string;
+    buyOfferId: number;
+    creationDate: Date;
+    status: MobilePendingActionStatus;
+    }
+
 export type MobilePendingActionFundMultipleEscrow = {
     id: number;
     userId: string;
