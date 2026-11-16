@@ -49,6 +49,10 @@ export type Contract = {
   /** escrowVersion 3, for the buyer, once the escrow is funded */
   buyerOnlyEscrowRelease?: { peachFeeAddress?: string; peachFeeSats: number };
   releaseAddress: string;
+  /** seller only: signed by the release address key */
+  releaseAddressMessageSignature?: string;
+  /** seller only: same message, signed by the buyer's Peach ID key */
+  peachUserSignature?: string;
   releaseTransaction?: string;
   releaseTxId?: string;
 

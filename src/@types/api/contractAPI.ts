@@ -56,7 +56,7 @@ export type ConfirmCancelationRequestErrorResponseBody = APIError<
 
 export type ConfirmPaymentRequestParams = { contractId: string };
 export type ConfirmPaymentRequestQuery = {};
-export type ConfirmPaymentBuyerRequestBody = {buyerOnlyEscrowReleaseTx?: string, releaseAddress?:string, releaseAddressMessageSignature?:string};
+export type ConfirmPaymentBuyerRequestBody = {buyerOnlyEscrowReleaseTx?: string, releaseAddress?:string, releaseAddressMessageSignature?:string, peachUserSignature?: string};
 export type ConfirmPaymentBuyerResponseBody = APISuccess;
 export type ConfirmPaymentSellerRequestBody = {
   /** not needed for escrowVersion 3 */

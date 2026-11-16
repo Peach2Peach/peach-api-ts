@@ -15,7 +15,7 @@ type Props = RequestProps &
 
 export const confirmPaymentBuyer =
   ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
-  async ({ contractId,releaseAddress,releaseAddressMessageSignature, buyerOnlyEscrowReleaseTx, signal }: Props) => {
+  async ({ contractId,releaseAddress,releaseAddressMessageSignature, peachUserSignature, buyerOnlyEscrowReleaseTx, signal }: Props) => {
     const response = await helpers.fetchWithAuth(
       `${url}/v1/contract/${contractId}/payment/confirm`,
       {
@@ -24,6 +24,7 @@ export const confirmPaymentBuyer =
         body: JSON.stringify({
           releaseAddress,
           releaseAddressMessageSignature,
+          peachUserSignature,
           buyerOnlyEscrowReleaseTx,
         }),
         signal,

@@ -19,6 +19,7 @@ export type CreateBuyOfferRequestBody = CreateOfferRequestBody & {
   amount: number;
   releaseAddresses?: string[];
   releaseAddressMessageSignatures?: string[];
+  peachUserSignatures?: string[];
   premium: number;
   minReputation?: number;
   instantTradeCriteria?: InstantTradeCriteria;
@@ -39,6 +40,7 @@ export const createBuyOffer =
     paymentData,
     releaseAddresses,
     releaseAddressMessageSignatures,
+    peachUserSignatures,
     premium,
     minReputation,
     instantTradeCriteria,
@@ -54,6 +56,7 @@ export const createBuyOffer =
         paymentData,
         releaseAddresses,
         releaseAddressMessageSignatures,
+        peachUserSignatures,
         premium,
         minReputation,
         instantTradeCriteria,

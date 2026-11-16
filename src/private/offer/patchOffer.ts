@@ -14,6 +14,7 @@ export type PatchOfferRequestBody = {
   fixedPrice?: number;
   releaseAddress?: string;
   messageSignature?: string;
+  peachUserSignature?: string;
   amount?: [number, number];
   meansOfPayment?: MeansOfPayment;
   paymentData?: OfferPaymentData;
@@ -35,6 +36,7 @@ export const patchOffer =
     refundAddress,
     releaseAddress,
     messageSignature,
+    peachUserSignature,
     refundTx,
     premium,
     fixedPrice,
@@ -57,6 +59,7 @@ export const patchOffer =
         minReputation,
         releaseAddress,
         messageSignature,
+        peachUserSignature,
         amount,
         meansOfPayment,
         paymentData,

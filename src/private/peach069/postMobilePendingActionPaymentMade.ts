@@ -7,6 +7,7 @@ export type PostMobilePendingActionPaymentMadeRequestQuery = {};
 export type PostMobilePendingActionPaymentMadeRequestBody = {
     releaseAddress?: string;
   releaseAddressMessageSignature?: string;
+  peachUserSignature?: string;
   buyerOnlyEscrowReleaseTx?: string;
 };
 
@@ -17,7 +18,7 @@ type Props = RequestProps &
 
 export const postMobilePendingActionPaymentMade =
   ({ url }: PeachAPIOptions, helpers: PeachAPIHelpers) =>
-  async ({id, releaseAddress, releaseAddressMessageSignature, buyerOnlyEscrowReleaseTx}: Props) => {
+  async ({id, releaseAddress, releaseAddressMessageSignature, peachUserSignature, buyerOnlyEscrowReleaseTx}: Props) => {
     const endpointUrl = `${url}/v069/selfUser/pendingAction/paymentMade/${id}`;
 
     const response = await helpers.fetchWithAuth(endpointUrl, {
@@ -26,6 +27,7 @@ export const postMobilePendingActionPaymentMade =
       body: JSON.stringify({
           releaseAddress,
           releaseAddressMessageSignature,
+          peachUserSignature,
           buyerOnlyEscrowReleaseTx,
         }),
 
