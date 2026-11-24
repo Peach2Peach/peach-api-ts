@@ -15,6 +15,10 @@ export type PerformSellOfferTradeRequestRequestBody = {
   symmetricKeyEncrypted: string;
   symmetricKeySignature: string;
   maxMiningFeeRate?: number;
+  /** armored PGP message of the trade details, encrypted to the seller's PGP keys */
+  encryptedTradeDetails: string;
+  /** armored detached PGP signature by the buyer over the trade details plaintext */
+  encryptedTradeDetailsBuyerSignature: string;
   // releaseAddress: string;
   // releaseAddressMessageSignature: string;
 };
@@ -36,6 +40,8 @@ export const performSellOfferTradeRequest =
     symmetricKeyEncrypted,
     symmetricKeySignature,
     maxMiningFeeRate,
+    encryptedTradeDetails,
+    encryptedTradeDetailsBuyerSignature,
     // releaseAddress,
     // releaseAddressMessageSignature,
   }: Props) => {
@@ -53,6 +59,8 @@ export const performSellOfferTradeRequest =
         symmetricKeyEncrypted,
         symmetricKeySignature,
         maxMiningFeeRate,
+        encryptedTradeDetails,
+        encryptedTradeDetailsBuyerSignature,
         // releaseAddress,
         // releaseAddressMessageSignature,
       }),

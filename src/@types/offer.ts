@@ -137,7 +137,9 @@ export type SellOffer = Offer & {
   newOfferId?: string;
   prices?: Pricebook;
 
-  expiryDate?: number
+  expiryDate?: number;
+  /** owner only: signed instant trade declaration, null if not signed yet */
+  instantTradeSignature?: string | null;
 };
 
 export type BuyOffer = Offer & {
