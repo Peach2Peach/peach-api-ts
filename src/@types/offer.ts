@@ -140,6 +140,8 @@ export type SellOffer = Offer & {
   expiryDate?: number;
   /** owner only: signed instant trade declaration, null if not signed yet */
   instantTradeSignature?: string | null;
+  /** owner only, revived offers: PGP signature over "<oldOfferId>-<id>" */
+  oldOfferIdSignature?: string | null;
 };
 
 export type BuyOffer = Offer & {
@@ -260,4 +262,8 @@ export type SellOffer69TradeRequest = {
   currency: string;
   price: number;
   creationDate: Date;
+  /** armored PGP message of the trade details, encrypted to the seller */
+  encryptedTradeDetails?: string;
+  /** armored detached PGP signature by the buyer over the plaintext */
+  encryptedTradeDetailsBuyerSignature?: string;
 };

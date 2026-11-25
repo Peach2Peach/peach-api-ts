@@ -50,6 +50,7 @@ import { postMobilePendingActionRefundContractEscrow } from "./postMobilePending
 import { rejectBuyOfferTradeRequestReceivedByIds } from "./rejectBuyOfferTradeRequestReceivedByIds";
 import { rejectSellOfferTradeRequestReceivedByIds } from "./rejectSellOfferTradeRequestByIds";
 import { submitSellOfferInstantTradeSignature } from "./submitSellOfferInstantTradeSignature";
+import { submitSellOfferOldOfferIdSignature } from "./submitSellOfferOldOfferIdSignature";
 import { removePerformedBuyOfferTradeRequest } from "./removePerformedBuyOfferTradeRequest";
 import { removePerformedSellOfferTradeRequest } from "./removePerformedSellOfferTradeRequest";
 import { sendChatMessagesOfPerformedBuyOfferTradeRequest } from "./sendChatMessagesOfPerformedBuyOfferTradeRequest";
@@ -118,6 +119,10 @@ export const peach069API = (
     acceptSellOfferTradeRequestReceivedByIds(options, helpers),
   performSellOfferTradeRequest: performSellOfferTradeRequest(options, helpers),
   submitSellOfferInstantTradeSignature: submitSellOfferInstantTradeSignature(
+    options,
+    helpers,
+  ),
+  submitSellOfferOldOfferIdSignature: submitSellOfferOldOfferIdSignature(
     options,
     helpers,
   ),

@@ -11,6 +11,8 @@ export type AcceptSellOfferTradeRequestByIdsRequestQuery = {};
 export type AcceptSellOfferTradeRequestByIdsRequestBody = {
   paymentDataEncrypted: string;
   paymentDataSignature: string;
+  /** armored detached PGP signature by the seller over the trade details plaintext */
+  encryptedTradeDetailsSellerSignature: string;
 };
 
 type Props = RequestProps &
@@ -25,6 +27,7 @@ export const acceptSellOfferTradeRequestReceivedByIds =
     userId,
     paymentDataEncrypted,
     paymentDataSignature,
+    encryptedTradeDetailsSellerSignature,
   }: Props) => {
     const finalUrl = `${url}/v069/sellOffer/${sellOfferId}/tradeRequestReceived/${userId}/accept`;
 
@@ -34,6 +37,7 @@ export const acceptSellOfferTradeRequestReceivedByIds =
       body: JSON.stringify({
         paymentDataEncrypted,
         paymentDataSignature,
+        encryptedTradeDetailsSellerSignature,
       }),
     });
 
